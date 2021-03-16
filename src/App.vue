@@ -52,16 +52,18 @@ export default {
             {"title": "# its chewsday innit.","text": null,"author":"My_Maker (stole it from me \\>:()","weight": 1},
             {"title": "# TuEsDay","text": null,"author":"My_Maker","weight": 1},
             {"title": null,"text": "![alt text](https://img.shields.io/badge/day__count-1-blue)","author":"My_Maker","weight": 1},
+            {"title": '<iframe width="560" height="315" src="https://www.youtube.com/embed/CY8a4uh_PdI?autoplay=1"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',"text": null,"author":"My_Maker","weight": 1},
           ],
           [
             {"title": null,"text": null,"author":null,"weight": 1},
             {"title": "# wednesday","text": null,"author":"cheesman","weight": 1},
             {"title": "# Wet day","text": null,"author":null,"weight": 1},
-            {"title": "# It's **wednesday** my dudes.","text": "![alt text](https://i.kym-cdn.com/entries/icons/original/000/020/016/wednesdaymydudeswide.jpg \"Its Wednesday\")","author":null,"weight": 1},
+            {"title": "![alt text](https://i.kym-cdn.com/entries/icons/original/000/020/016/wednesdaymydudeswide.jpg \"Its Wednesday\")","text": null,"author":null,"weight": 1},
             {"title": "# It's **warthog wednesday** my dudes.","text": null,"author": "DasMich","weight": 1},
             {"title": "# It's **wednesday** my dudes.","text": null,"author": "My_Maker","weight": 1},
             {"title": "# WeDnEsDaY","text": null,"author":"My_Maker","weight": 1},
             {"title": null,"text": "![alt text](https://img.shields.io/badge/day__count-2-blue)","author":"My_Maker","weight": 1},
+            {"title": '<iframe width="560" height="315" src="https://www.youtube.com/embed/du-TY1GUFGk?autoplay=1"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',"text": null,"author":"My_Maker","weight": 1},
           ],
           [
             {"title": null,"text": null,"author":null,"weight": 1},
@@ -128,6 +130,8 @@ export default {
           {"title": null,"text": "> ### I got a feeling.","author": null,"weight": 1},
           {"title": "{{this.day.title}}","text": null,"author": null,"weight": 1},
           {"title": null,"text": "> ## that's not even a quote.","author": null,"weight": 1},
+          {"title": null,"text": '<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',"author": null,"weight": 1},
+          {"title": null,"text": "> ### Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu odio a mauris scelerisque sollicitudin. Ut finibus sollicitudin eros. Etiam maximus leo quis feugiat rhoncus. Aliquam odio nisi, varius id mi molestie, egestas dapibus augue. Cras a enim eu tortor pharetra dictum in ac lorem. Duis maximus nisl ut ligula aliquam consequat. Proin vel ultrices lorem. Sed laoreet, ligula at viverra porttitor, quam lacus vulputate libero, eu laoreet nulla ex sit amet eros. Sed a ligula eros. Vestibulum molestie ipsum auctor molestie lobortis. Aenean accumsan nibh lectus, vitae tincidunt nunc faucibus sed. Maecenas convallis dictum gravida. Suspendisse sodales quam nisi. Mauris sollicitudin sagittis nunc eget ultricies. Etiam id nulla sed arcu consectetur aliquet et vitae urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.","author": null,"weight": 1},
         ]
       },
       day: {
