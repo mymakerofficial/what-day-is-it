@@ -118,7 +118,16 @@ export default {
           {"title": null,"text": "yep that's the day.","author":"My_Maker","weight": 1},
           {"title": "","text": "`return [\"Sunday\",\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"][new Date().getDay()]`","author":"My_Maker","weight": 1},
           {"title": "## Try again tomorrow","text": null,"author":"My_Maker","weight": 1},
-          {"title": "","text": "> ### you could make it into a lambda function","author": null,"weight": 1},
+          {"title": null,"text": "> ### you could make that into a lambda function","author": null,"weight": 1},
+          {"title": "# Sorry?","text": null,"author": null,"weight": 1},
+          {"title": "## I could ask you the same question.","text": null,"author": null,"weight": 1},
+          {"title": "# 404","text": "day not found","author": null,"weight": 1},
+          {"title": "# H","text": null,"author": null,"weight": 1},
+          {"title": null,"text": "# BOTTOM TEXT","author": null,"weight": 1},
+          {"title": null,"text": "I know right.","author": null,"weight": 1},
+          {"title": null,"text": "> ### I got a feeling.","author": null,"weight": 1},
+          {"title": "{{this.day.title}}","text": null,"author": null,"weight": 1},
+          {"title": null,"text": "> ## that's not even a quote.","author": null,"weight": 1},
         ]
       },
       day: {
@@ -131,7 +140,7 @@ export default {
 
   methods: {
     start(){
-      if(Math.round(Math.random()*3)){
+      if(!Math.round(Math.random()*1.2)){
         let list = this.data.days[new Date().getDay()]
         this.day = list[Math.floor(Math.random()*list.length)]
       }else{
