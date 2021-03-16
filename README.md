@@ -1,5 +1,9 @@
 # what-day-is-it
 
+**A website that tells you what day it is**... *maybe*.
+
+[day.maiker.de](https://day.maiker.de)
+
 ## Project setup
 ```
 npm install
