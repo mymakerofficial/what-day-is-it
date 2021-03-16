@@ -1,32 +1,113 @@
 @import 'variables';
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&family=Catamaran&family=Overpass+Mono&display=swap');
 
 body {
   margin: 0;
+  padding: 0;
   background-color: $uiBackground;
   color: $uiText;
   font-family: 'Roboto', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
-  font-family: 'Playfair Display', serif;
+
+// header
+.header {
+  text-align: center;
 }
 
-h1 {
-  font-size: 5em;
-}
-
-blockquote {
-  border-left: solid 4px rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0 16px;
+.logo {
+  position: relative;
   display: inline-block;
+  font-weight: 900;
+  font-size: 2em;
+  font-style: italic;
+  font-family: "Playfair Display script=latin rev=2", serif;
+  margin: 24px;
 }
 
+
+// day
 .dayContainer {
   text-align: center;
   justify-content: center;
+  vertical-align: middle;
 }
 
+.dayText {
+  position: relative;
+}
+
+.dayTitleContainer {
+  position: relative;
+  display: inline-block;
+  padding: 24px 42px;
+  margin: 42px 12px;
+  background-color: $uiText;
+  color: $uiBackground;
+  transform: rotate(-2deg);
+
+  font-family: "Playfair Display script=latin rev=2", serif;
+}
+
+.dayTitleContainer * {
+  margin: 0;
+  transform: rotate(1deg);
+}
+
+
+// formating
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  font-family: "Playfair Display script=latin rev=2", serif;
+}
+
+h1 {
+  font-size: 5em !important;
+}
+h2 {
+  font-size: 4em !important;
+}
+h3 {
+  font-size: 3em !important;
+}
+h4 {
+  font-size: 2em !important;
+}
+h5 {
+  font-size: 1em !important;
+}
+h6 {
+  font-size: 0.5em !important;
+}
+
+
+blockquote {
+  font-family: 'Playfair Display', serif;
+  display: inline-block;
+}
+
+blockquote::before {
+  content: '"';
+  font-family: 'Catamaran', sans-serif;
+  display: inline-flex;
+  font-size: 15em;
+  font-weight: 800;
+  opacity: 0.3;
+  position: relative;
+  top: 120px;
+  left: -30px;
+  line-height: 0;
+  width: 0;
+}
+
+blockquote p, blockquote h1, blockquote h2, blockquote h3, blockquote h4, blockquote h5, blockquote h6 {
+  display: inline;
+}
+
+code {
+  font-family: 'Overpass Mono', monospace;
+  background: hsl(240, 3%, 23%);
+  color: hsl(0, 0%, 81%);
+  padding: 9px;
+}

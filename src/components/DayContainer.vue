@@ -1,48 +1,34 @@
 <template>
-  <div class="dayContainer"  v-html="dayHTML"></div>
+  <div class="dayContainer">
+    <div class="dayTitleContainer" v-if="titleFormated"><span v-html="titleFormated"></span></div>
+    <div class="dayText" v-html="textFormated"></div>
+  </div>
 </template>
 
 <script>
 
-import axios from 'axios'
+//import axios from 'axios'
 const marked = require("marked");
 
 export default {
   name: "DayContainer",
 
+  props: ["title","text"],
+
   data() {
     return {
-      days: [],
-      dayText: "# *Monday*\n > mano fuente mas democracia fútbol cerebro",
+      day: null,
     }
   },
 
   computed: {
-    currentDayTexts: function () {
-      return this.days[new Date().getDay()]
+    titleFormated: function () {
+      return marked(this.title)
     },
-    dayHTML: function () {
-      return marked(this.dayText)
-    },
-  },
-
-  methods: {
-    start(){
-      this.dayText = this.currentDayTexts[Math.random()*this.currentDayTexts.length]
-    },
-    loadData(){
-      axios.get(`/data/days.json`).then(response => {
-        this.days = response.data.days
-        this.start()
-      }).catch(error => {
-        console.log(error)
-      })
+    textFormated: function () {
+      return marked(this.text)
     },
   },
-
-  created() {
-    this.loadData()
-  }
 }
 </script>
 
