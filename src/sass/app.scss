@@ -5,8 +5,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: $uiBackground;
-  color: $uiText;
+  background-color: $uiLight;
+  color: $uiColorPrimary;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -41,10 +41,10 @@ body {
 .dayTitleContainer {
   position: relative;
   display: inline-block;
-  padding: 24px 42px;
+  padding: 32px 63px;
   margin: 42px 12px;
-  background-color: $uiText;
-  color: $uiBackground;
+  background-color: $uiColorPrimary;
+  color: $uiColorSecondary;
   transform: rotate(-2deg);
 
   font-family: "Playfair Display script=latin rev=2", serif;

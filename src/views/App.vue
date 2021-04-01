@@ -26,8 +26,8 @@ export default {
       dayTextList: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
       keywords: [{scope:"test",replace:"test"}],
       day: {
-        "title":"# {{current_day_text}}",
-        "text":"> loading...",
+        "title":"# loading",
+        "text":"loading",
         "author":"My_Maker"
       }
     }
@@ -54,14 +54,23 @@ export default {
         this.day.title = replaceString(this.day.title, `{{${v.scope}}}`, v.replace)
         this.day.text = replaceString(this.day.text, `{{${v.scope}}}`, v.replace);
       })
+
+      //set color
+
+      document.querySelector(':root').style.setProperty('--uiColorPrimary', `hsl(${this.random*360},100%,50%)`);
+      document.querySelector(':root').style.setProperty('--uiColorSecondary', `hsl(${((this.random*360)+180)%360},100%,50%)`);
     },
     generateKeywords() {
       this.keywords.push({scope: "current_day_text",replace: this.dayTextList[new Date().getDay()]})
+      this.keywords.push({scope: "random_day_text",replace: this.dayTextList[Math.floor(this.random*6)]})
+      this.keywords.push({scope: "random_float",replace: `${this.random}`})
+      this.keywords.push({scope: "random_float2",replace: `${Math.round(this.random*100)/100}`})
+      this.keywords.push({scope: "random_binary",replace: `${Math.round(this.random)}`})
+      this.keywords.push({scope: "random_bool",replace: `${!!Math.round(this.random)}`})
     },
     generateRandom() {
       let date = new Date()
-      let time = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`
-      time = `${Math.floor(date.getTime() / 30000)}`
+      let time = `${Math.floor(date.getTime() / 60000)}`
       let random = stringHash(time) / 4294967295 // hash time and make it a value between 0 and 1
       console.log(time, random)
       this.random = random
