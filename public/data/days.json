@@ -1,4 +1,12 @@
 {
+  "headers": [
+    "what day is it?",
+    "what's the day?",
+    "day what is?",
+    "day?",
+    "day.maiker.de",
+    "may i ask what day it is?"
+  ],
   "days": [
     [
       {"title": null,"text": null,"author": null,"weight": 1},

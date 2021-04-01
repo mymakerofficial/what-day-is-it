@@ -1,12 +1,14 @@
 <template>
   <div class="header">
-    <div class="logo">what day is it?</div>
+    <div class="logo">{{text}}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Header"
+  name: "Header",
+
+  props: ["text"]
 }
 </script>
 

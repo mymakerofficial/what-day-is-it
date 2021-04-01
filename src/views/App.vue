@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header></Header>
+    <Header :text="headerText"></Header>
     <DayContainer :title="day.title" :text="day.text"></DayContainer>
   </div>
 </template>
@@ -25,6 +25,7 @@ export default {
       data: {"days": [],"any":[]},
       dayTextList: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
       keywords: [{scope:"test",replace:"test"}],
+      headerText: "what day is it?",
       day: {
         "title":"",
         "text":"",
@@ -44,6 +45,8 @@ export default {
       }else{
         this.day = this.data.any[Math.floor(this.random*this.data.any.length)]
       }
+
+      this.headerText = this.data.headers[Math.floor(this.random*this.data.headers.length)]
 
       // replace null
       if(this.day.title == null) this.day.title = `# {{current_day_text}}`
