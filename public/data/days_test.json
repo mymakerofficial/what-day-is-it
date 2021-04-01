@@ -1,0 +1,28 @@
+{
+  "days": [
+    [
+      {"title": null,"text": "test","author": null,"weight": 1}
+    ],
+    [
+      {"title": null,"text": "test","author": null,"weight": 1}
+    ],
+    [
+      {"title": null,"text": "test","author": null,"weight": 1}
+    ],
+    [
+      {"title": null,"text": "test","author":null,"weight": 1}
+    ],
+    [
+      {"title": null,"text": "test","author":null,"weight": 1}
+    ],
+    [
+      {"title": null,"text": "test","author":null,"weight": 1}
+    ],
+    [
+      {"title": null,"text": "test","author":null,"weight": 1}
+    ]
+  ],
+  "any":[
+    {"title": "# {{test}}","text": "{{random_day_text}}","author":null,"weight": 1}
+  ]
+}

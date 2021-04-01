@@ -8,6 +8,9 @@
 <script>
 import DayContainer from "@/components/DayContainer";
 import Header from "@/components/Header";
+import axios from "axios";
+const replaceString = require('replace-string');
+const stringHash = require("string-hash");
 
 export default {
   name: 'App',
@@ -18,125 +21,13 @@ export default {
 
   data() {
     return {
-      data: {
-        "days": [
-          [
-            {"title": null,"text": null,"author": null,"weight": 1},
-            {"title": null,"text": "[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)","author":null,"weight": 1},
-            {"title": null,"text": "dasmich was here","author":"darkarotte","weight": 1},
-            {"title": "### Here comes the sun... day","text": null,"author":"Will brirz","weight": 1},
-            {"title": "# SuNdAy","text": null,"author":"My_Maker","weight": 1}
-          ],
-          [
-            {"title": null,"text": null,"author": null,"weight": 1},
-            {"title": "# aMogusday","text": null,"author":"darkarotte","weight": 1},
-            {"title": null,"text": "**el tenedor**","author":"el tenedor","weight": 1},
-            {"title": null,"text": "**empresa de tenedores**","author":"el tenedor","weight": 1},
-            {"title": null,"text": "**sociedad tenedora**","author":"el tenedor","weight": 1},
-            {"title": null,"text": "**sociedad tenedora de acciones**","author":"el tenedor","weight": 1},
-            {"title": null,"text": "> **la tenedora** \\- it's a worthy job","author":"el tenedor","weight": 1},
-            {"title": null,"text": "> mano fuente mas democracia fútbol cerebro\n\n \\- spanish person","author":"el tenedor","weight": 1},
-            {"title": null,"text": "tenedores de día","author":"el tenedor","weight": 1},
-            {"title": null,"text": "la latería de tenedores","author":"el tenedor","weight": 1},
-            {"title": null,"text": "again...","author":"Your_Maker (fork) (C)","weight": 1},
-            {"title": null,"text": "![alt text](https://img.shields.io/badge/Made%20With-Pain-red.svg \"Pain\")","author":"My_Maker","weight": 1},
-            {"title": "# Monkey Day","text": null,"author":"My_Maker","weight": 1},
-            {"title": "# MoNdAy","text": null,"author":"My_Maker","weight": 1},
-            {"title": "# Moonday","text": null,"author":"DasMich","weight": 1},
-            {"title": null,"text": "![alt text](https://img.shields.io/badge/day__count-0-blue)","author":"My_Maker","weight": 1},
-          ],
-          [
-            {"title": null,"text": null,"author": null,"weight": 1},
-            {"title": "# chonky chewsday","text": null,"author":"DasMich","weight": 1},
-            {"title": "# cheesday","text": null,"author":"DasMich","weight": 1},
-            {"title": "# its chewsday innit.","text": null,"author":"My_Maker (stole it from me \\>:()","weight": 1},
-            {"title": "# TuEsDay","text": null,"author":"My_Maker","weight": 1},
-            {"title": null,"text": "![alt text](https://img.shields.io/badge/day__count-1-blue)","author":"My_Maker","weight": 1},
-            {"title": '<iframe width="560" height="315" src="https://www.youtube.com/embed/CY8a4uh_PdI?autoplay=1"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',"text": null,"author":"My_Maker","weight": 1},
-          ],
-          [
-            {"title": null,"text": null,"author":null,"weight": 1},
-            {"title": "# wednesday","text": null,"author":"cheesman","weight": 1},
-            {"title": "# Wet day","text": null,"author":null,"weight": 1},
-            {"title": "![alt text](https://i.kym-cdn.com/entries/icons/original/000/020/016/wednesdaymydudeswide.jpg \"Its Wednesday\")","text": null,"author":null,"weight": 1},
-            {"title": "# It's **warthog wednesday** my dudes.","text": null,"author": "DasMich","weight": 1},
-            {"title": "# It's **wednesday** my dudes.","text": null,"author": "My_Maker","weight": 1},
-            {"title": "# WeDnEsDaY","text": null,"author":"My_Maker","weight": 1},
-            {"title": null,"text": "![alt text](https://img.shields.io/badge/day__count-2-blue)","author":"My_Maker","weight": 1},
-            {"title": '<iframe width="560" height="315" src="https://www.youtube.com/embed/du-TY1GUFGk?autoplay=1"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',"text": null,"author":"My_Maker","weight": 1},
-          ],
-          [
-            {"title": null,"text": null,"author":null,"weight": 1},
-            {"title": "# Monday","text": "##nah its thrusday","author":"DasMich","weight": 1},
-            {"title": null,"text": "**el cucharo**","author":"darkarotte","weight": 1},
-            {"title": null,"text": "**la cuchara**","author":"darkarotte","weight": 1},
-            {"title": null,"text": "**la cuchara de cuchara**","author":"darkarotte","weight": 1},
-            {"title": null,"text": "**la cuchachacha chachacha**","author":"darkarotte","weight": 1},
-            {"title": "# ThUrSdAy","text": null,"author":"My_Maker","weight": 1}
-          ],
-          [
-            {"title": null,"text": null,"author":null,"weight": 1},
-            {"title": "# Funky Maths Friday","text": null,"author":null,"weight": 1},
-            {"title": "# Friday says:","text": "\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\nhi","author":null,"weight": 1},
-            {"title": "# It's Femboy **Friday**.","text": null,"author":null,"weight": 1},
-            {"title": null,"text": "Invented in 1768 by greek scientist *Ivan Friday*.","author":"True Facts","weight": 1},
-            {"title": "# Friday","text": "**Beans**","author":"null","weight": 1},
-            {"title": "# FrIdAy","text": null,"author":"My_Maker","weight": 1},
-            {"title": "# Freeday","text": null,"author":"DasMich","weight": 1}
-          ],
-          [
-            {"title": null,"text": null,"author":null,"weight": 1},
-            {"title": null,"text": "µ","author":null,"weight": 1},
-            {"title": null,"text": "n","author":null,"weight": 1},
-            {"title": null,"text": "Nothing cool happens on Saturda","author":null,"weight": 1},
-            {"title": "# SaTuRdAy","text": null,"author":"My_Maker","weight": 1}
-          ]
-        ], "any":[
-          {"title": "# ????","text": null,"author":null,"weight": 1},
-          {"title": "# *funny* **text**","text": "default text","author":"default author","weight": 1},
-          {"title": "# use a calender you frick","text": null,"author":"darkarotte","weight": 1},
-          {"title": "# use a calender you beautiful person","text": null,"author":"darkarotte","weight": 1},
-          {"title": "# trans rights","text": null,"author":"the trans mission","weight": 1},
-          {"title": "# I have a dream","text": null,"author": null,"weight": 1},
-          {"title": "# Who's Marting Garryx?","text": null,"author":"Marting Garryx","weight": 1},
-          {"title": "# Dude I love Marting Garryx","text": null,"author":"Some Dude","weight": 1},
-          {"title": "# Ahhh yessssss","text": null,"author":"zum","weight": 1},
-          {"title": "","text": "# `';DROP DATABASE;#'`","author":"hacker man","weight": 1},
-          {"title": "# What's the day?","text": null,"author":"you","weight": 1},
-          {"title": "# Domingo","text": null,"author":"the spanish","weight": 1},
-          {"title": "# Could you like not?","text": null,"author":"this application","weight": 1},
-          {"title": "#### mymakerofficial/what-day-is-it","text": "![GitHub branch checks state](https://img.shields.io/github/checks-status/mymakerofficial/what-day-is-it/master) ![GitHub last commit](https://img.shields.io/github/last-commit/mymakerofficial/what-day-is-it) ![GitHub contributors](https://img.shields.io/github/contributors/mymakerofficial/what-day-is-it) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fday.maiker.de) ![GitHub issues](https://img.shields.io/github/issues/mymakerofficial/what-day-is-it) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mymakerofficial/what-day-is-it) ![made-with-vue](https://img.shields.io/badge/Made%20with-Vue-41b883.svg) [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org) \n\n\n\n ##### A website that tells you what day it is... *maybe*.","author":"My_Maker","weight": 1},
-          {"title": "# Sunday","text": null,"author":null,"weight": 1},
-          {"title": "# Monday","text": null,"author":null,"weight": 1},
-          {"title": "# Tuesday","text": null,"author":null,"weight": 1},
-          {"title": "# Wednesday","text": null,"author":null,"weight": 1},
-          {"title": "# Thursday","text": null,"author":null,"weight": 1},
-          {"title": "# Friday","text": null,"author":null,"weight": 1},
-          {"title": "# Saturday","text": null,"author":null,"weight": 1},
-          {"title": "# Makerday","text": null,"author":null,"weight": 1},
-          {"title": "# idk","text": null,"author":null,"weight": 1},
-          {"title": "# i genuinely forgot what day it is","text": null,"author":null,"weight": 1},
-          {"title": null,"text": "> i am the milkman, my milk is delicious","author":"My_Maker","weight": 1},
-          {"title": null,"text": "yep that's the day.","author":"My_Maker","weight": 1},
-          {"title": "","text": "`return [\"Sunday\",\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"][new Date().getDay()]`","author":"My_Maker","weight": 1},
-          {"title": "## Try again tomorrow","text": null,"author":"My_Maker","weight": 1},
-          {"title": null,"text": "> ### you could make that into a lambda function","author": null,"weight": 1},
-          {"title": "# Sorry?","text": null,"author": null,"weight": 1},
-          {"title": "## I could ask you the same question.","text": null,"author": null,"weight": 1},
-          {"title": "# 404","text": "day not found","author": null,"weight": 1},
-          {"title": "# H","text": null,"author": null,"weight": 1},
-          {"title": null,"text": "# BOTTOM TEXT","author": null,"weight": 1},
-          {"title": null,"text": "I know right.","author": null,"weight": 1},
-          {"title": null,"text": "> ### I got a feeling.","author": null,"weight": 1},
-          {"title": "{{this.day.title}}","text": null,"author": null,"weight": 1},
-          {"title": null,"text": "> ## that's not even a quote.","author": null,"weight": 1},
-          {"title": null,"text": '<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',"author": null,"weight": 1},
-          {"title": null,"text": "> ##### Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu odio a mauris scelerisque sollicitudin. Ut finibus sollicitudin eros. Etiam maximus leo quis feugiat rhoncus. Aliquam odio nisi, varius id mi molestie, egestas dapibus augue. Cras a enim eu tortor pharetra dictum in ac lorem. Duis maximus nisl ut ligula aliquam consequat. Proin vel ultrices lorem. Sed laoreet, ligula at viverra porttitor, quam lacus vulputate libero, eu laoreet nulla ex sit amet eros. Sed a ligula eros. Vestibulum molestie ipsum auctor molestie lobortis. Aenean accumsan nibh lectus, vitae tincidunt nunc faucibus sed. Maecenas convallis dictum gravida. Suspendisse sodales quam nisi. Mauris sollicitudin sagittis nunc eget ultricies. Etiam id nulla sed arcu consectetur aliquet et vitae urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.","author": null,"weight": 1},
-        ]
-      },
+      random: 0,
+      data: {"days": [],"any":[]},
+      dayTextList: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      keywords: [{scope:"test",replace:"test"}],
       day: {
-        "title":"Monday",
-        "text":"> mano fuente mas democracia fútbol cerebro\n\n \\- spanish person",
+        "title":"# {{current_day_text}}",
+        "text":"> loading...",
         "author":"My_Maker"
       }
     }
@@ -144,26 +35,45 @@ export default {
 
   methods: {
     start(){
-      if(!Math.round(Math.random()*1.2)){
+      this.generateRandom()
+      this.generateKeywords()
+
+      if(!Math.round(this.random*1.2)){
         let list = this.data.days[new Date().getDay()]
-        this.day = list[Math.floor(Math.random()*list.length)]
+        this.day = list[Math.floor(this.random*list.length)]
       }else{
-        this.day = this.data.any[Math.floor(Math.random()*this.data.any.length)]
+        this.day = this.data.any[Math.floor(this.random*this.data.any.length)]
       }
-      console.log(this.day.title)
-      if(this.day.title == null) this.day.title = ["# Sunday","# Monday","# Tuesday","# Wednesday","# Thursday","# Friday","# Saturday"][new Date().getDay()]
+
+      // replace null
+      if(this.day.title == null) this.day.title = `# {{current_day_text}}`
       if(this.day.text == null) this.day.text = ""
+
+      // replace keywords
+      this.keywords.forEach((v) => {
+        this.day.title = replaceString(this.day.title, `{{${v.scope}}}`, v.replace)
+        this.day.text = replaceString(this.day.text, `{{${v.scope}}}`, v.replace);
+      })
+    },
+    generateKeywords() {
+      this.keywords.push({scope: "current_day_text",replace: this.dayTextList[new Date().getDay()]})
+    },
+    generateRandom() {
+      let date = new Date()
+      let time = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`
+      time = `${Math.floor(date.getTime() / 30000)}`
+      let random = stringHash(time) / 4294967295 // hash time and make it a value between 0 and 1
+      console.log(time, random)
+      this.random = random
     },
     loadData(){
-      this.start()
-      /*
+      // load day text database
       axios.get(`/data/days.json`).then(response => {
-        this.days = response.data.days
+        this.data = response.data
         this.start()
       }).catch(error => {
         console.log(error)
       })
-       */
     },
   },
 
