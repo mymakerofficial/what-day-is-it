@@ -26,9 +26,9 @@ export default {
       dayTextList: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
       keywords: [{scope:"test",replace:"test"}],
       day: {
-        "title":"# loading",
-        "text":"loading",
-        "author":"My_Maker"
+        "title":"",
+        "text":"",
+        "author":""
       }
     }
   },
@@ -69,7 +69,7 @@ export default {
     },
     generateRandom() {
       let date = new Date()
-      let time = `${Math.floor(date.getTime() / 60000)}`
+      let time = `${Math.floor((date.getTime() + process.env.VUE_APP_DAY_OFFSET) / process.env.VUE_APP_DAY_DURATION)}`
       let random = stringHash(time) / 4294967295 // hash time and make it a value between 0 and 1
       console.log(time, random)
       this.random = random
