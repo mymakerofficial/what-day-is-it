@@ -56,7 +56,6 @@ export default {
       })
 
       //set color
-
       document.querySelector(':root').style.setProperty('--uiColorPrimary', `hsl(${this.random*360},100%,50%)`);
       document.querySelector(':root').style.setProperty('--uiColorSecondary', `hsl(${((this.random*360)+180)%360},100%,50%)`);
     },

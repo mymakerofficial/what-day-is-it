@@ -2,8 +2,8 @@ $uiLight: hsl(0, 0%, 92%);
 $uiDark: hsl(240, 6%, 10%);
 
 :root {
-  --uiColorPrimary: #FF0058;
-  --uiColorSecondary: #00FFA7;
+  --uiColorPrimary: $uiLight;
+  --uiColorSecondary: $uiDark;
 }
 
 $uiColorPrimary: var(--uiColorPrimary);
