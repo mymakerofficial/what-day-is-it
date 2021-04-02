@@ -9,8 +9,7 @@
 import DayContainer from "@/components/DayContainer";
 import Header from "@/components/Header";
 import axios from "axios";
-const replaceString = require('replace-string');
-const stringHash = require("string-hash");
+import {Day} from "../js/day";
 
 export default {
   name: 'App',
@@ -21,61 +20,20 @@ export default {
 
   data() {
     return {
-      random: 0,
       data: {"days": [],"any":[]},
       dayTextList: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      keywords: [{scope:"test",replace:"test"}],
-      headerText: "what day is it?",
-      day: {
-        "title":"",
-        "text":"",
-        "author":""
-      }
+      headerText: "what's the day?",
+      day: new Day()
     }
   },
 
   methods: {
-    start(){
-      this.generateRandom()
-      this.generateKeywords()
-
-      if(!Math.round(this.random*1.2)){
-        let list = this.data.days[new Date().getDay()]
-        this.day = list[Math.floor(this.random*list.length)]
-      }else{
-        this.day = this.data.any[Math.floor(this.random*this.data.any.length)]
-      }
-
-      this.headerText = this.data.headers[Math.floor(this.random*this.data.headers.length)]
-
-      // replace null
-      if(this.day.title == null) this.day.title = `# {{current_day_text}}`
-      if(this.day.text == null) this.day.text = ""
-
-      // replace keywords
-      this.keywords.forEach((v) => {
-        this.day.title = replaceString(this.day.title, `{{${v.scope}}}`, v.replace)
-        this.day.text = replaceString(this.day.text, `{{${v.scope}}}`, v.replace);
-      })
+    start: function () {
+      this.day.set(new Date(), this.data)
 
       //set color
-      document.querySelector(':root').style.setProperty('--uiColorPrimary', `hsl(${this.random*360},100%,50%)`);
-      document.querySelector(':root').style.setProperty('--uiColorSecondary', `hsl(${((this.random*360)+180)%360},100%,50%)`);
-    },
-    generateKeywords() {
-      this.keywords.push({scope: "current_day_text",replace: this.dayTextList[new Date().getDay()]})
-      this.keywords.push({scope: "random_day_text",replace: this.dayTextList[Math.floor(this.random*6)]})
-      this.keywords.push({scope: "random_float",replace: `${this.random}`})
-      this.keywords.push({scope: "random_float2",replace: `${Math.round(this.random*100)/100}`})
-      this.keywords.push({scope: "random_binary",replace: `${Math.round(this.random)}`})
-      this.keywords.push({scope: "random_bool",replace: `${!!Math.round(this.random)}`})
-    },
-    generateRandom() {
-      let date = new Date()
-      let time = `${Math.floor((date.getTime() + process.env.VUE_APP_DAY_OFFSET) / process.env.VUE_APP_DAY_DURATION)}`
-      let random = stringHash(time) / 4294967295 // hash time and make it a value between 0 and 1
-      console.log(time, random)
-      this.random = random
+      document.querySelector(':root').style.setProperty('--uiColorPrimary', this.day.colorHsl);
+      document.querySelector(':root').style.setProperty('--uiColorSecondary', this.day.colorHslInverted);
     },
     loadData(){
       // load day text database
