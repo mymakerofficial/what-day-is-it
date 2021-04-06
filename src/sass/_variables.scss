@@ -1,6 +1,12 @@
 $uiLight: hsl(0, 0%, 92%);
 $uiDark: hsl(240, 6%, 10%);
 
+$uiLightSecondary: hsl(0, 0%, 88%);
+$uiLightSecondary2: hsl(0, 0%, 46%);
+
+$uiDarkSecondary: hsl(240, 6%, 22%);
+$uiDarkSecondary2: hsl(240, 6%, 37%);
+
 :root {
   --uiColorPrimary: $uiLight;
   --uiColorSecondary: $uiDark;

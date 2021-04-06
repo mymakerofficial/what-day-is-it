@@ -55,6 +55,10 @@ export default {
         let newDay = new Day(newDate, this.data)
         this.days.push(newDay)
       }
+
+      //set color
+      document.querySelector(':root').style.setProperty('--uiColorPrimary', this.days[0].colorHsl);
+      document.querySelector(':root').style.setProperty('--uiColorSecondary', this.days[0].colorHslInverted);
     },
     loadData(){
       // load day text database
