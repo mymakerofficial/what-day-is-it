@@ -1,10 +1,8 @@
 <template>
   <div>
-    <div class="header">
-      <div class="headerTitle">the day forecast</div>
-    </div>
+    <Header :headerTitle="headerTitle"></Header>
     <div class="dayBody">
-      <div class="forecastTable">
+      <div class="forecastTable" ref="table">
         <div class="row" v-for="day in this.days" :key="day.date.getTime()">
           <a :href="day.path"><div class="col date">{{`${day.date.toLocaleDateString("de-de")}`}}</div><div class="col title" :style="{ backgroundColor: day.colorHsl, color: day.colorHslInverted }">{{ day.titleStriped !== "" ? day.titleStriped : "n/a" }}</div><div class="col text">{{ day.textStriped }}</div></a>
         </div>
@@ -17,10 +15,12 @@
 <script>
 import axios from "axios";
 import {Day} from "../js/day";
+import Header from "../components/Header";
+import anime from "animejs";
 
 export default {
   name: "Forecast",
-
+  components: {Header},
   data() {
     return {
       setDay: false,
@@ -28,6 +28,7 @@ export default {
       month: undefined,
       day: undefined,
       data: {"days": [],"any":[]},
+      headerTitle: "the day forecast",
       date: new Date(),
       days: []
     }
@@ -35,9 +36,6 @@ export default {
 
   methods: {
     start: function () {
-
-      console.log(this.$route)
-
       //is specific day selected
       this.setDay = this.year !== undefined && this.month !== undefined && this.day !== undefined
 
@@ -67,6 +65,22 @@ export default {
       //set color
       //document.querySelector(':root').style.setProperty('--uiColorPrimary', this.days[0].colorHsl);
       //document.querySelector(':root').style.setProperty('--uiColorSecondary', this.days[0].colorHslInverted);
+
+      this.animate()
+    },
+    animate() {
+      this.$nextTick(function () {
+        console.log(this.$refs.table.children)
+        anime({
+          targets: this.$refs.table.children,
+          translateY: [50, 0],
+          opacity: [0, 1],
+          duration: 500,
+          delay: anime.stagger(40, {start: 100}),
+          easing: 'easeOutElastic(.6, 1)',
+          autostart: true,
+        })
+      });
     },
     loadData(){
       // load day text database

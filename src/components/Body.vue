@@ -30,7 +30,7 @@ export default {
           translateY: [10, 0],
           opacity: [0, 1],
           duration: 1000,
-          delay: anime.stagger((100 / targets.listAll.length), {easing: 'cubicBezier(0.225, 0.830, 0.405, 0.535)'}),
+          delay: anime.stagger((100 / targets.listAll.length), {start: 400, easing: 'cubicBezier(0.225, 0.830, 0.405, 0.535)'}),
           easing: 'easeOutElastic(.6, .4)',
           autostart: true,
           complete: () => {
