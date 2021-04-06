@@ -23,7 +23,11 @@ class Day {
             this.date = date;// get Date from unix timestamp
 
             // generate randomness
-            this.randomInput = Math.floor((this.date.getTime() + process.env.VUE_APP_DAY_OFFSET) / process.env.VUE_APP_DAY_DURATION)
+            if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY === "true"){
+                this.randomInput = this.date.getTime()
+            }else{
+                this.randomInput = Math.floor((this.date.getTime() + process.env.VUE_APP_DAY_OFFSET) / process.env.VUE_APP_DAY_DURATION)
+            }
             this.random = Random(this.randomInput)
 
             // select day data
