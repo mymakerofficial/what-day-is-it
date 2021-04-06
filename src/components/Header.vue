@@ -2,7 +2,7 @@
   <div>
     <div class="header">
       <div class="headerTitle">{{headerTitle}}</div>
-      <div class="headerSubtitle" v-id="headerSubtitle">{{headerSubtitle}}</div>
+      <div class="headerSubtitle" v-if="headerSubtitle">{{headerSubtitle}}</div>
       <div class="dayTitle" v-html="titleFormatted"></div>
     </div>
   </div>
