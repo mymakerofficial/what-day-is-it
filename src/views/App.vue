@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <Header :text="headerText"></Header>
-    <DayContainer :title="day.title" :text="day.text"></DayContainer>
+    <Header :text="headerText" :title="currentDay.title"></Header>
+    <Body :text="currentDay.text"></Body>
   </div>
 </template>
 
 <script>
-import DayContainer from "@/components/DayContainer";
 import Header from "@/components/Header";
+import Body from "@/components/Body";
 import axios from "axios";
 import {Day} from "../js/day";
 
@@ -15,25 +15,31 @@ export default {
   name: 'App',
   components: {
     Header,
-    DayContainer,
+    Body
   },
+
+  props: ["year","month", "day"],
 
   data() {
     return {
       data: {"days": [],"any":[]},
-      dayTextList: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      date: new Date(),
       headerText: "what's the day?",
-      day: new Day()
+      currentDay: new Day()
     }
   },
 
   methods: {
     start: function () {
-      this.day.set(new Date(), this.data)
+      if(this.year !== undefined && this.month !== undefined && this.day !== undefined) {
+        this.date = new Date(this.year, this.month, this.day, 0, 0, 0, 0);
+      }
+
+      this.currentDay.set(this.date, this.data)
 
       //set color
-      document.querySelector(':root').style.setProperty('--uiColorPrimary', this.day.colorHsl);
-      document.querySelector(':root').style.setProperty('--uiColorSecondary', this.day.colorHslInverted);
+      document.querySelector(':root').style.setProperty('--uiColorPrimary', this.currentDay.colorHsl);
+      document.querySelector(':root').style.setProperty('--uiColorSecondary', this.currentDay.colorHslInverted);
     },
     loadData(){
       // load day text database
