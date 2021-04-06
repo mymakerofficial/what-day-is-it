@@ -2,6 +2,8 @@ import {Random, WeightedRandom} from "./random";
 import {Keyword} from "./keywords";
 
 const hsl = require('hsl-to-hex')
+const marked = require("marked");
+import { stripHtml } from "string-strip-html";
 
 const dayTextList = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 
@@ -64,6 +66,11 @@ class Day {
         this.keywords.push(new Keyword("current_color_hex", this.colorHex.substring(1)))
         this.keywords.push(new Keyword("current_color_inverted_hex", this.colorHexInverted.substring(1)))
     }
+
+    get titleStriped() {return stripHtml(marked(this.title)).result }
+    get textStriped() {return stripHtml(marked(this.text)).result }
+
+    get path() {return `/${this.date.getFullYear()}/${('0'+(this.date.getMonth()+1)).slice(-2)}/${('0'+this.date.getDate()).slice(-2)}`}
 
     get dayIndex() {return this.date != null ? this.date.getDay() : 0}
     get colorHue() {return this.random * 360;}

@@ -56,6 +56,50 @@ body {
   display: inline-block;
 }
 
+// forecast
+
+.forecastTable {
+  display: table;
+  margin: 16px;
+  text-align: left;
+}
+
+.forecastTable .row:first-child {
+  margin: 24px 0;
+}
+
+.forecastTable .col {
+  width: 200px;
+  margin: 4px;
+  padding: 24px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 32px;
+}
+
+.forecastTable .col.date {
+  width: 90px;
+  font-weight: 100;
+  font-size: 1em;
+  text-align: center;
+}
+
+.forecastTable .col.title {
+  width: 200px;
+  font-weight: 900;
+  font-size: 1.5em;
+  font-style: italic;
+  font-family: "Playfair Display script=latin rev=2", serif;
+}
+
+.forecastTable .col.text {
+  width: 300px;
+  font-weight: 100;
+  font-size: 1.3em;
+}
+
 // formating
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
