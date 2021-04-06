@@ -38,7 +38,7 @@ export default {
       this.setDay = this.year !== undefined && this.month !== undefined && this.day !== undefined
 
       //get start of day
-      if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY == true && !this.setDay){
+      if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY === "true" && !this.setDay){
         let date = new Date()
         this.year = date.getFullYear()
         this.month = date.getMonth()+1
