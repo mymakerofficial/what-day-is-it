@@ -19,6 +19,8 @@ export default {
   watch: {
     text: function () {
       this.$nextTick(function () {
+        let originalDayTextHtml = this.$refs.dayText.innerHTML
+
         let targets = new Letterize({
           targets: ".dayText"
         })
@@ -30,7 +32,10 @@ export default {
           duration: 1000,
           delay: anime.stagger((100 / targets.listAll.length), {easing: 'cubicBezier(0.225, 0.830, 0.405, 0.535)'}),
           easing: 'easeOutElastic(.6, .4)',
-          autostart: true
+          autostart: true,
+          complete: () => {
+            this.$refs.dayText.innerHTML = originalDayTextHtml
+          }
         })
       });
     }

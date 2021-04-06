@@ -3,7 +3,7 @@
     <div class="header">
       <div class="headerTitle">{{headerTitle}}</div>
       <div class="headerSubtitle" v-if="headerSubtitle">{{headerSubtitle}}</div>
-      <div class="dayTitle" v-html="titleFormatted"></div>
+      <div class="dayTitle" ref="dayTitle" v-html="titleFormatted"></div>
     </div>
   </div>
 </template>
@@ -22,6 +22,8 @@ export default {
   watch: {
     title: function () {
       this.$nextTick(function () {
+        let originalDayTitleHtml = this.$refs.dayTitle.innerHTML
+
         let targets = new Letterize({
           targets: ".dayTitle"
         })
@@ -33,7 +35,10 @@ export default {
           duration: 1000,
           delay: anime.stagger((100 / targets.listAll.length), {easing: 'cubicBezier(0.225, 0.830, 0.405, 0.535)'}),
           easing: 'easeOutElastic(.6, .4)',
-          autostart: true
+          autostart: true,
+          complete: () => {
+            this.$refs.dayTitle.innerHTML = originalDayTitleHtml
+          }
         })
       });
     }
