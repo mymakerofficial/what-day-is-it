@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :text="headerText" :title="currentDay.title"></Header>
+    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title"></Header>
     <Body :text="currentDay.text"></Body>
   </div>
 </template>
@@ -22,26 +22,39 @@ export default {
 
   data() {
     return {
+      setDay: false,
       data: {"days": [],"any":[]},
       date: new Date(),
-      headerText: "what's the day?",
+      headerTitle: "what's the day?",
+      headerSubtitle: null,
       currentDay: new Day()
     }
   },
 
   methods: {
     start: function () {
-      if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY && !(this.year !== undefined && this.month !== undefined && this.day !== undefined)){
+
+      //is specific day selected
+      this.setDay = this.year !== undefined && this.month !== undefined && this.day !== undefined
+
+      //get start of day
+      if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY === "true" && !this.setDay){
         let date = new Date()
         this.year = date.getFullYear()
         this.month = date.getMonth()+1
         this.day = date.getDate()
       }
 
-      if(this.year !== undefined && this.month !== undefined && this.day !== undefined) {
-        this.date = new Date(this.year, this.month-1, this.day, 0, 0, 0, 0);
+      //get date
+      if(this.year !== undefined && this.month !== undefined && this.day !== undefined) this.date = new Date(this.year, this.month-1, this.day, 0, 0, 0, 0);
+
+      //change header
+      if(this.setDay) {
+        this.headerSubtitle = `${('0'+this.day).slice(-2)}.${('0'+this.month).slice(-2)}.${this.year}`
       }
 
+
+      //start day
       this.currentDay.set(this.date, this.data)
 
       //set color
