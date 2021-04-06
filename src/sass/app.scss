@@ -59,13 +59,9 @@ body {
 // forecast
 
 .forecastTable {
-  display: table;
+  display: inline-block;
   margin: 16px;
   text-align: left;
-}
-
-.forecastTable .row:first-child {
-  margin: 24px 0;
 }
 
 .forecastTable .col {
@@ -77,17 +73,23 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 32px;
+  background-color: $uiLightSecondary;
+  color: $uiDark
 }
 
 .forecastTable .col.date {
-  width: 90px;
+  width: 120px;
+  padding: 0;
+  line-height: 80px;
   font-weight: 100;
   font-size: 1em;
   text-align: center;
+  text-overflow: unset;
+  color: $uiLightSecondary2;
 }
 
 .forecastTable .col.title {
-  width: 200px;
+  width: 300px;
   font-weight: 900;
   font-size: 1.5em;
   font-style: italic;
