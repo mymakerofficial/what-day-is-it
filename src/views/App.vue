@@ -31,8 +31,15 @@ export default {
 
   methods: {
     start: function () {
+      if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY && !(this.year !== undefined && this.month !== undefined && this.day !== undefined)){
+        let date = new Date()
+        this.year = date.getFullYear()
+        this.month = date.getMonth()+1
+        this.day = date.getDate()
+      }
+
       if(this.year !== undefined && this.month !== undefined && this.day !== undefined) {
-        this.date = new Date(this.year, this.month, this.day, 0, 0, 0, 0);
+        this.date = new Date(this.year, this.month-1, this.day, 0, 0, 0, 0);
       }
 
       this.currentDay.set(this.date, this.data)
