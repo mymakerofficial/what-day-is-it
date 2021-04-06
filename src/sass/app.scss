@@ -70,6 +70,10 @@ body {
   text-decoration: unset;
 }
 
+.forecastTable .row {
+  margin: 32px;
+}
+
 .forecastTable .col {
   width: 300px;
   margin: 4px;
@@ -104,6 +108,10 @@ body {
 }
 
 @media (max-width: 1300px) {
+  .forecastTable .row {
+    margin: unset;
+  }
+
   .forecastTable .col {
     display: block;
     width: 300px;
