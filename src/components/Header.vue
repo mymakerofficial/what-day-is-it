@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="header">
-      <div class="logo">{{text}}</div>
+      <div class="headerTitle">{{headerTitle}}</div>
+      <div class="headerSubtitle" v-id="headerSubtitle">{{headerSubtitle}}</div>
       <div class="dayTitle" v-html="titleFormatted"></div>
     </div>
   </div>
@@ -16,7 +17,7 @@ const marked = require("marked");
 export default {
   name: "Header",
 
-  props: ["text","title"],
+  props: ["headerTitle","headerSubtitle","title"],
 
   watch: {
     title: function () {
