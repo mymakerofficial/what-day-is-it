@@ -26,6 +26,7 @@ body {
   font-weight: 900;
   font-size: 2em;
   font-style: italic;
+  letter-spacing: 4px;
   font-family: "Playfair Display script=latin rev=2", serif;
   margin: 24px;
 }
@@ -33,6 +34,7 @@ body {
 .dayTitle {
   margin: 64px 0;
   transform: rotate(-1deg);
+  letter-spacing: 3px;
 }
 
 // day
@@ -52,7 +54,7 @@ body {
   position: relative;
 }
 
-.dayText * *, .dayTitle * * {
+.dayText * *, .dayTitle * *, .headerTitle *, .headerSubtitle * {
   display: inline-block;
 }
 

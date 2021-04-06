@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="header">
-      <div class="headerTitle">the day forecast</div>
-    </div>
+    <Header :headerTitle="headerTitle"></Header>
     <div class="dayBody">
       <div class="forecastTable">
         <div class="row" v-for="day in this.days" :key="day.date.getTime()">
@@ -17,10 +15,11 @@
 <script>
 import axios from "axios";
 import {Day} from "../js/day";
+import Header from "../components/Header";
 
 export default {
   name: "Forecast",
-
+  components: {Header},
   data() {
     return {
       setDay: false,
@@ -28,6 +27,7 @@ export default {
       month: undefined,
       day: undefined,
       data: {"days": [],"any":[]},
+      headerTitle: "the day forecast",
       date: new Date(),
       days: []
     }

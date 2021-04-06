@@ -3,7 +3,7 @@
     <div class="header">
       <div class="headerTitle">{{headerTitle}}</div>
       <div class="headerSubtitle" v-if="headerSubtitle">{{headerSubtitle}}</div>
-      <div class="dayTitle" ref="dayTitle" v-html="titleFormatted"></div>
+      <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
     </div>
   </div>
 </template>
@@ -21,6 +21,24 @@ export default {
 
   watch: {
     title: function () {
+      this.titleAnimate()
+    },
+    headerTitle: function () {
+      this.headerTitleAnimate()
+    },
+    headerSubtitle: function () {
+      this.headerSubtitleAnimate()
+    }
+  },
+
+  computed: {
+    titleFormatted: function () {
+      return this.title ? marked(this.title) : ""
+    }
+  },
+
+  methods: {
+    titleAnimate: function() {
       this.$nextTick(function () {
         let originalDayTitleHtml = this.$refs.dayTitle.innerHTML
 
@@ -30,25 +48,61 @@ export default {
 
         anime({
           targets: targets.listAll,
-          translateY: [10, 0],
+          translateY: [40, 0],
+          translateX: [anime.stagger(-20, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
+          rotate: [anime.stagger(5, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
           opacity: [0, 1],
           duration: 1000,
-          delay: anime.stagger((100 / targets.listAll.length), {easing: 'cubicBezier(0.225, 0.830, 0.405, 0.535)'}),
-          easing: 'easeOutElastic(.6, .4)',
+          delay: anime.stagger((400 / targets.listAll.length), {start: 300, from: 'center', easing: 'cubicBezier(0.720, 0.120, 0.580, 0.585)'}),
+          easing: 'easeOutElastic(.6, 1)',
           autostart: true,
           complete: () => {
             this.$refs.dayTitle.innerHTML = originalDayTitleHtml
           }
         })
       });
+    },
+    headerTitleAnimate: function () {
+      this.$nextTick(function () {
+        let targets = new Letterize({
+          targets: ".headerTitle"
+        })
+
+        anime({
+          targets: targets.listAll,
+          translateY: [50, 0],
+          translateX: [anime.stagger(-10, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
+          rotate: [anime.stagger(20, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
+          opacity: [0, 1],
+          duration: 1000,
+          delay: anime.stagger(20, {start: 100, from: 'center', easing: 'cubicBezier(0.720, 0.120, 0.580, 0.585)'}),
+          easing: 'easeOutElastic(.6, 1)',
+          autostart: true,
+        })
+      });
+    },
+    headerSubtitleAnimate: function () {
+      this.$nextTick(function () {
+        let targets = new Letterize({
+          targets: ".headerSubtitle"
+        })
+
+        anime({
+          targets: targets.listAll,
+          translateY: [10, 0],
+          opacity: [0, 1],
+          duration: 1000,
+          delay: anime.stagger(20, {start: 200, from: 'center', easing: 'cubicBezier(0.690, 0.240, 0.420, 0.750)'}),
+          easing: 'easeOutElastic(.6, 1)',
+          autostart: true,
+        })
+      });
     }
   },
 
-  computed: {
-    titleFormatted: function () {
-      return marked(this.title)
-    }
-  },
+  mounted() {
+    this.headerTitleAnimate()
+  }
 }
 </script>
 
