@@ -1,7 +1,6 @@
 import VueRouter from 'vue-router';
 import app from './views/App.vue';
-
-const notFound = { template: '<div>not found</div>' }
+import notFound from './views/NotFound.vue';
 
 const routes = [
     { path: '/', name: 'app', component: app },
