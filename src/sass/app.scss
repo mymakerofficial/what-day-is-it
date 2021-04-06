@@ -64,8 +64,12 @@ body {
   text-align: left;
 }
 
+.forecastTable a {
+  text-decoration: unset;
+}
+
 .forecastTable .col {
-  width: 200px;
+  width: 300px;
   margin: 4px;
   padding: 24px;
   display: inline-block;
@@ -73,23 +77,19 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 32px;
-  background-color: $uiLightSecondary;
   color: $uiDark
 }
 
 .forecastTable .col.date {
-  width: 120px;
-  padding: 0;
-  line-height: 80px;
   font-weight: 100;
   font-size: 1em;
-  text-align: center;
+  text-align: right;
   text-overflow: unset;
   color: $uiLightSecondary2;
 }
 
 .forecastTable .col.title {
-  width: 300px;
+  text-align: center;
   font-weight: 900;
   font-size: 1.5em;
   font-style: italic;
@@ -97,9 +97,20 @@ body {
 }
 
 .forecastTable .col.text {
-  width: 300px;
   font-weight: 100;
   font-size: 1.3em;
+}
+
+@media (max-width: 1300px) {
+  .forecastTable .col {
+    display: block;
+    width: 300px;
+    margin: 0;
+  }
+
+  .forecastTable .col.date, .forecastTable .col.text {
+    text-align: center;
+  }
 }
 
 // formating

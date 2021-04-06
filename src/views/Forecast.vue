@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="header">
-      <div class="headerTitle">the day forecast:</div>
+      <div class="headerTitle">the day forecast</div>
     </div>
     <div class="dayBody">
       <div class="forecastTable">
         <div class="row" v-for="day in this.days" :key="day.date.getTime()">
-          <a :href="day.path"><div class="col date">{{`${day.date.toLocaleDateString("de-de")}`}}</div><th class="col title" :style="{ backgroundColor: day.colorHsl, color: day.colorHslInverted }">{{ day.titleStriped !== "" ? day.titleStriped : "n/a" }}</th><th class="col text">{{ day.textStriped !== "" ? day.textStriped : "n/a" }}</th></a>
+          <a :href="day.path"><div class="col date">{{`${day.date.toLocaleDateString("de-de")}`}}</div><div class="col title" :style="{ backgroundColor: day.colorHsl, color: day.colorHslInverted }">{{ day.titleStriped !== "" ? day.titleStriped : "n/a" }}</div><div class="col text">{{ day.textStriped }}</div></a>
         </div>
       </div>
     </div>
@@ -36,6 +36,8 @@ export default {
   methods: {
     start: function () {
 
+      console.log(this.$route)
+
       //is specific day selected
       this.setDay = this.year !== undefined && this.month !== undefined && this.day !== undefined
 
@@ -50,15 +52,21 @@ export default {
       //get date
       if(this.year !== undefined && this.month !== undefined && this.day !== undefined) this.date = new Date(this.year, this.month-1, this.day, 0, 0, 0, 0);
 
-      for(let i = 0;i < process.env.VUE_APP_FORECAST_DEFAULT_LENGHT;i++){
+      let length = process.env.VUE_APP_FORECAST_DEFAULT_LENGHT
+
+      if(this.$route.query.length){
+        if(this.$route.query.length > 0 && this.$route.query.length < 120) length = this.$route.query.length
+      }
+
+      for(let i = 0;i < length;i++){
         let newDate = new Date(this.date.getTime() + 86400000 * i)
         let newDay = new Day(newDate, this.data)
         this.days.push(newDay)
       }
 
       //set color
-      document.querySelector(':root').style.setProperty('--uiColorPrimary', this.days[0].colorHsl);
-      document.querySelector(':root').style.setProperty('--uiColorSecondary', this.days[0].colorHslInverted);
+      //document.querySelector(':root').style.setProperty('--uiColorPrimary', this.days[0].colorHsl);
+      //document.querySelector(':root').style.setProperty('--uiColorSecondary', this.days[0].colorHslInverted);
     },
     loadData(){
       // load day text database
