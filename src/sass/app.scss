@@ -8,12 +8,16 @@ body {
   background-color: $uiLight;
   color: $uiColorPrimary;
   font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
 }
 
 
 // header
 .header {
   text-align: center;
+  display: grid;
+  background-color: $uiColorPrimary;
+  color: $uiColorSecondary;
 }
 
 .logo {
@@ -26,40 +30,40 @@ body {
   margin: 24px;
 }
 
+.dayTitle {
+  margin: 64px 0;
+  transform: rotate(-1deg);
+}
 
 // day
-.dayContainer {
+.dayBody {
+  margin: 64px 0;
   text-align: center;
   justify-content: center;
   vertical-align: middle;
+}
+
+.dayTitle {
+  margin: 64px 0;
+  transform: rotate(-1deg);
 }
 
 .dayText {
   position: relative;
 }
 
-.dayTitleContainer {
-  position: relative;
+.dayText * *, .dayTitle * * {
   display: inline-block;
-  padding: 32px 63px;
-  margin: 42px 12px;
-  background-color: $uiColorPrimary;
-  color: $uiColorSecondary;
-  transform: rotate(-2deg);
-
-  font-family: "Playfair Display script=latin rev=2", serif;
 }
-
-.dayTitleContainer * {
-  margin: 0;
-  transform: rotate(1deg);
-}
-
 
 // formating
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   font-family: "Playfair Display script=latin rev=2", serif;
+}
+
+p {
+  font-size: 1.5em !important;
 }
 
 h1 {
@@ -75,10 +79,10 @@ h4 {
   font-size: 2em !important;
 }
 h5 {
-  font-size: 1em !important;
+  font-size: 1.5em !important;
 }
 h6 {
-  font-size: 0.5em !important;
+  font-size: 1em !important;
 }
 
 

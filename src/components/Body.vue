@@ -1,28 +1,26 @@
 <template>
   <div>
-    <div class="header">
-      <div class="logo">{{text}}</div>
-      <div class="dayTitle" v-html="titleFormatted"></div>
+    <div class="dayBody">
+      <div class="dayText" v-html="textFormatted" ref="dayText"></div>
     </div>
   </div>
 </template>
 
 <script>
-import Letterize from "letterizejs";
-import anime from "animejs";
-
 const marked = require("marked");
+import anime from 'animejs/lib/anime.es.js';
+import Letterize from "letterizejs"
 
 export default {
-  name: "Header",
+  name: "Body",
 
-  props: ["text","title"],
+  props: ["text"],
 
   watch: {
-    title: function () {
+    text: function () {
       this.$nextTick(function () {
         let targets = new Letterize({
-          targets: ".dayTitle"
+          targets: ".dayText"
         })
 
         anime({
@@ -39,9 +37,9 @@ export default {
   },
 
   computed: {
-    titleFormatted: function () {
-      return marked(this.title)
-    }
+    textFormatted: function () {
+      return marked(this.text)
+    },
   },
 }
 </script>

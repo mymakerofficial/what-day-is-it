@@ -23,6 +23,6 @@
     ]
   ],
   "any":[
-    {"title": null,"text": "Understandable have a great day","author":null,"weight": 1}
+    {"title": "# {{random_day_text}}","text": "nah its actually {{current_day_text}}\n ![day_count {{current_day_index_start_mo}}](https://img.shields.io/badge/day__count-{{current_day_index_start_mo}}-{{current_color_hex}})","author":"My_Maker","weight": 1}
   ]
 }
