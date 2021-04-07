@@ -21,6 +21,7 @@ class Day {
     set(date, data) {
         if(date != null && data != null) {
             this.date = date;// get Date from unix timestamp
+            this._data = data
 
             // generate randomness
             if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY === "true"){
@@ -33,9 +34,29 @@ class Day {
             // select day data
             let dayData
             if(WeightedRandom(this.random, [2, 1])){
-                dayData = data.days[this.dayIndex][WeightedRandom(this.random, data.days[this.dayIndex].map((d) => d.weight))]
+                dayData = this._data.days[this.dayIndex][WeightedRandom(this.random, this._data.days[this.dayIndex].map((d) => d.weight))]
+                /*
+                if(dayData.text === null && WeightedRandom(this.random, [0, 3])){
+                    let addList = []
+                    data.any.forEach((d) => {
+                        if(d.title === null) addList.push(d)
+                    })
+                    dayData.text = addList[WeightedRandom(this.random*this.random, addList.map((d) => d.weight))].text;
+                }
+
+                 */
             }else{
-                dayData = data.any[WeightedRandom(this.random, data.any.map((d) => d.weight))];
+                dayData = this._data.any[WeightedRandom(this.random, this._data.any.map((d) => d.weight))];
+                /*
+                if(dayData.text === null && WeightedRandom(this.random, [0, 3])){
+                    let addList = []
+                    data.days.flat().forEach((d) => {
+                        if(d.title === null) addList.push(d)
+                    })
+                    dayData.text = addList[WeightedRandom(this.random*this.random, addList.map((d) => d.weight))].text;
+                }
+
+                 */
             }
 
             this.title = dayData.title
@@ -58,21 +79,70 @@ class Day {
     }
 
     createKeywords() {
+        //days
         this.keywords.push(new Keyword("current_day_text", dayTextList[this.dayIndex]))
         this.keywords.push(new Keyword("current_day_index_start_mo", `${(this.dayIndex-1)%6}`))
+
+        //random format
         this.keywords.push(new Keyword("random_day_text", dayTextList[Math.floor(this.random*6)]))
         this.keywords.push(new Keyword("random_float", `${this.random}`))
         this.keywords.push(new Keyword("random_float2", `${Math.round(this.random*100)/100}`))
         this.keywords.push(new Keyword("random_binary", `${Math.round(this.random)}`))
         this.keywords.push(new Keyword("random_bool", `${!!Math.round(this.random)}`))
+        this.keywords.push(new Keyword("random_int_10", `${Math.round(this.random*10)}`))
+        this.keywords.push(new Keyword("random_int_100", `${Math.round(this.random*100)}`))
+        this.keywords.push(new Keyword("random_int_1000", `${Math.round(this.random*1000)}`))
+        this.keywords.push(new Keyword("random_int_10000", `${Math.round(this.random*10000)}`))
+        this.keywords.push(new Keyword("random_int_100000", `${Math.round(this.random*100000)}`))
+
+        //colors
         this.keywords.push(new Keyword("current_color_hsl", this.colorHsl))
         this.keywords.push(new Keyword("current_color_inverted_hsl", this.colorHslInverted))
         this.keywords.push(new Keyword("current_color_hex", this.colorHex.substring(1)))
         this.keywords.push(new Keyword("current_color_inverted_hex", this.colorHexInverted.substring(1)))
+
+        //inserts from data
+        this.keywords.push(new Keyword("insert_random_current_day_title", this.selectFromList(this._data.days[this.dayIndex], {titleNotNull: true}).title))
+        this.keywords.push(new Keyword("insert_random_current_day_text", this.selectFromList(this._data.days[this.dayIndex], {textNotNull: true}).text))
+
+        this.keywords.push(new Keyword("insert_random_current_day_title_chance", WeightedRandom(this.random, [1, 3]) ? this.selectFromList(this._data.days[this.dayIndex], {titleNotNull: true}).title : `# ${dayTextList[this.dayIndex]}`))
+        this.keywords.push(new Keyword("insert_random_current_day_text_chance", WeightedRandom(this.random, [1, 3]) ? this.selectFromList(this._data.days[this.dayIndex], {textNotNull: true}).text : ""))
+
+        this.keywords.push(new Keyword("insert_random_any_title", this.selectFromList(this._data.any, {titleNotNull: true}).title))
+        this.keywords.push(new Keyword("insert_random_any_text", this.selectFromList(this._data.any, {textNotNull: true}).text))
+
+        this.keywords.push(new Keyword("insert_random_any_title_chance", WeightedRandom(this.random, [1, 3]) ? this.selectFromList(this._data.any, {titleNotNull: true}).title : `# ${dayTextList[this.dayIndex]}`))
+        this.keywords.push(new Keyword("insert_random_any_text_chance", WeightedRandom(this.random, [1, 3]) ? this.selectFromList(this._data.any, {textNotNull: true}).text : ""))
+
+
+        this.keywords.push(new Keyword("insert_random_add_title", `insert_random_add_title`))
+        this.keywords.push(new Keyword("insert_random_add_title", `insert_random_add_title`))
+
+        this.keywords.push(new Keyword("insert_random_text", `insert_random_text`))
+        this.keywords.push(new Keyword("insert_random_title", `insert_random_title`))
+
+        this.keywords.push(new Keyword("random_everything", this.keywords[Math.floor(this.random*this.keywords.length)].replace))
+    }
+
+    selectFromList(list, settings) {
+
+        let titleNotNull = settings.titleNotNull === true
+        let textNotNull = settings.textNotNull === true
+        let fList = []
+        list.forEach((d) => {
+            if(titleNotNull && d.title === null) return
+            if(textNotNull && d.text === null) return
+            fList.push(d)
+        })
+        if(!fList.length) return {title: null,text: null,author: null}
+        let d = fList[WeightedRandom(this.random, fList.map((d) => d.weight))]
+        return d
     }
 
     get titleStriped() {return stripHtml(marked(this.title)).result }
     get textStriped() {return stripHtml(marked(this.text)).result }
+    get titleStripedHtml() {return stripHtml(this.title).result }
+    get textStripedHtml() {return stripHtml(this.text).result }
 
     get path() {return `/${this.date.getFullYear()}/${('0'+(this.date.getMonth()+1)).slice(-2)}/${('0'+this.date.getDate()).slice(-2)}`}
 

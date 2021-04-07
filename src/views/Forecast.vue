@@ -70,7 +70,6 @@ export default {
     },
     animate() {
       this.$nextTick(function () {
-        console.log(this.$refs.table.children)
         anime({
           targets: this.$refs.table.children,
           translateY: [50, 0],
