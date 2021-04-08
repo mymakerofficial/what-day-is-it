@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle"></Header>
+    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="title" :backgroundColor="this.currentDay.colorHsl" :textColor="this.currentDay.colorHslInverted"></Header>
     <div class="detailsBody">
       <h4>Property's</h4>
       <table>
@@ -119,6 +119,7 @@ export default {
     return {
       headerTitle: "day details",
       headerSubtitle: null,
+      title: "#### ***This is how we made this day!***",
       date: new Date(),
       currentDay: new Day()
     }
@@ -148,6 +149,10 @@ export default {
 
       //start day
       this.currentDay.set(this.date, this.data)
+
+      //set color
+      document.querySelector('.header').style.setProperty('--uiColorPrimary', this.currentDay.colorHsl);
+      document.querySelector('.header').style.setProperty('--uiColorSecondary', this.currentDay.colorHslInverted);
 
       console.log(this.currentDay)
     },
