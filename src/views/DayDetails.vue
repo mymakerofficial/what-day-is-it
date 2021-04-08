@@ -2,7 +2,7 @@
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="title" :backgroundColor="this.currentDay.colorHsl" :textColor="this.currentDay.colorHslInverted"></Header>
     <div class="detailsBody">
-      <h4>Propertys</h4>
+      <h4>Properties</h4>
       <table>
         <tr>
           <th>property</th>
