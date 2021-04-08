@@ -2,10 +2,14 @@ import VueRouter from 'vue-router';
 import app from './views/App.vue';
 import notFound from './views/NotFound.vue';
 import forecast from './views/Forecast.vue';
+import custom from './views/Custom.vue';
 
 const routes = [
     { path: '/', name: 'app', component: app },
     { path: '/:year([0-9][0-9][0-9][0-9])/:month([0-9][0-9]|[0-9])/:day([0-9][0-9]|[0-9])', name: 'day', component: app, props: true },
+    { path: '/(custom|c)/:title/:text?', name: 'custom_day_simple', component: custom },
+    { path: '/(custom|c)/:year([0-9][0-9][0-9][0-9])/:month([0-9][0-9]|[0-9])/:day([0-9][0-9]|[0-9])/:title/:text?', name: 'custom_day_full', component: custom },
+    { path: '/(custom|c)', name: 'custom_day', component: custom },
     { path: '/forecast', name: 'forecast', component: forecast },
     { path: '*', name: 'not_found', component: notFound }
 ]

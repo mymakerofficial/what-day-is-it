@@ -35,28 +35,8 @@ class Day {
             let dayData
             if(WeightedRandom(this.random, [2, 1])){
                 dayData = this._data.days[this.dayIndex][WeightedRandom(this.random, this._data.days[this.dayIndex].map((d) => d.weight))]
-                /*
-                if(dayData.text === null && WeightedRandom(this.random, [0, 3])){
-                    let addList = []
-                    data.any.forEach((d) => {
-                        if(d.title === null) addList.push(d)
-                    })
-                    dayData.text = addList[WeightedRandom(this.random*this.random, addList.map((d) => d.weight))].text;
-                }
-
-                 */
             }else{
                 dayData = this._data.any[WeightedRandom(this.random, this._data.any.map((d) => d.weight))];
-                /*
-                if(dayData.text === null && WeightedRandom(this.random, [0, 3])){
-                    let addList = []
-                    data.days.flat().forEach((d) => {
-                        if(d.title === null) addList.push(d)
-                    })
-                    dayData.text = addList[WeightedRandom(this.random*this.random, addList.map((d) => d.weight))].text;
-                }
-
-                 */
             }
 
             this.title = dayData.title
@@ -66,25 +46,33 @@ class Day {
             //create keywords
             this.createKeywords()
 
-            // replace null
-            if (this.title == null) this.title = `# {{current_day_text}}`
-            if (this.text == null) this.text = ""
-
-            // replace keywords
-            this.keywords.forEach((k) => {
-                this.title = k.replaceInString(this.title)
-                this.text = k.replaceInString(this.text)
-            })
+            this.replaceKeywords()
         }
+    }
+
+    replaceKeywords() {
+        // replace null
+        if (this.title == null) this.title = `# {{current_day_text}}`
+        if (this.text == null) this.text = ""
+
+        // replace keywords
+        this.keywords.forEach((k) => {
+            this.title = k.replaceInString(this.title)
+            this.text = k.replaceInString(this.text)
+        })
     }
 
     createKeywords() {
         //days
         this.keywords.push(new Keyword("current_day_text", dayTextList[this.dayIndex]))
         this.keywords.push(new Keyword("current_day_index_start_mo", `${(this.dayIndex-1)%6}`))
+        this.keywords.push(new Keyword("random_day_text", dayTextList[Math.floor(this.random*6)]))
+        this.keywords.push(new Keyword("current_date_formatted", this.date.toLocaleDateString("de-de")))
+        this.keywords.push(new Keyword("current_date_year", `${this.date.getFullYear()}`))
+        this.keywords.push(new Keyword("current_date_month", `${this.date.getMonth()+1}`))
+        this.keywords.push(new Keyword("current_date_day", `${this.date.getDate()}`))
 
         //random format
-        this.keywords.push(new Keyword("random_day_text", dayTextList[Math.floor(this.random*6)]))
         this.keywords.push(new Keyword("random_float", `${this.random}`))
         this.keywords.push(new Keyword("random_float2", `${Math.round(this.random*100)/100}`))
         this.keywords.push(new Keyword("random_binary", `${Math.round(this.random)}`))
