@@ -182,3 +182,45 @@ code {
   color: hsl(0, 0%, 81%);
   padding: 9px;
 }
+
+//other
+
+.detailsBody {
+  padding: 24px;
+}
+
+.detailsBody td {
+  padding: 12px;
+  vertical-align: center;
+  line-height: 18px;
+}
+
+.detailsBody td:first-child {
+  font-size: 1.2em;
+}
+
+.detailsBody td:nth-child(2n) {
+  font-family: 'Overpass Mono', monospace;
+}
+
+.detailsBody th {
+  padding: 12px;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 2px;
+  font-family: "Playfair Display script=latin rev=2", serif;
+  text-align: left;
+}
+
+.detailsBody tr:nth-child(odd) {
+  background-color: $uiLightSecondary;
+}
+
+.colorPreview {
+  display: inline-block;
+  min-width: 12px;
+  min-height: 12px;
+  margin: 0 6px;
+  border-radius: 50%;
+}
