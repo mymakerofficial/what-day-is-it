@@ -30,8 +30,6 @@ name: "Custom",
 
   methods: {
     start: function () {
-      console.log(this.$route)
-
       //is specific day selected
       this.setDay = this.$route.params.year !== undefined && this.$route.params.month !== undefined && this.$route.params.day !== undefined
 
@@ -50,15 +48,12 @@ name: "Custom",
       this.day.random = Random(`${this.$route.params.title}${this.$route.params.text}`)
 
       if(this.$route.params.title !== undefined) {
-        let titleContainsMarkdown = this.$route.params.title.split("").map((t) => ["#","*"].includes(t)).includes(true)
-        this.day.title = (!titleContainsMarkdown ? "# " : "") + stripHtml(this.$route.params.title).result
+        this.day.title = (!this.$route.params.title.match("[#|*]") ? "# " : "") + stripHtml(this.$route.params.title).result
       }
       if(this.$route.params.text !== undefined) this.day.text = stripHtml(this.$route.params.text).result
 
       this.day.createKeywords()
       this.day.replaceKeywords()
-
-      console.log(this.day)
 
       //set color
       document.querySelector(':root').style.setProperty('--uiColorPrimary', this.day.colorHsl);
