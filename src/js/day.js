@@ -15,6 +15,7 @@ class Day {
     text = "";
     author = "";
     keywords = [];
+    dayData = {};
 
     constructor(date, data) {this.set(date, data)}
 
@@ -32,16 +33,15 @@ class Day {
             this.random = Random(this.randomInput)
 
             // select day data
-            let dayData
             if(WeightedRandom(this.random, [2, 1])){
-                dayData = this._data.days[this.dayIndex][WeightedRandom(this.random, this._data.days[this.dayIndex].map((d) => d.weight))]
+                this.dayData = this._data.days[this.dayIndex][WeightedRandom(this.random, this._data.days[this.dayIndex].map((d) => d.weight))]
             }else{
-                dayData = this._data.any[WeightedRandom(this.random, this._data.any.map((d) => d.weight))];
+                this.dayData = this._data.any[WeightedRandom(this.random, this._data.any.map((d) => d.weight))];
             }
 
-            this.title = dayData.title
-            this.text = dayData.text
-            this.author = dayData.author
+            this.title = this.dayData.title
+            this.text = this.dayData.text
+            this.author = this.dayData.author
 
             //create keywords
             this.createKeywords()
@@ -102,10 +102,6 @@ class Day {
         this.keywords.push(new Keyword("insert_random_any_title_chance", WeightedRandom(this.random, [1, 3]) ? this.selectFromList(this._data.any, {titleNotNull: true}).title : `# ${dayTextList[this.dayIndex]}`))
         this.keywords.push(new Keyword("insert_random_any_text_chance", WeightedRandom(this.random, [1, 3]) ? this.selectFromList(this._data.any, {textNotNull: true}).text : ""))
 
-
-        this.keywords.push(new Keyword("insert_random_add_title", `insert_random_add_title`))
-        this.keywords.push(new Keyword("insert_random_add_title", `insert_random_add_title`))
-
         this.keywords.push(new Keyword("insert_random_text", `insert_random_text`))
         this.keywords.push(new Keyword("insert_random_title", `insert_random_title`))
 
@@ -131,6 +127,9 @@ class Day {
     get textStriped() {return stripHtml(marked(this.text)).result }
     get titleStripedHtml() {return stripHtml(this.title).result }
     get textStripedHtml() {return stripHtml(this.text).result }
+
+    get titleFormatted() {return marked(this.title)}
+    get textFormatted() {return marked(this.text)}
 
     get path() {return `/${this.date.getFullYear()}/${('0'+(this.date.getMonth()+1)).slice(-2)}/${('0'+this.date.getDate()).slice(-2)}`}
 

@@ -48,7 +48,7 @@ name: "Custom",
       this.day.random = Random(`${this.$route.params.title}${this.$route.params.text}`)
 
       if(this.$route.params.title !== undefined) {
-        this.day.title = (!this.$route.params.title.match("[#|*]") ? "# " : "") + stripHtml(this.$route.params.title).result
+        this.day.title = (!this.$route.params.title.match("[#|*|{}]") ? "# " : "") + stripHtml(this.$route.params.title).result
       }
       if(this.$route.params.text !== undefined) this.day.text = stripHtml(this.$route.params.text).result
 
