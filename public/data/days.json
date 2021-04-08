@@ -1,13 +1,4 @@
 {
-  "headers": [
-    "what day is it?",
-    "what's the day?",
-    "day what is?",
-    "day?",
-    "day.maiker.de",
-    "may i ask what day it is?",
-    "what is a day?"
-  ],
   "days": [
     [
       {"title": null,"text": null,"author": null,"weight": 1},
@@ -46,18 +37,14 @@
     ],
     [
       {"title": null,"text": null,"author":null,"weight": 1},
-      {"title": null,"text": "**el cucharo**","author":"darkarotte","weight": 1},
-      {"title": null,"text": "**la cuchara**","author":"darkarotte","weight": 1},
-      {"title": null,"text": "**la cuchara de cuchara**","author":"darkarotte","weight": 1},
-      {"title": null,"text": "**la cuchachacha chachacha**","author":"darkarotte","weight": 1},
-      {"title": "# ThUrSdAy","text": null,"author":"My_Maker","weight": 1}
+      {"title": "# ThUrSdAy","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# Thirstyday","text": null,"author":"DasMich","weight": 1}
     ],
     [
       {"title": null,"text": null,"author":null,"weight": 1},
       {"title": "# Funky Maths Friday","text": null,"author":null,"weight": 1},
       {"title": "# It's Femboy **Friday**.","text": null,"author":null,"weight": 1},
-      {"title": null,"text": "Invented in 1768 by greek scientist *Ivan Friday*.","author":"True Facts","weight": 1},
-      {"title": "# Friday","text": "**Beans**","author":"null","weight": 1},
+      {"title": null,"text": "Invented in 1768 by greek scientist *Ivan Friday*.","author":"True Facts","weight": 2},
       {"title": "# FrIdAy","text": null,"author":"My_Maker","weight": 1},
       {"title": "# Freeday","text": null,"author":"DasMich","weight": 1}
     ],
@@ -70,14 +57,18 @@
     ]
   ],
   "any":[
-    {"title": "{{insert_random_current_day_title}}","text": "**el tenedor**","author":"el tenedor","weight": 1},
-    {"title": "{{insert_random_current_day_title}}","text": "**empresa de tenedores**","author":"el tenedor","weight": 1},
-    {"title": "{{insert_random_current_day_title}}","text": "**sociedad tenedora**","author":"el tenedor","weight": 1},
-    {"title": "{{insert_random_current_day_title}}","text": "**sociedad tenedora de acciones**","author":"el tenedor","weight": 1},
-    {"title": "{{insert_random_current_day_title}}","text": "> **la tenedora** \\- it's a worthy job","author":"el tenedor","weight": 1},
-    {"title": "{{insert_random_current_day_title}}","text": "> mano fuente mas democracia fútbol cerebro\n\n \\- spanish person","author":"el tenedor","weight": 1},
-    {"title": "{{insert_random_current_day_title}}","text": "tenedores de día","author":"el tenedor","weight": 1},
-    {"title": "{{insert_random_current_day_title}}","text": "la latería de tenedores","author":"el tenedor","weight": 1},
+    {"title": "{{insert_random_current_day_title}}","text": "> **el tenedor**","author":"darkarotte","weight": 1},
+    {"title": "{{insert_random_current_day_title}}","text": "> **empresa de tenedores**","author":"darkarotte","weight": 1},
+    {"title": "{{insert_random_current_day_title}}","text": "> **sociedad tenedora**","author":"darkarotte","weight": 1},
+    {"title": "{{insert_random_current_day_title}}","text": "> **sociedad tenedora de acciones**","author":"darkarotte","weight": 1},
+    {"title": "{{insert_random_current_day_title}}","text": "> **la tenedora** \\- it's a worthy job","author":"darkarotte","weight": 1},
+    {"title": "{{insert_random_current_day_title}}","text": "> **mano fuente mas democracia fútbol cerebro**\n\n \\- spanish person","author":"darkarotte","weight": 1},
+    {"title": "{{insert_random_current_day_title}}","text": "> **tenedores de día**","author":"darkarotte","weight": 1},
+    {"title": "{{insert_random_current_day_title}}","text": "> **la cuchara de cuchara**","author":"darkarotte","weight": 1},
+    {"title": "{{insert_random_current_day_title}}","text": "> **la cuchachacha chachacha**","author":"darkarotte","weight": 1},
+    {"title": "{{insert_random_current_day_title}}", "text": "**Beans**","author":null,"weight": 1},
+    {"title": "{{insert_random_current_day_title}}", "text": "**Egg**","author":null,"weight": 1},
+    {"title": "Take the loaf of bread", "text": null,"author":null,"weight": 1},
     {"title": "# im not gonna tell you >.<","text": null,"author":null,"weight": 1},
     {"title": "# ????","text": null,"author":null,"weight": 1},
     {"title": "# use a calender","text": null,"author":"darkarotte","weight": 1},
@@ -87,8 +78,7 @@
     {"title": "# Dude I love Marting Garryx","text": null,"author":"Some Dude","weight": 0.1},
     {"title": "# Ahhh yessssss","text": null,"author":"zum","weight": 1},
     {"title": "# `';DROP DATABASE;#'`","text": null,"author":"hacker man","weight": 0.6},
-    {"title": "# What's the day?","text": null,"author":"you","weight": 1},
-    {"title": "# Domingo","text": null,"author":"the spanish","weight": 1},
+    {"title": "# Domingo","text": null,"author":"Sariku","weight": 1.1},
     {"title": "# Could you like not?","text": null,"author":"this application","weight": 1},
     {"title": "#### mymakerofficial/what-day-is-it","text": "![GitHub branch checks state](https://img.shields.io/github/checks-status/mymakerofficial/what-day-is-it/master) ![GitHub last commit](https://img.shields.io/github/last-commit/mymakerofficial/what-day-is-it) ![GitHub contributors](https://img.shields.io/github/contributors/mymakerofficial/what-day-is-it) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fday.maiker.de) ![GitHub issues](https://img.shields.io/github/issues/mymakerofficial/what-day-is-it) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mymakerofficial/what-day-is-it) ![made-with-vue](https://img.shields.io/badge/Made%20with-Vue-41b883.svg) [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org) \n\n\n\n ##### A website that tells you what day it is... *maybe*.","author":"My_Maker","weight": 1.5},
     {"title": "# Makerday","text": "{{insert_random_any_text_chance}}","author":"My_Maker","weight": 1},
@@ -99,7 +89,7 @@
     {"title": null,"text": "###### `return [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"][new Date().getDay()]`","author":"My_Maker","weight": 1},
     {"title": "## Try again tomorrow","text": "{{insert_random_any_text}}","author":"My_Maker","weight": 1},
     {"title": "{{insert_random_any_title}}","text": "> ### you could make that into a lambda function","author": null,"weight": 1},
-    {"title": "# Sorry?","text": null,"author": null,"weight": 1},
+    {"title": "# Sorry i forgot","text": null,"author": null,"weight": 1},
     {"title": "## I could ask you the same question.","text": null,"author": null,"weight": 1},
     {"title": "# 404","text": "day not found","author": null,"weight": 1},
     {"title": "# H","text": "{{insert_random_any_text}}","author": null,"weight": 1},
@@ -117,7 +107,9 @@
     {"title": "# when it {{current_day_text}}","text": null,"author":"My_Maker","weight": 1},
     {"title": "## you have survived **{{current_day_index_strt_mo}}** days of the week","text": "congrats!","author":"My_Maker","weight": 1},
     {"title": "{{insert_random_current_day_title}}","text": "![day_count {{current_day_index_start_mo}}](https://img.shields.io/badge/day__count-{{current_day_index_start_mo}}-{{current_color_hex}})","author":"My_Maker","weight": 1.4},
-    {"title": "{{insert_random_current_day_title}}","text": "Remember this number!!!\n ## **{{random_int_10000}}**","author":"My_Maker","weight": 1},
-    {"title": "{{random_everything}}","text": null,"author":"My_Maker","weight": 1}
+    {"title": "{{insert_random_current_day_title}}","text": "Remember this number!!!\n ## **{{random_int_10000}}**","author":"My_Maker","weight": 3},
+    {"title": "{{random_everything}}","text": null,"author":"My_Maker","weight": 1},
+    {"title": "today is \n ### {{current_day_text}} {{current_date_formatted}}","text": null,"author":"My_Maker","weight": 1},
+    {"title": "### {{current_day_text}}","text": "day **{{current_date_day}}** \n\nmonth **{{current_date_month}}** \n\nyear **{{current_date_year}}**","author":"My_Maker","weight": 1}
   ]
 }
