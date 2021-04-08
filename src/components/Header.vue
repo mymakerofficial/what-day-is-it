@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="header">
+    <div class="header" :style="{ backgroundColor: backgroundColor, color: textColor }">
       <div class="headerTitle">{{headerTitle}}</div>
       <div class="headerSubtitle" v-if="headerSubtitle">{{headerSubtitle}}</div>
       <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
@@ -17,7 +17,7 @@ const marked = require("marked");
 export default {
   name: "Header",
 
-  props: ["headerTitle","headerSubtitle","title"],
+  props: ["headerTitle","headerSubtitle","title","backgroundColor","textColor"],
 
   watch: {
     title: function () {
@@ -102,6 +102,8 @@ export default {
 
   mounted() {
     this.headerTitleAnimate()
+    this.titleAnimate()
+    this.headerSubtitleAnimate()
   }
 }
 </script>
