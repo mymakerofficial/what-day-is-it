@@ -65,7 +65,7 @@ class Day {
     createKeywords() {
         //days
         this.keywords.push(new Keyword("current_day_text", dayTextList[this.dayIndex]))
-        this.keywords.push(new Keyword("current_day_index_start_mo", `${(this.dayIndex-1)%6}`))
+        this.keywords.push(new Keyword("current_day_index_start_mo", `${(((this.dayIndex-1)% 6) + 6) % 6}`))
         this.keywords.push(new Keyword("random_day_text", dayTextList[Math.floor(this.random*6)]))
         this.keywords.push(new Keyword("current_date_formatted", this.date.toLocaleDateString("de-de")))
         this.keywords.push(new Keyword("current_date_year", `${this.date.getFullYear()}`))
@@ -77,11 +77,13 @@ class Day {
         this.keywords.push(new Keyword("random_float2", `${Math.round(this.random*100)/100}`))
         this.keywords.push(new Keyword("random_binary", `${Math.round(this.random)}`))
         this.keywords.push(new Keyword("random_bool", `${!!Math.round(this.random)}`))
+        this.keywords.push(new Keyword("random_string", `${btoa(this.random).slice(0, -1)}`))
         this.keywords.push(new Keyword("random_int_10", `${Math.round(this.random*10)}`))
         this.keywords.push(new Keyword("random_int_100", `${Math.round(this.random*100)}`))
         this.keywords.push(new Keyword("random_int_1000", `${Math.round(this.random*1000)}`))
         this.keywords.push(new Keyword("random_int_10000", `${Math.round(this.random*10000)}`))
         this.keywords.push(new Keyword("random_int_100000", `${Math.round(this.random*100000)}`))
+        this.keywords.push(new Keyword("random_int_1000000", `${Math.round(this.random*1000000)}`))
 
         //colors
         this.keywords.push(new Keyword("current_color_hsl", this.colorHsl))
@@ -102,8 +104,12 @@ class Day {
         this.keywords.push(new Keyword("insert_random_any_title_chance", WeightedRandom(this.random, [1, 3]) ? this.selectFromList(this._data.any, {titleNotNull: true}).title : `# ${dayTextList[this.dayIndex]}`))
         this.keywords.push(new Keyword("insert_random_any_text_chance", WeightedRandom(this.random, [1, 3]) ? this.selectFromList(this._data.any, {textNotNull: true}).text : ""))
 
-        this.keywords.push(new Keyword("insert_random_text", `insert_random_text`))
-        this.keywords.push(new Keyword("insert_random_title", `insert_random_title`))
+        this.keywords.push(new Keyword("insert_random_title", this.selectFromList(this._data.days.flat().concat(this._data.any), {titleNotNull: true}).title))
+        this.keywords.push(new Keyword("insert_random_text", this.selectFromList(this._data.days.flat().concat(this._data.any), {textNotNull: true}).text))
+
+        this.keywords.push(new Keyword("insert_random_title_chance", WeightedRandom(this.random, [1, 3]) ? this.selectFromList(this._data.days.flat().concat(this._data.any), {titleNotNull: true}).title : `# ${dayTextList[this.dayIndex]}`))
+        this.keywords.push(new Keyword("insert_random_text_chance", WeightedRandom(this.random, [1, 3]) ? this.selectFromList(this._data.days.flat().concat(this._data.any), {textNotNull: true}).text : ""))
+
 
         this.keywords.push(new Keyword("random_everything", this.keywords[Math.floor(this.random*this.keywords.length)].replace))
     }
@@ -133,7 +139,7 @@ class Day {
 
     get path() {return `/${this.date.getFullYear()}/${('0'+(this.date.getMonth()+1)).slice(-2)}/${('0'+this.date.getDate()).slice(-2)}`}
 
-    get dayIndex() {return this.date != null ? this.date.getDay() : 0}
+    get dayIndex() {return this.date !== null ? this.date.getDay() : 0}
     get colorHue() {return this.random * 360;}
     get colorHsl() {return `hsl(${this.colorHue},100%,50%)`}
     get colorHex() {return hsl(this.colorHue,100,50)}
