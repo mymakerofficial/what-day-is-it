@@ -2,6 +2,7 @@
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="day.title"></Header>
     <Body :text="day.text"></Body>
+    <DayFooter :navButtons="navButtons"></DayFooter>
   </div>
 </template>
 
@@ -12,10 +13,11 @@ import axios from "axios";
 import {Day} from "../js/day";
 import {Random} from "../js/random";
 import {stripHtml} from "string-strip-html";
+import DayFooter from "../components/Footer";
 
 export default {
 name: "Custom",
-  components: {Body, Header},
+  components: {DayFooter, Body, Header},
 
   data() {
     return {
@@ -25,6 +27,17 @@ name: "Custom",
       setDay: false,
       date: new Date(),
       day: new Day()
+    }
+  },
+
+  computed: {
+    navButtons: function () {
+      return [
+        {text: "today", path: "/", display: true},
+        {text: "day forecast", path: "/forecast", display: true},
+        {text: "custom day", path: "/custom", display: true},
+        {text: "about", path: "/about", display: true}
+      ]
     }
   },
 

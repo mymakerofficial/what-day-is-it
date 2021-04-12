@@ -45,6 +45,10 @@
           <td>{{this.currentDay.author}}</td>
         </tr>
         <tr>
+          <td><b>authors</b></td>
+          <td>["{{this.currentDay.authors.join('", "')}}"]</td>
+        </tr>
+        <tr>
           <td><b>weight</b></td>
           <td>{{this.currentDay.dayData.weight}}</td>
         </tr>
@@ -101,6 +105,7 @@
         </tr>
       </table>
     </div>
+    <DayFooter :navButtons="navButtons"></DayFooter>
   </div>
 </template>
 
@@ -108,10 +113,11 @@
 import Header from "../components/Header";
 import axios from "axios";
 import {Day} from "../js/day";
+import DayFooter from "../components/Footer";
 export default {
   name: "DayDetails",
 
-  components: {Header},
+  components: {DayFooter, Header},
 
   props: ["year","month", "day"],
 
@@ -122,6 +128,18 @@ export default {
       title: "#### ***This is how we made this day!***",
       date: new Date(),
       currentDay: new Day()
+    }
+  },
+
+  computed: {
+    navButtons: function () {
+      return [
+        {text: "today", path: "/", display: true},
+        {text: "go to day", path: this.currentDay.path, display: true},
+        {text: "day forecast", path: "/forecast", display: true},
+        {text: "custom day", path: "/custom", display: true},
+        {text: "about", path: "/about", display: true}
+      ]
     }
   },
 
