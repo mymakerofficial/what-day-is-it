@@ -2,6 +2,7 @@
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="message.title"></Header>
     <Body :text="message.text"></Body>
+    <DayFooter :navButtons="navButtons"></DayFooter>
   </div>
 </template>
 
@@ -10,10 +11,12 @@ import Header from "@/components/Header";
 import Body from "@/components/Body";
 import axios from "axios";
 import {Random, WeightedRandom} from "../js/random";
+import DayFooter from "../components/Footer";
 
 export default {
   name: "NotFound",
   components: {
+    DayFooter,
     Header,
     Body
   },
@@ -28,6 +31,17 @@ export default {
         "title": "",
         "text": ""
       }
+    }
+  },
+
+  computed: {
+    navButtons: function () {
+      return [
+        {text: "today", path: "/", display: true},
+        {text: "day forecast", path: "/forecast", display: true},
+        {text: "custom day", path: "/custom", display: true},
+        {text: "about", path: "/about", display: true}
+      ]
     }
   },
 

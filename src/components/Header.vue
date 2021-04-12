@@ -11,13 +11,11 @@
 <script>
 import Letterize from "letterizejs";
 import anime from "animejs";
-
-const marked = require("marked");
+import marked from "marked";
 
 export default {
   name: "Header",
-
-  props: ["headerTitle","headerSubtitle","title","backgroundColor","textColor"],
+  props: ["headerTitle","headerSubtitle","title","backgroundColor","textColor","navButtons"],
 
   watch: {
     title: function () {

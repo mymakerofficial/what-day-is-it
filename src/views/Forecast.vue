@@ -4,11 +4,11 @@
     <div class="dayBody">
       <div class="forecastTable" ref="table">
         <div class="row" v-for="day in this.days" :key="day.date.getTime()">
-          <a :href="day.path"><div class="col date">{{`${day.date.toLocaleDateString("de-de")}`}}</div><div class="col title" :style="{ backgroundColor: day.colorHsl, color: day.colorHslInverted }">{{ day.titleStriped !== "" ? day.titleStriped : "n/a" }}</div><div class="col text">{{ day.textStriped }}</div></a>
+          <a :href="day.date - date !== 0 ? day.path : '/'"><div class="col date">{{`${day.date.toLocaleDateString("de-de")}`}}</div><div class="col title" :style="{ backgroundColor: day.colorHsl, color: day.colorHslInverted }">{{ day.titleStriped !== "" ? day.titleStriped : "n/a" }}</div><div class="col text">{{ day.textStriped }}</div></a>
         </div>
       </div>
     </div>
-
+    <DayFooter :navButtons="navButtons"></DayFooter>
   </div>
 </template>
 
@@ -17,10 +17,11 @@ import axios from "axios";
 import {Day} from "../js/day";
 import Header from "../components/Header";
 import anime from "animejs";
+import DayFooter from "../components/Footer";
 
 export default {
   name: "Forecast",
-  components: {Header},
+  components: {DayFooter, Header},
   data() {
     return {
       setDay: false,
@@ -31,6 +32,16 @@ export default {
       headerTitle: "the day forecast",
       date: new Date(),
       days: []
+    }
+  },
+
+  computed: {
+    navButtons: function () {
+      return [
+        {text: "today", path: "/", display: true},
+        {text: "custom day", path: "/custom", display: true},
+        {text: "about", path: "/about", display: true}
+      ]
     }
   },
 

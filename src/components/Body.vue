@@ -18,6 +18,12 @@ export default {
 
   watch: {
     text: function () {
+      this.Animate()
+    }
+  },
+
+  methods: {
+    Animate() {
       this.$nextTick(function () {
         let originalDayTextHtml = this.$refs.dayText.innerHTML
 
@@ -46,6 +52,10 @@ export default {
       return marked(this.text)
     },
   },
+
+  mounted() {
+    this.Animate()
+  }
 }
 </script>
 
