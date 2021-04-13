@@ -183,6 +183,31 @@ code {
   padding: 9px;
 }
 
+.header code {
+  background: var(--uiColorSecondary);
+  color: var(--uiColorPrimary);
+}
+
+.badge {
+  font-family: 'Overpass Mono', monospace;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 0.8em;
+  background: $uiLightSecondary;
+  color: $uiDarkSecondary2;
+  padding: 9px;
+}
+
+.badge.color {
+  background: var(--uiColorSecondary);
+  color: var(--uiColorPrimary);
+}
+
+.badge.border {
+  background-color: unset;
+  border: solid 2px;
+}
+
 //other
 
 a .plain {

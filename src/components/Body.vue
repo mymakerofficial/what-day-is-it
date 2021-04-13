@@ -32,7 +32,7 @@ export default {
         })
 
         anime({
-          targets: targets.listAll,
+          targets: [this.$refs.dayText, targets.listAll],
           translateY: [10, 0],
           opacity: [0, 1],
           duration: 1000,
@@ -54,7 +54,7 @@ export default {
   },
 
   mounted() {
-    this.Animate()
+    //this.Animate()
   }
 }
 </script>

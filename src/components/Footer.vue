@@ -1,23 +1,77 @@
 <template>
   <div>
-    <dic class="footerContainer">
-      <div class="footer">
-        <div class="footerSection">
-            <a v-for="button in this.navButtons" :key="button.text" :href="button.path" class="navButton" :style="{display: button.display ? '' : 'none'}">{{button.text}}</a>
+    <div class="footerContainer">
+      <div class="footer" ref="container">
+        <div class="footerSection" id="footerButtons">
+            <a v-for="button in this.buttons" :key="button.text" :href="button.path" class="navButton" ref="navButton">{{button.text}}</a>
         </div>
         <div class="footerSection">
           <div class="footerText">made with &#60;3 <span class="mdi mdi-heart"></span> by <b>My_Maker</b></div><div class="footerText" v-if="text" v-html="text"></div>
         </div>
       </div>
-    </dic>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "DayFooter",
+import anime from "animejs";
 
-  props: ["navButtons","text"]
+export default {
+  name: "Footer",
+
+  props: ["navButtons","text"],
+
+  computed: {
+    buttons: function () {
+      return this.navButtons.filter(button => button.display)
+    }
+  },
+
+  watch: {
+    navButtons: function () {
+      this.animateButtons()
+    }
+  },
+
+  methods: {
+    animateButtons: function() {
+      this.$nextTick(function () {
+
+        console.log(this.$refs.navButton)
+
+        let targets = this.$refs.navButton
+
+        anime({
+          targets: targets,
+          translateY: [10, 0],
+          opacity: [0, 1],
+          duration: 1000,
+          delay: anime.stagger((200 / targets.length), {start: 300, easing: 'cubicBezier(0.225, 0.830, 0.405, 0.535)'}),
+          easing: 'easeOutElastic(.6, .4)',
+          autostart: true,
+        })
+      });
+    },
+    animateContainer: function () {
+      this.$nextTick(function () {
+        anime({
+          targets: this.$refs.container,
+          rotate: [2, 0],
+          translateY: [30, 0],
+          opacity: [0, 1],
+          duration: 700,
+          delay: 500,
+          easing: 'easeOutElastic(.6, 1)',
+          autostart: true,
+        })
+      });
+
+    }
+  },
+
+  mounted() {
+    this.animateContainer()
+  }
 }
 </script>
 
