@@ -10,7 +10,7 @@
 import Header from "@/components/Header";
 import Body from "@/components/Body";
 import axios from "axios";
-import {Day} from "../js/day";
+import {Day, isSameDay} from "../js/day";
 import DayFooter from "../components/Footer";
 
 export default {
@@ -42,10 +42,9 @@ export default {
       return this.currentDay.author ? `this day was brought to you by <b>${this.currentDay.authors.join(", ")}</b>` : null
     },
     navButtons: function () {
-      console.log(!(this.currentDay.date.getFullYear() === new Date().getFullYear() && this.currentDay.date.getMonth() === new Date().getMonth() && this.currentDay.date.getDate() === new Date().getDate()))
       return [
         {text: "perma link", path: this.currentDay.path, display: !this.setDay},
-        {text: "today", path: "/", display: !(this.currentDay.date.getFullYear() === new Date().getFullYear() && this.currentDay.date.getMonth() === new Date().getMonth() && this.currentDay.date.getDate() === new Date().getDate())},
+        {text: "today", path: "/", display: !isSameDay(this.currentDay.date, new Date())},
         {text: "day details", path: this.detailsPath, display: true},
         {text: "day forecast", path: "/forecast", display: true},
         {text: "custom day", path: "/custom", display: true},

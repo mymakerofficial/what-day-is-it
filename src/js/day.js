@@ -7,6 +7,16 @@ import { stripHtml } from "string-strip-html";
 
 const dayTextList = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 
+let isSameDay = function (d1, d2) {
+    try {
+        return d1.getFullYear() === d2.getFullYear() &&
+            d1.getMonth() === d2.getMonth() &&
+            d1.getDate() === d2()
+    } catch (error) {
+        return false
+    }
+}
+
 class Day {
     date;
     randomInput;
@@ -68,6 +78,15 @@ class Day {
         })
     }
 
+    containsKeywords(input){
+        if(input == null) return false
+        let found = false;
+        this.keywords.forEach((k) => {
+            if(k.replaceInString(input).found) found = true
+        })
+        return found
+    }
+
     createKeywords() {
         //days
         this.keywords.push(new Keyword("current_day_text", dayTextList[this.dayIndex]))
@@ -100,36 +119,35 @@ class Day {
         //inserts from data
         let chance = WeightedRandom(this.random, [1, 3])
 
-        let insert_random_current_day_title = this.selectFromList(this._data.days[this.dayIndex], {titleNotNull: true})
+        let insert_random_current_day_title = this.selectFromList(this._data.days[this.dayIndex], {titleNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_current_day_title", insert_random_current_day_title.title, insert_random_current_day_title.author))
-        let insert_random_current_day_text = this.selectFromList(this._data.days[this.dayIndex], {textNotNull: true})
+        let insert_random_current_day_text = this.selectFromList(this._data.days[this.dayIndex], {textNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_current_day_text", insert_random_current_day_text.text, insert_random_current_day_text.author))
 
-        let insert_random_current_day_title_chance = this.selectFromList(this._data.days[this.dayIndex], {titleNotNull: true})
+        let insert_random_current_day_title_chance = this.selectFromList(this._data.days[this.dayIndex], {titleNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_current_day_title_chance", chance ? insert_random_current_day_title_chance.title : `# ${dayTextList[this.dayIndex]}`, chance ? insert_random_current_day_title_chance.author : null))
-        let insert_random_current_day_text_chance = this.selectFromList(this._data.days[this.dayIndex], {textNotNull: true})
+        let insert_random_current_day_text_chance = this.selectFromList(this._data.days[this.dayIndex], {textNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_current_day_text_chance", chance ? insert_random_current_day_text_chance.text : "", chance ? insert_random_current_day_text_chance.author : null))
 
-        let insert_random_any_title = this.selectFromList(this._data.any, {titleNotNull: true})
+        let insert_random_any_title = this.selectFromList(this._data.any, {titleNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_any_title", insert_random_any_title.title, insert_random_any_title.author))
-        let insert_random_any_text =  this.selectFromList(this._data.any, {textNotNull: true})
+        let insert_random_any_text =  this.selectFromList(this._data.any, {textNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_any_text", insert_random_any_text.text, insert_random_any_text.author))
 
-        let insert_random_any_title_chance = this.selectFromList(this._data.any, {titleNotNull: true})
+        let insert_random_any_title_chance = this.selectFromList(this._data.any, {titleNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_any_title_chance", chance ? insert_random_any_title_chance.title : `# ${dayTextList[this.dayIndex]}`, chance ? insert_random_any_title_chance.author : null))
-        let insert_random_any_text_chance = this.selectFromList(this._data.any, {textNotNull: true})
+        let insert_random_any_text_chance = this.selectFromList(this._data.any, {textNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_any_text_chance", chance ? insert_random_any_text_chance.text : "", chance ? insert_random_any_text_chance.author : null))
 
-        let insert_random_title = this.selectFromList(this._data.days.flat().concat(this._data.any), {titleNotNull: true})
+        let insert_random_title = this.selectFromList(this._data.days.flat().concat(this._data.any), {titleNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_title", insert_random_title.title, insert_random_title.author))
-        let insert_random_text = this.selectFromList(this._data.days.flat().concat(this._data.any), {textNotNull: true})
+        let insert_random_text = this.selectFromList(this._data.days.flat().concat(this._data.any), {textNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_text", insert_random_text.text, insert_random_text.author))
 
-        let insert_random_title_chance = this.selectFromList(this._data.days.flat().concat(this._data.any), {titleNotNull: true})
+        let insert_random_title_chance = this.selectFromList(this._data.days.flat().concat(this._data.any), {titleNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_title_chance", chance ? insert_random_title_chance.title : `# ${dayTextList[this.dayIndex]}`, chance ? insert_random_title_chance.author : null))
-        let insert_random_text_chance = this.selectFromList(this._data.days.flat().concat(this._data.any), {textNotNull: true})
+        let insert_random_text_chance = this.selectFromList(this._data.days.flat().concat(this._data.any), {textNotNull: true, noKeywords: true})
         this.keywords.push(new Keyword("insert_random_text_chance", chance ? insert_random_text_chance.text : "", chance ? insert_random_text_chance.author : null))
-
 
         this.keywords.push(new Keyword("random_everything", this.keywords[Math.floor(this.random*this.keywords.length)].replace))
     }
@@ -138,10 +156,16 @@ class Day {
 
         let titleNotNull = settings.titleNotNull === true
         let textNotNull = settings.textNotNull === true
+        let noKeywords = settings.noKeywords === true
         let fList = []
         list.forEach((d) => {
+            if(noKeywords) {
+                if(this.containsKeywords(d.title)) return
+                if(this.containsKeywords(d.text)) return
+            }
             if(titleNotNull && d.title === null) return
             if(textNotNull && d.text === null) return
+
             fList.push(d)
         })
         if(!fList.length) return {title: null,text: null,author: null}
@@ -157,7 +181,13 @@ class Day {
     get titleFormatted() {return marked(this.title)}
     get textFormatted() {return marked(this.text)}
 
-    get path() {return `/${this.date.getFullYear()}/${('0'+(this.date.getMonth()+1)).slice(-2)}/${('0'+this.date.getDate()).slice(-2)}`}
+    get path() {
+        try {
+            return `/${this.date.getFullYear()}/${('0'+(this.date.getMonth()+1)).slice(-2)}/${('0'+this.date.getDate()).slice(-2)}`
+        } catch (error) {
+            return `/`
+        }
+    }
 
     get dayIndex() {return this.date !== null ? this.date.getDay() : 0}
     get colorHue() {return this.random * 360;}
@@ -168,4 +198,4 @@ class Day {
     get colorHexInverted() {return hsl(this.colorHueInverted,100,50)}
 }
 
-export {Day}
+export {Day, isSameDay}
