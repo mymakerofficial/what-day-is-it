@@ -2,7 +2,7 @@
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="day.title"></Header>
     <Body :text="day.text"></Body>
-    <DayFooter :navButtons="navButtons"></DayFooter>
+    <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
 
@@ -13,11 +13,11 @@ import axios from "axios";
 import {Day} from "../js/day";
 import {Random} from "../js/random";
 import {stripHtml} from "string-strip-html";
-import DayFooter from "../components/Footer";
+import Footer from "../components/Footer";
 
 export default {
 name: "Custom",
-  components: {DayFooter, Body, Header},
+  components: {Footer, Body, Header},
 
   data() {
     return {

@@ -2,7 +2,7 @@
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="message.title"></Header>
     <Body :text="message.text"></Body>
-    <DayFooter :navButtons="navButtons"></DayFooter>
+    <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
 
@@ -11,12 +11,12 @@ import Header from "@/components/Header";
 import Body from "@/components/Body";
 import axios from "axios";
 import {Random, WeightedRandom} from "../js/random";
-import DayFooter from "../components/Footer";
+import Footer from "../components/Footer";
 
 export default {
   name: "NotFound",
   components: {
-    DayFooter,
+    Footer,
     Header,
     Body
   },

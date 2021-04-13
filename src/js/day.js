@@ -153,7 +153,6 @@ class Day {
     }
 
     selectFromList(list, settings) {
-
         let titleNotNull = settings.titleNotNull === true
         let textNotNull = settings.textNotNull === true
         let noKeywords = settings.noKeywords === true
@@ -177,6 +176,8 @@ class Day {
     get textStriped() {return stripHtml(marked(this.text)).result }
     get titleStripedHtml() {return stripHtml(this.title).result }
     get textStripedHtml() {return stripHtml(this.text).result }
+    get titleEmptyStriped() {return this.title  !== '' && stripHtml(marked(this.title)).result === '' }
+    get textEmptyStriped() {return this.text  !== '' && stripHtml(marked(this.text)).result === '' }
 
     get titleFormatted() {return marked(this.title)}
     get textFormatted() {return marked(this.text)}

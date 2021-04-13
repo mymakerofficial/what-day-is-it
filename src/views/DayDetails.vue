@@ -49,6 +49,14 @@
           <td>["{{this.currentDay.authors.join('", "')}}"]</td>
         </tr>
         <tr>
+          <td><b>titleEmptyStriped</b></td>
+          <td>{{this.currentDay.titleEmptyStriped}}</td>
+        </tr>
+        <tr>
+          <td><b>textEmptyStriped</b></td>
+          <td>{{this.currentDay.textEmptyStriped}}</td>
+        </tr>
+        <tr>
           <td><b>weight</b></td>
           <td>{{this.currentDay.dayData.weight}}</td>
         </tr>
@@ -105,7 +113,7 @@
         </tr>
       </table>
     </div>
-    <DayFooter :navButtons="navButtons"></DayFooter>
+    <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
 
@@ -113,11 +121,11 @@
 import Header from "../components/Header";
 import axios from "axios";
 import {Day} from "../js/day";
-import DayFooter from "../components/Footer";
+import Footer from "../components/Footer";
 export default {
   name: "DayDetails",
 
-  components: {DayFooter, Header},
+  components: {Footer, Header},
 
   props: ["year","month", "day"],
 

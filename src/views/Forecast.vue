@@ -4,11 +4,11 @@
     <div class="dayBody">
       <div class="forecastTable" ref="table">
         <div class="row" v-for="day in this.days" :key="day.date.getTime()">
-          <a :href="day.date - date !== 0 ? day.path : '/'"><div class="col date">{{`${day.date.toLocaleDateString("de-de")}`}}</div><div class="col title" :style="{ backgroundColor: day.colorHsl, color: day.colorHslInverted }">{{ day.titleStriped !== "" ? day.titleStriped : "n/a" }}</div><div class="col text">{{ day.textStriped }}</div></a>
+          <a :href="day.date - date !== 0 ? day.path : '/'"><div class="col date">{{`${day.date.toLocaleDateString("de-de")}`}}</div><div class="col title" :style="{ backgroundColor: day.colorHsl, color: day.colorHslInverted }">{{day.titleStriped}}<span class="badge border" :style="{display: day.titleStriped === '' ? '' : 'none', color: day.colorHslInverted}">can't be displayed</span></div><div class="col text">{{ day.textStriped }}<span class="badge" :style="{display: day.textEmptyStriped ? '' : 'none'}">can't be displayed</span></div></a>
         </div>
       </div>
     </div>
-    <DayFooter :navButtons="navButtons"></DayFooter>
+    <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
 
@@ -17,11 +17,11 @@ import axios from "axios";
 import {Day} from "../js/day";
 import Header from "../components/Header";
 import anime from "animejs";
-import DayFooter from "../components/Footer";
+import Footer from "../components/Footer";
 
 export default {
   name: "Forecast",
-  components: {DayFooter, Header},
+  components: {Footer, Header},
   data() {
     return {
       setDay: false,
@@ -64,7 +64,7 @@ export default {
       let length = process.env.VUE_APP_FORECAST_DEFAULT_LENGHT
 
       if(this.$route.query.length){
-        if(this.$route.query.length > 0 && this.$route.query.length < 120) length = this.$route.query.length
+        if(this.$route.query.length > 0 && this.$route.query.length <= 300) length = this.$route.query.length
       }
 
       for(let i = 0;i < length;i++){

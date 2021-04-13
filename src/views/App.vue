@@ -2,7 +2,7 @@
   <div id="app">
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" ></Header>
     <Body :text="currentDay.text"></Body>
-    <DayFooter :navButtons="navButtons" :text="footerText"></DayFooter>
+    <Footer :navButtons="navButtons" :text="footerText"></Footer>
   </div>
 </template>
 
@@ -11,12 +11,12 @@ import Header from "@/components/Header";
 import Body from "@/components/Body";
 import axios from "axios";
 import {Day, isSameDay} from "../js/day";
-import DayFooter from "../components/Footer";
+import Footer from "../components/Footer";
 
 export default {
   name: 'App',
   components: {
-    DayFooter,
+    Footer,
     Header,
     Body
   },
