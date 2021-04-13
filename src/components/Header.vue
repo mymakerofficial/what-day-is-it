@@ -19,13 +19,13 @@ export default {
 
   watch: {
     title: function () {
-      this.titleAnimate()
+      this.animateTitle()
     },
     headerTitle: function () {
-      this.headerTitleAnimate()
+      this.animateHeaderTitle()
     },
     headerSubtitle: function () {
-      this.headerSubtitleAnimate()
+      this.animateHeaderSubtitle()
     }
   },
 
@@ -36,7 +36,7 @@ export default {
   },
 
   methods: {
-    titleAnimate: function() {
+    animateTitle: function() {
       this.$nextTick(function () {
         let originalDayTitleHtml = this.$refs.dayTitle.innerHTML
 
@@ -60,7 +60,7 @@ export default {
         })
       });
     },
-    headerTitleAnimate: function () {
+    animateHeaderTitle: function () {
       this.$nextTick(function () {
         let targets = new Letterize({
           targets: ".headerTitle"
@@ -79,7 +79,7 @@ export default {
         })
       });
     },
-    headerSubtitleAnimate: function () {
+    animateHeaderSubtitle: function () {
       this.$nextTick(function () {
         let targets = new Letterize({
           targets: ".headerSubtitle"
@@ -99,9 +99,9 @@ export default {
   },
 
   mounted() {
-    this.headerTitleAnimate()
-    this.titleAnimate()
-    this.headerSubtitleAnimate()
+    this.animateHeaderTitle()
+    this.animateTitle()
+    this.animateHeaderSubtitle()
   }
 }
 </script>
