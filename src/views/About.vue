@@ -19,8 +19,8 @@ export default {
   data() {
     return {
       headerTitle: "about this",
-      title: '#### a website that **maybe** tells you what day it is.',
-      text: `All days are randomly generated from a predefined database of text's`
+      title: '#### A website that **maybe** tells you what day it is.',
+      text: ''
     }
   },
 
@@ -42,8 +42,9 @@ export default {
     },
     loadData(){
       // load day text database
-      axios.get(`/data/days.json`).then(response => {
-        this.data = response.data
+      axios.get(`/data/about.md`).then(response => {
+        console.log(response)
+        this.text = response.data
         this.start()
       }).catch(error => {
         console.log(error)

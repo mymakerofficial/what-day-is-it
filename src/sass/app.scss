@@ -46,12 +46,34 @@ body {
 }
 
 .dayTitle {
-  margin: 64px 0;
+  margin: 64px;
   transform: rotate(-1deg);
 }
 
 .dayText {
+  margin: 64px;
   position: relative;
+  margin: auto;
+}
+
+@media (min-width: 700px) {
+  .dayText, .dayTitle {
+    margin: 64px auto;
+    width: 600px;
+  }
+}
+
+@media (min-width: 900px) {
+  .dayText, .dayTitle {
+    width: 800px;
+  }
+}
+
+
+@media (min-width: 1100px) {
+  .dayText, .dayTitle {
+    width: 1000px;
+  }
 }
 
 .dayText * *, .dayTitle * *, .headerTitle *, .headerSubtitle * {
@@ -173,7 +195,7 @@ blockquote::before {
 }
 
 blockquote p, blockquote h1, blockquote h2, blockquote h3, blockquote h4, blockquote h5, blockquote h6 {
-  display: inline;
+  display: inline !important;
 }
 
 code {
