@@ -6,7 +6,8 @@
       {"title": null,"text": "dasmich was here","author":"darkarotte","weight": 1},
       {"title": "### Here comes the sun... day","text": null,"author":"Will brirz","weight": 1},
       {"title": "# SuNdAy","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Sad day","text": null,"author":"DasMich","weight": 1}
+      {"title": "# Sad day","text": null,"author":"DasMich","weight": 1},
+      {"title": "# Sun","text": null,"author":"My_Maker","weight": 1}
     ],
     [
       {"title": null,"text": null,"author": null,"weight": 1},
@@ -17,7 +18,8 @@
       {"title": "# MoNdAy","text": null,"author":"My_Maker","weight": 1},
       {"title": "# Moonday","text": null,"author":"DasMich","weight": 1},
       {"title": "# Monturday","text": null,"author":null,"weight": 1},
-      {"title": null,"text": "Congrats! You survived another week!","author": "My_Maker","weight": 5}
+      {"title": null,"text": "Congrats! You survived another week!","author": "My_Maker","weight": 5},
+      {"title": "# Mon","text": null,"author":"My_Maker","weight": 1}
     ],
     [
       {"title": null,"text": null,"author": null,"weight": 1},
@@ -25,7 +27,8 @@
       {"title": "# cheesday","text": null,"author":"DasMich","weight": 1},
       {"title": "# its chewsday innit.","text": null,"author":"My_Maker","weight": 1},
       {"title": "# TuEsDay","text": null,"author":"My_Maker","weight": 1},
-      {"title": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/CY8a4uh_PdI?autoplay=1\"  frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>","text": null,"author":"My_Maker","weight": 1}
+      {"title": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/CY8a4uh_PdI?autoplay=1\"  frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# Tue","text": null,"author":"My_Maker","weight": 1}
     ],
     [
       {"title": null,"text": null,"author":null,"weight": 1},
@@ -35,27 +38,32 @@
       {"title": "# It's **warthog wednesday** my dudes.","text": null,"author": "DasMich","weight": 1},
       {"title": "# It's **wednesday** my dudes.","text": null,"author": "My_Maker","weight": 1.5},
       {"title": "# WeDnEsDaY","text": null,"author":"My_Maker","weight": 1},
-      {"title": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/du-TY1GUFGk?autoplay=1\"  frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>","text": null,"author":"My_Maker","weight": 1}
+      {"title": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/du-TY1GUFGk?autoplay=1\"  frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# Wednes","text": null,"author":"My_Maker","weight": 1}
     ],
     [
       {"title": null,"text": null,"author":null,"weight": 1},
       {"title": "# ThUrSdAy","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Thirstyday","text": null,"author":"DasMich","weight": 1}
+      {"title": "# Toothday","text": null,"author":"darkarotte","weight": 1},
+      {"title": "# Thirstyday","text": null,"author":"DasMich","weight": 1},
+      {"title": "# Thurs","text": null,"author":"My_Maker","weight": 1}
     ],
     [
       {"title": null,"text": null,"author":null,"weight": 1},
       {"title": "# Funky Maths Friday","text": "{{insert_random_any_text}}","author":"Sariku","weight": 3},
       {"title": "# It's Femboy **Friday**.","text": null,"author":null,"weight": 1},
-      {"title": null,"text": "Invented in 1768 by greek scientist *Ivan Friday*.","author":"True Facts","weight": 2},
+      {"title": null,"text": "Invented in 1768 by greek scientist *Ivan Friday*.","author":"True Facts","weight": 5},
       {"title": "# FrIdAy","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Freeday","text": null,"author":"DasMich","weight": 1}
+      {"title": "# Freeday","text": null,"author":"DasMich","weight": 1},
+      {"title": "# Fri","text": null,"author":"My_Maker","weight": 1}
     ],
     [
       {"title": null,"text": null,"author":null,"weight": 1},
       {"title": null,"text": "µ","author":null,"weight": 1},
       {"title": null,"text": "n","author":null,"weight": 1},
       {"title": null,"text": "Nothing cool happens on Saturday","author":null,"weight": 1},
-      {"title": "# SaTuRdAy","text": null,"author":"My_Maker","weight": 1}
+      {"title": "# SaTuRdAy","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# Satur","text": null,"author":"My_Maker","weight": 1}
     ]
   ],
   "any":[
