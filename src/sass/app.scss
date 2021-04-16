@@ -53,25 +53,28 @@ body {
 .dayText {
   margin: 64px;
   position: relative;
-  margin: auto;
+}
+
+.container {
+  margin: 64px;
 }
 
 @media (min-width: 700px) {
-  .dayText, .dayTitle {
+  .dayText, .dayTitle, .container {
     margin: 64px auto;
     width: 600px;
   }
 }
 
 @media (min-width: 900px) {
-  .dayText, .dayTitle {
+  .dayText, .dayTitle, .container {
     width: 800px;
   }
 }
 
 
 @media (min-width: 1100px) {
-  .dayText, .dayTitle {
+  .dayText, .dayTitle, .container {
     width: 1000px;
   }
 }
