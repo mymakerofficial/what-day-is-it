@@ -1,6 +1,7 @@
 let hljs = require('highlight.js');
 
 let emoji = require('markdown-it-emoji')
+let mdi = require('markdown-it-mdi');
 
 let md = require('markdown-it')({
     highlight: function (str, lang) {
@@ -18,7 +19,7 @@ let md = require('markdown-it')({
     }
 });
 
-md.use(emoji)
+md.use(emoji).use(mdi)
 
 let markdown = function (string) {
     return md.render(string)
