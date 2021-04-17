@@ -7,7 +7,8 @@
       {"title": "### Here comes the sun... day","text": null,"author":"Will brirz","weight": 1},
       {"title": "# SuNdAy","text": null,"author":"My_Maker","weight": 1},
       {"title": "# Sad day","text": null,"author":"DasMich","weight": 1},
-      {"title": "# Sun","text": null,"author":"My_Maker","weight": 1}
+      {"title": "# Sun","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# :mdi-alpha-s-box::mdi-alpha-u-box::mdi-alpha-n-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
     ],
     [
       {"title": null,"text": null,"author": null,"weight": 1},
@@ -19,7 +20,8 @@
       {"title": "# Moonday","text": null,"author":"DasMich","weight": 1},
       {"title": "# Monturday","text": null,"author":null,"weight": 1},
       {"title": null,"text": "Congrats! You survived another week!","author": "My_Maker","weight": 5},
-      {"title": "# Mon","text": null,"author":"My_Maker","weight": 1}
+      {"title": "# Mon","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# :mdi-alpha-m-box::mdi-alpha-o-box::mdi-alpha-n-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
     ],
     [
       {"title": null,"text": null,"author": null,"weight": 1},
@@ -27,8 +29,9 @@
       {"title": "# cheesday","text": null,"author":"DasMich","weight": 1},
       {"title": "# its chewsday innit.","text": null,"author":"My_Maker","weight": 1},
       {"title": "# TuEsDay","text": null,"author":"My_Maker","weight": 1},
-      {"title": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/CY8a4uh_PdI?autoplay=1\"  frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Tue","text": null,"author":"My_Maker","weight": 1}
+      {"title": "@[youtube](CY8a4uh_PdI)","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# Tue","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# :mdi-alpha-t-box::mdi-alpha-u-box::mdi-alpha-e-box::mdi-alpha-s-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
     ],
     [
       {"title": null,"text": null,"author":null,"weight": 1},
@@ -38,15 +41,17 @@
       {"title": "# It's **warthog wednesday** my dudes.","text": null,"author": "DasMich","weight": 1},
       {"title": "# It's **wednesday** my dudes.","text": null,"author": "My_Maker","weight": 1.5},
       {"title": "# WeDnEsDaY","text": null,"author":"My_Maker","weight": 1},
-      {"title": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/du-TY1GUFGk?autoplay=1\"  frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Wednes","text": null,"author":"My_Maker","weight": 1}
+      {"title": "@[youtube](du-TY1GUFGk)","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# Wednes","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# :mdi-alpha-w-box::mdi-alpha-e-box::mdi-alpha-d-box::mdi-alpha-n-box::mdi-alpha-e-box::mdi-alpha-s-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 1}
     ],
     [
       {"title": null,"text": null,"author":null,"weight": 1},
       {"title": "# ThUrSdAy","text": null,"author":"My_Maker","weight": 1},
       {"title": "# Toothday","text": null,"author":"darkarotte","weight": 1},
       {"title": "# Thirstyday","text": null,"author":"DasMich","weight": 1},
-      {"title": "# Thurs","text": null,"author":"My_Maker","weight": 1}
+      {"title": "# Thurs","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# :mdi-alpha-t-box::mdi-alpha-h-box::mdi-alpha-u-box::mdi-alpha-r-box::mdi-alpha-s-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
     ],
     [
       {"title": null,"text": null,"author":null,"weight": 1},
@@ -55,7 +60,8 @@
       {"title": null,"text": "Invented in 1768 by greek scientist *Ivan Friday*.","author":"True Facts","weight": 5},
       {"title": "# FrIdAy","text": null,"author":"My_Maker","weight": 1},
       {"title": "# Freeday","text": null,"author":"DasMich","weight": 1},
-      {"title": "# Fri","text": null,"author":"My_Maker","weight": 1}
+      {"title": "# Fri","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# :mdi-alpha-f-box::mdi-alpha-r-box::mdi-alpha-i-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
     ],
     [
       {"title": null,"text": null,"author":null,"weight": 1},
@@ -63,10 +69,12 @@
       {"title": null,"text": "n","author":null,"weight": 1},
       {"title": null,"text": "Nothing cool happens on Saturday","author":null,"weight": 1},
       {"title": "# SaTuRdAy","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Satur","text": null,"author":"My_Maker","weight": 1}
+      {"title": "# Satur","text": null,"author":"My_Maker","weight": 1},
+      {"title": "# :mdi-alpha-s-box::mdi-alpha-a-box::mdi-alpha-t-box::mdi-alpha-u-box::mdi-alpha-r-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
     ]
   ],
   "any":[
+    {"title": null,"text": ":heart:","author":"My_Maker","weight": 1.5},
     {"title": "{{insert_random_current_day_title}}","text": "> **el tenedor**","author":"darkarotte","weight": 0.5},
     {"title": "{{insert_random_current_day_title}}","text": "> **empresa de tenedores**","author":"darkarotte","weight": 0.5},
     {"title": "{{insert_random_current_day_title}}","text": "> **sociedad tenedora**","author":"darkarotte","weight": 0.5},
@@ -102,7 +110,7 @@
     {"title": "# i genuinely forgot what day it is","text": null,"author":null,"weight": 1},
     {"title": "{{insert_random_current_day_title}}","text": "> i am the milkman, my milk is delicious","author":"My_Maker","weight": 1},
     {"title": "{{insert_random_current_day_title_chance}}","text": "yep that's the day.","author":"My_Maker","weight": 1},
-    {"title": null,"text": "###### `return [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"][new Date().getDay()]`","author":"My_Maker","weight": 1},
+    {"title": null,"text": "```js\nreturn [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"][new Date().getDay()]\n```","author":"My_Maker","weight": 3},
     {"title": "## Try again tomorrow","text": "{{insert_random_text}}","author":"My_Maker","weight": 1},
     {"title": "{{insert_random_any_title}}","text": "> ### you could make that into a lambda function","author": null,"weight": 1},
     {"title": "# Sorry i forgot","text": null,"author": null,"weight": 1},
@@ -115,7 +123,7 @@
     {"title": null,"text": "> ### I got a feeling.","author": null,"weight": 1},
     {"title": "## {{this.day.title}}","text": null,"author": "My_Maker","weight": 1},
     {"title": null,"text": "> ## that's not even a quote.","author": "My_Maker","weight": 1},
-    {"title": null,"text": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1\"  frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>","author": null,"weight": 0.3},
+    {"title": null,"text": "@[youtube](dQw4w9WgXcQ)","author": null,"weight": 0.3},
     {"title": null,"text": "> ##### Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu odio a mauris scelerisque sollicitudin. Ut finibus sollicitudin eros. Etiam maximus leo quis feugiat rhoncus. Aliquam odio nisi, varius id mi molestie, egestas dapibus augue. Cras a enim eu tortor pharetra dictum in ac lorem. Duis maximus nisl ut ligula aliquam consequat. Proin vel ultrices lorem. Sed laoreet, ligula at viverra porttitor, quam lacus vulputate libero, eu laoreet nulla ex sit amet eros. Sed a ligula eros. Vestibulum molestie ipsum auctor molestie lobortis. Aenean accumsan nibh lectus, vitae tincidunt nunc faucibus sed. Maecenas convallis dictum gravida. Suspendisse sodales quam nisi. Mauris sollicitudin sagittis nunc eget ultricies. Etiam id nulla sed arcu consectetur aliquet et vitae urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.","author": "My_Maker","weight": 1},
     {"title": "###### {{current_day_text}}","text": null,"author":"My_Maker","weight": 1},
     {"title": "# {{random_day_text}}","text": "nah its actually {{current_day_text}}","author":"My_Maker","weight": 3},

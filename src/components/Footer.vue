@@ -6,7 +6,7 @@
             <a v-for="button in this.buttons" :key="button.text" :href="button.path" class="navButton" ref="navButton">{{button.text}}</a>
         </div>
         <div class="footerSection">
-          <div class="footerText">made with &#60;3 <span class="mdi mdi-heart"></span> by <b>My_Maker</b></div><div class="footerText" v-if="text" v-html="text"></div>
+          <div class="footerText">made with ❤ by <b>My_Maker</b></div><div class="footerText" v-if="text" v-html="text"></div>
         </div>
       </div>
     </div>

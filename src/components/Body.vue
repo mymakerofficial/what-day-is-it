@@ -7,7 +7,7 @@
 </template>
 
 <script>
-const marked = require("marked");
+import {markdown} from "../js/markdown";
 import anime from 'animejs/lib/anime.es.js';
 import Letterize from "letterizejs"
 
@@ -49,7 +49,7 @@ export default {
 
   computed: {
     textFormatted: function () {
-      return marked(this.text)
+      return markdown(this.text)
     },
   },
 

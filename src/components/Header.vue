@@ -11,7 +11,7 @@
 <script>
 import Letterize from "letterizejs";
 import anime from "animejs";
-import marked from "marked";
+import {markdown} from "../js/markdown";
 
 export default {
   name: "Header",
@@ -31,7 +31,7 @@ export default {
 
   computed: {
     titleFormatted: function () {
-      return this.title ? marked(this.title) : ""
+      return this.title ? markdown(this.title) : ""
     }
   },
 
