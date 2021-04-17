@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'hightlight';
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&family=Catamaran&family=Overpass+Mono&display=swap');
 
@@ -155,7 +156,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  font-size: 1.5em !important;
+  font-size: 1.3em !important;
+  font-weight: 100;
 }
 
 h1 {
@@ -203,14 +205,51 @@ blockquote p, blockquote h1, blockquote h2, blockquote h3, blockquote h4, blockq
 
 code {
   font-family: 'Overpass Mono', monospace;
-  background: hsl(240, 3%, 23%);
-  color: hsl(0, 0%, 81%);
+  background: $uiLightSecondary;
+  color: $uiDarkSecondary2;
   padding: 9px;
+}
+
+pre code {
+  text-align: left;
 }
 
 .header code {
   background: var(--uiColorSecondary);
   color: var(--uiColorPrimary);
+}
+
+ul, ol {
+  padding: unset;
+}
+
+li {
+  counter-increment: section;
+  display: block !important;
+  margin: 16px
+}
+
+li::before {
+  font-family: 'Catamaran', sans-serif;
+  display: inline-flex;
+  font-weight: 800;
+  opacity: 0.3;
+  position: relative;
+  font-size: 2em;
+  line-height: 0;
+  width: 0;
+}
+
+ol li:before {
+  content: '#' counter(section);
+  left: -24px;
+  top: -2px;
+}
+
+ul li::before {
+  content: '>';
+  left: -21px;
+  top: -4px;
 }
 
 .badge {

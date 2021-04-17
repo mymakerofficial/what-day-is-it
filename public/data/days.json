@@ -102,7 +102,7 @@
     {"title": "# i genuinely forgot what day it is","text": null,"author":null,"weight": 1},
     {"title": "{{insert_random_current_day_title}}","text": "> i am the milkman, my milk is delicious","author":"My_Maker","weight": 1},
     {"title": "{{insert_random_current_day_title_chance}}","text": "yep that's the day.","author":"My_Maker","weight": 1},
-    {"title": null,"text": "###### `return [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"][new Date().getDay()]`","author":"My_Maker","weight": 1},
+    {"title": null,"text": "```js\nreturn [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"][new Date().getDay()]\n```","author":"My_Maker","weight": 3},
     {"title": "## Try again tomorrow","text": "{{insert_random_text}}","author":"My_Maker","weight": 1},
     {"title": "{{insert_random_any_title}}","text": "> ### you could make that into a lambda function","author": null,"weight": 1},
     {"title": "# Sorry i forgot","text": null,"author": null,"weight": 1},
