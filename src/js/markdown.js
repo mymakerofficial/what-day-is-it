@@ -1,6 +1,8 @@
-var hljs = require('highlight.js');
+let hljs = require('highlight.js');
 
-var md = require('markdown-it')({
+let emoji = require('markdown-it-emoji')
+
+let md = require('markdown-it')({
     highlight: function (str, lang) {
         if (lang && hljs.getLanguage(lang)) {
             try {
@@ -15,6 +17,8 @@ var md = require('markdown-it')({
         return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
     }
 });
+
+md.use(emoji)
 
 let markdown = function (string) {
     return md.render(string)
