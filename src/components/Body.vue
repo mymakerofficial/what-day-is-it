@@ -7,7 +7,6 @@
 </template>
 
 <script>
-//const marked = require("marked");
 import {markdown} from "../js/markdown";
 import anime from 'animejs/lib/anime.es.js';
 import Letterize from "letterizejs"

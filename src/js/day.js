@@ -2,7 +2,7 @@ import {Random, WeightedRandom} from "./random";
 import {Keyword} from "./keywords";
 
 const hsl = require('hsl-to-hex')
-const marked = require("marked");
+import {markdown} from "../js/markdown";
 import { stripHtml } from "string-strip-html";
 
 const dayTextList = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
@@ -172,15 +172,15 @@ class Day {
         return d
     }
 
-    get titleStriped() {return stripHtml(marked(this.title)).result }
-    get textStriped() {return stripHtml(marked(this.text)).result }
+    get titleStriped() {return stripHtml(markdown(this.title)).result }
+    get textStriped() {return stripHtml(markdown(this.text)).result }
     get titleStripedHtml() {return stripHtml(this.title).result }
     get textStripedHtml() {return stripHtml(this.text).result }
-    get titleEmptyStriped() {return this.title  !== '' && stripHtml(marked(this.title)).result === '' }
-    get textEmptyStriped() {return this.text  !== '' && stripHtml(marked(this.text)).result === '' }
+    get titleEmptyStriped() {return this.title  !== '' && stripHtml(markdown(this.title)).result === '' }
+    get textEmptyStriped() {return this.text  !== '' && stripHtml(markdown(this.text)).result === '' }
 
-    get titleFormatted() {return marked(this.title)}
-    get textFormatted() {return marked(this.text)}
+    get titleFormatted() {return markdown(this.title)}
+    get textFormatted() {return markdown(this.text)}
 
     get path() {
         try {
