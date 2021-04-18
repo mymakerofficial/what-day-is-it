@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :headerTitle="headerTitle" :title="title" :style="{ backgroundColor: this.currentDay.colorHsl, color: this.currentDay.colorHslInverted }"></Header>
+    <Header :headerTitle="headerTitle" :title="title" :style="{ backgroundColor: this.currentDay.color.hsl, color: this.currentDay.color.hslInverted }"></Header>
     <Body :text="text" :navButtons="navButtons"></Body>
     <Footer :navButtons="navButtons"></Footer>
   </div>
