@@ -36,9 +36,6 @@ export default {
   methods: {
     animateButtons: function() {
       this.$nextTick(function () {
-
-        console.log(this.$refs.navButton)
-
         let targets = this.$refs.navButton
 
         anime({

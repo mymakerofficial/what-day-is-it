@@ -87,7 +87,7 @@
     {"title": "{{insert_random_current_day_title}}", "text": "**Beans**","author":"My_Maker","weight": 0.5},
     {"title": "{{insert_random_current_day_title}}", "text": "**Egg**","author":"My_Maker","weight": 0.5},
     {"title": "### Take the loaf of bread", "text": null,"author":null,"weight": 1},
-    {"title": "# im not gonna tell you >.<","text": null,"author":null,"weight": 1},
+    {"title": "## im not gonna tell you >.<","text": null,"author":null,"weight": 1},
     {"title": "# ????","text": null,"author":null,"weight": 1},
     {"title": "# {{random_day_text}}","text": null,"author":null,"weight": 3},
     {"title": "# {{random_day_text}}","text": "{{insert_random_text}}","author":null,"weight": 4},

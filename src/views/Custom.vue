@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="day.title"></Header>
+    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="day.title" :style="{ backgroundColor: this.day.color.hsl, color: this.day.color.hslInverted }"></Header>
     <Body :text="day.text"></Body>
     <Footer :navButtons="navButtons"></Footer>
   </div>
@@ -67,10 +67,6 @@ name: "Custom",
 
       this.day.createKeywords()
       this.day.replaceKeywords()
-
-      //set color
-      document.querySelector(':root').style.setProperty('--uiColorPrimary', this.day.colorHsl);
-      document.querySelector(':root').style.setProperty('--uiColorSecondary', this.day.colorHslInverted);
     },
     loadData(){
       // load day text database

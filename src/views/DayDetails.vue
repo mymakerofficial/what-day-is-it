@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="title" :backgroundColor="this.currentDay.colorHsl" :textColor="this.currentDay.colorHslInverted"></Header>
+    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="title" :style="{ backgroundColor: this.currentDay.color.hsl, color: this.currentDay.color.hslInverted }"></Header>
     <div class="detailsBody">
       <h4>Properties</h4>
       <table>
@@ -76,29 +76,43 @@
           <td><b>random</b></td>
           <td>{{this.currentDay.random}}</td>
         </tr>
+      </table>
+      <h4>Colors</h4>
+      <table>
         <tr>
-          <td><b>colorHex</b></td>
-          <td>{{this.currentDay.colorHex}}<span class="colorPreview" :style="{ backgroundColor: this.currentDay.colorHsl }"></span></td>
+          <th>property</th>
+          <th>hue</th>
+          <th>hsl</th>
+          <th>hex</th>
+          <th>color</th>
         </tr>
         <tr>
-          <td><b>colorHexInverted</b></td>
-          <td>{{this.currentDay.colorHexInverted}}<span class="colorPreview" :style="{ backgroundColor: this.currentDay.colorHslInverted }"></span></td>
+          <td><b>original</b></td>
+          <td>{{this.currentDay.color.originalHue}}</td>
+          <td><span class="badge">n/a</span></td>
+          <td><span class="badge">n/a</span></td>
+          <td><span class="colorPreview" :style="{ backgroundColor: `hsl(${this.currentDay.color.originalHue},100%,50%)` }"></span></td>
         </tr>
         <tr>
-          <td><b>colorHsl</b></td>
-          <td>{{this.currentDay.colorHsl}}<span class="colorPreview" :style="{ backgroundColor: this.currentDay.colorHsl }"></span></td>
+          <td><b>color</b></td>
+          <td>{{this.currentDay.color.hue}}</td>
+          <td>{{this.currentDay.color.hsl}}</td>
+          <td>{{this.currentDay.color.hex}}</td>
+          <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hsl }"></span></td>
         </tr>
         <tr>
-          <td><b>colorHslInverted</b></td>
-          <td>{{this.currentDay.colorHslInverted}}<span class="colorPreview" :style="{ backgroundColor: this.currentDay.colorHslInverted }"></span></td>
+          <td><b>color inverted</b></td>
+          <td>{{this.currentDay.color.hueInverted}}</td>
+          <td>{{this.currentDay.color.hslInverted}}</td>
+          <td>{{this.currentDay.color.hexInverted}}</td>
+          <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hslInverted }"></span></td>
         </tr>
         <tr>
-          <td><b>colorHue</b></td>
-          <td>{{this.currentDay.colorHue}}<span class="colorPreview" :style="{ backgroundColor: this.currentDay.colorHsl }"></span></td>
-        </tr>
-        <tr>
-          <td><b>colorHueInverted</b></td>
-          <td>{{this.currentDay.colorHueInverted}}<span class="colorPreview" :style="{ backgroundColor: this.currentDay.colorHslInverted }"></span></td>
+          <td><b>color secondary</b></td>
+          <td>{{this.currentDay.color.hueSecondary}}</td>
+          <td>{{this.currentDay.color.hslSecondary}}</td>
+          <td>{{this.currentDay.color.hexSecondary}}</td>
+          <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hslSecondary }"></span></td>
         </tr>
       </table>
       <h4>Keywords</h4>
@@ -109,7 +123,7 @@
         </tr>
         <tr v-for="keyword in this.currentDay.keywords" :key="keyword.scope">
           <td><b>{{`\u007B\u007B${keyword.scope}\u007D\u007D`}}</b></td>
-          <td>{{keyword.replace}}</td>
+          <td>{{keyword.replace}} <span v-if="findColor(keyword.replace) !== null" class="badge">colors found: <span v-for="color in findColor(keyword.replace)" :key="color"><span class="colorPreview" :style="{ backgroundColor: color }"></span></span></span></td>
         </tr>
       </table>
     </div>
@@ -175,12 +189,16 @@ export default {
 
       //start day
       this.currentDay.set(this.date, this.data)
-
-      //set color
-      document.querySelector('.header').style.setProperty('--uiColorPrimary', this.currentDay.colorHsl);
-      document.querySelector('.header').style.setProperty('--uiColorSecondary', this.currentDay.colorHslInverted);
-
-      console.log(this.currentDay)
+    },
+    findColor(string){
+      try {
+        let colors = string.match(/hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)|(^(?:[0-9a-fA-F]{3}){1,2}$)/g)
+        if(colors) colors = colors.map((c) =>  c.match(/^([0-9a-fA-F]{3}){1,2}$/g) ? `#${c}` : c)
+        return colors;
+      }
+      catch (e) {
+        return null
+      }
     },
     loadData(){
       // load day text database

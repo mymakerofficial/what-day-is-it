@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" ></Header>
-    <Body :text="currentDay.text"></Body>
+    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" :style="{ backgroundColor: this.currentDay.color.hsl, color: this.currentDay.color.hslInverted }"></Header>
+    <Body :text="currentDay.text" :style="{ color: this.currentDay.color.hslSecondary }"></Body>
     <Footer :navButtons="navButtons" :text="footerText"></Footer>
   </div>
 </template>
@@ -43,7 +43,6 @@ export default {
     },
     navButtons: function () {
       return [
-        {text: "perma link", path: this.currentDay.path, display: !this.setDay},
         {text: "today", path: "/", display: !isSameDay(this.currentDay.date, new Date())},
         {text: "day details", path: this.detailsPath, display: true},
         {text: "day forecast", path: "/forecast", display: true},
@@ -75,13 +74,8 @@ export default {
         this.headerSubtitle = this.date.toLocaleDateString("de-de")
       }
 
-
       //start day
       this.currentDay.set(this.date, this.data)
-
-      //set color
-      document.querySelector(':root').style.setProperty('--uiColorPrimary', this.currentDay.colorHsl);
-      document.querySelector(':root').style.setProperty('--uiColorSecondary', this.currentDay.colorHslInverted);
     },
     loadData(){
       // load day text database
