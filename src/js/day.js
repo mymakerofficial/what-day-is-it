@@ -1,9 +1,9 @@
 import {Random, WeightedRandom} from "./random";
 import {Keyword} from "./keywords";
 
-const hsl = require('hsl-to-hex')
 import {markdown} from "../js/markdown";
 import { stripHtml } from "string-strip-html";
+import {Color} from "./color";
 
 const dayTextList = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 
@@ -27,6 +27,7 @@ class Day {
     authors = [];
     keywords = [];
     dayData = {};
+    color = new Color()
 
     constructor(date, data) {this.set(date, data)}
 
@@ -54,6 +55,11 @@ class Day {
             this.text = this.dayData.text
             this.author = this.dayData.author
             this.authors.push(this.author)
+
+            //set color
+            this.color.originalHue = this.random * 360
+
+            document.color = this.color
 
             //create keywords
             this.createKeywords()
@@ -111,10 +117,12 @@ class Day {
         this.keywords.push(new Keyword("random_int_1000000", `${Math.round(this.random*1000000)}`))
 
         //colors
-        this.keywords.push(new Keyword("current_color_hsl", this.colorHsl))
-        this.keywords.push(new Keyword("current_color_inverted_hsl", this.colorHslInverted))
-        this.keywords.push(new Keyword("current_color_hex", this.colorHex.substring(1)))
-        this.keywords.push(new Keyword("current_color_inverted_hex", this.colorHexInverted.substring(1)))
+        this.keywords.push(new Keyword("current_color_hsl", this.color.hsl))
+        this.keywords.push(new Keyword("current_color_inverted_hsl", this.color.hslInverted))
+        this.keywords.push(new Keyword("current_color_secondary_hsl", this.color.hslSecondary))
+        this.keywords.push(new Keyword("current_color_hex", this.color.hex.substring(1)))
+        this.keywords.push(new Keyword("current_color_inverted_hex", this.color.hexInverted.substring(1)))
+        this.keywords.push(new Keyword("current_color_secondary_hex", this.color.hexSecondary.substring(1)))
 
         //inserts from data
         let chance = WeightedRandom(this.random, [1, 3])
@@ -191,12 +199,6 @@ class Day {
     }
 
     get dayIndex() {return this.date !== null ? this.date.getDay() : 0}
-    get colorHue() {return this.random * 360;}
-    get colorHsl() {return `hsl(${this.colorHue},100%,50%)`}
-    get colorHex() {return hsl(this.colorHue,100,50)}
-    get colorHueInverted() {return (this.colorHue + 180) % 360;}
-    get colorHslInverted() {return `hsl(${this.colorHueInverted},100%,50%)`}
-    get colorHexInverted() {return hsl(this.colorHueInverted,100,50)}
 }
 
 export {Day, isSameDay}
