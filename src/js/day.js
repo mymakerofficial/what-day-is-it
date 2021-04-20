@@ -59,8 +59,6 @@ class Day {
             //set color
             this.color.originalHue = this.random * 360
 
-            document.color = this.color
-
             //create keywords
             this.createKeywords()
 
