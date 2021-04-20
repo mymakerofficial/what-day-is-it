@@ -4,11 +4,13 @@
       <div class="headerTitle" ref="headerTitle" :style="{ fontSize: this.titleFontSizeFormatted }">what's the day?</div>
       <div class="embedHeaderTextContainer" :style="{ height: headerHeightFormatted, fontSize: this.headerFontSizeFormatted }">
         <div class="embedHeaderText">{{this.currentDay.titleStriped}}</div>
+        <span class="badge border" :style="{display: this.currentDay.titleStriped === '' && this.currentDay.titleFormatted !== '' ? '' : 'none', color: this.currentDay.color.hslInverted}">can't be displayed</span>
       </div>
     </div>
     <div class="embedBody" :style="{ color: this.currentDay.color.hslSecondary, height: bodyHeightFormatted, fontSize: this.bodyFontSizeFormatted }">
       <div class="embedBodyText">
         {{this.currentDay.textStriped}}
+        <span class="badge" :style="{display: this.currentDay.textStriped === '' && this.currentDay.textFormatted !== '' ? '' : 'none'}">can't be displayed</span>
       </div>
     </div>
     <div class="embedFooterContainer">
@@ -79,11 +81,13 @@ export default {
       document.querySelector('body').style.setProperty('overflow', 'hidden');
 
       window.onresize = this.resize;
-      this.resize()
+      this.$nextTick(function () {
+        this.resize()
+      })
     },
     resize() {
-      this.headerHeight = this.currentDay.textStriped !== "" ? (window.innerHeight / 2) - (this.$refs.headerTitle.clientHeight) : window.innerHeight  - (this.$refs.headerTitle.clientHeight)
-      this.bodyHeight = this.currentDay.textStriped !== "" ? (window.innerHeight / 2) - (this.$refs.headerTitle.clientHeight * 1.5) : 0
+      this.headerHeight = (window.innerHeight / 2) - (this.$refs.headerTitle.clientHeight)
+      this.bodyHeight = (window.innerHeight / 2) - (this.$refs.headerTitle.clientHeight * 1.5)
       this.titleFontSize = Math.max(Math.min((window.innerWidth * (window.innerHeight / 2)) / 5000, 46), 32) - 12;
       this.headerFontSize = Math.max(Math.min(window.innerWidth / 30, 42), 16);
       this.bodyFontSize = Math.max(Math.min(window.innerWidth / 40, 19), 16);
