@@ -1,0 +1,79 @@
+@import 'variables';
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&family=Catamaran&family=Overpass+Mono&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $uiLight;
+  color: $uiColorPrimary;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+.embedHeader {
+  text-align: center;
+}
+
+.embedHeader .headerTitle {
+  font-size: 1.3em;
+  margin: unset;
+  margin-top: 16px;
+}
+
+.embedHeaderTextContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  resize: vertical;
+  overflow: auto;
+  padding: 0 24px;
+}
+
+.embedHeaderText {
+  font-weight: 900;
+  font-size: 2em;
+  font-style: italic;
+  letter-spacing: 4px;
+  font-family: "Playfair Display script=latin rev=2", serif;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.embedBody {
+  max-height: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  resize: vertical;
+  overflow: auto;
+  padding: 0 24px;
+}
+
+.embedBodyText {
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.embedFooterContainer {
+  position: absolute;
+  bottom: 0px;
+  display: block;
+  width: 100%;
+}
+
+.embedFooter {
+  color: $uiLightSecondary3;
+  display: block;
+  padding: 6px;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
