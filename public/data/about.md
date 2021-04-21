@@ -21,9 +21,4 @@
 - [markdown-it-video](https://github.com/CenterForOpenScience/markdown-it-video) markdown-it plugin for embedding hosted videos.
 - [Material Design Icons](https://materialdesignicons.com/) 5900+ Material Design Icons from the Community.
 
-##### The sourcecode for day.maiker.de is available on Github [here](https://github.com/mymakerofficial/what-day-is-it).
-
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+##### The sourcecode for day.maiker.de is available on Github [here](https://github.com/mymakerofficial/what-day-is-it)
