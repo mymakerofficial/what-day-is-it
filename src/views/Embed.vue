@@ -86,11 +86,13 @@ export default {
       })
     },
     resize() {
-      this.headerHeight = (window.innerHeight / 2) - (this.$refs.headerTitle.clientHeight)
-      this.bodyHeight = (window.innerHeight / 2) - (this.$refs.headerTitle.clientHeight * 1.5)
       this.titleFontSize = Math.max(Math.min((window.innerWidth * (window.innerHeight / 2)) / 5000, 46), 32) - 12;
       this.headerFontSize = Math.max(Math.min(window.innerWidth / 30, 42), 16);
       this.bodyFontSize = Math.max(Math.min(window.innerWidth / 40, 19), 16);
+      this.$nextTick(function () {
+        this.headerHeight = (window.innerHeight / 2) - (this.$refs.headerTitle.clientHeight)
+        this.bodyHeight = (window.innerHeight / 2) - (this.$refs.headerTitle.clientHeight * 1.5)
+      })
     },
     loadData(){
       // load day text database
@@ -103,7 +105,7 @@ export default {
     },
   },
 
-  created() {
+  mounted() {
     this.loadData()
   }
 }
