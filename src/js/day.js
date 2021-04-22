@@ -197,6 +197,10 @@ class Day {
     }
 
     get dayIndex() {return this.date !== null ? this.date.getDay() : 0}
+
+    get hasAuthor() {
+        return this.authors.length > 1 ? true : this.authors[0] !== null
+    }
 }
 
 export {Day, isSameDay}

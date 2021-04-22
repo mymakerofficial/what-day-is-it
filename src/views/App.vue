@@ -39,7 +39,7 @@ export default {
       return this.currentDay.path + "/details"
     },
     footerText: function () {
-      return this.currentDay.author ? `this day was brought to you by <b>${this.currentDay.authors.join(", ")}</b>` : null
+      return this.currentDay.hasAuthor ? `this day was brought to you by <b>${this.currentDay.authors.join(", ")}</b>` : null
     },
     navButtons: function () {
       return [
