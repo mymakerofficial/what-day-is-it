@@ -49,6 +49,10 @@
           <td>["{{this.currentDay.authors.join('", "')}}"]</td>
         </tr>
         <tr>
+          <td><b>hasAuthor</b></td>
+          <td>{{this.currentDay.hasAuthor}}</td>
+        </tr>
+        <tr>
           <td><b>titleEmptyStriped</b></td>
           <td>{{this.currentDay.titleEmptyStriped}}</td>
         </tr>

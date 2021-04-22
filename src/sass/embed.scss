@@ -25,7 +25,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  resize: vertical;
   overflow: auto;
   padding: 0 24px;
 }
@@ -49,7 +48,6 @@ body {
   justify-content: center;
   text-align: center;
   flex-direction: column;
-  resize: vertical;
   overflow: auto;
   padding: 0 24px;
 }
