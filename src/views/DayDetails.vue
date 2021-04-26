@@ -4,131 +4,143 @@
     <div class="detailsBody">
       <h4>Properties</h4>
       <table>
-        <tr>
-          <th>property</th>
-          <th>value</th>
-        </tr>
-        <tr>
-          <td><b>title</b> (original)</td>
-          <td>{{this.currentDay.dayData.title}}</td>
-        </tr>
-        <tr>
-          <td><b>title</b> (Markdown)</td>
-          <td>{{this.currentDay.title}}</td>
-        </tr>
-        <tr>
-          <td><b>title</b> (HTML)</td>
-          <td>{{this.currentDay.titleFormatted}}</td>
-        </tr>
-        <tr>
-          <td><b>title</b> (stripped)</td>
-          <td>{{this.currentDay.titleStriped}}</td>
-        </tr>
-        <tr>
-          <td><b>text</b> (original)</td>
-          <td>{{this.currentDay.dayData.text}}</td>
-        </tr>
-        <tr>
-          <td><b>text</b> (Markdown)</td>
-          <td>{{this.currentDay.text}}</td>
-        </tr>
-        <tr>
-          <td><b>text</b> (HTML)</td>
-          <td>{{this.currentDay.textFormatted}}</td>
-        </tr>
-        <tr>
-          <td><b>text</b> (stripped)</td>
-          <td>{{this.currentDay.textStriped}}</td>
-        </tr>
-        <tr>
-          <td><b>author</b></td>
-          <td>{{this.currentDay.author}}</td>
-        </tr>
-        <tr>
-          <td><b>authors</b></td>
-          <td>["{{this.currentDay.authors.join('", "')}}"]</td>
-        </tr>
-        <tr>
-          <td><b>hasAuthor</b></td>
-          <td>{{this.currentDay.hasAuthor}}</td>
-        </tr>
-        <tr>
-          <td><b>titleEmptyStriped</b></td>
-          <td>{{this.currentDay.titleEmptyStriped}}</td>
-        </tr>
-        <tr>
-          <td><b>textEmptyStriped</b></td>
-          <td>{{this.currentDay.textEmptyStriped}}</td>
-        </tr>
-        <tr>
-          <td><b>weight</b></td>
-          <td>{{this.currentDay.dayData.weight}}</td>
-        </tr>
-        <tr>
-          <td><b>date</b></td>
-          <td>{{this.currentDay.date}}</td>
-        </tr>
-        <tr>
-          <td><b>dayIndex</b></td>
-          <td>{{this.currentDay.dayIndex}}</td>
-        </tr>
-        <tr>
-          <td><b>path</b></td>
-          <td><a :href="this.currentDay.path">{{this.currentDay.path}}</a></td>
-        </tr>
-        <tr>
-          <td><b>random</b></td>
-          <td>{{this.currentDay.random}}</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>property</th>
+            <th>value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>title</b> (original)</td>
+            <td>{{this.currentDay.dayData.title}}</td>
+          </tr>
+          <tr>
+            <td><b>title</b> (Markdown)</td>
+            <td>{{this.currentDay.title}}</td>
+          </tr>
+          <tr>
+            <td><b>title</b> (HTML)</td>
+            <td>{{this.currentDay.titleFormatted}}</td>
+          </tr>
+          <tr>
+            <td><b>title</b> (stripped)</td>
+            <td>{{this.currentDay.titleStriped}}</td>
+          </tr>
+          <tr>
+            <td><b>text</b> (original)</td>
+            <td>{{this.currentDay.dayData.text}}</td>
+          </tr>
+          <tr>
+            <td><b>text</b> (Markdown)</td>
+            <td>{{this.currentDay.text}}</td>
+          </tr>
+          <tr>
+            <td><b>text</b> (HTML)</td>
+            <td>{{this.currentDay.textFormatted}}</td>
+          </tr>
+          <tr>
+            <td><b>text</b> (stripped)</td>
+            <td>{{this.currentDay.textStriped}}</td>
+          </tr>
+          <tr>
+            <td><b>author</b></td>
+            <td>{{this.currentDay.author}}</td>
+          </tr>
+          <tr>
+            <td><b>authors</b></td>
+            <td>["{{this.currentDay.authors.join('", "')}}"]</td>
+          </tr>
+          <tr>
+            <td><b>hasAuthor</b></td>
+            <td>{{this.currentDay.hasAuthor}}</td>
+          </tr>
+          <tr>
+            <td><b>titleEmptyStriped</b></td>
+            <td>{{this.currentDay.titleEmptyStriped}}</td>
+          </tr>
+          <tr>
+            <td><b>textEmptyStriped</b></td>
+            <td>{{this.currentDay.textEmptyStriped}}</td>
+          </tr>
+          <tr>
+            <td><b>weight</b></td>
+            <td>{{this.currentDay.dayData.weight}}</td>
+          </tr>
+          <tr>
+            <td><b>date</b></td>
+            <td>{{this.currentDay.date}}</td>
+          </tr>
+          <tr>
+            <td><b>dayIndex</b></td>
+            <td>{{this.currentDay.dayIndex}}</td>
+          </tr>
+          <tr>
+            <td><b>path</b></td>
+            <td><a :href="this.currentDay.path">{{this.currentDay.path}}</a></td>
+          </tr>
+          <tr>
+            <td><b>random</b></td>
+            <td>{{this.currentDay.random}}</td>
+          </tr>
+        </tbody>
       </table>
       <h4>Colors</h4>
       <table>
-        <tr>
-          <th>property</th>
-          <th>hue</th>
-          <th>hsl</th>
-          <th>hex</th>
-          <th>color</th>
-        </tr>
-        <tr>
-          <td><b>original</b></td>
-          <td>{{this.currentDay.color.originalHue}}</td>
-          <td><span class="badge">n/a</span></td>
-          <td><span class="badge">n/a</span></td>
-          <td><span class="colorPreview" :style="{ backgroundColor: `hsl(${this.currentDay.color.originalHue},100%,50%)` }"></span></td>
-        </tr>
-        <tr>
-          <td><b>color</b></td>
-          <td>{{this.currentDay.color.hue}}</td>
-          <td>{{this.currentDay.color.hsl}}</td>
-          <td>{{this.currentDay.color.hex}}</td>
-          <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hsl }"></span></td>
-        </tr>
-        <tr>
-          <td><b>color inverted</b></td>
-          <td>{{this.currentDay.color.hueInverted}}</td>
-          <td>{{this.currentDay.color.hslInverted}}</td>
-          <td>{{this.currentDay.color.hexInverted}}</td>
-          <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hslInverted }"></span></td>
-        </tr>
-        <tr>
-          <td><b>color secondary</b></td>
-          <td>{{this.currentDay.color.hueSecondary}}</td>
-          <td>{{this.currentDay.color.hslSecondary}}</td>
-          <td>{{this.currentDay.color.hexSecondary}}</td>
-          <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hslSecondary }"></span></td>
-        </tr>
+        <thead>
+          <tr>
+            <th>property</th>
+            <th>hue</th>
+            <th>hsl</th>
+            <th>hex</th>
+            <th>color</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>original</b></td>
+            <td>{{this.currentDay.color.originalHue}}</td>
+            <td><span class="badge">n/a</span></td>
+            <td><span class="badge">n/a</span></td>
+            <td><span class="colorPreview" :style="{ backgroundColor: `hsl(${this.currentDay.color.originalHue},100%,50%)` }"></span></td>
+          </tr>
+          <tr>
+            <td><b>color</b></td>
+            <td>{{this.currentDay.color.hue}}</td>
+            <td>{{this.currentDay.color.hsl}}</td>
+            <td>{{this.currentDay.color.hex}}</td>
+            <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hsl }"></span></td>
+          </tr>
+          <tr>
+            <td><b>color inverted</b></td>
+            <td>{{this.currentDay.color.hueInverted}}</td>
+            <td>{{this.currentDay.color.hslInverted}}</td>
+            <td>{{this.currentDay.color.hexInverted}}</td>
+            <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hslInverted }"></span></td>
+          </tr>
+          <tr>
+            <td><b>color secondary</b></td>
+            <td>{{this.currentDay.color.hueSecondary}}</td>
+            <td>{{this.currentDay.color.hslSecondary}}</td>
+            <td>{{this.currentDay.color.hexSecondary}}</td>
+            <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hslSecondary }"></span></td>
+          </tr>
+        </tbody>
       </table>
       <h4>Keywords</h4>
       <table>
-        <tr>
-          <th>scope</th>
-          <th>replace</th>
-        </tr>
-        <tr v-for="keyword in this.currentDay.keywords" :key="keyword.scope">
-          <td><b>{{`\u007B\u007B${keyword.scope}\u007D\u007D`}}</b></td>
-          <td>{{keyword.replace}} <span v-if="findColor(keyword.replace) !== null" class="badge">colors found: <span v-for="color in findColor(keyword.replace)" :key="color"><span class="colorPreview" :style="{ backgroundColor: color }"></span></span></span></td>
-        </tr>
+        <thead>
+          <tr>
+            <th>scope</th>
+            <th>replace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="keyword in this.currentDay.keywords" :key="keyword.scope">
+            <td><b>{{`\u007B\u007B${keyword.scope}\u007D\u007D`}}</b></td>
+            <td>{{keyword.replace}} <span v-if="findColor(keyword.replace) !== null" class="badge">colors found: <span v-for="color in findColor(keyword.replace)" :key="color"><span class="colorPreview" :style="{ backgroundColor: color }"></span></span></span></td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <Footer :navButtons="navButtons"></Footer>
