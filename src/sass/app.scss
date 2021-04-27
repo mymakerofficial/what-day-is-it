@@ -281,9 +281,21 @@ a .plain {
 
 .detailsBody {
   padding: 24px;
+  text-align: center;
 }
 
-.detailsBody td {
+
+table {
+  display: table !important;
+  margin: auto;
+  text-align: left;
+}
+
+table *  {
+  display: revert !important;
+}
+
+td {
   padding: 12px;
   vertical-align: center;
   line-height: 18px;
@@ -293,11 +305,11 @@ a .plain {
   font-size: 1.2em;
 }
 
-.detailsBody td:nth-child(2n) {
+.detailsBody td:not(td:first-child) {
   font-family: 'Overpass Mono', monospace;
 }
 
-.detailsBody th {
+th {
   padding: 12px;
   font-size: 1.2em;
   font-weight: bold;
@@ -305,14 +317,15 @@ a .plain {
   letter-spacing: 2px;
   font-family: "Playfair Display script=latin rev=2", serif;
   text-align: left;
+  background-color: $uiLightSecondary;
 }
 
-.detailsBody tr:nth-child(odd) {
+tr:nth-child(even) {
   background-color: $uiLightSecondary;
 }
 
 .colorPreview {
-  display: inline-block;
+  display: inline-block !important;
   min-width: 12px;
   min-height: 12px;
   margin: 0 6px;

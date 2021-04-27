@@ -65,8 +65,12 @@ name: "Custom",
       }
       if(this.$route.params.text !== undefined) this.day.text = stripHtml(this.$route.params.text).result
 
+      this.day.color.originalHue = this.day.random * 360
+
       this.day.createKeywords()
       this.day.replaceKeywords()
+
+      console.log(this.day)
     },
     loadData(){
       // load day text database

@@ -38,26 +38,28 @@ export default {
   methods: {
     animateTitle: function() {
       this.$nextTick(function () {
-        let originalDayTitleHtml = this.$refs.dayTitle.innerHTML
+        if(this.$refs.dayTitle){
+          let originalDayTitleHtml = this.$refs.dayTitle.innerHTML
 
-        let targets = new Letterize({
-          targets: ".dayTitle"
-        })
+          let targets = new Letterize({
+            targets: ".dayTitle"
+          })
 
-        anime({
-          targets: targets.listAll,
-          translateY: [40, 0],
-          translateX: [anime.stagger(-20, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
-          rotate: [anime.stagger(5, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
-          opacity: [0, 1],
-          duration: 1000,
-          delay: anime.stagger((400 / targets.listAll.length), {start: 300, from: 'center', easing: 'cubicBezier(0.720, 0.120, 0.580, 0.585)'}),
-          easing: 'easeOutElastic(.6, 1)',
-          autostart: true,
-          complete: () => {
-            this.$refs.dayTitle.innerHTML = originalDayTitleHtml
-          }
-        })
+          anime({
+            targets: targets.listAll,
+            translateY: [40, 0],
+            translateX: [anime.stagger(-20, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
+            rotate: [anime.stagger(5, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
+            opacity: [0, 1],
+            duration: 1000,
+            delay: anime.stagger((400 / targets.listAll.length), {start: 300, from: 'center', easing: 'cubicBezier(0.720, 0.120, 0.580, 0.585)'}),
+            easing: 'easeOutElastic(.6, 1)',
+            autostart: true,
+            complete: () => {
+              this.$refs.dayTitle.innerHTML = originalDayTitleHtml
+            }
+          })
+        }
       });
     },
     animateHeaderTitle: function () {
@@ -81,19 +83,21 @@ export default {
     },
     animateHeaderSubtitle: function () {
       this.$nextTick(function () {
-        let targets = new Letterize({
-          targets: ".headerSubtitle"
-        })
+        if(this.headerSubtitle){
+          let targets = new Letterize({
+            targets: ".headerSubtitle"
+          })
 
-        anime({
-          targets: targets.listAll,
-          translateY: [10, 0],
-          opacity: [0, 1],
-          duration: 1000,
-          delay: anime.stagger(20, {start: 200, from: 'center', easing: 'cubicBezier(0.690, 0.240, 0.420, 0.750)'}),
-          easing: 'easeOutElastic(.6, 1)',
-          autostart: true,
-        })
+          anime({
+            targets: targets.listAll,
+            translateY: [10, 0],
+            opacity: [0, 1],
+            duration: 1000,
+            delay: anime.stagger(20, {start: 200, from: 'center', easing: 'cubicBezier(0.690, 0.240, 0.420, 0.750)'}),
+            easing: 'easeOutElastic(.6, 1)',
+            autostart: true,
+          })
+        }
       });
     }
   },
