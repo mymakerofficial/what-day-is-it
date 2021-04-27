@@ -1,0 +1,10 @@
+{
+  "things": [
+    {
+      "path": "emoji",
+      "data": "/data/emojis.json",
+      "name": "emoji",
+      "fullName": "emoji of the day"
+    }
+  ]
+}

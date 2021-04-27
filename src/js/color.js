@@ -1,6 +1,7 @@
 import hsl from "hsl-to-hex";
 
-const forbidden = [[10,70],[185,220]]
+//const forbidden = [[10,70],[185,220]] // this blocks to many colors
+const forbidden = [[23,52]]
 const light = [[60,200]]
 
 let hueInside = function (hue, list) {
