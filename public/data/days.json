@@ -145,6 +145,9 @@
     {"title": "# Duckday","text": null,"author": "NeonHD","weight": 3},
     {"title": "# International Day Day","text": null,"author": "My_Maker","weight": 5},
     {"title": "# Unofficial Day","text": null,"author": "My_Maker","weight": 5},
-    {"title": "# {{current_day_text}}","text": "## {{current_day_text}}\n ### {{current_day_text}}\n #### {{current_day_text}}\n ##### {{current_day_text}}\n ##### {{current_day_text}}\n ###### {{current_day_text}}","author": "My_Maker","weight": 3}
+    {"title": "# {{current_day_text}}","text": "## {{current_day_text}}\n ### {{current_day_text}}\n #### {{current_day_text}}\n ##### {{current_day_text}}\n ##### {{current_day_text}}\n ###### {{current_day_text}}","author": "My_Maker","weight": 3},
+    {"title": "> ###  hurrdurr 600 by ol mate senni\n - DankPods","text": null,"author": "My_Maker","weight": 5},
+    {"title": "Doo-bee-doo-bee-doo-bah \n\n Doo-bee-doo-bee-doo-bah \n\n **Perry!**","text": null,"author": "My_Maker","weight": 5},
+    {"title": "Crabday","text": null,"author": "My_Maker","weight": 4}
   ]
 }

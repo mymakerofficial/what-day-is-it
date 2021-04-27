@@ -25,31 +25,33 @@ export default {
   methods: {
     Animate() {
       this.$nextTick(function () {
-        let originalDayTextHtml = this.$refs.dayText.innerHTML
+        if(this.text && this.$refs.dayText){
+          let originalDayTextHtml = this.$refs.dayText.innerHTML
 
-        let targets = new Letterize({
-          targets: ".dayText"
-        })
+          let targets = new Letterize({
+            targets: ".dayText"
+          })
 
-        anime({
-          targets: [this.$refs.dayText, targets.listAll],
-          translateY: [10, 0],
-          opacity: [0, 1],
-          duration: 1000,
-          delay: anime.stagger((100 / targets.listAll.length), {start: 400, easing: 'cubicBezier(0.225, 0.830, 0.405, 0.535)'}),
-          easing: 'easeOutElastic(.6, .4)',
-          autostart: true,
-          complete: () => {
-            this.$refs.dayText.innerHTML = originalDayTextHtml
-          }
-        })
+          anime({
+            targets: [this.$refs.dayText, targets.listAll],
+            translateY: [10, 0],
+            opacity: [0, 1],
+            duration: 1000,
+            delay: anime.stagger((100 / targets.listAll.length), {start: 400, easing: 'cubicBezier(0.225, 0.830, 0.405, 0.535)'}),
+            easing: 'easeOutElastic(.6, .4)',
+            autostart: true,
+            complete: () => {
+              this.$refs.dayText.innerHTML = originalDayTextHtml
+            }
+          })
+        }
       });
     }
   },
 
   computed: {
     textFormatted: function () {
-      return markdown(this.text)
+      return this.text ? markdown(this.text) : ""
     },
   },
 

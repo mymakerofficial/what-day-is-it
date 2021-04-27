@@ -7,7 +7,8 @@ import details from './views/DayDetails.vue';
 import about from './views/About.vue';
 import dayEditor from './views/CustumDayEditor.vue';
 import embed from './views/Embed.vue';
-import markdown from './views/MarkdownGuide.vue'
+import markdown from './views/MarkdownGuide.vue';
+import thing from './views/ThingOfTheDay.vue';
 
 const routes = [
     { path: '/', name: 'app', component: app },
@@ -18,6 +19,7 @@ const routes = [
     { path: '/(custom|c)/:title/:text?', name: 'custom_day_simple', component: custom },
     { path: '/(custom|c)/:year([0-9][0-9][0-9][0-9])/:month([0-9][0-9]|[0-9])/:day([0-9][0-9]|[0-9])/:title/:text?', name: 'custom_day_full', component: custom },
     { path: '/(custom|c)', name: 'custom_day_editor', component: dayEditor },
+    { path: '/day/:thing', name: 'thingOfTheDay', component: thing },
     { path: '/forecast', name: 'forecast', component: forecast },
     { path: '/embed', name: 'embed', component: embed },
     { path: '*', name: 'not_found', component: notFound }
