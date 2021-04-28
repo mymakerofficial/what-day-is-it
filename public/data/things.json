@@ -2,15 +2,24 @@
   "things": [
     {
       "path": "emoji",
-      "data": "/data/emojis.json",
+      "data": "/data/thing_of_the_day/emojis.json",
       "name": "emoji",
-      "fullName": "emoji of the day"
+      "fullName": "emoji of the day",
+      "source": null
     },
     {
       "path": "icon",
-      "data": "/data/icon_of_the_day.json",
+      "data": "/data/thing_of_the_day/icons.json",
       "name": "icon",
-      "fullName": "icon of the day"
+      "fullName": "icon of the day",
+      "source": "https://github.com/Templarian/MaterialDesign/blob/master/meta.json"
+    },
+    {
+      "path": "element",
+      "data": "/data/thing_of_the_day/elements.json",
+      "name": "element",
+      "fullName": "element of the day",
+      "source": "https://github.com/Bowserinator/Periodic-Table-JSON/blob/master/PeriodicTableJSON.json"
     }
   ]
 }
