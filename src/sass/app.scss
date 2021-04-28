@@ -60,16 +60,27 @@ body {
   margin: 64px;
 }
 
+.containerThin {
+  margin: 64px;
+}
+
 @media (min-width: 700px) {
   .dayText, .dayTitle, .container {
     margin: 64px auto;
     width: 600px;
+  }
+  .containerThin {
+    margin: 64px auto;
+    width: 500px;
   }
 }
 
 @media (min-width: 900px) {
   .dayText, .dayTitle, .container {
     width: 800px;
+  }
+  .containerThin {
+    width: 600px;
   }
 }
 
@@ -217,6 +228,29 @@ pre code {
 .header code {
   background: var(--uiColorSecondary);
   color: var(--uiColorPrimary);
+}
+
+button {
+  position: relative;
+  margin: 6px;
+  border: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-style: italic;
+  background: $uiLightSecondary;
+  color: $uiDarkSecondary2;
+  padding: 9px 24px;
+}
+
+button.inverted {
+  background: $uiDarkSecondary2;
+  color: $uiLightSecondary;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 ul, ol {

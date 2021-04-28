@@ -5,6 +5,12 @@
       "data": "/data/emojis.json",
       "name": "emoji",
       "fullName": "emoji of the day"
+    },
+    {
+      "path": "icon",
+      "data": "/data/icon_of_the_day.json",
+      "name": "icon",
+      "fullName": "icon of the day"
     }
   ]
 }
