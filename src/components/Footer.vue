@@ -7,7 +7,7 @@
             <router-link v-for="button in this.buttons" :key="button.text" :to="{path: button.path}" class="navButton" ref="navButton">{{button.text}}</router-link>
         </div>
         <div class="footerSection">
-          <div class="footerText">made with ❤ by <b>My_Maker</b></div><div class="footerText" v-if="text" v-html="text"></div>
+          <div class="footerText">made with <i class="mdi mdi-heart"></i> by <b>My_Maker</b></div><div class="footerText" v-if="text" v-html="text"></div>
         </div>
       </div>
     </div>
