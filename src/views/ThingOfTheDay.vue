@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header :headerTitle="headerTitle" :title="title" :style="{ backgroundColor: this.color.hsl, color: this.color.hslInverted }"></Header>
-    <Body :text="text"></Body>
+    <Body :text="text" :style="{ color: this.color.hslSecondary }"></Body>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>

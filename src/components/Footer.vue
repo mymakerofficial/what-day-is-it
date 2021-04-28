@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="footerContainer">
+      <Things></Things>
       <div class="footer" ref="container">
         <div class="footerSection" id="footerButtons">
             <a v-for="button in this.buttons" :key="button.text" :href="button.path" class="navButton" ref="navButton">{{button.text}}</a>
@@ -15,10 +16,11 @@
 
 <script>
 import anime from "animejs";
+import Things from "./Things";
 
 export default {
   name: "Footer",
-
+  components: {Things},
   props: ["navButtons","text"],
 
   computed: {
