@@ -56,7 +56,7 @@ export default {
             easing: 'easeOutElastic(.6, 1)',
             autostart: true,
             complete: () => {
-              this.$refs.dayTitle.innerHTML = originalDayTitleHtml
+              if(this.$refs.dayTitle)this.$refs.dayTitle.innerHTML = originalDayTitleHtml
             }
           })
         }

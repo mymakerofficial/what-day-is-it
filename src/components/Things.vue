@@ -2,10 +2,10 @@
   <div>
     <div class="containerThin">
       <span>
-        <a href="/"><button v-bind:class="{ inverted: this.$route.name === 'app' }">what's the day?</button></a>
+        <router-link :to="{path:'/'}"><button v-bind:class="{ inverted: this.$route.name === 'app' }">what's the day?</button></router-link>
       </span>
       <span v-for="thing in this.things" :key="thing.path">
-        <a :href="'/day/' + thing.path"><button v-bind:class="{ inverted: isCurrentThing(thing.path) }">{{thing.fullName}}</button></a>
+        <router-link :to="{path: `/day/${thing.path}`}"><button v-bind:class="{ inverted: isCurrentThing(thing.path) }">{{thing.fullName}}</button></router-link>
       </span>
     </div>
   </div>
@@ -24,9 +24,6 @@ export default {
   },
 
   methods: {
-    start: function () {
-
-    },
     isCurrentThing(path) {
       return this.$route.params.thing ? path === this.$route.params.thing : false
     },
@@ -34,14 +31,13 @@ export default {
       // load database
       axios.get(`/data/things.json`).then(response => {
         this.things = response.data.things
-        this.start()
       }).catch(error => {
         console.log(error)
       })
     },
   },
 
-  created() {
+  created(){
     this.loadData()
   }
 }
