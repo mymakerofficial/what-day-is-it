@@ -88,8 +88,15 @@ export default {
     },
   },
 
-  created() {
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.loadData()
+    })
+  },
+
+  beforeRouteUpdate(to, from, next) {
     this.loadData()
+    next()
   }
 }
 </script>

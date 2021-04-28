@@ -41,7 +41,7 @@ export default {
             easing: 'easeOutElastic(.6, .4)',
             autostart: true,
             complete: () => {
-              this.$refs.dayText.innerHTML = originalDayTextHtml
+              if(this.$refs.dayText)this.$refs.dayText.innerHTML = originalDayTextHtml
             }
           })
         }
