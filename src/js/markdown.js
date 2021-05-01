@@ -1,8 +1,9 @@
 let hljs = require('highlight.js');
 
-let emoji = require('markdown-it-emoji')
-let mdi = require('markdown-it-mdi');
-let video = require('markdown-it-video')
+const emoji = require('markdown-it-emoji')
+const mdi = require('markdown-it-mdi');
+const video = require('markdown-it-video')
+const { html5Media } = require('markdown-it-html5-media');
 
 let md = require('markdown-it')({
     highlight: function (str, lang) {
@@ -20,7 +21,7 @@ let md = require('markdown-it')({
     }
 });
 
-md.use(emoji).use(mdi).use(video)
+md.use(emoji).use(mdi).use(video).use(html5Media)
 
 let markdown = function (string) {
     return md.render(string)

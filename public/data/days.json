@@ -97,7 +97,7 @@
     {"title": "# Who's Martin Garrix?","text": null,"author":null,"weight": 0.1},
     {"title": "# Dude I love Martin Garrix","text": null,"author":"Some Dude","weight": 0.1},
     {"title": "# Ahhh yessssss","text": null,"author":"zum","weight": 1},
-    {"title": "# `';DROP DATABASE;#'`","text": null,"author":"hacker man","weight": 0.6},
+    {"title": "# `';DROP DATABASE;#'`","text": null,"author":"hacker man","weight": 1},
     {"title": "# Domingo","text": null,"author":"Sariku","weight": 1.1},
     {"title": "# Could you like not?","text": null,"author":"this application","weight": 1},
     {"title": "#### mymakerofficial/what-day-is-it","text": "![GitHub branch checks state](https://img.shields.io/github/checks-status/mymakerofficial/what-day-is-it/master) ![GitHub last commit](https://img.shields.io/github/last-commit/mymakerofficial/what-day-is-it) ![GitHub contributors](https://img.shields.io/github/contributors/mymakerofficial/what-day-is-it) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fday.maiker.de) ![GitHub issues](https://img.shields.io/github/issues/mymakerofficial/what-day-is-it) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mymakerofficial/what-day-is-it) ![made-with-vue](https://img.shields.io/badge/Made%20with-Vue-41b883.svg) [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org) \n\n\n\n ##### A website that tells you what day it is... *maybe*.","author":"My_Maker","weight": 0.1},

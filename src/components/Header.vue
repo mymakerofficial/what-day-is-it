@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="header" :style="{ backgroundColor: backgroundColor, color: textColor }">
+    <div class="header" ref="header">
       <div class="headerTitle">{{headerTitle}}</div>
       <div class="headerSubtitle" v-if="headerSubtitle">{{headerSubtitle}}</div>
       <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
@@ -9,23 +9,22 @@
 </template>
 
 <script>
-import Letterize from "letterizejs";
 import anime from "animejs";
 import {markdown} from "../js/markdown";
 
 export default {
   name: "Header",
-  props: ["headerTitle","headerSubtitle","title","backgroundColor","textColor","navButtons"],
+  props: ["headerTitle","headerSubtitle","title","backgroundColor","textColor"],
 
   watch: {
-    title: function () {
-      this.animateTitle()
+    $route (){
+      this.animateIn()
     },
-    headerTitle: function () {
-      this.animateHeaderTitle()
+    backgroundColor: function () {
+      this.$refs.header.style.setProperty('--uiColorBackground', this.backgroundColor);
     },
-    headerSubtitle: function () {
-      this.animateHeaderSubtitle()
+    textColor: function () {
+      this.$refs.header.style.setProperty('--uiColorText', this.textColor);
     }
   },
 
@@ -35,77 +34,32 @@ export default {
     }
   },
 
+  listeners: {
+    animateOut: function () {
+      this.animateOut()
+    }
+  },
+
   methods: {
-    animateTitle: function() {
+    animateIn: function () {
       this.$nextTick(function () {
-        if(this.$refs.dayTitle){
-          let originalDayTitleHtml = this.$refs.dayTitle.innerHTML
-
-          let targets = new Letterize({
-            targets: ".dayTitle"
-          })
-
-          anime({
-            targets: targets.listAll,
-            translateY: [40, 0],
-            translateX: [anime.stagger(-20, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
-            rotate: [anime.stagger(5, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
-            opacity: [0, 1],
-            duration: 1000,
-            delay: anime.stagger((400 / targets.listAll.length), {start: 300, from: 'center', easing: 'cubicBezier(0.720, 0.120, 0.580, 0.585)'}),
-            easing: 'easeOutElastic(.6, 1)',
-            autostart: true,
-            complete: () => {
-              if(this.$refs.dayTitle)this.$refs.dayTitle.innerHTML = originalDayTitleHtml
-            }
-          })
-        }
-      });
-    },
-    animateHeaderTitle: function () {
-      this.$nextTick(function () {
-        let targets = new Letterize({
-          targets: ".headerTitle"
-        })
-
         anime({
-          targets: targets.listAll,
-          translateY: [50, 0],
-          translateX: [anime.stagger(-10, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
-          rotate: [anime.stagger(20, {grid: [targets.listAll.length, 1], from: 'center', axis: 'x'}), 0],
+          targets: this.$refs.header,
+          scale: [0.9,1],
+          rotate: [2, 0],
+          translateY: [-70, 0],
           opacity: [0, 1],
-          duration: 1000,
-          delay: anime.stagger(20, {start: 100, from: 'center', easing: 'cubicBezier(0.720, 0.120, 0.580, 0.585)'}),
+          duration: 700,
+          delay: 500,
           easing: 'easeOutElastic(.6, 1)',
           autostart: true,
         })
-      });
-    },
-    animateHeaderSubtitle: function () {
-      this.$nextTick(function () {
-        if(this.headerSubtitle){
-          let targets = new Letterize({
-            targets: ".headerSubtitle"
-          })
-
-          anime({
-            targets: targets.listAll,
-            translateY: [10, 0],
-            opacity: [0, 1],
-            duration: 1000,
-            delay: anime.stagger(20, {start: 200, from: 'center', easing: 'cubicBezier(0.690, 0.240, 0.420, 0.750)'}),
-            easing: 'easeOutElastic(.6, 1)',
-            autostart: true,
-          })
-        }
       });
     }
   },
 
   mounted() {
-    this.animateHeaderTitle()
-    this.animateTitle()
-    this.animateHeaderSubtitle()
+    this.animateIn()
   }
 }
 </script>

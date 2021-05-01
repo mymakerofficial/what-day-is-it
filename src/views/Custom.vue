@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="day.title" :style="{ backgroundColor: this.day.color.hsl, color: this.day.color.hslInverted }"></Header>
-    <Body :text="day.text"></Body>
+    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="day.title" :backgroundColor="this.day.color.hsl" :textColor="this.day.color.hslInverted"></Header>
+    <Body :text="day.text" :textColor="this.day.color.hslInverted"></Body>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
@@ -69,8 +69,6 @@ name: "Custom",
 
       this.day.createKeywords()
       this.day.replaceKeywords()
-
-      console.log(this.day)
     },
     loadData(){
       // load day text database

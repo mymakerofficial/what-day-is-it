@@ -1,9 +1,11 @@
 <template>
-  <div id="app">
-    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" :style="{ backgroundColor: this.currentDay.color.hsl, color: this.currentDay.color.hslInverted }"></Header>
-    <Body :text="currentDay.text" :style="{ color: this.currentDay.color.hslSecondary }"></Body>
-    <Footer :navButtons="navButtons" :text="footerText"></Footer>
-  </div>
+  <transition name="slide">
+    <div id="app">
+      <Header ref="header" :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
+      <Body :text="currentDay.text" :textColor="this.currentDay.color.hslSecondary" center="true"></Body>
+      <Footer :navButtons="navButtons" :text="footerText"></Footer>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -79,7 +81,7 @@ export default {
     },
     loadData(){
       // load day text database
-      axios.get(`/data/days.json`).then(response => {
+      axios.get(`/data/days_test.json`).then(response => {
         this.data = response.data
         this.start()
       }).catch(error => {
@@ -97,7 +99,7 @@ export default {
   beforeRouteUpdate(to, from, next) {
     this.loadData()
     next()
-  }
+  },
 }
 </script>
 

@@ -20,6 +20,13 @@
       "name": "element",
       "fullName": "element of the day",
       "source": "https://github.com/Bowserinator/Periodic-Table-JSON/blob/master/PeriodicTableJSON.json"
+    },
+    {
+      "path": "qgquotes",
+      "data": "/data/thing_of_the_day/quaran_gang_quotes.json",
+      "name": "QuaranGang Quotes",
+      "fullName": "QuaranGang quote of the day",
+      "source": null
     }
   ]
 }

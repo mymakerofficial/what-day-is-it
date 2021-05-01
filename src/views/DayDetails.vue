@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="title" :style="{ backgroundColor: this.currentDay.color.hsl, color: this.currentDay.color.hslInverted }"></Header>
-    <div class="detailsBody">
+    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
+    <div class="container">
       <h4>Properties</h4>
       <table>
         <thead>

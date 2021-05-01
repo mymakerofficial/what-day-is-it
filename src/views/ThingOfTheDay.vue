@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header :headerTitle="headerTitle" :title="title" :style="{ backgroundColor: this.color.hsl, color: this.color.hslInverted }"></Header>
-    <Body :text="text" :style="{ color: this.color.hslSecondary }"></Body>
+    <Header :headerTitle="headerTitle" :title="title" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted"></Header>
+    <Body :text="text" center="true" :textColor="this.color.hslSecondary"></Body>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
@@ -76,6 +76,8 @@ export default {
       this.headerTitle = this.thing.fullName;
       this.color.originalHue = this.random * 360;
       this.message = this.messages[WeightedRandom(this.random, this.messages.map((d) => d.weight))]
+
+      console.log(this.color)
     },
     loadData(){
       // load database
