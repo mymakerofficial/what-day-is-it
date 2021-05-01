@@ -81,7 +81,7 @@ export default {
     },
     loadData(){
       // load day text database
-      axios.get(`/data/days_test.json`).then(response => {
+      axios.get(`/data/days.json`).then(response => {
         this.data = response.data
         this.start()
       }).catch(error => {
