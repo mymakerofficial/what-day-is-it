@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div class="dayBody">
-      <div class="dayText" v-html="textFormatted" ref="dayText"></div>
+    <div class="container" :class="{ center: this.center }" ref="body" v-html="textFormatted" v-if="display">
     </div>
   </div>
 </template>
@@ -9,42 +8,44 @@
 <script>
 import {markdown} from "../js/markdown";
 import anime from 'animejs/lib/anime.es.js';
-import Letterize from "letterizejs"
 
 export default {
   name: "Body",
 
-  props: ["text"],
+  props: ["text","textColor","center"],
+
+  data() {
+    return {
+      display: false
+    }
+  },
+
 
   watch: {
-    text: function () {
-      this.Animate()
+    $route (){
+      this.animateIn()
+    },
+    textColor: function () {
+      this.$refs.body.style.setProperty('--uiColorText', this.textColor);
     }
   },
 
   methods: {
-    Animate() {
+    animateIn: function () {
+      this.display = true;
+
       this.$nextTick(function () {
-        if(this.text && this.$refs.dayText){
-          let originalDayTextHtml = this.$refs.dayText.innerHTML
-
-          let targets = new Letterize({
-            targets: ".dayText"
-          })
-
-          anime({
-            targets: [this.$refs.dayText, targets.listAll],
-            translateY: [10, 0],
-            opacity: [0, 1],
-            duration: 1000,
-            delay: anime.stagger((100 / targets.listAll.length), {start: 400, easing: 'cubicBezier(0.225, 0.830, 0.405, 0.535)'}),
-            easing: 'easeOutElastic(.6, .4)',
-            autostart: true,
-            complete: () => {
-              if(this.$refs.dayText)this.$refs.dayText.innerHTML = originalDayTextHtml
-            }
-          })
-        }
+        anime({
+          targets: this.$refs.body,
+          scale: [0.9,1],
+          rotate: [2, 0],
+          translateY: [-70, 0],
+          opacity: [0, 1],
+          duration: 700,
+          delay: 500,
+          easing: 'easeOutElastic(.6, 1)',
+          autostart: true,
+        })
       });
     }
   },
@@ -56,7 +57,7 @@ export default {
   },
 
   mounted() {
-    //this.Animate()
+    this.animateIn()
   }
 }
 </script>

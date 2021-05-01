@@ -23,6 +23,6 @@
     ]
   ],
   "any":[
-    {"title": "# {{random_day_text}}","text": "nah its actually {{current_day_text}}\n ![day_count {{current_day_index_start_mo}}](https://img.shields.io/badge/day__count-{{current_day_index_start_mo}}-{{current_color_hex}})","author":"My_Maker","weight": 1}
+    {"title": "# text \n`';DROP DATABASE;#'`","text": "text\n\n```json\n{\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"age\": 25\n}\n```\n\n> I doubt that tv has a proper backend to that frontend 3.5mm jack.\n\n\\- essiebes 03.02.2021\n\n![](https://cdn.discordapp.com/attachments/787571086123335681/837668330130505798/video0-97.mp4)\n\n ![alt text](https://i.kym-cdn.com/entries/icons/original/000/020/016/wednesdaymydudeswide.jpg \"Its Wednesday\")","author":"hacker man","weight": 1000000}
   ]
 }

@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: $uiLight;
-  color: $uiColorPrimary;
+  color: $uiDarkSecondary;
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
 }
@@ -17,8 +17,8 @@ body {
 .header {
   text-align: center;
   display: grid;
-  background-color: $uiColorPrimary;
-  color: $uiColorSecondary;
+  background-color: $uiColorBackground;
+  color: $uiColorText;
 }
 
 .headerTitle {
@@ -32,32 +32,23 @@ body {
   margin: 24px;
 }
 
+// day
 .dayTitle {
-  margin: 64px 0;
+  margin: 64px;
   transform: rotate(-1deg);
   letter-spacing: 3px;
 }
 
-// day
-.dayBody {
-  margin: 64px 0;
+.container {
+  margin: 64px;
+  position: relative;
+  color: $uiColorText
+}
+
+.container.center {
   text-align: center;
   justify-content: center;
   vertical-align: middle;
-}
-
-.dayTitle {
-  margin: 64px;
-  transform: rotate(-1deg);
-}
-
-.dayText {
-  margin: 64px;
-  position: relative;
-}
-
-.container {
-  margin: 64px;
 }
 
 .containerThin {
@@ -96,6 +87,13 @@ body {
 }
 
 // forecast
+
+.forecastContainer {
+  margin: 64px;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+}
 
 .forecastTable {
   display: inline-block;
@@ -200,6 +198,10 @@ blockquote {
   display: inline-block;
 }
 
+blockquote * {
+  display: inline;
+}
+
 blockquote::before {
   content: '"';
   font-family: 'Catamaran', sans-serif;
@@ -214,10 +216,6 @@ blockquote::before {
   width: 0;
 }
 
-blockquote p, blockquote h1, blockquote h2, blockquote h3, blockquote h4, blockquote h5, blockquote h6 {
-  display: inline !important;
-}
-
 code {
   font-family: 'Overpass Mono', monospace;
   background: $uiLightSecondary;
@@ -227,14 +225,16 @@ code {
 
 pre code {
   text-align: left;
+  display: inline-block;
 }
 
 .header code {
-  background: var(--uiColorSecondary);
-  color: var(--uiColorPrimary);
+  background: var(--uiColorText);
+  color: var(--uiColorBackground);
 }
 
-button {
+button, .button {
+  display: inline-block;
   position: relative;
   margin: 6px;
   border: none;
@@ -246,15 +246,27 @@ button {
   background: $uiLightSecondary;
   color: $uiDarkSecondary2;
   padding: 9px 24px;
+  text-decoration: none;
 }
 
-button.inverted {
+button.inverted, .button.inverted {
   background: $uiDarkSecondary2;
   color: $uiLightSecondary;
 }
 
-button:hover {
+button:hover, .button:hover {
   cursor: pointer;
+}
+
+button a, .button a {
+  background: $uiLightSecondary;
+  color: $uiDarkSecondary2;
+  text-decoration: none;
+}
+
+button.inverted a, .button.inverted a {
+  background: $uiDarkSecondary2;
+  color: $uiLightSecondary;
 }
 
 ul, ol {
@@ -287,7 +299,7 @@ ol li:before {
 ul li::before {
   content: '>';
   left: -21px;
-  top: -4px;
+  top: 1px;
 }
 
 .badge {
@@ -301,8 +313,8 @@ ul li::before {
 }
 
 .badge.color {
-  background: var(--uiColorSecondary);
-  color: var(--uiColorPrimary);
+  background: $uiColorText;
+  color: $uiColorBackground;
 }
 
 .badge.border {
@@ -312,25 +324,18 @@ ul li::before {
 
 //other
 
+a {
+  color: $uiColorText
+}
+
 a .plain {
   text-decoration: unset !important;
   color: unset !important;
 }
 
-.detailsBody {
-  padding: 24px;
-  text-align: center;
-}
-
-
 table {
   display: table !important;
-  margin: auto;
   text-align: left;
-}
-
-table *  {
-  display: revert !important;
 }
 
 td {

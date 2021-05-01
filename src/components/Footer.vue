@@ -30,33 +30,19 @@ export default {
   },
 
   watch: {
-    navButtons: function () {
-      this.animateButtons()
+    $route (){
+      this.animate()
     }
   },
 
   methods: {
-    animateButtons: function() {
-      this.$nextTick(function () {
-        let targets = this.$refs.navButton
-
-        anime({
-          targets: targets,
-          translateY: [10, 0],
-          opacity: [0, 1],
-          duration: 1000,
-          delay: anime.stagger((200 / targets.length), {start: 300, easing: 'cubicBezier(0.225, 0.830, 0.405, 0.535)'}),
-          easing: 'easeOutElastic(.6, .4)',
-          autostart: true,
-        })
-      });
-    },
-    animateContainer: function () {
+    animate: function () {
       this.$nextTick(function () {
         anime({
           targets: this.$refs.container,
+          scale: [0.9,1],
           rotate: [2, 0],
-          translateY: [30, 0],
+          translateY: [10, 0],
           opacity: [0, 1],
           duration: 700,
           delay: 500,
@@ -69,7 +55,7 @@ export default {
   },
 
   mounted() {
-    this.animateContainer()
+    this.animate()
   }
 }
 </script>
