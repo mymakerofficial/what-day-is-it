@@ -148,6 +148,7 @@
     {"title": "# {{current_day_text}}","text": "## {{current_day_text}}\n ### {{current_day_text}}\n #### {{current_day_text}}\n ##### {{current_day_text}}\n ##### {{current_day_text}}\n ###### {{current_day_text}}","author": "My_Maker","weight": 3},
     {"title": "> ###  hurrdurr 600 by ol mate senni\n - DankPods","text": null,"author": "My_Maker","weight": 5},
     {"title": "Doo-bee-doo-bee-doo-bah \n\n Doo-bee-doo-bee-doo-bah \n\n **Perry!**","text": null,"author": "My_Maker","weight": 5},
-    {"title": "Crabday","text": null,"author": "My_Maker","weight": 4}
+    {"title": "Crabday","text": null,"author": "My_Maker","weight": 4},
+    {"title": null,"text": "1. Go to [day.makier.de](https://day.maiker.de)\n2. Find out what day it is\n3. Profit","author": "My_Maker","weight": 4}
   ]
 }

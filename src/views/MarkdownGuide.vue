@@ -45,7 +45,7 @@
           <tr>
             <td>
               <b><a href="https://www.markdownguide.org/extended-syntax/#emoji">Emoji</a></b><br>
-              <a href="https://gist.github.com/rxaviers/7360908">list of all emoji shortcodes</a><br>
+              <a href="http://s.maiker.de/emojilist">list of all emoji shortcodes</a><br>
               Find emojis on <a href="https://emojipedia.org">emojipedia.org</a><br>
             </td>
             <td>:heart:</td>
