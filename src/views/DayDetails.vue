@@ -3,7 +3,7 @@
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
     <div class="container">
       <h4>Properties</h4>
-      <table>
+      <table style="width:100%">
         <thead>
           <tr>
             <th>property</th>
@@ -86,7 +86,7 @@
         </tbody>
       </table>
       <h4>Colors</h4>
-      <table>
+      <table style="width:100%">
         <thead>
           <tr>
             <th>property</th>
@@ -128,7 +128,7 @@
         </tbody>
       </table>
       <h4>Keywords</h4>
-      <table>
+      <table style="width:100%">
         <thead>
           <tr>
             <th>scope</th>

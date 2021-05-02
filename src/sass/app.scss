@@ -169,6 +169,11 @@ p {
   font-weight: 100;
 }
 
+table p {
+  font-size: 1em !important;
+  font-weight: 100;
+}
+
 h1 {
   font-size: 5em !important;
 }
@@ -216,11 +221,32 @@ blockquote::before {
   width: 0;
 }
 
+span.spoiler {
+  padding: 0 4px;
+  color: $uiDarkSecondary;
+  background-color: $uiDarkSecondary;
+}
+
+span.spoiler:hover {
+  color: $uiLightSecondary;
+}
+
+h1 sup, h2 sup, h3 sup {
+  font-size: 0.5em;
+}
+
+mark {
+  padding: 0 4px;
+  background-color: $uiColorText;
+  color: $uiColorBackground;
+}
+
 code {
   font-family: 'Overpass Mono', monospace;
   background: $uiLightSecondary;
   color: $uiDarkSecondary2;
   padding: 9px;
+  display: inline-block;
 }
 
 pre code {
@@ -340,8 +366,9 @@ table {
 
 td {
   padding: 12px;
-  vertical-align: center;
+  vertical-align: top;
   line-height: 18px;
+  line-height: 2em;
 }
 
 .detailsBody td:first-child {

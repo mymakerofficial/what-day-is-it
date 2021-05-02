@@ -2,7 +2,7 @@
   <div>
     <Header :headerTitle="pageTitle"></Header>
     <div class="container">
-      <h6>Text inputs support markdown! <a target="_blank" href="https://www.markdownguide.org/cheat-sheet/#basic-syntax">guide</a></h6>
+      <h6>Text inputs support markdown! <router-link :to="{path: '/markdown'}">guide</router-link></h6>
       <h5>Title</h5>
       <textarea v-model="title" ref="inputTitle"></textarea>
       <div><span v-if="title.length == 0" class="badge">no valid input</span></div>
@@ -78,6 +78,7 @@ export default {
     navButtons: function () {
       return [
         {text: "today", path: "/", display: true},
+        {text: "markdown guide", path: "/markdown", display: true},
         {text: "day forecast", path: "/forecast", display: true},
         {text: "about", path: "/about", display: true}
       ]

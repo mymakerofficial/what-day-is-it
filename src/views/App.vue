@@ -3,6 +3,7 @@
     <div id="app">
       <Header ref="header" :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
       <Body :text="currentDay.text" :textColor="this.currentDay.color.hslSecondary" center="true"></Body>
+      <LoadingSpinner :show="loading"></LoadingSpinner>
       <Footer :navButtons="navButtons" :text="footerText"></Footer>
     </div>
   </transition>
@@ -14,10 +15,12 @@ import Body from "@/components/Body";
 import axios from "axios";
 import {Day, isSameDay} from "../js/day";
 import Footer from "../components/Footer";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default {
   name: 'App',
   components: {
+    LoadingSpinner,
     Footer,
     Header,
     Body
@@ -28,6 +31,7 @@ export default {
   data() {
     return {
       setDay: false,
+      loading: true,
       data: {"days": [],"any":[]},
       date: new Date(),
       headerTitle: "what's the day?",
@@ -83,6 +87,7 @@ export default {
       // load day text database
       axios.get(`/data/days.json`).then(response => {
         this.data = response.data
+        this.loading = false
         this.start()
       }).catch(error => {
         console.log(error)

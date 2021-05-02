@@ -13,6 +13,7 @@
         <span class="badge" :style="{display: this.currentDay.textStriped === '' && this.currentDay.textFormatted !== '' ? '' : 'none'}">can't be displayed</span>
       </div>
     </div>
+    <LoadingSpinner :show="loading"></LoadingSpinner>
     <div class="embedFooterContainer">
       <a href="https://day.maiker.de" target="_blank" class="embedFooter" ref="embedFooter">
         visit <b>day.maiker.de</b> for more
@@ -24,10 +25,11 @@
 <script>
 import {Day} from "../js/day";
 import axios from "axios";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default {
   name: "Embed",
-
+  components: {LoadingSpinner},
   data() {
     return {
       day: 0,
@@ -41,6 +43,7 @@ export default {
       titleFontSize: 0,
       headerFontSize: 0,
       bodyFontSize: 0,
+      loading: true,
     }
   },
 
@@ -98,6 +101,7 @@ export default {
       // load day text database
       axios.get(`/data/days.json`).then(response => {
         this.data = response.data
+        this.loading = false;
         this.start()
       }).catch(error => {
         console.log(error)
