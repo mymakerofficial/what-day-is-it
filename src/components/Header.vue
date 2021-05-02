@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="header" ref="header">
+    <div class="header" ref="header" v-show="display">
       <div class="headerTitle">{{headerTitle}}</div>
       <div class="headerSubtitle" v-if="headerSubtitle">{{headerSubtitle}}</div>
       <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
@@ -16,9 +16,23 @@ export default {
   name: "Header",
   props: ["headerTitle","headerSubtitle","title","backgroundColor","textColor"],
 
+  data() {
+    return {
+      display: false,
+      loaded: false
+    }
+  },
+
   watch: {
-    $route (){
-      this.animateIn()
+    $route: function (){
+      this.loaded = false;
+      this.display = false;
+    },
+    title: function () {
+      if(!this.loaded){
+        this.animateIn();
+        this.loaded = true;
+      }
     },
     backgroundColor: function () {
       this.$refs.header.style.setProperty('--uiColorBackground', this.backgroundColor);
@@ -34,14 +48,10 @@ export default {
     }
   },
 
-  listeners: {
-    animateOut: function () {
-      this.animateOut()
-    }
-  },
-
   methods: {
     animateIn: function () {
+      this.display = true;
+
       this.$nextTick(function () {
         anime({
           targets: this.$refs.header,
@@ -50,7 +60,7 @@ export default {
           translateY: [-70, 0],
           opacity: [0, 1],
           duration: 700,
-          delay: 500,
+          round: 1000,
           easing: 'easeOutElastic(.6, 1)',
           autostart: true,
         })

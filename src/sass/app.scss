@@ -89,7 +89,7 @@ body {
 // forecast
 
 .forecastContainer {
-  margin: 64px;
+  margin: 16px;
   text-align: center;
   justify-content: center;
   vertical-align: middle;
@@ -409,4 +409,20 @@ tr:nth-child(even) {
   display: inline-block;
   font-size: 1.2em;
   letter-spacing: 2px;
+}
+
+.loadingContainer {
+  margin: auto;
+  padding: 84px 0;
+  justify-content: center;
+  text-align: center;
+}
+
+.loadingSpinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 6px;
+  background-color: $uiLightSecondary2;
+  border-radius: 12%;
 }

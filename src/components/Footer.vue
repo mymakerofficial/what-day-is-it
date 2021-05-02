@@ -45,7 +45,6 @@ export default {
           translateY: [10, 0],
           opacity: [0, 1],
           duration: 700,
-          delay: 500,
           easing: 'easeOutElastic(.6, 1)',
           autostart: true,
         })

@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header :headerTitle="headerTitle"></Header>
+    <LoadingSpinner :show="!loaded"></LoadingSpinner>
     <div class="forecastContainer">
       <div class="forecastTable" ref="table">
         <div class="row" v-for="day in this.days" :key="day.date.getTime()">
@@ -24,6 +25,7 @@ export default {
   components: {Footer, Header},
   data() {
     return {
+      loaded: false,
       setDay: false,
       year: undefined,
       month: undefined,
@@ -76,6 +78,8 @@ export default {
       //set color
       //document.querySelector(':root').style.setProperty('--uiColorPrimary', this.days[0].colorHsl);
       //document.querySelector(':root').style.setProperty('--uiColorSecondary', this.days[0].colorHslInverted);
+
+      this.loaded = true;
 
       this.animate()
     },
