@@ -69,15 +69,12 @@ export default {
         if(this.$route.query.length > 0 && this.$route.query.length <= 300) length = this.$route.query.length
       }
 
+      // TODO this lags when the length is to long
       for(let i = 0;i < length;i++){
         let newDate = new Date(this.date.getTime() + 86400000 * i)
         let newDay = new Day(newDate, this.data)
         this.days.push(newDay)
       }
-
-      //set color
-      //document.querySelector(':root').style.setProperty('--uiColorPrimary', this.days[0].colorHsl);
-      //document.querySelector(':root').style.setProperty('--uiColorSecondary', this.days[0].colorHslInverted);
 
       this.loading = false;
 

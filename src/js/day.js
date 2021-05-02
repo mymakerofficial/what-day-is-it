@@ -45,11 +45,17 @@ class Day {
             this.random = Random(this.randomInput)
 
             // select day data
+            let list = this._data.any.concat(this._data.days[this.dayIndex])
+
+            this.dayData = list[WeightedRandom(this.random, list.map((d) => d.weight))];
+
+            /*
             if(WeightedRandom(this.random, [3, 1])){
                 this.dayData = this._data.days[this.dayIndex][WeightedRandom(this.random, this._data.days[this.dayIndex].map((d) => d.weight))]
             }else{
                 this.dayData = this._data.any[WeightedRandom(this.random, this._data.any.map((d) => d.weight))];
             }
+             */
 
             this.title = this.dayData.title
             this.text = this.dayData.text

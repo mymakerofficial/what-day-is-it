@@ -1,76 +1,76 @@
 {
   "days": [
     [
-      {"title": null,"text": null,"author": null,"weight": 1},
-      {"title": null,"text": "[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)","author":null,"weight": 1},
-      {"title": null,"text": "dasmich was here","author":"darkarotte","weight": 1},
-      {"title": "### Here comes the sun... day","text": null,"author":"Will brirz","weight": 1},
-      {"title": "# SuNdAy","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Sad day","text": null,"author":"DasMich","weight": 1},
-      {"title": "# Sun","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# :mdi-alpha-s-box::mdi-alpha-u-box::mdi-alpha-n-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
+      {"title": null,"text": null,"author": null,"weight": 20},
+      {"title": null,"text": "[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)","author":null,"weight": 8},
+      {"title": null,"text": "dasmich was here","author":"darkarotte","weight": 8},
+      {"title": "### Here comes the sun... day","text": null,"author":"Will brirz","weight": 8},
+      {"title": "# SuNdAy","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# Sad day","text": null,"author":"DasMich","weight": 8},
+      {"title": "# Sun","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# :mdi-alpha-s-box::mdi-alpha-u-box::mdi-alpha-n-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 7}
     ],
     [
-      {"title": null,"text": null,"author": null,"weight": 1},
-      {"title": "# aMogusday","text": null,"author":"darkarotte","weight": 1},
-      {"title": null,"text": "again...","author":"Your_Maker (fork) (C)","weight": 1},
-      {"title": null,"text": "![made with pain](https://img.shields.io/badge/Made%20With-Pain-red.svg \"Pain\")","author":"My_Maker","weight": 5},
-      {"title": "# Monkey Day","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# MoNdAy","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Moonday","text": null,"author":"DasMich","weight": 1},
-      {"title": "# Monturday","text": null,"author":null,"weight": 1},
-      {"title": null,"text": "Congrats! You survived another week!","author": "My_Maker","weight": 5},
-      {"title": "# Mon","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# :mdi-alpha-m-box::mdi-alpha-o-box::mdi-alpha-n-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
+      {"title": null,"text": null,"author": null,"weight": 20},
+      {"title": "# aMogusday","text": null,"author":"darkarotte","weight": 8},
+      {"title": null,"text": "again...","author":"Your_Maker (fork) (C)","weight": 8},
+      {"title": null,"text": "![made with pain](https://img.shields.io/badge/Made%20With-Pain-red.svg \"Pain\")","author":"My_Maker","weight": 15},
+      {"title": "# Monkey Day","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# MoNdAy","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# Moonday","text": null,"author":"DasMich","weight": 8},
+      {"title": "# Monturday","text": null,"author":null,"weight": 8},
+      {"title": null,"text": "Congrats! You survived another week!","author": "My_Maker","weight": 15},
+      {"title": "# Mon","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# :mdi-alpha-m-box::mdi-alpha-o-box::mdi-alpha-n-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 7}
     ],
     [
-      {"title": null,"text": null,"author": null,"weight": 1},
-      {"title": "# chonky chewsday","text": null,"author":"DasMich","weight": 1},
-      {"title": "# cheesday","text": null,"author":"DasMich","weight": 1},
-      {"title": "# its chewsday innit.","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# TuEsDay","text": null,"author":"My_Maker","weight": 1},
-      {"title": "@[youtube](CY8a4uh_PdI)","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Tue","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# :mdi-alpha-t-box::mdi-alpha-u-box::mdi-alpha-e-box::mdi-alpha-s-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
+      {"title": null,"text": null,"author": null,"weight": 20},
+      {"title": "# chonky chewsday","text": null,"author":"DasMich","weight": 8},
+      {"title": "# cheesday","text": null,"author":"DasMich","weight": 8},
+      {"title": "# its chewsday innit.","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# TuEsDay","text": null,"author":"My_Maker","weight": 8},
+      {"title": "@[youtube](CY8a4uh_PdI)","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# Tue","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# :mdi-alpha-t-box::mdi-alpha-u-box::mdi-alpha-e-box::mdi-alpha-s-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 7}
     ],
     [
-      {"title": null,"text": null,"author":null,"weight": 1},
-      {"title": "# wednesday","text": null,"author":"cheesman","weight": 1},
-      {"title": "# Wet day","text": null,"author":null,"weight": 1},
-      {"title": "![alt text](https://i.kym-cdn.com/entries/icons/original/000/020/016/wednesdaymydudeswide.jpg \"Its Wednesday\")","text": null,"author":null,"weight": 1},
-      {"title": "# It's **warthog wednesday** my dudes.","text": null,"author": "DasMich","weight": 1},
-      {"title": "# It's **wednesday** my dudes.","text": null,"author": "My_Maker","weight": 1.5},
-      {"title": "# WeDnEsDaY","text": null,"author":"My_Maker","weight": 1},
-      {"title": "@[youtube](du-TY1GUFGk)","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Wednes","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# :mdi-alpha-w-box::mdi-alpha-e-box::mdi-alpha-d-box::mdi-alpha-n-box::mdi-alpha-e-box::mdi-alpha-s-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 1}
+      {"title": null,"text": null,"author":null,"weight": 20},
+      {"title": "# wednesday","text": null,"author":"cheesman","weight": 8},
+      {"title": "# Wet day","text": null,"author":null,"weight": 8},
+      {"title": "![alt text](https://i.kym-cdn.com/entries/icons/original/000/020/016/wednesdaymydudeswide.jpg \"Its Wednesday\")","text": null,"author":null,"weight": 8},
+      {"title": "# It's **warthog wednesday** my dudes.","text": null,"author": "DasMich","weight": 8},
+      {"title": "# It's **wednesday** my dudes.","text": null,"author": "My_Maker","weight": 15},
+      {"title": "# WeDnEsDaY","text": null,"author":"My_Maker","weight": 8},
+      {"title": "@[youtube](du-TY1GUFGk)","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# Wednes","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# :mdi-alpha-w-box::mdi-alpha-e-box::mdi-alpha-d-box::mdi-alpha-n-box::mdi-alpha-e-box::mdi-alpha-s-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 7}
     ],
     [
-      {"title": null,"text": null,"author":null,"weight": 1},
-      {"title": "# ThUrSdAy","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Toothday","text": null,"author":"darkarotte","weight": 1},
-      {"title": "# Thirstyday","text": null,"author":"DasMich","weight": 1},
-      {"title": "# Thurs","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# :mdi-alpha-t-box::mdi-alpha-h-box::mdi-alpha-u-box::mdi-alpha-r-box::mdi-alpha-s-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
+      {"title": null,"text": null,"author":null,"weight": 20},
+      {"title": "# ThUrSdAy","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# Toothday","text": null,"author":"darkarotte","weight": 8},
+      {"title": "# Thirstyday","text": null,"author":"DasMich","weight": 8},
+      {"title": "# Thurs","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# :mdi-alpha-t-box::mdi-alpha-h-box::mdi-alpha-u-box::mdi-alpha-r-box::mdi-alpha-s-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 7}
     ],
     [
-      {"title": null,"text": null,"author":null,"weight": 1},
-      {"title": "# Funky Maths Friday","text": "{{insert_random_text}}","author":"Sariku","weight": 3},
-      {"title": "# It's Femboy **Friday**.","text": null,"author":null,"weight": 1},
-      {"title": null,"text": "Invented in 1768 by greek scientist *Ivan Friday*.","author":"True Facts","weight": 5},
-      {"title": "# FrIdAy","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Freeday","text": null,"author":"DasMich","weight": 1},
-      {"title": "# Fri","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# :mdi-alpha-f-box::mdi-alpha-r-box::mdi-alpha-i-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
+      {"title": null,"text": null,"author":null,"weight": 20},
+      {"title": "# Funky Maths Friday","text": "{{insert_random_text}}","author":"Sariku","weight": 15},
+      {"title": "# It's Femboy **Friday**.","text": null,"author":null,"weight": 8},
+      {"title": null,"text": "Invented in 1768 by greek scientist *Ivan Friday*.","author":"True Facts","weight": 13},
+      {"title": "# FrIdAy","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# Freeday","text": null,"author":"DasMich","weight": 8},
+      {"title": "# Fri","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# :mdi-alpha-f-box::mdi-alpha-r-box::mdi-alpha-i-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 7}
     ],
     [
-      {"title": null,"text": null,"author":null,"weight": 1},
-      {"title": null,"text": "µ","author":null,"weight": 1},
-      {"title": null,"text": "n","author":null,"weight": 1},
-      {"title": null,"text": "Nothing cool happens on Saturday","author":null,"weight": 1},
-      {"title": "# SaTuRdAy","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# Satur","text": null,"author":"My_Maker","weight": 1},
-      {"title": "# :mdi-alpha-s-box::mdi-alpha-a-box::mdi-alpha-t-box::mdi-alpha-u-box::mdi-alpha-r-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 0.7}
+      {"title": null,"text": null,"author":null,"weight": 20},
+      {"title": null,"text": "µ","author":null,"weight": 8},
+      {"title": null,"text": "n","author":null,"weight": 8},
+      {"title": null,"text": "Nothing cool happens on Saturday","author":null,"weight": 8},
+      {"title": "# SaTuRdAy","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# Satur","text": null,"author":"My_Maker","weight": 8},
+      {"title": "# :mdi-alpha-s-box::mdi-alpha-a-box::mdi-alpha-t-box::mdi-alpha-u-box::mdi-alpha-r-box::mdi-alpha-d-box::mdi-alpha-a-box::mdi-alpha-y-box:","text": null,"author":"My_Maker","weight": 7}
     ]
   ],
   "any":[
@@ -151,6 +151,8 @@
     {"title": "Crabday","text": null,"author": "My_Maker","weight": 4},
     {"title": null,"text": "1. Go to [day.makier.de](https://day.maiker.de)\n2. Find out what day it is\n3. Profit","author": "My_Maker","weight": 4},
     {"title": "# :flushed:","text": null,"author": "My_Maker","weight": 4},
+    {"title": "# :joy:","text": null,"author": "My_Maker","weight": 4},
+    {"title": "# :rofl:","text": null,"author": "My_Maker","weight": 4},
     {"title": "# Happy day","text": null,"author": "My_Maker","weight": 4}
   ]
 }
