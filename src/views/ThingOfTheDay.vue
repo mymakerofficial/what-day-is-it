@@ -76,8 +76,6 @@ export default {
 
       this.random = Random(this.date)
 
-      this.random = Math.random()
-
       this.headerTitle = this.thing.fullName;
       this.color.originalHue = this.random * 360;
       this.message = this.messages[WeightedRandom(this.random, this.messages.map((d) => d.weight))]
