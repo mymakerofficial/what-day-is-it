@@ -46,10 +46,11 @@
             <td>
               <b><a href="https://www.markdownguide.org/extended-syntax/#emoji">Emoji</a></b><br>
               <a href="http://s.maiker.de/emojilist">list of all emoji shortcodes</a><br>
+              <a href="https://emojipedia.org/twitter/">twemoji list</a><br>
               Find emojis on <a href="https://emojipedia.org">emojipedia.org</a><br>
             </td>
             <td>:heart:</td>
-            <td>❤️</td>
+            <td><img class="emoji" draggable="false" alt="❤️" src="https://twemoji.maxcdn.com/v/13.0.2/72x72/2764.png"></td>
           </tr>
         </tbody>
       </table>

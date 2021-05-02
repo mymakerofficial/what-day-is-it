@@ -14,6 +14,7 @@ day.maiker.de uses open source projects to work. Check them out!
 - **[markdown-it](https://github.com/markdown-it/markdown-it)** a Markdown parser.
 - **[anime.js](https://animejs.com/)** a lightweight JavaScript animation library.
 - **[Material Design Icons](https://materialdesignicons.com/)** 5900+ Material Design Icons from the Community.
+- **[Twitter Emoji (Twemoji)](https://twemoji.twitter.com/)**  A simple library that provides standard Unicode emoji support across all platforms.
 - **[string-strip-html](https://www.npmjs.com/package/string-strip-html)** strips HTML tags from strings. 
 - **[replace-string](https://github.com/sindresorhus/replace-string)** Replace all substring matches in a string.
 - **[string-hash](https://github.com/darkskyapp/string-hash)** Fast string hashing function for Node.JS.
@@ -36,3 +37,16 @@ day.maiker.de uses open source projects to work. Check them out!
 ## **Why?**
 
 Why I made this you ask? Cause i was bored! That's why.
+
+# text ❤️
+## text ❤️
+### text ❤️
+#### text ❤️
+##### text ❤️
+###### text ❤️
+# text
+## text️
+### text
+#### text
+##### text
+###### text
