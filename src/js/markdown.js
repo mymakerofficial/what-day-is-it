@@ -4,6 +4,10 @@ const emoji = require('markdown-it-emoji')
 const mdi = require('markdown-it-mdi');
 const video = require('markdown-it-video')
 const { html5Media } = require('markdown-it-html5-media');
+const sup = require('markdown-it-sup')
+const mark = require('markdown-it-mark')
+const underline = require('markdown-it-underline');
+const spoiler = require("@traptitech/markdown-it-spoiler")
 
 let md = require('markdown-it')({
     highlight: function (str, lang) {
@@ -21,7 +25,7 @@ let md = require('markdown-it')({
     }
 });
 
-md.use(emoji).use(mdi).use(video).use(html5Media)
+md.use(emoji).use(mdi).use(video).use(html5Media).use(sup).use(mark).use(underline).use(spoiler)
 
 let markdown = function (string) {
     return md.render(string)
