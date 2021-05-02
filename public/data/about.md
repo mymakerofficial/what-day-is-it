@@ -37,16 +37,3 @@ day.maiker.de uses open source projects to work. Check them out!
 ## **Why?**
 
 Why I made this you ask? Cause i was bored! That's why.
-
-# text ❤️
-## text ❤️
-### text ❤️
-#### text ❤️
-##### text ❤️
-###### text ❤️
-# text
-## text️
-### text
-#### text
-##### text
-###### text
