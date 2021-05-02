@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="day.title" :backgroundColor="this.day.color.hsl" :textColor="this.day.color.hslInverted"></Header>
-    <Body :text="day.text" :textColor="this.day.color.hslInverted"></Body>
+    <Body :text="day.text" :textColor="this.day.color.hslInverted" center="true"></Body>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>

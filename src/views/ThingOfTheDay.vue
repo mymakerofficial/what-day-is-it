@@ -76,8 +76,6 @@ export default {
       this.headerTitle = this.thing.fullName;
       this.color.originalHue = this.random * 360;
       this.message = this.messages[WeightedRandom(this.random, this.messages.map((d) => d.weight))]
-
-      console.log(this.color)
     },
     loadData(){
       // load database

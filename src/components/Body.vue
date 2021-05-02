@@ -1,33 +1,42 @@
 <template>
   <div>
-    <div class="container" :class="{ center: this.center }" ref="body" v-html="textFormatted" v-if="display">
-    </div>
+    <LoadingSpinner :show="!loaded"></LoadingSpinner>
+    <div class="container" :class="{ center: this.center }" ref="body" v-html="textFormatted" v-show="display"></div>
   </div>
 </template>
 
 <script>
 import {markdown} from "../js/markdown";
 import anime from 'animejs/lib/anime.es.js';
+import LoadingSpinner from "./LoadingSpinner";
 
 export default {
   name: "Body",
-
+  components: {LoadingSpinner},
   props: ["text","textColor","center"],
 
   data() {
     return {
-      display: false
+      display: false,
+      loaded: false,
     }
   },
 
 
   watch: {
-    $route (){
-      this.animateIn()
+    $route: function (){
+      this.loaded = false;
+      this.display = false;
+    },
+    text: function () {
+      if(!this.loaded){
+        this.animateIn();
+        this.loaded = true;
+      }
     },
     textColor: function () {
       this.$refs.body.style.setProperty('--uiColorText', this.textColor);
-    }
+    },
   },
 
   methods: {
@@ -42,7 +51,7 @@ export default {
           translateY: [-70, 0],
           opacity: [0, 1],
           duration: 700,
-          delay: 500,
+          round: 1000,
           easing: 'easeOutElastic(.6, 1)',
           autostart: true,
         })
