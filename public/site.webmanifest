@@ -1,6 +1,8 @@
 {
     "name": "what's the day?",
     "short_name": "what's the day?",
+    "description": "A website that maybe tells you what day it is.",
+    "start_url": "/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
