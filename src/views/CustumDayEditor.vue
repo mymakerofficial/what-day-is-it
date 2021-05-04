@@ -2,26 +2,27 @@
   <div>
     <Header :headerTitle="pageTitle"></Header>
     <div class="container">
-      <h6>Text inputs support markdown! <router-link :to="{path: '/markdown'}">guide</router-link></h6>
-      <h5>Title</h5>
-      <textarea v-model="title" ref="inputTitle"></textarea>
-      <div><span v-if="title.length == 0" class="badge">no valid input</span></div>
-      <br><br>
-      <h5>Text (optional)</h5>
-      <textarea v-model="text" ref="inputText"></textarea>
-      <br><br>
-      <h5>Date (optional) (y/m/d)</h5>
-      <input type="checkbox" v-model="usesDate">
-      <label>use date</label>
-      <br><br>
-      <input v-model="year" ref="inputYear">
-      <input v-model="month" ref="inputMonth">
-      <input v-model="day" ref="inputDay">
-      <div><span v-if="!dateValid && usesDate" class="badge">no valid input</span></div>
-      <br><br>
-      <h5>URL</h5>
-      <a target="_blank" :href="url">{{url}}</a>
-      <h6>(this page is still under construction)</h6>
+      <input :value="url" style="width: 100%">
+      <router-link target=”_blank” :to="{path: path}"><i class="mdi mdi-open-in-new"></i></router-link>
+    </div>
+    <div class="dayEditorContainer">
+      <div class="dayEditorHalf">
+        <input type="date" id="start" name="trip-start" class="dayDateInput" v-show="false">
+        <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }"></textarea>
+        <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }"></textarea>
+      </div>
+      <div class="dayEditorHalf">
+        <div class="header" ref="header" :style="{ '--uiColorBackground': backgroundColor, '--uiColorText': textColor }">
+          <div class="headerTitle">your own day!</div>
+          <div class="headerSubtitle" v-show="false">01.01.2021</div>
+          <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
+        </div>
+        <div class="body" ref="body">
+          <div class="dayText" ref="body" v-html="textFormatted"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
       <Footer :navButtons="navButtons"></Footer>
     </div>
   </div>
@@ -31,11 +32,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {stripHtml} from "string-strip-html";
-
-function matchExact(r, str) {
-  let match = str.match(r);
-  return match && str === match[0];
-}
+import {markdown} from "../js/markdown";
 
 export default {
   name: "CustumDayEditor",
@@ -44,36 +41,37 @@ export default {
   data() {
     return {
       pageTitle: "make your own day",
-      title: "",
-      text: "",
+      title: "# The Day",
+      text: "it really do be",
       year: "0",
       month: "0",
       day: "0",
       usesDate: false,
+      backgroundColor: "",
+      textColor: "",
+      headerHeight: "300px",
+      bodyHeight: "300px"
     }
   },
 
   computed: {
-    encodedTitle: function () {
-      return encodeURIComponent(stripHtml(this.title).result);
+    titleFormatted: function () {
+      return this.title ? markdown(this.title) : ""
     },
-    encodedText: function () {
-      return encodeURIComponent(stripHtml(this.text).result);
+    textFormatted: function () {
+      return this.title ? markdown(this.text) : ""
     },
-    dateValid: function () {
-      return matchExact(/[0-9][0-9][0-9][0-9]/g, this.year) && matchExact(/(0[1-9]|1[012])|[1-9]/gm, this.month) && matchExact(/(0[1-9]|[12]\d|3[01])|[1-9]/g, this.day)
+    encodedData: function () {
+      return btoa(JSON.stringify({
+        a: stripHtml(this.title).result,
+        b: stripHtml(this.text).result
+      }))
     },
-    encodedDate: function () {
-      if(this.dateValid && this.usesDate) return `${this.year}/${('0'+(this.month)).slice(-2)}/${('0'+(this.day)).slice(-2)}`
-      return ''
+    path: function () {
+      return `/c/${this.encodedData}`
     },
     url: function () {
-      let date = (this.encodedDate === '' ? '' : '/') + this.encodedDate
-      let title = (this.encodedTitle === '' ? '' : '/') + this.encodedTitle
-      let text = (this.encodedText === '' ? '' : '/') + this.encodedText
-      let valid = this.encodedTitle !== ''
-      if(valid) return `https://day.maiker.de/c${date}${title}${text}`
-      return ''
+      return `${document.location.origin}${this.path}`
     },
     navButtons: function () {
       return [
@@ -84,6 +82,27 @@ export default {
       ]
     }
   },
+
+  methods: {
+    setup() {
+      this.backgroundColor = "hsl(313,100%,50%)"
+      this.textColor = "hsl(133,100%,50%)"
+
+    }
+  },
+
+  beforeRouteLeave (to, from , next) {
+    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+    if (answer) {
+      next()
+    } else {
+      next(false)
+    }
+  },
+
+  mounted() {
+    this.setup()
+  }
 }
 </script>
 

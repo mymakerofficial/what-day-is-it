@@ -43,6 +43,7 @@ name: "Custom",
 
   methods: {
     start: function () {
+      /*
       //is specific day selected
       this.setDay = this.$route.params.year !== undefined && this.$route.params.month !== undefined && this.$route.params.day !== undefined
 
@@ -54,16 +55,22 @@ name: "Custom",
         this.headerSubtitle = this.date.toLocaleDateString("de-de")
       }
 
+       */
+
+      let data = JSON.parse(atob(this.$route.params.data))
+      let dataTitle = data.a
+      let dataText = data.b
+
       // set day
       this.day._data = this.data
       this.day.date = this.date
 
-      this.day.random = Random(`${this.$route.params.title}${this.$route.params.text}`)
+      this.day.random = Random(this.$route.params.data)
 
-      if(this.$route.params.title !== undefined) {
-        this.day.title = (!this.$route.params.title.match("[#|*|{}]") ? "# " : "") + stripHtml(this.$route.params.title).result
+      if(dataTitle !== undefined) {
+        this.day.title = (!dataTitle.match("[#|*|{}]") ? "# " : "") + stripHtml(dataTitle).result
       }
-      if(this.$route.params.text !== undefined) this.day.text = stripHtml(this.$route.params.text).result
+      this.day.text = stripHtml(dataText).result
 
       this.day.color.originalHue = this.day.random * 360
 
