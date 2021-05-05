@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container" :class="{ center: this.center }" ref="body" v-html="textFormatted" v-show="display"></div>
+    <div class="container" :class="{ center: this.center }" ref="body" v-html="textFormatted" v-show="display" :style="{ '--uiColorText': this.textColor }"></div>
   </div>
 </template>
 
@@ -25,9 +25,6 @@ export default {
     },
     text: function () {
       this.animateIn();
-    },
-    textColor: function () {
-      this.$refs.body.style.setProperty('--uiColorText', this.textColor);
     },
   },
 

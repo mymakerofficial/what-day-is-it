@@ -21,20 +21,11 @@ import Things from "./Things";
 export default {
   name: "Footer",
   components: {Things},
-  props: ["text"],
+  props: ["text", "navButtons"],
 
   computed: {
     buttons: function () {
       return this.navButtons.filter(button => button.display)
-    },
-    navButtons: function () {
-      return [
-        {text: "today", path: "/", display: true},
-        {text: "day forecast", path: "/forecast", display: true},
-        {text: "custom day", path: "/custom", display: true},
-        {text: "markdown guide", path: "/markdown", display: true},
-        {text: "about", path: "/about", display: true}
-      ]
     }
   },
 

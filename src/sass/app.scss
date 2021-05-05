@@ -391,6 +391,11 @@ ul li::before {
   border: solid 2px;
 }
 
+img {
+  max-width: 100%;
+  max-height: 420px;
+}
+
 //other
 
 a {
@@ -538,6 +543,11 @@ textarea {
   text-align: center;
   resize: none;
   width: 100%;
+}
+
+.inputInline {
+  display: inline-block;
+  margin: 6px;
 }
 
 textarea:focus,

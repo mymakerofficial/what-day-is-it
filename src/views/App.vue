@@ -4,7 +4,7 @@
       <Header ref="header" :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
       <Body :text="currentDay.text" :textColor="this.currentDay.color.hslSecondary" center="true"></Body>
       <LoadingSpinner :show="loading"></LoadingSpinner>
-      <Footer :text="footerText"></Footer>
+      <Footer :navButtons="navButtons" :text="footerText"></Footer>
     </div>
   </transition>
 </template>
@@ -13,7 +13,7 @@
 import Header from "@/components/Header";
 import Body from "@/components/Body";
 import axios from "axios";
-import {Day} from "../js/day";
+import {Day, isSameDay} from "../js/day";
 import Footer from "../components/Footer";
 import LoadingSpinner from "../components/LoadingSpinner";
 
@@ -46,6 +46,15 @@ export default {
     },
     footerText: function () {
       return this.currentDay.hasAuthor ? `this day was brought to you by <b>${this.currentDay.authors.join(", ")}</b>` : null
+    },
+    navButtons: function () {
+      return [
+        {text: "today", path: "/", display: !isSameDay(this.currentDay.date, new Date())},
+        {text: "day details", path: this.detailsPath, display: true},
+        {text: "day forecast", path: "/forecast", display: true},
+        {text: "custom day", path: "/custom", display: true},
+        {text: "about", path: "/about", display: true}
+      ]
     }
   },
 
