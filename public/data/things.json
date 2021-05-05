@@ -22,6 +22,20 @@
       "source": "https://github.com/Bowserinator/Periodic-Table-JSON/blob/master/PeriodicTableJSON.json"
     },
     {
+      "path": "kaomoji",
+      "data": "/data/thing_of_the_day/kaomoji.json",
+      "name": "Kaomoji",
+      "fullName": "Kaomoji of the day",
+      "source": null
+    },
+    {
+      "path": "abc",
+      "data": "/data/thing_of_the_day/letters.json",
+      "name": "Letter",
+      "fullName": "Letter of the day",
+      "source": null
+    },
+    {
       "path": "qgquotes",
       "data": "/data/thing_of_the_day/quaran_gang_quotes.json",
       "name": "QuaranGang Quotes",
