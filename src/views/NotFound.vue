@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="message.title"></Header>
-    <Body :text="message.text"></Body>
+    <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="message.title" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted"></Header>
+    <Body :text="message.text" :textColor="this.color.hslSecondary" center="true"></Body>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
@@ -12,6 +12,7 @@ import Body from "@/components/Body";
 import axios from "axios";
 import {Random, WeightedRandom} from "../js/random";
 import Footer from "../components/Footer";
+import {Color} from "../js/color";
 
 export default {
   name: "NotFound",
@@ -30,7 +31,8 @@ export default {
       message: {
         "title": "",
         "text": ""
-      }
+      },
+      color: new Color()
     }
   },
 
@@ -50,12 +52,10 @@ export default {
 
       this.random = Random(window.location.pathname)
 
-      console.log(this.data.messages)
+      this.color.originalHue = this.random * 360
+
       this.message = this.data.messages[WeightedRandom(this.random, this.data.messages.map((d) => d.weight))];
 
-      //set color
-      document.querySelector(':root').style.setProperty('--uiColorPrimary', `hsl(${this.random * 360},100%,50%)`);
-      document.querySelector(':root').style.setProperty('--uiColorSecondary', `hsl(${(this.random * 360 + 180) % 360},100%,50%)`);
     },
     loadData(){
       // load day text database
@@ -68,7 +68,7 @@ export default {
     },
   },
 
-  cbeforeRouteEnter(to, from, next) {
+  beforeRouteEnter(to, from, next) {
     next(vm => {
       vm.loadData()
     })

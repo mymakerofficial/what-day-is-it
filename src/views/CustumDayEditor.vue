@@ -1,13 +1,13 @@
 <template>
   <div>
     <Header :headerTitle="pageTitle"></Header>
-    <div class="container">
-      <input :value="url" style="width: 100%">
-      <router-link target=”_blank” :to="{path: path}"><i class="mdi mdi-open-in-new"></i></router-link>
+    <div class="container center">
+      <input :value="url" style="width: 50%;display: inline-block">
+      <router-link target=”_blank” :to="{path: path}"><i class="mdi mdi-open-in-new" style="margin: 24px;font-size: 1.5em"></i></router-link>
     </div>
     <div class="dayEditorContainer">
       <div class="dayEditorHalf">
-        <input type="date" id="start" name="trip-start" class="dayDateInput" v-show="false">
+        <!--<input type="date" id="start" name="trip-start" class="dayDateInput">-->
         <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }"></textarea>
         <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }"></textarea>
       </div>

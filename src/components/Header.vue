@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="header" ref="header" v-show="display">
+    <div class="header" ref="header" v-show="display" :style="{ '--uiColorBackground': this.backgroundColor, '--uiColorText': this.textColor }">
       <div class="headerTitle">{{headerTitle}}</div>
       <div class="headerSubtitle" v-if="headerSubtitle">{{headerSubtitle}}</div>
       <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
@@ -33,12 +33,6 @@ export default {
         this.animateIn();
         this.loaded = true;
       }
-    },
-    backgroundColor: function () {
-      this.$refs.header.style.setProperty('--uiColorBackground', this.backgroundColor);
-    },
-    textColor: function () {
-      this.$refs.header.style.setProperty('--uiColorText', this.textColor);
     }
   },
 
