@@ -24,15 +24,15 @@
     {
       "path": "kaomoji",
       "data": "/data/thing_of_the_day/kaomoji.json",
-      "name": "Kaomoji",
-      "fullName": "Kaomoji of the day",
+      "name": "kaomoji",
+      "fullName": "kaomoji of the day",
       "source": null
     },
     {
       "path": "abc",
       "data": "/data/thing_of_the_day/letters.json",
       "name": "Letter",
-      "fullName": "Letter of the day",
+      "fullName": "letter of the day",
       "source": null
     },
     {
