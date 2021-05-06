@@ -15,6 +15,7 @@ import {Color} from "../js/color";
 import axios from "axios";
 import {Random, WeightedRandom} from "../js/random.js";
 import LoadingSpinner from "../components/LoadingSpinner";
+import {getDateFromDate} from "../js/date";
 
 export default {
   name: "ThingOfTheDay",
@@ -65,16 +66,7 @@ export default {
       }
     },
     setThing(){
-      //get start of day
-      let date = new Date()
-      this.year = date.getFullYear()
-      this.month = date.getMonth()+1
-      this.day = date.getDate()
-
-      //get date
-      if(this.year !== undefined && this.month !== undefined && this.day !== undefined) this.date = new Date(this.year, this.month-1, this.day, 0, 0, 0, 0);
-
-      this.random = Random(this.date)
+      this.random = Random(getDateFromDate(new Date()))
 
       this.headerTitle = this.thing.fullName;
       this.color.originalHue = this.random * 360;

@@ -16,6 +16,7 @@ import axios from "axios";
 import {Day, isSameDay} from "../js/day";
 import Footer from "../components/Footer";
 import LoadingSpinner from "../components/LoadingSpinner";
+import {getDate} from "../js/date";
 
 export default {
   name: 'App',
@@ -64,24 +65,13 @@ export default {
       //is specific day selected
       this.setDay = this.year !== undefined && this.month !== undefined && this.day !== undefined
 
-      //get start of day
-      if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY === "true" && !this.setDay){
-        let date = new Date()
-        this.year = date.getFullYear()
-        this.month = date.getMonth()+1
-        this.day = date.getDate()
-      }
-
-      //get date
-      if(this.year !== undefined && this.month !== undefined && this.day !== undefined) this.date = new Date(this.year, this.month-1, this.day, 0, 0, 0, 0);
-
       //change header
       if(this.setDay) {
-        this.headerSubtitle = this.date.toLocaleDateString("de-de")
+        this.headerSubtitle = getDate(this.year, this.month, this.day).toLocaleDateString("de-de")
       }
 
       //start day
-      this.currentDay.set(this.date, this.data)
+      this.currentDay.set(this.setDay ? getDate(this.year, this.month, this.day) : new Date(), this.data)
     },
     loadData(){
       // load day text database

@@ -4,6 +4,7 @@ import {Keyword} from "./keywords";
 import {markdown} from "../js/markdown";
 import { stripHtml } from "string-strip-html";
 import {Color} from "./color";
+import {getDateFromDate} from "./date";
 
 const dayTextList = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 
@@ -33,29 +34,17 @@ class Day {
 
     set(date, data) {
         if(date != null && data != null) {
-            this.date = date;// get Date from unix timestamp
+            this.date = getDateFromDate(date);
             this._data = data
 
             // generate randomness
-            if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY === "true"){
-                this.randomInput = this.date.getTime()
-            }else{
-                this.randomInput = Math.floor((this.date.getTime() + process.env.VUE_APP_DAY_OFFSET) / process.env.VUE_APP_DAY_DURATION)
-            }
+            this.randomInput = this.date.getTime()
             this.random = Random(this.randomInput)
 
             // select day data
             let list = this._data.any.concat(this._data.days[this.dayIndex])
 
             this.dayData = list[WeightedRandom(this.random, list.map((d) => d.weight))];
-
-            /*
-            if(WeightedRandom(this.random, [3, 1])){
-                this.dayData = this._data.days[this.dayIndex][WeightedRandom(this.random, this._data.days[this.dayIndex].map((d) => d.weight))]
-            }else{
-                this.dayData = this._data.any[WeightedRandom(this.random, this._data.any.map((d) => d.weight))];
-            }
-             */
 
             this.title = this.dayData.title
             this.text = this.dayData.text

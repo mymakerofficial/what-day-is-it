@@ -19,6 +19,7 @@ import {Day} from "../js/day";
 import Header from "../components/Header";
 import anime from "animejs";
 import Footer from "../components/Footer";
+import {getDateFromDate} from "../js/date";
 
 export default {
   name: "Forecast",
@@ -49,19 +50,7 @@ export default {
 
   methods: {
     start: function () {
-      //is specific day selected
-      this.setDay = this.year !== undefined && this.month !== undefined && this.day !== undefined
-
-      //get start of day
-      if(!this.setDay){
-        let date = new Date()
-        this.year = date.getFullYear()
-        this.month = date.getMonth()+1
-        this.day = date.getDate()
-      }
-
-      //get date
-      if(this.year !== undefined && this.month !== undefined && this.day !== undefined) this.date = new Date(this.year, this.month-1, this.day, 0, 0, 0, 0);
+      this.date = getDateFromDate(new Date())
 
       let length = process.env.VUE_APP_FORECAST_DEFAULT_LENGHT
 
