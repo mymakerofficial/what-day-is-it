@@ -462,11 +462,15 @@ tr:nth-child(even) {
 
 .footer {
   background-color: $uiLightSecondary;
-  color: $uiDarkSecondary3;
+  color: $uiDarkSecondary3 !important;
   display: inline-block;
   margin: 32px;
   padding: 23px 42px;
   letter-spacing: 1.5px;
+}
+
+.footer a {
+  color: $uiDarkSecondary3 !important;
 }
 
 .footerSection {

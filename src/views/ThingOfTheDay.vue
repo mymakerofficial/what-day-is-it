@@ -3,7 +3,7 @@
     <Header :headerTitle="headerTitle" :title="title" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted"></Header>
     <Body :text="text" center="true" :textColor="this.color.hslSecondary"></Body>
     <LoadingSpinner :show="loading"></LoadingSpinner>
-    <Footer :navButtons="navButtons"></Footer>
+    <Footer :navButtons="navButtons" :text="footerText"></Footer>
   </div>
 </template>
 
@@ -43,6 +43,10 @@ export default {
         {text: "custom day", path: "/custom", display: true},
         {text: "about", path: "/about", display: true}
       ]
+    },
+    footerText: function () {
+      if(this.thing.source && this.thing.sourceText) return `source: <b><a href="${this.thing.source}">${this.thing.sourceText}</a></b>`
+      return ""
     },
     title: function () {
       return this.message.title
