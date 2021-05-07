@@ -1,4 +1,6 @@
 # what-day-is-it ([day.maiker.de](https://day.maiker.de))
+![GitHub branch checks state](https://img.shields.io/github/checks-status/mymakerofficial/what-day-is-it/master) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fday.maiker.de) ![GitHub last commit](https://img.shields.io/github/last-commit/mymakerofficial/what-day-is-it) ![made-with-vue](https://img.shields.io/badge/Made%20with-Vue-41b883.svg) [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+&nbsp;
 
 ### **A website that *maybe* tells you what day it is.**
 
@@ -6,7 +8,6 @@
 
 > We hand select only the best days from our selection of the most expertly crafted days. Made by the most experienced day craftsmen who have years of experience crafting the finest days known to mankind.
 
-\- The [day.maiker.de](https://day.maiker.de) management team, 2021
 
 &nbsp;
 
