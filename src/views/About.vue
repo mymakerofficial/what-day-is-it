@@ -40,25 +40,14 @@ export default {
 
   methods: {
     start: function () {
-      //get start of day
-      if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY === "true" && !this.setDay){
-        let date = new Date()
-        this.year = date.getFullYear()
-        this.month = date.getMonth()+1
-        this.day = date.getDate()
-      }
-
-      //get date
-      if(this.year !== undefined && this.month !== undefined && this.day !== undefined) this.date = new Date(this.year, this.month-1, this.day, 0, 0, 0, 0);
-
-
       //start day
-      this.currentDay.set(this.date, this.data)
+      this.currentDay.set(new Date(), this.data)
     },
     loadData(){
-      // load day text database
+      // load about text
       axios.get(`/data/about.md`).then(response => {
         this.text = response.data
+        //load days
         axios.get(`/data/days.json`).then(response => {
           this.data = response.data
           this.start()

@@ -152,6 +152,7 @@ import Header from "../components/Header";
 import axios from "axios";
 import {Day} from "../js/day";
 import Footer from "../components/Footer";
+import {getDate} from "../js/date";
 export default {
   name: "DayDetails",
 
@@ -164,7 +165,6 @@ export default {
       headerTitle: "day details",
       headerSubtitle: null,
       title: "#### ***This is how we made this day!***",
-      date: new Date(),
       currentDay: new Day()
     }
   },
@@ -183,28 +183,13 @@ export default {
 
   methods: {
     start: function () {
-
-      //is specific day selected
-      this.setDay = this.year !== undefined && this.month !== undefined && this.day !== undefined
-
-      //get start of day
-      if(process.env.VUE_APP_ALWAYS_USE_START_OF_DAY === "true" && !this.setDay){
-        let date = new Date()
-        this.year = date.getFullYear()
-        this.month = date.getMonth()+1
-        this.day = date.getDate()
-      }
-
-      //get date
-      if(this.year !== undefined && this.month !== undefined && this.day !== undefined) this.date = new Date(this.year, this.month-1, this.day, 0, 0, 0, 0);
-
       //change header
       if(this.setDay) {
-        this.headerSubtitle = this.date.toLocaleDateString("de-de")
+        this.headerSubtitle = getDate(this.year, this.month, this.day).toLocaleDateString("de-de")
       }
 
       //start day
-      this.currentDay.set(this.date, this.data)
+      this.currentDay.set(getDate(this.year, this.month, this.day), this.data)
     },
     findColor(string){
       try {

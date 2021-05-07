@@ -5,42 +5,56 @@
       "data": "/data/thing_of_the_day/emojis.json",
       "name": "emoji",
       "fullName": "emoji of the day",
-      "source": null
+      "source": null,
+      "sourceText": null
     },
     {
       "path": "icon",
       "data": "/data/thing_of_the_day/icons.json",
       "name": "icon",
       "fullName": "icon of the day",
-      "source": "https://github.com/Templarian/MaterialDesign/blob/master/meta.json"
+      "source": "https://github.com/Templarian/MaterialDesign/blob/master/meta.json",
+      "sourceText": "Templarian/MaterialDesign"
     },
     {
       "path": "element",
       "data": "/data/thing_of_the_day/elements.json",
       "name": "element",
       "fullName": "element of the day",
-      "source": "https://github.com/Bowserinator/Periodic-Table-JSON/blob/master/PeriodicTableJSON.json"
+      "source": "https://github.com/Bowserinator/Periodic-Table-JSON/blob/master/PeriodicTableJSON.json",
+      "sourceText": "Bowserinator/Periodic-Table-JSON"
+    },
+    {
+      "path": "animal",
+      "data": "/data/thing_of_the_day/animals.json",
+      "name": "animal",
+      "fullName": "animal of the day",
+      "source": "https://github.com/boennemann/animals/blob/master/words.json",
+      "sourceText": "boennemann/animals"
     },
     {
       "path": "kaomoji",
       "data": "/data/thing_of_the_day/kaomoji.json",
       "name": "kaomoji",
       "fullName": "kaomoji of the day",
-      "source": null
+      "source": "https://github.com/duckduckgo/zeroclickinfo-goodies/blob/master/share/goodie/cheat_sheets/json/kaomoji.json",
+      "sourceText": "duckduckgo/zeroclickinfo-goodies"
     },
     {
       "path": "abc",
       "data": "/data/thing_of_the_day/letters.json",
-      "name": "Letter",
+      "name": "letter",
       "fullName": "letter of the day",
-      "source": null
+      "source": null,
+      "sourceText": null
     },
     {
       "path": "qgquotes",
       "data": "/data/thing_of_the_day/quaran_gang_quotes.json",
       "name": "QuaranGang Quotes",
       "fullName": "QuaranGang quote of the day",
-      "source": null
+      "source": null,
+      "sourceText": null
     }
   ]
 }
