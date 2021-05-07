@@ -2,8 +2,9 @@
   <div>
     <LoadingSpinner :show="!loaded"></LoadingSpinner>
     <div class="containerThin" ref="container" v-if="display">
-      <router-link :to="{path:'/'}" class="button" v-bind:class="{ inverted: this.$route.name === 'app' }">what's the day?</router-link>
-      <router-link :to="{path: `/day/${thing.path}`}" class="button" v-bind:class="{ inverted: isCurrentThing(thing.path) }" v-for="thing in this.things" :key="thing.path">{{thing.fullName}}</router-link>
+      <router-link :to="{path:'/'}" class="button" v-if="day" v-bind:class="{ inverted: this.$route.name === 'app' }">what's the day?</router-link>
+      <router-link :to="{path: `/day/${thing.path}`}" class="button" v-bind:class="{ inverted: isCurrentThing(thing.path) }" v-for="thing in this.list" :key="thing.path">{{thing.fullName}}</router-link>
+      <router-link :to="{path:'/things'}" class="button" v-if="!all">...</router-link>
     </div>
   </div>
 </template>
@@ -16,11 +17,28 @@ import LoadingSpinner from "./LoadingSpinner";
 export default {
   name: "Things",
   components: {LoadingSpinner},
+
+  props: ["showAll","showDay"],
+
   data() {
     return {
       things: [],
       loaded: false,
-      display: false
+      display: false,
+      length: 4
+    }
+  },
+
+  computed: {
+    list: function () {
+      if(this.all) return this.things
+      return this.things.slice(0, this.length)
+    },
+    all: function () {
+      return this.showAll === undefined ? true : Boolean(this.showAll)
+    },
+    day: function () {
+      return this.showDay === undefined ? true : !this.showAll
     }
   },
 
