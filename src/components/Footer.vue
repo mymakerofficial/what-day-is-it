@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="footerContainer">
-      <Things></Things>
+      <Things v-show="things" :showAll="false"></Things>
       <div class="footer" ref="container">
         <div class="footerSection" id="footerButtons">
             <router-link v-for="button in this.buttons" :key="button.text" :to="{path: button.path}" class="navButton" ref="navButton">{{button.text}}</router-link>
@@ -21,11 +21,14 @@ import Things from "./Things";
 export default {
   name: "Footer",
   components: {Things},
-  props: ["text", "navButtons"],
+  props: ["text", "navButtons", "displayThings"],
 
   computed: {
     buttons: function () {
       return this.navButtons.filter(button => button.display)
+    },
+    things: function () {
+      return this.displayThings === undefined ? true : this.displayThings
     }
   },
 

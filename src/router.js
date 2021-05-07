@@ -9,6 +9,7 @@ import dayEditor from './views/CustumDayEditor.vue';
 import embed from './views/Embed.vue';
 import markdown from './views/MarkdownGuide.vue';
 import thing from './views/ThingOfTheDay.vue';
+import things from './views/ThingsList.vue';
 
 const routes = [
     { path: '/', name: 'app', component: app },
@@ -20,6 +21,7 @@ const routes = [
     { path: '/(custom|c)', name: 'custom_day_editor', component: dayEditor },
     { path: '/day/:thing', name: 'thingOfTheDay', component: thing },
     { path: '/forecast', name: 'forecast', component: forecast },
+    { path: '/things', name: 'things', component: things },
     { path: '/embed', name: 'embed', component: embed },
     { path: '*', name: 'not_found', component: notFound }
 ]
