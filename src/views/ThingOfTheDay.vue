@@ -70,7 +70,7 @@ export default {
       }
     },
     setThing(){
-      this.random = Random(getDateFromDate(new Date()))
+      this.random = Random(getDateFromDate(new Date()).getTime())
 
       this.headerTitle = this.thing.fullName;
       this.color.originalHue = this.random * 360;
