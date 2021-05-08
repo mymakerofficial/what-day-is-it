@@ -36,7 +36,6 @@ export default {
       data: {"days": [],"any":[]},
       date: new Date(),
       headerTitle: "what's the day?",
-      headerSubtitle: null,
       currentDay: new Day()
     }
   },
@@ -56,6 +55,10 @@ export default {
         {text: "custom day", path: "/custom", display: true},
         {text: "about", path: "/about", display: true}
       ]
+    },
+    headerSubtitle: function () {
+      if(this.currentDay.date) return this.currentDay.date.toLocaleDateString("de-de")
+      return ""
     }
   },
 
@@ -64,11 +67,6 @@ export default {
 
       //is specific day selected
       this.setDay = this.year !== undefined && this.month !== undefined && this.day !== undefined
-
-      //change header
-      if(this.setDay) {
-        this.headerSubtitle = getDate(this.year, this.month, this.day).toLocaleDateString("de-de")
-      }
 
       //start day
       this.currentDay.set(this.setDay ? getDate(this.year, this.month, this.day) : new Date(), this.data)
