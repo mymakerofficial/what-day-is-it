@@ -4,7 +4,7 @@
 
 &nbsp;
 ***
-## **OpenSource**
+## **Open Source**
 
 day.maiker.de uses open source projects to work. Check them out!
 
