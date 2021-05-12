@@ -33,6 +33,14 @@
       "sourceText": "boennemann/animals"
     },
     {
+      "path": "uselessfact",
+      "data": "/data/thing_of_the_day/useless_facts.json",
+      "name": "useless fact",
+      "fullName": "useless fact of the day",
+      "source": null,
+      "sourceText": null
+    },
+    {
       "path": "kaomoji",
       "data": "/data/thing_of_the_day/kaomoji.json",
       "name": "kaomoji",
