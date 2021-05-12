@@ -87,6 +87,8 @@ class Day {
     }
 
     createKeywords() {
+        this.keywords = []
+
         //days
         this.keywords.push(new Keyword("current_day_text", dayTextList[this.dayIndex]))
         this.keywords.push(new Keyword("current_day_index_start_mo", `${(((this.dayIndex-1)% 6) + 6) % 6}`))

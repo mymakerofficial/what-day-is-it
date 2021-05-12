@@ -4,20 +4,36 @@
     <div class="container center">
       <input :value="url" style="width: 50%;display: inline-block">
       <router-link target=”_blank” :to="{path: path}"><i class="mdi mdi-open-in-new" style="margin: 24px;font-size: 1.5em"></i></router-link>
+      <!--
+      <div class="textareaContainer">
+        <div class="label">date</div>
+        <input type="date" class="dayDateInput">
+      </div>
+      <div class="textareaContainer">
+        <div class="label">seed</div>
+        <input type="text">
+      </div>
+      -->
     </div>
-    <div class="dayEditorContainer">
+    <LoadingSpinner :show="!loaded"></LoadingSpinner>
+    <div class="dayEditorContainer" v-if="loaded">
       <div class="dayEditorHalf">
-        <!--<input type="date" id="start" name="trip-start" class="dayDateInput">-->
-        <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }"></textarea>
-        <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }"></textarea>
+        <div class="textareaContainer">
+          <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }"></textarea>
+          <div class="textareaFooter right"><i class="mdi mdi-language-markdown"></i></div>
+        </div>
+        <div class="textareaContainer" :style="{ marginTop: `64px` }">
+          <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }"></textarea>
+          <div class="textareaFooter right"><i class="mdi mdi-language-markdown"></i></div>
+        </div>
       </div>
       <div class="dayEditorHalf">
-        <div class="header" ref="header" :style="{ '--uiColorBackground': backgroundColor, '--uiColorText': textColor }">
-          <div class="headerTitle">your own day!</div>
+        <div class="header" ref="header" :style="{ '--uiColorBackground': this.color.hsl, '--uiColorText': this.color.hslInverted }">
+          <div class="headerTitle">what's the day?</div>
           <div class="headerSubtitle" v-show="false">01.01.2021</div>
           <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
         </div>
-        <div class="body" ref="body">
+        <div class="body" :style="{ '--uiColorText': this.color.hslSecondary }">
           <div class="dayText" ref="body" v-html="textFormatted"></div>
         </div>
       </div>
@@ -33,33 +49,39 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {stripHtml} from "string-strip-html";
 import {markdown} from "../js/markdown";
+import {Color} from "../js/color";
+import {Random} from "../js/random";
+import {getDateFromDate} from "../js/date";
+import {Day} from "../js/day";
+import axios from "axios";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default {
   name: "CustumDayEditor",
-  components: {Footer, Header},
+  components: {LoadingSpinner, Footer, Header},
 
   data() {
     return {
       pageTitle: "make your own day",
       title: "# The Day",
       text: "it really do be",
-      year: "0",
-      month: "0",
-      day: "0",
       usesDate: false,
-      backgroundColor: "",
-      textColor: "",
+      data: {"days": [],"any":[]},
+      date: new Date(),
+      color: new Color(Random(getDateFromDate(new Date()).getTime()) * 360),
       headerHeight: "300px",
-      bodyHeight: "300px"
+      bodyHeight: "300px",
+      day: new Day(),
+      loaded: false
     }
   },
 
   computed: {
     titleFormatted: function () {
-      return this.title ? markdown(this.title) : ""
+      return this.title ? markdown(this.day.title) : ""
     },
     textFormatted: function () {
-      return this.title ? markdown(this.text) : ""
+      return this.title ? markdown(this.day.text) : ""
     },
     encodedData: function () {
       return btoa(JSON.stringify({
@@ -83,11 +105,47 @@ export default {
     }
   },
 
-  methods: {
-    setup() {
-      this.backgroundColor = "hsl(313,100%,50%)"
-      this.textColor = "hsl(133,100%,50%)"
+  watch: {
+    title: function (){
+      this.update();
+    },
+    text: function () {
+      this.update();
+    },
+  },
 
+  methods: {
+    start() {
+      this.day = new Day(this.date, this.data)
+      this.title = this.day.title;
+      this.text = this.day.text;
+
+      this.update();
+    },
+    update() {
+      if(this.loaded){
+        //this.headerHeight = `${this.$refs.header.scrollHeight - 37}px`
+        //this.bodyHeight = `${this.$refs.body.scrollHeight + 64}px`
+
+        this.day.title = this.title
+        this.day.text = this.text
+
+        this.day.random = Random(this.encodedData)
+        this.day.color.originalHue = this.day.random * 360
+
+        this.day.createKeywords()
+        this.day.replaceKeywords()
+      }
+    },
+    loadData(){
+      // load day text database
+      axios.get(`/data/days.json`).then(response => {
+        this.data = response.data
+        this.loaded = true
+        this.start()
+      }).catch(error => {
+        console.log(error)
+      })
     }
   },
 
@@ -100,9 +158,16 @@ export default {
     }
   },
 
-  mounted() {
-    this.setup()
-  }
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.loadData()
+    })
+  },
+
+  beforeRouteUpdate(to, from, next) {
+    this.loadData()
+    next()
+  },
 }
 </script>
 
