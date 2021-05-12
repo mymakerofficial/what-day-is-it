@@ -41,7 +41,7 @@ export default {
       return this.title ? markdown(this.title) : ""
     },
     show: function () {
-      return this.display && this.title
+      return this.display && (this.title || this.headerTitle)
     }
   },
 
