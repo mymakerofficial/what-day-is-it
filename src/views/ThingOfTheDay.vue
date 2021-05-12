@@ -45,7 +45,6 @@ export default {
       ]
     },
     footerText: function () {
-      console.log(this.message)
       return this.message.author ? `this <b>${this.thing.fullName}</b> was brought to you by <b>${this.message.author}</b><br>` : "" + this.thing.source && this.thing.sourceText ? `source: <b><a href="${this.thing.source}">${this.thing.sourceText}</a></b>` : ""
     },
     title: function () {
@@ -63,6 +62,7 @@ export default {
       if(this.thing){
         axios.get(this.thing.data).then(response => {
           this.messages = response.data.messages
+          this.loading = false
           this.setThing()
         }).catch(error => {
           console.log(error)
@@ -81,7 +81,6 @@ export default {
       // load database
       axios.get(`/data/things.json`).then(response => {
         this.things = response.data.things
-        this.loading = false
         this.start()
       }).catch(error => {
         console.log(error)

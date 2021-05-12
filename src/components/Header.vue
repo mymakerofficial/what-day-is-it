@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="header" ref="header" v-show="display" :style="{ '--uiColorBackground': this.backgroundColor, '--uiColorText': this.textColor }">
+    <div class="header" ref="header" v-show="show" :style="{ '--uiColorBackground': this.backgroundColor, '--uiColorText': this.textColor }">
       <div class="headerTitle">{{headerTitle}}</div>
       <div class="headerSubtitle" v-if="headerSubtitle">{{headerSubtitle}}</div>
       <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
@@ -39,6 +39,9 @@ export default {
   computed: {
     titleFormatted: function () {
       return this.title ? markdown(this.title) : ""
+    },
+    show: function () {
+      return this.display && this.title
     }
   },
 
