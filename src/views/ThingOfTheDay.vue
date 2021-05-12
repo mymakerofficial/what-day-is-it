@@ -62,6 +62,7 @@ export default {
       if(this.thing){
         axios.get(this.thing.data).then(response => {
           this.messages = response.data.messages
+          this.loading = false
           this.setThing()
         }).catch(error => {
           console.log(error)
@@ -80,7 +81,6 @@ export default {
       // load database
       axios.get(`/data/things.json`).then(response => {
         this.things = response.data.things
-        this.loading = false
         this.start()
       }).catch(error => {
         console.log(error)
