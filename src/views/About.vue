@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :headerTitle="headerTitle" :title="title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
+    <Header :headerTitle="headerTitle" :title="title" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted"></Header>
     <Body :text="text" :navButtons="navButtons"></Body>
     <Footer :navButtons="navButtons"></Footer>
   </div>
@@ -11,7 +11,9 @@ import Header from "../components/Header";
 import Body from "../components/Body";
 import axios from "axios";
 import Footer from "../components/Footer";
-import {Day} from "../js/day";
+import {Random} from "../js/random";
+import {getDateFromDate} from "../js/date";
+import {Color} from "../js/color";
 
 export default {
   name: "About",
@@ -24,7 +26,7 @@ export default {
       text: '',
       data: {"days": [],"any":[]},
       date: new Date(),
-      currentDay: new Day(),
+      color: new Color(Random(getDateFromDate(new Date()).getTime()) * 360)
     }
   },
 
@@ -39,21 +41,10 @@ export default {
   },
 
   methods: {
-    start: function () {
-      //start day
-      this.currentDay.set(new Date(), this.data)
-    },
     loadData(){
       // load about text
       axios.get(`/data/about.md`).then(response => {
         this.text = response.data
-        //load days
-        axios.get(`/data/days.json`).then(response => {
-          this.data = response.data
-          this.start()
-        }).catch(error => {
-          console.log(error)
-        })
       }).catch(error => {
         console.log(error)
       })
