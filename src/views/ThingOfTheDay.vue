@@ -45,7 +45,6 @@ export default {
       ]
     },
     footerText: function () {
-      console.log(this.message)
       return this.message.author ? `this <b>${this.thing.fullName}</b> was brought to you by <b>${this.message.author}</b><br>` : "" + this.thing.source && this.thing.sourceText ? `source: <b><a href="${this.thing.source}">${this.thing.sourceText}</a></b>` : ""
     },
     title: function () {
