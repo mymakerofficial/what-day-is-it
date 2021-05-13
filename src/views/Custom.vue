@@ -1,8 +1,8 @@
 <template>
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="day.title" :backgroundColor="this.day.color.hsl" :textColor="this.day.color.hslInverted"></Header>
-    <Body :text="day.text" :textColor="this.day.color.hslInverted" center="true"></Body>
-    <Footer :navButtons="navButtons"></Footer>
+    <Body :text="day.text" :textColor="this.day.color.hslSecondary" center="true"></Body>
+    <Footer :navButtons="navButtons" text="This is a custom day and was not made by the creators of this website."></Footer>
   </div>
 </template>
 
@@ -24,8 +24,6 @@ name: "Custom",
       headerTitle: "what's the day?",
       headerSubtitle: null,
       data: {"days": [],"any":[]},
-      setDay: false,
-      date: new Date(),
       day: new Day()
     }
   },
@@ -43,29 +41,17 @@ name: "Custom",
 
   methods: {
     start: function () {
-      /*
-      //is specific day selected
-      this.setDay = this.$route.params.year !== undefined && this.$route.params.month !== undefined && this.$route.params.day !== undefined
-
-      //get date
-      if(this.$route.params.year !== undefined && this.$route.params.month !== undefined && this.$route.params.day !== undefined) this.date = new Date(parseInt(this.$route.params.year), parseInt(this.$route.params.month)-1, parseInt(this.$route.params.day), 0, 0, 0, 0);
-
-      //change header
-      if(this.setDay) {
-        this.headerSubtitle = this.date.toLocaleDateString("de-de")
-      }
-
-       */
-
+      // get data
       let data = JSON.parse(atob(this.$route.params.data))
       let dataTitle = data.a
       let dataText = data.b
+      let seed = data.s
 
       // set day
       this.day._data = this.data
       this.day.date = this.date
 
-      this.day.random = Random(this.$route.params.data)
+      this.day.random = Random(seed)
 
       if(dataTitle !== undefined) {
         this.day.title = (!dataTitle.match("[#|*|{}]") ? "# " : "") + stripHtml(dataTitle).result

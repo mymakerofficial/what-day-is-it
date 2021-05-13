@@ -584,6 +584,11 @@ input:focus {
   margin: 16px 0;
 }
 
+.textareaContainer input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .textareaFooter {
   text-align: left;
   background-color: $uiLight2;
