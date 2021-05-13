@@ -38,6 +38,9 @@
         </div>
       </div>
     </div>
+    <div class="container center">
+      <button v-on:click="randomize">randomize <i class="mdi mdi-dice-5"></i></button>
+    </div>
     <div class="container">
       <Footer :navButtons="navButtons"></Footer>
     </div>
@@ -143,6 +146,22 @@ export default {
         this.day.createKeywords()
         this.day.replaceKeywords()
       }
+    },
+    randomize() {
+      this.seed = getDateFromDate(new Date(+(new Date()) - Math.floor(Math.random()*10000000000))).getTime()
+
+      let day = new Day(new Date, this.data)
+
+      day.random = Random(this.seed)
+
+      day.setDayData()
+      day.createKeywords()
+      day.replaceKeywords()
+
+      this.title = day.dayData.title !== null ? day.dayData.title : `# {{current_day_text}}`;
+      this.text = day.dayData.text !== null  ? day.dayData.text : "";
+
+      this.update();
     },
     loadData(){
       // load day text database

@@ -42,14 +42,7 @@ class Day {
             this.random = Random(this.randomInput)
 
             // select day data
-            let list = this._data.any.concat(this._data.days[this.dayIndex])
-
-            this.dayData = list[WeightedRandom(this.random, list.map((d) => d.weight))];
-
-            this.title = this.dayData.title
-            this.text = this.dayData.text
-            this.author = this.dayData.author
-            this.authors.push(this.author)
+            this.setDayData()
 
             //set color
             this.color.originalHue = this.random * 360
@@ -61,9 +54,20 @@ class Day {
         }
     }
 
+    setDayData() {
+        let list = this._data.any.concat(this._data.days[this.dayIndex])
+
+        this.dayData = list[WeightedRandom(this.random, list.map((d) => d.weight))];
+
+        this.title = this.dayData.title
+        this.text = this.dayData.text
+        this.author = this.dayData.author
+        this.authors.push(this.author)
+    }
+
     replaceKeywords() {
         // replace null
-        if (this.title == null) this.title = `# {{current_day_text}}`
+        if (this.title == null || this.title == "") this.title = `# {{current_day_text}}`
         if (this.text == null) this.text = ""
 
         // replace keywords

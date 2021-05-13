@@ -24,7 +24,8 @@ name: "Custom",
       headerTitle: "what's the day?",
       headerSubtitle: null,
       data: {"days": [],"any":[]},
-      day: new Day()
+      day: new Day(),
+      date: new Date()
     }
   },
 
@@ -53,9 +54,12 @@ name: "Custom",
 
       this.day.random = Random(seed)
 
+      /*
       if(dataTitle !== undefined) {
         this.day.title = (!dataTitle.match("[#|*|{}]") ? "# " : "") + stripHtml(dataTitle).result
       }
+       */
+      this.day.title = stripHtml(dataTitle).result
       this.day.text = stripHtml(dataText).result
 
       this.day.color.originalHue = this.day.random * 360
