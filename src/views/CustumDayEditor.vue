@@ -4,27 +4,27 @@
     <div class="container center">
       <input :value="url" style="width: 50%;display: inline-block">
       <router-link target=”_blank” :to="{path: path}"><i class="mdi mdi-open-in-new" style="margin: 24px;font-size: 1.5em"></i></router-link>
-      <!--
-      <div class="textareaContainer">
-        <div class="label">date</div>
-        <input type="date" class="dayDateInput">
-      </div>
-      <div class="textareaContainer">
-        <div class="label">seed</div>
-        <input type="text">
-      </div>
-      -->
     </div>
     <LoadingSpinner :show="!loaded"></LoadingSpinner>
     <div class="dayEditorContainer" v-if="loaded">
       <div class="dayEditorHalf">
         <div class="textareaContainer">
+          <div class="label">title</div>
           <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }"></textarea>
           <div class="textareaFooter right"><i class="mdi mdi-language-markdown"></i></div>
         </div>
-        <div class="textareaContainer" :style="{ marginTop: `64px` }">
+        <div class="textareaContainer">
+          <div class="label">text</div>
           <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }"></textarea>
           <div class="textareaFooter right"><i class="mdi mdi-language-markdown"></i></div>
+        </div>
+        <!--<div class="textareaContainer">
+          <div class="label">date</div>
+          <input type="date" class="dayDateInput">
+        </div>-->
+        <div class="textareaContainer">
+          <div class="label">seed</div>
+          <input type="text" v-model="seed">
         </div>
       </div>
       <div class="dayEditorHalf">
@@ -37,6 +37,9 @@
           <div class="dayText" ref="body" v-html="textFormatted"></div>
         </div>
       </div>
+    </div>
+    <div class="container center">
+      <button v-on:click="randomize">randomize <i class="mdi mdi-dice-5"></i></button>
     </div>
     <div class="container">
       <Footer :navButtons="navButtons"></Footer>
@@ -72,7 +75,8 @@ export default {
       headerHeight: "300px",
       bodyHeight: "300px",
       day: new Day(),
-      loaded: false
+      loaded: false,
+      seed: getDateFromDate(new Date()).getTime()
     }
   },
 
@@ -86,7 +90,8 @@ export default {
     encodedData: function () {
       return btoa(JSON.stringify({
         a: stripHtml(this.title).result,
-        b: stripHtml(this.text).result
+        b: stripHtml(this.text).result,
+        s: this.seed
       }))
     },
     path: function () {
@@ -112,6 +117,9 @@ export default {
     text: function () {
       this.update();
     },
+    seed: function () {
+      this.update();
+    },
   },
 
   methods: {
@@ -130,12 +138,30 @@ export default {
         this.day.title = this.title
         this.day.text = this.text
 
-        this.day.random = Random(this.encodedData)
+        this.day.random = Random(this.seed)
         this.day.color.originalHue = this.day.random * 360
+
+        this.color = this.day.color
 
         this.day.createKeywords()
         this.day.replaceKeywords()
       }
+    },
+    randomize() {
+      this.seed = getDateFromDate(new Date(+(new Date()) - Math.floor(Math.random()*10000000000))).getTime()
+
+      let day = new Day(new Date, this.data)
+
+      day.random = Random(this.seed)
+
+      day.setDayData()
+      day.createKeywords()
+      day.replaceKeywords()
+
+      this.title = day.dayData.title !== null ? day.dayData.title : `# {{current_day_text}}`;
+      this.text = day.dayData.text !== null  ? day.dayData.text : "";
+
+      this.update();
     },
     loadData(){
       // load day text database
