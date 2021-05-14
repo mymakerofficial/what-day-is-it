@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="container center">
-      <button v-on:click="randomize">randomize <i class="mdi mdi-dice-5"></i></button>
+      <button v-on:click="randomize">randomize <i :class="`mdi mdi-dice-${Math.round(this.day.random * 5 + 1)}`"></i></button>
     </div>
     <div class="container">
       <Footer :navButtons="navButtons"></Footer>
