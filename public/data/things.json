@@ -57,6 +57,14 @@
       "sourceText": null
     },
     {
+      "path": "dice6",
+      "data": "/data/thing_of_the_day/dice6.json",
+      "name": "dice6",
+      "fullName": "dice roll of the day",
+      "source": null,
+      "sourceText": null
+    },
+    {
       "path": "qgquotes",
       "data": "/data/thing_of_the_day/quaran_gang_quotes.json",
       "name": "QuaranGang Quotes",
