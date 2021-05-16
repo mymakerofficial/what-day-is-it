@@ -13,6 +13,8 @@
 import axios from "axios";
 import anime from "animejs";
 import LoadingSpinner from "./LoadingSpinner";
+import {Random} from "../js/random";
+import {getDateFromDate} from "../js/date";
 
 export default {
   name: "Things",
@@ -25,7 +27,8 @@ export default {
       things: [],
       loaded: false,
       display: false,
-      length: 4
+      length: 4,
+      random: Random(getDateFromDate(new Date()).getTime())
     }
   },
 
@@ -52,6 +55,18 @@ export default {
     isCurrentThing(path) {
       return this.$route.params.thing ? path === this.$route.params.thing : false
     },
+    shuffle() {
+      let temp = this.things
+      let out = []
+      let l = this.things.length
+      for(let i = 0;i < l; i++){
+        let j = Math.floor(this.random * temp.length)
+        let t = temp[j]
+        out.push(t)
+        temp.splice(j, 1);
+      }
+      this.things = out
+    },
     animate(){
       this.display = true;
       this.$nextTick(function () {
@@ -75,6 +90,7 @@ export default {
       // load database
       axios.get(`/data/things.json`).then(response => {
         this.things = response.data.things
+        this.shuffle()
         this.animate()
         this.loaded = true;
       }).catch(error => {
