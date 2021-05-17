@@ -95,7 +95,7 @@ export default {
       }))
     },
     path: function () {
-      return `/c/${this.encodedData}`
+      return `/c/${encodeURIComponent(this.encodedData)}`
     },
     url: function () {
       return `${document.location.origin}${this.path}`
