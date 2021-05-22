@@ -62,6 +62,7 @@ export default {
       for(let i = 0;i < length;i++){
         let newDate = new Date(this.date.getTime() + 86400000 * i)
         let newDay = new Day(newDate, this.data)
+        console.log(newDay)
         this.days.push(newDay)
       }
 
