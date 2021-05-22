@@ -556,6 +556,7 @@ textarea {
   margin: 16px 0;
   border: none;
   background-color: $uiLight2;
+  color: $uiDarkSecondary2;
   font-family: 'Overpass Mono', monospace;
 }
 
@@ -609,6 +610,22 @@ input:focus {
   text-align: right;
 }
 
+.textareaFooter.center {
+  text-align: center;
+}
+
+.textareaFooter.space {
+  margin: 24px 0;
+}
+
 .textareaFooter .mdi {
   font-size: 1.7em;
+}
+
+.textareaFooter button {
+  background-color: unset;
+}
+
+.textareaFooter button .mdi {
+  font-size: 1.1em;
 }
