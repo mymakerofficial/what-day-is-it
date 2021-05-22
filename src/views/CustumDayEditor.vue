@@ -258,13 +258,15 @@ export default {
         url: this.url,
       }
 
-      const resultPara = document.querySelector('.result');
-
       try {
         navigator.share(shareData)
-        resultPara.textContent = 'MDN shared successfully'
       } catch(err) {
-        resultPara.textContent = 'Error: ' + err
+        this.toast.title = ""
+        this.toast.text = ""
+        this.toast.time = 1000
+        this.$nextTick(function () {
+          this.toast.text = "could not share"
+        });
       }
     },
     copy(){
