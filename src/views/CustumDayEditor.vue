@@ -176,7 +176,7 @@ export default {
         try{
           let value = this.$refs.urlInput.value.split('/');
           if(value.length === 5 && (value[3] === "c" || value[3] === "custom")){
-            let data = JSON.parse(atob(value.slice(-1)[0]))
+            let data = JSON.parse(atob(decodeURIComponent(value.slice(-1)[0])))
             let dataTitle = data.a
             let dataText = data.b
             let seed = data.s

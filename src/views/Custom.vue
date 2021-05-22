@@ -43,7 +43,7 @@ name: "Custom",
   methods: {
     start: function () {
       // get data
-      let data = JSON.parse(atob(this.$route.params.data))
+      let data = JSON.parse(atob(decodeURIComponent(this.$route.params.data)))
       let dataTitle = data.a
       let dataText = data.b
       let seed = data.s
