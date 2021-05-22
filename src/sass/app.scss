@@ -629,3 +629,33 @@ input:focus {
 .textareaFooter button .mdi {
   font-size: 1.1em;
 }
+
+/* toast */
+
+.toastContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100000000;
+}
+
+.toast {
+  display: block;
+  background-color: $uiDarkSecondary;
+  color: $uiLight;
+
+  padding: 24px;
+  box-shadow: 0px 12px 16px -6px rgb(0, 0, 0, 20%), 0px 24px 38px 3px rgb(0, 0, 0, 14%), 0px 9px 46px 8px rgb(0, 0, 0, 12%);
+
+  letter-spacing: 1px;
+}
+
+.toastTitle {
+  font-family: "Playfair Display script=latin rev=2", serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}

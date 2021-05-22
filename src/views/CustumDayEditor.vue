@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Toast :title="toast.title" :text="toast.text" :time="toast.time"></Toast>
     <Header :headerTitle="pageTitle"></Header>
     <div class="container center">
       <div class="textareaContainer">
@@ -17,12 +18,12 @@
       <div class="dayEditorHalf">
         <div class="textareaContainer">
           <div class="label">title</div>
-          <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }"></textarea>
+          <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }" :maxlength="maxTextLength"></textarea>
           <div class="textareaFooter right"><i class="mdi mdi-language-markdown"></i></div>
         </div>
         <div class="textareaContainer">
           <div class="label">text</div>
-          <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }"></textarea>
+          <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }" :maxlength="maxTextLength"></textarea>
           <div class="textareaFooter right"><i class="mdi mdi-language-markdown"></i></div>
         </div>
         <!--<div class="textareaContainer">
@@ -52,6 +53,7 @@
 <script>
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Toast from "../components/Toast";
 import {stripHtml} from "string-strip-html";
 import {markdown} from "../js/markdown";
 import {Color} from "../js/color";
@@ -61,9 +63,13 @@ import {Day} from "../js/day";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
 
+String.prototype.trim = function (length) {
+  return this.length > length ? this.substring(0, length) : this;
+}
+
 export default {
   name: "CustumDayEditor",
-  components: {LoadingSpinner, Footer, Header},
+  components: {LoadingSpinner, Footer, Header, Toast},
 
   data() {
     return {
@@ -78,7 +84,10 @@ export default {
       bodyHeight: "300px",
       day: new Day(),
       loaded: false,
-      seed: getDateFromDate(new Date()).getTime()
+      seed: getDateFromDate(new Date()).getTime(),
+      toast: {title: "", text: "", time: 1000},
+      maxTextLength: 400,
+      maxTextLengthWarning: 390,
     }
   },
 
@@ -140,16 +149,26 @@ export default {
         //this.headerHeight = `${this.$refs.header.scrollHeight - 37}px`
         //this.bodyHeight = `${this.$refs.body.scrollHeight + 64}px`
 
-        this.day.title = this.title
-        this.day.text = this.text
+        if(this.title.length >= this.maxTextLength || this.text.length >= this.maxTextLength){
+          this.toast.title = ""
+          this.toast.text = ""
+          this.toast.time = 3000
+          this.$nextTick(function () {
+            this.toast.title = "hold on there!"
+            this.toast.text = "Your text is very long. Days should be shorter."
+          });
+        }else{
+          this.day.title = this.title
+          this.day.text = this.text
 
-        this.day.random = Random(this.seed)
-        this.day.color.originalHue = this.day.random * 360
+          this.day.random = Random(this.seed)
+          this.day.color.originalHue = this.day.random * 360
 
-        this.color = this.day.color
+          this.color = this.day.color
 
-        this.day.createKeywords()
-        this.day.replaceKeywords()
+          this.day.createKeywords()
+          this.day.replaceKeywords()
+        }
       }
     },
     urlChange() {
@@ -166,9 +185,23 @@ export default {
           this.seed = seed
 
           this.update();
+
+          this.toast.title = ""
+          this.toast.text = ""
+          this.toast.time = 2000
+          this.$nextTick(function () {
+            this.toast.title = "yaaayy!"
+            this.toast.text = "You imported a day that you can now edit"
+          });
         }
         catch (e) {
-          console.log("could not decode day")
+          this.toast.title = ""
+          this.toast.text = ""
+          this.toast.time = 2000
+          this.$nextTick(function () {
+            this.toast.title = "ooops!"
+            this.toast.text = "Could not decode your day."
+          });
         }
       }
     },
@@ -209,6 +242,14 @@ export default {
       document.execCommand("copy");
       if (window.getSelection) {window.getSelection().removeAllRanges();}
       else if (document.selection) {document.selection.empty();}
+
+      this.toast.title = ""
+      this.toast.text = ""
+      this.toast.time = 1000
+      this.$nextTick(function () {
+        this.toast.title = "copied!"
+        this.toast.text = "The link was copied to you clipboard."
+      });
     },
     loadData(){
       // load day text database
