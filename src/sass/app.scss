@@ -646,7 +646,7 @@ input:focus {
   color: $uiLight;
 
   padding: 24px;
-  box-shadow: 0px 12px 16px -6px rgb(0, 0, 0, 20%), 0px 24px 38px 3px rgb(0, 0, 0, 14%), 0px 9px 46px 8px rgb(0, 0, 0, 12%);
+  box-shadow: $shadow1;
 
   letter-spacing: 1px;
 }
@@ -658,4 +658,29 @@ input:focus {
   font-style: italic;
   letter-spacing: 2px;
   margin-bottom: 12px;
+}
+
+// theme switcher
+
+.themeSwitcher {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 24px;
+  display: flex;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 100%;
+  background-color: $uiDarkSecondary;
+  color: $uiLight;
+  box-shadow: $shadow1;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 100000000;
+  font-size: 1.2em;
+}
+
+.themeSwitcher:hover {
+  cursor: pointer;
 }

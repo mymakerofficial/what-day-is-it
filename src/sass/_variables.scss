@@ -1,32 +1,48 @@
 
+//light theme
+:root, :root.light {
+  --uiLight2: hsl(0, 0%, 98%);
+  --uiLight: hsl(0, 0%, 92%);
+  --uiDark: hsl(240, 1%, 33%);
 
-$uiLight2: hsl(0, 0%, 98%);
-$uiLight: hsl(0, 0%, 92%);
-$uiDark: hsl(240, 1%, 33%);
+  --uiLightSecondary: hsl(0, 0%, 90%);
+  --uiLightSecondary2: hsl(0, 0%, 73%);
+  --uiLightSecondary3: hsl(0, 0%, 58%);
 
-$uiLightSecondary: hsl(0, 0%, 90%);
-$uiLightSecondary2: hsl(0, 0%, 73%);
-$uiLightSecondary3: hsl(0, 0%, 58%);
+  --uiDarkSecondary: hsl(240, 6%, 22%);
+  --uiDarkSecondary2: hsl(240, 6%, 37%);
+  --uiDarkSecondary3: hsl(240, 7%, 61%);
+};
 
-$uiDarkSecondary: hsl(240, 6%, 22%);
-$uiDarkSecondary2: hsl(240, 6%, 37%);
-$uiDarkSecondary3: hsl(240, 7%, 61%);
+// dark theme
+:root.dark {
+  --uiLight2: hsl(240, 3%, 22%);
+  --uiLight: hsl(240, 4%, 16%);
+  --uiDark: hsl(240, 40%, 92%);
+
+  --uiLightSecondary: hsl(240, 3%, 22%);
+  --uiLightSecondary2: hsl(240, 2%, 68%);
+  --uiLightSecondary3: hsl(240, 3%, 77%);
+
+  --uiDarkSecondary: hsl(240, 40%, 92%);
+  --uiDarkSecondary2: hsl(240, 21%, 89%);
+  --uiDarkSecondary3: hsl(240, 4%, 61%);
+};
 
 
-/*
-$uiLight2: hsl(240, 3%, 22%);
-$uiLight: hsl(240, 4%, 16%);
-$uiDark: hsl(240, 40%, 92%);
+$uiLight2: var(--uiLight2);
+$uiLight: var(--uiLight);
+$uiDark: var(--uiDark);
 
-$uiLightSecondary: hsl(240, 3%, 22%);
-$uiLightSecondary2: hsl(240, 2%, 68%);
-$uiLightSecondary3: hsl(240, 3%, 77%);
+$uiLightSecondary: var(--uiLightSecondary);
+$uiLightSecondary2: var(--uiLightSecondary2);
+$uiLightSecondary3: var(--uiLightSecondary3);
 
-$uiDarkSecondary: hsl(240, 40%, 92%);
-$uiDarkSecondary2: hsl(240, 21%, 89%);
-$uiDarkSecondary3: hsl(240, 4%, 61%);
-*/
+$uiDarkSecondary: var(--uiDarkSecondary);
+$uiDarkSecondary2: var(--uiDarkSecondary2);
+$uiDarkSecondary3: var(--uiDarkSecondary3);
 
+$shadow1: 0px 12px 16px -6px rgb(0, 0, 0, 20%), 0px 24px 38px 3px rgb(0, 0, 0, 14%), 0px 9px 46px 8px rgb(0, 0, 0, 12%);
 
 :root {
   --uiColorBackground: $uiLight;

@@ -46,6 +46,7 @@
         </div>
       </div>
     </div>
+    <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
@@ -62,6 +63,7 @@ import {getDate, getDateFromDate} from "../js/date";
 import {Day} from "../js/day";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 String.prototype.trim = function (length) {
   return this.length > length ? this.substring(0, length) : this;
@@ -69,7 +71,7 @@ String.prototype.trim = function (length) {
 
 export default {
   name: "CustumDayEditor",
-  components: {LoadingSpinner, Footer, Header, Toast},
+  components: {ThemeSwitcher, LoadingSpinner, Footer, Header, Toast},
 
   data() {
     return {

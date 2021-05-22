@@ -3,6 +3,7 @@
     <Header :headerTitle="headerTitle" :title="title" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted"></Header>
     <Body :text="text" center="true" :textColor="this.color.hslSecondary"></Body>
     <LoadingSpinner :show="loading"></LoadingSpinner>
+    <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons" :text="footerText"></Footer>
   </div>
 </template>
@@ -16,10 +17,11 @@ import axios from "axios";
 import {Random, WeightedRandom} from "../js/random.js";
 import LoadingSpinner from "../components/LoadingSpinner";
 import {getDateFromDate} from "../js/date";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default {
   name: "ThingOfTheDay",
-  components: {LoadingSpinner, Footer, Body, Header},
+  components: {ThemeSwitcher, LoadingSpinner, Footer, Body, Header},
 
   data() {
     return {

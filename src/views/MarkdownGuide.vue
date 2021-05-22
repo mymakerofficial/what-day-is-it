@@ -4,6 +4,7 @@
     <div class="container">
       <MarkdownGuideContent></MarkdownGuideContent>
     </div>
+    <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
@@ -16,10 +17,11 @@ import MarkdownGuideContent from "../components/MarkdownGuideContent";
 import {Color} from "../js/color";
 import {Random} from "../js/random";
 import {getDateFromDate} from "../js/date";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default {
   name: "MarkdownGuide",
-  components: {MarkdownGuideContent, Footer, Header},
+  components: {ThemeSwitcher, MarkdownGuideContent, Footer, Header},
 
   data() {
     return {

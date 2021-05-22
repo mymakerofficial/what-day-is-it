@@ -39,7 +39,7 @@ export default {
   },
 
   methods: {
-    animate: function () {
+    animate() {
       this.$nextTick(function () {
         anime({
           targets: this.$refs.container,
@@ -52,8 +52,7 @@ export default {
           autostart: true,
         })
       });
-
-    }
+    },
   },
 
   mounted() {
