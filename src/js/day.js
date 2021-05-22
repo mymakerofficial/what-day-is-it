@@ -181,10 +181,12 @@ class Day {
 
     get titleStriped() {return stripHtml(markdown(this.title)).result.replace(/(\r\n|\n|\r)/gm, ""); }
     get textStriped() {return stripHtml(markdown(this.text)).result.replace(/(\r\n|\n|\r)/gm, ""); }
+    get titleStripedCompletely() {return this.titleStriped.replaceAll(/\s/g,''); }
+    get textStripedCompletely() {return this.textStriped.replaceAll(/\s/g,''); }
     get titleStripedHtml() {return stripHtml(this.title).result }
     get textStripedHtml() {return stripHtml(this.text).result }
-    get titleEmptyStriped() {return this.title !== '' && this.titleStriped === ''}
-    get textEmptyStriped() {return this.text !== '' && this.textStriped === ''}
+    get titleEmptyStriped() {return this.title !== '' && this.titleStripedCompletely === ''}
+    get textEmptyStriped() {return this.text !== '' && this.textStripedCompletely === ''}
 
     get titleFormatted() {return markdown(this.title)}
     get textFormatted() {return markdown(this.text)}

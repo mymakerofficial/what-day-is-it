@@ -18,13 +18,13 @@
       <div class="dayEditorHalf">
         <div class="textareaContainer">
           <div class="label">title</div>
-          <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }" :maxlength="maxTextLength"></textarea>
-          <div class="textareaFooter right"><i class="mdi mdi-language-markdown"></i></div>
+          <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }" :maxlength="maxTitleLength"></textarea>
+          <div class="textareaFooter right"><span class="text">{{title.length}} / {{maxTitleLength}}</span><span class="box"><i class="small mdi mdi-code-json"></i><i class="mdi mdi-language-markdown"></i></span></div>
         </div>
         <div class="textareaContainer">
           <div class="label">text</div>
           <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }" :maxlength="maxTextLength"></textarea>
-          <div class="textareaFooter right"><i class="mdi mdi-language-markdown"></i></div>
+          <div class="textareaFooter right"><span class="text">{{text.length}} / {{maxTextLength}}</span><span class="box"><i class="small mdi mdi-code-json"></i><i class="mdi mdi-language-markdown"></i></span></div>
         </div>
         <!--<div class="textareaContainer">
           <div class="label">date</div>
@@ -88,17 +88,17 @@ export default {
       loaded: false,
       seed: getDateFromDate(new Date()).getTime(),
       toast: {title: "", text: "", time: 1000},
-      maxTextLength: 400,
-      maxTextLengthWarning: 390,
+      maxTitleLength: 200,
+      maxTextLength: 700,
     }
   },
 
   computed: {
     titleFormatted: function () {
-      return this.title ? markdown(this.day.title) : ""
+      return this.day.title ? markdown(this.day.title) : ""
     },
     textFormatted: function () {
-      return this.title ? markdown(this.day.text) : ""
+      return this.day.title ? markdown(this.day.text) : ""
     },
     encodedData: function () {
       return btoa(JSON.stringify({
@@ -151,7 +151,7 @@ export default {
         //this.headerHeight = `${this.$refs.header.scrollHeight - 37}px`
         //this.bodyHeight = `${this.$refs.body.scrollHeight + 64}px`
 
-        if(this.title.length >= this.maxTextLength || this.text.length >= this.maxTextLength){
+        if(this.title.length >= this.maxTitleLength || this.text.length >= this.maxTextLength){
           this.toast.title = ""
           this.toast.text = ""
           this.toast.time = 3000
@@ -160,7 +160,7 @@ export default {
             this.toast.text = "Your text is very long. Days should be shorter."
           });
         }else{
-          this.day.title = this.title
+          this.day.title = this.title === "" ? `# {{current_day_text}}` : this.title
           this.day.text = this.text
 
           this.day.random = Random(this.seed)

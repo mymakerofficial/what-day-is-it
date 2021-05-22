@@ -5,7 +5,7 @@
     <div class="forecastContainer">
       <div class="forecastTable" ref="table">
         <div class="row" v-for="day in this.days" :key="day.date.getTime()">
-          <a :href="day.date - date !== 0 ? day.path : '/'"><div class="col date">{{`${day.date.toLocaleDateString("de-de")}`}}</div><div class="col title" :style="{ backgroundColor: day.color.hsl, color: day.color.hslInverted }">{{day.titleStriped}}<span class="badge border" :style="{display: day.titleStriped === '' ? '' : 'none', color: day.color.hslInverted}">can't be displayed</span></div><div class="col text">{{ day.textStriped }}<span class="badge" :style="{display: day.textEmptyStriped ? '' : 'none'}">can't be displayed</span></div></a>
+          <a :href="day.date - date !== 0 ? day.path : '/'"><div class="col date">{{`${day.date.toLocaleDateString("de-de")}`}}</div><div class="col title" :style="{ backgroundColor: day.color.hsl, color: day.color.hslInverted }">{{day.titleStriped}}<span class="badge border" :style="{display: day.titleEmptyStriped ? '' : 'none', color: day.color.hslInverted}">can't be displayed</span></div><div class="col text">{{ day.textStriped }}<span class="badge" :style="{display: day.textEmptyStriped ? '' : 'none'}">can't be displayed</span></div></a>
         </div>
       </div>
     </div>

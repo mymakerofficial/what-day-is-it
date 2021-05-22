@@ -594,6 +594,7 @@ input:focus {
   text-align: left;
   background-color: $uiLight2;
   padding: 2px 12px;
+  justify-content: center;
 }
 
 .textareaContainer .label {
@@ -619,7 +620,25 @@ input:focus {
 }
 
 .textareaFooter .mdi {
+  margin: 0 4px;
   font-size: 1.7em;
+  vertical-align: middle;
+}
+
+.textareaFooter .mdi.small {
+  font-size: 1em;
+  vertical-align: middle;
+}
+
+.textareaFooter .text {
+  margin: 0 4px;
+  font-size: .8em;
+  vertical-align: middle;
+  color: $uiDarkSecondary3;
+}
+
+.textareaFooter .box {
+  padding: 4px;
 }
 
 .textareaFooter button {
@@ -671,8 +690,8 @@ input:focus {
   min-width: 52px;
   min-height: 52px;
   border-radius: 100%;
-  background-color: $uiDarkSecondary;
-  color: $uiLight;
+  background-color: $uiLightSecondary;
+  color: $uiDark;
   box-shadow: $shadow1;
   text-align: center;
   justify-content: center;
