@@ -95,10 +95,10 @@ export default {
 
   computed: {
     titleFormatted: function () {
-      return this.title ? markdown(this.day.title) : ""
+      return this.day.title ? markdown(this.day.title) : ""
     },
     textFormatted: function () {
-      return this.title ? markdown(this.day.text) : ""
+      return this.day.title ? markdown(this.day.text) : ""
     },
     encodedData: function () {
       return btoa(JSON.stringify({
@@ -160,7 +160,7 @@ export default {
             this.toast.text = "Your text is very long. Days should be shorter."
           });
         }else{
-          this.day.title = this.title
+          this.day.title = this.title === "" ? `# {{current_day_text}}` : this.title
           this.day.text = this.text
 
           this.day.random = Random(this.seed)
