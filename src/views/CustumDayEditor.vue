@@ -2,8 +2,15 @@
   <div>
     <Header :headerTitle="pageTitle"></Header>
     <div class="container center">
-      <input :value="url" style="width: 50%;display: inline-block">
-      <router-link target=”_blank” :to="{path: path}"><i class="mdi mdi-open-in-new" style="margin: 24px;font-size: 1.5em"></i></router-link>
+      <div class="textareaContainer">
+        <input :value="url" v-on:change="urlChange" ref="urlInput">
+        <div class="textareaFooter center space">
+          <button v-on:click="share" v-show="canShare">share</button>
+          <button v-on:click="copy">copy</button>
+          <router-link target=”_blank” :to="{path: path}"><button>open in new tab</button></router-link>
+          <button v-on:click="randomize">randomize</button>
+        </div>
+      </div>
     </div>
     <LoadingSpinner :show="!loaded"></LoadingSpinner>
     <div class="dayEditorContainer" v-if="loaded">
@@ -38,12 +45,7 @@
         </div>
       </div>
     </div>
-    <div class="container center">
-      <button v-on:click="randomize">randomize <i :class="`mdi mdi-dice-${Math.round(this.day.random * 5 + 1)}`"></i></button>
-    </div>
-    <div class="container">
-      <Footer :navButtons="navButtons"></Footer>
-    </div>
+    <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
 
@@ -65,7 +67,7 @@ export default {
 
   data() {
     return {
-      pageTitle: "make your own day",
+      pageTitle: "make your own day!",
       title: "# The Day",
       text: "it really do be",
       usesDate: false,
@@ -98,7 +100,7 @@ export default {
       return `/c/${encodeURIComponent(this.encodedData)}`
     },
     url: function () {
-      return `${document.location.origin}${this.path}`
+      return `${document.location.origin}${this.path}`;
     },
     navButtons: function () {
       return [
@@ -107,6 +109,9 @@ export default {
         {text: "day forecast", path: "/forecast", display: true},
         {text: "about", path: "/about", display: true}
       ]
+    },
+    canShare: function () {
+      return navigator.canShare
     }
   },
 
@@ -119,7 +124,7 @@ export default {
     },
     seed: function () {
       this.update();
-    },
+    }
   },
 
   methods: {
@@ -147,6 +152,26 @@ export default {
         this.day.replaceKeywords()
       }
     },
+    urlChange() {
+      if(this.$refs.urlInput.value !== this.url){
+        try{
+          let value = this.$refs.urlInput.value;
+          let data = JSON.parse(atob(value.split('/').slice(-1)[0]))
+          let dataTitle = data.a
+          let dataText = data.b
+          let seed = data.s
+
+          this.title = dataTitle
+          this.text = dataText
+          this.seed = seed
+
+          this.update();
+        }
+        catch (e) {
+          console.log("could not decode day")
+        }
+      }
+    },
     randomize() {
       this.seed = getDateFromDate(new Date(+(new Date()) - Math.floor(Math.random()*10000000000))).getTime()
 
@@ -162,6 +187,28 @@ export default {
       this.text = day.dayData.text !== null  ? day.dayData.text : "";
 
       this.update();
+    },
+    share(){
+      const shareData = {
+        title: "what's the day?",
+        text: "A website that maybe tells you what day it is.",
+        url: this.url,
+      }
+
+      const resultPara = document.querySelector('.result');
+
+      try {
+        navigator.share(shareData)
+        resultPara.textContent = 'MDN shared successfully'
+      } catch(err) {
+        resultPara.textContent = 'Error: ' + err
+      }
+    },
+    copy(){
+      this.$refs.urlInput.select();
+      document.execCommand("copy");
+      if (window.getSelection) {window.getSelection().removeAllRanges();}
+      else if (document.selection) {document.selection.empty();}
     },
     loadData(){
       // load day text database
