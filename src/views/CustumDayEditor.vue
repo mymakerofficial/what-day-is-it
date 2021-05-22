@@ -58,7 +58,7 @@ import {stripHtml} from "string-strip-html";
 import {markdown} from "../js/markdown";
 import {Color} from "../js/color";
 import {Random} from "../js/random";
-import {getDateFromDate} from "../js/date";
+import {getDate, getDateFromDate} from "../js/date";
 import {Day} from "../js/day";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -174,25 +174,37 @@ export default {
     urlChange() {
       if(this.$refs.urlInput.value !== this.url){
         try{
-          let value = this.$refs.urlInput.value;
-          let data = JSON.parse(atob(value.split('/').slice(-1)[0]))
-          let dataTitle = data.a
-          let dataText = data.b
-          let seed = data.s
+          let value = this.$refs.urlInput.value.split('/');
+          if(value.length === 5 && (value[3] === "c" || value[3] === "custom")){
+            let data = JSON.parse(atob(value.slice(-1)[0]))
+            let dataTitle = data.a
+            let dataText = data.b
+            let seed = data.s
 
-          this.title = dataTitle
-          this.text = dataText
-          this.seed = seed
+            this.title = dataTitle
+            this.text = dataText
+            this.seed = seed
 
-          this.update();
+            this.update();
 
-          this.toast.title = ""
-          this.toast.text = ""
-          this.toast.time = 2000
-          this.$nextTick(function () {
-            this.toast.title = "yaaayy!"
-            this.toast.text = "You imported a day that you can now edit"
-          });
+            this.toast.title = ""
+            this.toast.text = ""
+            this.toast.time = 2000
+            this.$nextTick(function () {
+              this.toast.title = "yaaayy!"
+              this.toast.text = "You imported a day that you can now edit"
+            });
+          }else if(value.length === 6) {
+            this.importDayByDate(value[3], value[4], value[5])
+          }else{
+            this.toast.title = ""
+            this.toast.text = ""
+            this.toast.time = 2000
+            this.$nextTick(function () {
+              this.toast.title = "hmmm"
+              this.toast.text = "This link doesnt look right."
+            });
+          }
         }
         catch (e) {
           this.toast.title = ""
@@ -204,6 +216,24 @@ export default {
           });
         }
       }
+    },
+    importDayByDate(y, m, d){
+      this.seed = getDateFromDate(getDate(y, m, d)).getTime()
+
+      let day = new Day(getDate(y, m, d), this.data)
+
+      this.title = day.dayData.title !== null ? day.dayData.title : `# {{current_day_text}}`;
+      this.text = day.dayData.text !== null  ? day.dayData.text : "";
+
+      this.update()
+
+      this.toast.title = ""
+      this.toast.text = ""
+      this.toast.time = 2000
+      this.$nextTick(function () {
+        this.toast.title = "yaaayy!"
+        this.toast.text = "You imported a day that you can now edit"
+      });
     },
     randomize() {
       this.seed = getDateFromDate(new Date(+(new Date()) - Math.floor(Math.random()*10000000000))).getTime()
