@@ -556,6 +556,7 @@ textarea {
   margin: 16px 0;
   border: none;
   background-color: $uiLight2;
+  color: $uiDarkSecondary2;
   font-family: 'Overpass Mono', monospace;
 }
 
@@ -609,6 +610,77 @@ input:focus {
   text-align: right;
 }
 
+.textareaFooter.center {
+  text-align: center;
+}
+
+.textareaFooter.space {
+  margin: 24px 0;
+}
+
 .textareaFooter .mdi {
   font-size: 1.7em;
+}
+
+.textareaFooter button {
+  background-color: unset;
+}
+
+.textareaFooter button .mdi {
+  font-size: 1.1em;
+}
+
+/* toast */
+
+.toastContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100000000;
+}
+
+.toast {
+  display: block;
+  background-color: $uiDarkSecondary;
+  color: $uiLight;
+
+  padding: 24px;
+  box-shadow: $shadow1;
+
+  letter-spacing: 1px;
+}
+
+.toastTitle {
+  font-family: "Playfair Display script=latin rev=2", serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+// theme switcher
+
+.themeSwitcher {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 24px;
+  display: flex;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 100%;
+  background-color: $uiDarkSecondary;
+  color: $uiLight;
+  box-shadow: $shadow1;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 100000000;
+  font-size: 1.2em;
+}
+
+.themeSwitcher:hover {
+  cursor: pointer;
 }

@@ -2,6 +2,7 @@
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="day.title" :backgroundColor="this.day.color.hsl" :textColor="this.day.color.hslInverted"></Header>
     <Body :text="day.text" :textColor="this.day.color.hslSecondary" center="true"></Body>
+    <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons" text="This is a custom day and was not made by the creators of this website."></Footer>
   </div>
 </template>
@@ -14,10 +15,11 @@ import {Day} from "../js/day";
 import {Random} from "../js/random";
 import {stripHtml} from "string-strip-html";
 import Footer from "../components/Footer";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default {
 name: "Custom",
-  components: {Footer, Body, Header},
+  components: {ThemeSwitcher, Footer, Body, Header},
 
   data() {
     return {
@@ -43,7 +45,7 @@ name: "Custom",
   methods: {
     start: function () {
       // get data
-      let data = JSON.parse(atob(this.$route.params.data))
+      let data = JSON.parse(atob(decodeURIComponent(this.$route.params.data)))
       let dataTitle = data.a
       let dataText = data.b
       let seed = data.s

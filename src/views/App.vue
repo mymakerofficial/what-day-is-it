@@ -4,6 +4,7 @@
       <Header ref="header" :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
       <Body :text="currentDay.text" :textColor="this.currentDay.color.hslSecondary" center="true"></Body>
       <LoadingSpinner :show="loading"></LoadingSpinner>
+      <ThemeSwitcher></ThemeSwitcher>
       <Footer :navButtons="navButtons" :text="footerText"></Footer>
     </div>
   </transition>
@@ -17,10 +18,12 @@ import {Day, isSameDay} from "../js/day";
 import Footer from "../components/Footer";
 import LoadingSpinner from "../components/LoadingSpinner";
 import {getDate} from "../js/date";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default {
   name: 'App',
   components: {
+    ThemeSwitcher,
     LoadingSpinner,
     Footer,
     Header,

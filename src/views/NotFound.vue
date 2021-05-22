@@ -2,6 +2,7 @@
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="message.title" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted"></Header>
     <Body :text="message.text" :textColor="this.color.hslSecondary" center="true"></Body>
+    <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
@@ -13,10 +14,12 @@ import axios from "axios";
 import {Random, WeightedRandom} from "../js/random";
 import Footer from "../components/Footer";
 import {Color} from "../js/color";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default {
   name: "NotFound",
   components: {
+    ThemeSwitcher,
     Footer,
     Header,
     Body

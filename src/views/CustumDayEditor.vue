@@ -1,21 +1,29 @@
 <template>
   <div>
+    <Toast :title="toast.title" :text="toast.text" :time="toast.time"></Toast>
     <Header :headerTitle="pageTitle"></Header>
     <div class="container center">
-      <input :value="url" style="width: 50%;display: inline-block">
-      <router-link target=”_blank” :to="{path: path}"><i class="mdi mdi-open-in-new" style="margin: 24px;font-size: 1.5em"></i></router-link>
+      <div class="textareaContainer">
+        <input :value="url" v-on:change="urlChange" ref="urlInput">
+        <div class="textareaFooter center space">
+          <button v-on:click="share" v-show="canShare">share</button>
+          <button v-on:click="copy">copy</button>
+          <router-link target=”_blank” :to="{path: path}"><button>open in new tab</button></router-link>
+          <button v-on:click="randomize">randomize</button>
+        </div>
+      </div>
     </div>
     <LoadingSpinner :show="!loaded"></LoadingSpinner>
     <div class="dayEditorContainer" v-if="loaded">
       <div class="dayEditorHalf">
         <div class="textareaContainer">
           <div class="label">title</div>
-          <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }"></textarea>
+          <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }" :maxlength="maxTextLength"></textarea>
           <div class="textareaFooter right"><i class="mdi mdi-language-markdown"></i></div>
         </div>
         <div class="textareaContainer">
           <div class="label">text</div>
-          <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }"></textarea>
+          <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }" :maxlength="maxTextLength"></textarea>
           <div class="textareaFooter right"><i class="mdi mdi-language-markdown"></i></div>
         </div>
         <!--<div class="textareaContainer">
@@ -38,34 +46,36 @@
         </div>
       </div>
     </div>
-    <div class="container center">
-      <button v-on:click="randomize">randomize <i :class="`mdi mdi-dice-${Math.round(this.day.random * 5 + 1)}`"></i></button>
-    </div>
-    <div class="container">
-      <Footer :navButtons="navButtons"></Footer>
-    </div>
+    <ThemeSwitcher></ThemeSwitcher>
+    <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
 
 <script>
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Toast from "../components/Toast";
 import {stripHtml} from "string-strip-html";
 import {markdown} from "../js/markdown";
 import {Color} from "../js/color";
 import {Random} from "../js/random";
-import {getDateFromDate} from "../js/date";
+import {getDate, getDateFromDate} from "../js/date";
 import {Day} from "../js/day";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
+import ThemeSwitcher from "../components/ThemeSwitcher";
+
+String.prototype.trim = function (length) {
+  return this.length > length ? this.substring(0, length) : this;
+}
 
 export default {
   name: "CustumDayEditor",
-  components: {LoadingSpinner, Footer, Header},
+  components: {ThemeSwitcher, LoadingSpinner, Footer, Header, Toast},
 
   data() {
     return {
-      pageTitle: "make your own day",
+      pageTitle: "make your own day!",
       title: "# The Day",
       text: "it really do be",
       usesDate: false,
@@ -76,7 +86,10 @@ export default {
       bodyHeight: "300px",
       day: new Day(),
       loaded: false,
-      seed: getDateFromDate(new Date()).getTime()
+      seed: getDateFromDate(new Date()).getTime(),
+      toast: {title: "", text: "", time: 1000},
+      maxTextLength: 400,
+      maxTextLengthWarning: 390,
     }
   },
 
@@ -95,10 +108,10 @@ export default {
       }))
     },
     path: function () {
-      return `/c/${this.encodedData}`
+      return `/c/${encodeURIComponent(this.encodedData)}`
     },
     url: function () {
-      return `${document.location.origin}${this.path}`
+      return `${document.location.origin}${this.path}`;
     },
     navButtons: function () {
       return [
@@ -107,6 +120,9 @@ export default {
         {text: "day forecast", path: "/forecast", display: true},
         {text: "about", path: "/about", display: true}
       ]
+    },
+    canShare: function () {
+      return navigator.canShare
     }
   },
 
@@ -119,7 +135,7 @@ export default {
     },
     seed: function () {
       this.update();
-    },
+    }
   },
 
   methods: {
@@ -135,17 +151,91 @@ export default {
         //this.headerHeight = `${this.$refs.header.scrollHeight - 37}px`
         //this.bodyHeight = `${this.$refs.body.scrollHeight + 64}px`
 
-        this.day.title = this.title
-        this.day.text = this.text
+        if(this.title.length >= this.maxTextLength || this.text.length >= this.maxTextLength){
+          this.toast.title = ""
+          this.toast.text = ""
+          this.toast.time = 3000
+          this.$nextTick(function () {
+            this.toast.title = "hold on there!"
+            this.toast.text = "Your text is very long. Days should be shorter."
+          });
+        }else{
+          this.day.title = this.title
+          this.day.text = this.text
 
-        this.day.random = Random(this.seed)
-        this.day.color.originalHue = this.day.random * 360
+          this.day.random = Random(this.seed)
+          this.day.color.originalHue = this.day.random * 360
 
-        this.color = this.day.color
+          this.color = this.day.color
 
-        this.day.createKeywords()
-        this.day.replaceKeywords()
+          this.day.createKeywords()
+          this.day.replaceKeywords()
+        }
       }
+    },
+    urlChange() {
+      if(this.$refs.urlInput.value !== this.url){
+        try{
+          let value = this.$refs.urlInput.value.split('/');
+          if(value.length === 5 && (value[3] === "c" || value[3] === "custom")){
+            let data = JSON.parse(atob(decodeURIComponent(value.slice(-1)[0])))
+            let dataTitle = data.a
+            let dataText = data.b
+            let seed = data.s
+
+            this.title = dataTitle
+            this.text = dataText
+            this.seed = seed
+
+            this.update();
+
+            this.toast.title = ""
+            this.toast.text = ""
+            this.toast.time = 2000
+            this.$nextTick(function () {
+              this.toast.title = "yaaayy!"
+              this.toast.text = "You imported a day that you can now edit"
+            });
+          }else if(value.length === 6) {
+            this.importDayByDate(value[3], value[4], value[5])
+          }else{
+            this.toast.title = ""
+            this.toast.text = ""
+            this.toast.time = 2000
+            this.$nextTick(function () {
+              this.toast.title = "hmmm"
+              this.toast.text = "This link doesnt look right."
+            });
+          }
+        }
+        catch (e) {
+          this.toast.title = ""
+          this.toast.text = ""
+          this.toast.time = 2000
+          this.$nextTick(function () {
+            this.toast.title = "ooops!"
+            this.toast.text = "Could not decode your day."
+          });
+        }
+      }
+    },
+    importDayByDate(y, m, d){
+      this.seed = getDateFromDate(getDate(y, m, d)).getTime()
+
+      let day = new Day(getDate(y, m, d), this.data)
+
+      this.title = day.dayData.title !== null ? day.dayData.title : `# {{current_day_text}}`;
+      this.text = day.dayData.text !== null  ? day.dayData.text : "";
+
+      this.update()
+
+      this.toast.title = ""
+      this.toast.text = ""
+      this.toast.time = 2000
+      this.$nextTick(function () {
+        this.toast.title = "yaaayy!"
+        this.toast.text = "You imported a day that you can now edit"
+      });
     },
     randomize() {
       this.seed = getDateFromDate(new Date(+(new Date()) - Math.floor(Math.random()*10000000000))).getTime()
@@ -162,6 +252,38 @@ export default {
       this.text = day.dayData.text !== null  ? day.dayData.text : "";
 
       this.update();
+    },
+    share(){
+      const shareData = {
+        title: "what's the day?",
+        text: "A website that maybe tells you what day it is.",
+        url: this.url,
+      }
+
+      try {
+        navigator.share(shareData)
+      } catch(err) {
+        this.toast.title = ""
+        this.toast.text = ""
+        this.toast.time = 1000
+        this.$nextTick(function () {
+          this.toast.text = "could not share"
+        });
+      }
+    },
+    copy(){
+      this.$refs.urlInput.select();
+      document.execCommand("copy");
+      if (window.getSelection) {window.getSelection().removeAllRanges();}
+      else if (document.selection) {document.selection.empty();}
+
+      this.toast.title = ""
+      this.toast.text = ""
+      this.toast.time = 1000
+      this.$nextTick(function () {
+        this.toast.title = "copied!"
+        this.toast.text = "The link was copied to you clipboard."
+      });
     },
     loadData(){
       // load day text database

@@ -9,6 +9,7 @@
         </div>
       </div>
     </div>
+    <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
@@ -20,10 +21,11 @@ import Header from "../components/Header";
 import anime from "animejs";
 import Footer from "../components/Footer";
 import {getDateFromDate} from "../js/date";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default {
   name: "Forecast",
-  components: {Footer, Header},
+  components: {ThemeSwitcher, Footer, Header},
   data() {
     return {
       loading: true,
@@ -62,6 +64,7 @@ export default {
       for(let i = 0;i < length;i++){
         let newDate = new Date(this.date.getTime() + 86400000 * i)
         let newDay = new Day(newDate, this.data)
+        console.log(newDay)
         this.days.push(newDay)
       }
 
