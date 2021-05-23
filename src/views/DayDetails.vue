@@ -119,11 +119,18 @@
             <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hslInverted }"></span></td>
           </tr>
           <tr>
-            <td><b>color secondary</b></td>
-            <td>{{this.currentDay.color.hueSecondary}}</td>
-            <td>{{this.currentDay.color.hslSecondary}}</td>
-            <td>{{this.currentDay.color.hexSecondary}}</td>
-            <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hslSecondary }"></span></td>
+            <td><b>color secondary</b> (light theme)</td>
+            <td>{{ this.currentDay.color.hueSecondaryLight }}</td>
+            <td>{{ this.currentDay.color.hslSecondaryLight }}</td>
+            <td>{{ this.currentDay.color.hexSecondaryLight }}</td>
+            <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hslSecondaryLight }"></span></td>
+          </tr>
+          <tr>
+            <td><b>color secondary</b> (dark theme)</td>
+            <td>{{ this.currentDay.color.hueSecondaryDark }}</td>
+            <td>{{ this.currentDay.color.hslSecondaryDark }}</td>
+            <td>{{ this.currentDay.color.hexSecondaryDark }}</td>
+            <td><span class="colorPreview" :style="{ backgroundColor: this.currentDay.color.hslSecondaryDark }"></span></td>
           </tr>
         </tbody>
       </table>

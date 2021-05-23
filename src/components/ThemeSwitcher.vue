@@ -6,19 +6,17 @@
 export default {
   name: "ThemeSwitcher",
 
-  data() {
-    return {
-      icon: ''
+  computed: {
+    icon: {
+      get() {
+        return this.$store.state.theme === 'light' ? 'mdi-lightbulb-on' : 'mdi-lightbulb-outline';
+      }
     }
   },
 
   methods: {
     switchTheme() {
-      document.changeTheme(localStorage.theme === 'light' ? ' dark' : 'light')
-      this.setIcon()
-    },
-    setIcon() {
-      this.icon = localStorage.theme === 'light' ? 'mdi-lightbulb-on' : 'mdi-lightbulb-outline';
+      this.$store.commit('updateTheme', this.$store.state.theme === 'light' ? 'dark' : 'light')
     }
   },
 

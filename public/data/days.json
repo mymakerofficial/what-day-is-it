@@ -154,6 +154,6 @@
     {"title": "# :rofl:","text": null,"author": "My_Maker","weight": 4},
     {"title": "# Happy day","text": null,"author": "My_Maker","weight": 4},
     {"title": "# :b:","text": null,"author": "My_Maker","weight": 4},
-    {"title": "## {{current_day_text}} is bad","text": "Change my mind","author": "Sariku","weight": 4}
+    {"title": "## {{current_day_text}} is bad","text": "Change my mind","author": "Sariku","weight": 40000000000000000000000000000000000000000000}
   ]
 }

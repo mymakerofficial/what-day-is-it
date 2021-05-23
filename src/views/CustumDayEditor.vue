@@ -41,7 +41,7 @@
           <div class="headerSubtitle" v-show="false">01.01.2021</div>
           <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
         </div>
-        <div class="body" :style="{ '--uiColorText': this.color.hslSecondary }">
+        <div class="body" :style="{ '--uiColorText': textColorSecondary }">
           <div class="dayText" ref="body" v-html="textFormatted"></div>
         </div>
       </div>
@@ -123,6 +123,11 @@ export default {
     },
     canShare: function () {
       return navigator.canShare
+    },
+    textColorSecondary: {
+      get() {
+        return this.$store.state.theme === 'light' ? this.color.hslSecondaryLight : this.color.hslSecondaryDark;
+      }
     }
   },
 

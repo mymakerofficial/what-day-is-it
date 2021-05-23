@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="day.title" :backgroundColor="this.day.color.hsl" :textColor="this.day.color.hslInverted"></Header>
-    <Body :text="day.text" :textColor="this.day.color.hslSecondary" center="true"></Body>
+    <Body :text="day.text" :textColorLight="this.day.color.hslSecondaryLight" :textColorDark="this.day.color.hslSecondaryDark" center="true"></Body>
     <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons" text="This is a custom day and was not made by the creators of this website."></Footer>
   </div>

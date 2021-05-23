@@ -3,6 +3,7 @@ import hsl from "hsl-to-hex";
 //const forbidden = [[10,70],[185,220]] // this blocks to many colors
 const forbidden = [[23,52]]
 const light = [[50,200]]
+const dark = [[10,40],[240,290]]
 
 let hueInside = function (hue, list) {
     let inside = false
@@ -27,15 +28,18 @@ class Color {
     }
     get hue() {return Math.round(hueInside(this.originalHue, forbidden) ? rotateHue(this.originalHue,90) : this.originalHue)}
     get hueInverted() {return invertHue(this.hue)}
-    get hueSecondary() {return hueInside(this.hueInverted, light) ? invertHue(this.hueInverted) : this.hueInverted}
+    get hueSecondaryLight() {return hueInside(this.hueInverted, light) ? invertHue(this.hueInverted) : this.hueInverted}
+    get hueSecondaryDark() {return hueInside(this.hueInverted, dark) ? invertHue(this.hueInverted) : this.hueInverted}
     // hsl
     get hsl() {return `hsl(${this.hue},100%,50%)`}
     get hslInverted() {return `hsl(${this.hueInverted},100%,50%)`}
-    get hslSecondary() {return `hsl(${this.hueSecondary},100%,50%)`}
+    get hslSecondaryLight() {return `hsl(${this.hueSecondaryLight},100%,50%)`}
+    get hslSecondaryDark() {return `hsl(${this.hueSecondaryDark},100%,50%)`}
     // hex
     get hex() {return hsl(this.hue,100,50)}
     get hexInverted() {return hsl(this.hueInverted,100,50)}
-    get hexSecondary() {return hsl(this.hueSecondary,100,50)}
+    get hexSecondaryLight() {return hsl(this.hueSecondaryLight,100,50)}
+    get hexSecondaryDark() {return hsl(this.hueSecondaryDark,100,50)}
 }
 
 export { Color }

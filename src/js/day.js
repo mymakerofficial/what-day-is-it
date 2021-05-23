@@ -118,10 +118,10 @@ class Day {
         //colors
         this.keywords.push(new Keyword("current_color_hsl", this.color.hsl))
         this.keywords.push(new Keyword("current_color_inverted_hsl", this.color.hslInverted))
-        this.keywords.push(new Keyword("current_color_secondary_hsl", this.color.hslSecondary))
+        this.keywords.push(new Keyword("current_color_secondary_hsl", this.color.hslSecondaryLight))
         this.keywords.push(new Keyword("current_color_hex", this.color.hex.substring(1)))
         this.keywords.push(new Keyword("current_color_inverted_hex", this.color.hexInverted.substring(1)))
-        this.keywords.push(new Keyword("current_color_secondary_hex", this.color.hexSecondary.substring(1)))
+        this.keywords.push(new Keyword("current_color_secondary_hex", this.color.hexSecondaryLight.substring(1)))
 
         //inserts from data
         let chance = WeightedRandom(this.random, [1, 3])

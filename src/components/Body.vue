@@ -10,15 +10,14 @@ import anime from 'animejs/lib/anime.es.js';
 
 export default {
   name: "Body",
-  props: ["text","textColor","center"],
+  props: ["text","textColorLight","textColorDark","center"],
 
   data() {
     return {
       display: false,
     }
   },
-
-
+  
   watch: {
     $route: function (){
       this.display = false;
@@ -52,6 +51,11 @@ export default {
     textFormatted: function () {
       return this.text ? markdown(this.text) : ""
     },
+    textColor: {
+      get() {
+        return this.$store.state.theme === 'light' ? this.textColorLight : this.textColorDark;
+      }
+    }
   },
 
   mounted() {
