@@ -1,32 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
 import router from './router';
+import Vuex from 'vuex';
+import createStore from './vuex';
 
 Vue.use(VueRouter);
+Vue.use(Vuex);
+
+const store = createStore();
+
+window.vuestore = store;
 
 Vue.config.productionTip = false
 
 new Vue({
   el: '#app',
-  router: router
+  router: router,
+  store: store,
+  beforeCreate() {
+    this.$store.commit('initialiseStore');
+  },
 });
 
 
 // theme
 
-if(!localStorage.theme){
-  localStorage.theme = 'light'
-  if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) localStorage.theme = 'dark'
-  console.log("theme was not set")
-}
-
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-  document.changeTheme(e.matches ? "dark" : "light")
+  store.commit('updateTheme', e.matches ? "dark" : "light")
 });
-
-document.changeTheme = function (theme) {
-  if(theme) localStorage.theme = theme
-  document.documentElement.className = localStorage.theme
-}
-
-document.changeTheme();

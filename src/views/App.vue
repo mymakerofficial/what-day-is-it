@@ -2,7 +2,7 @@
   <transition name="slide">
     <div id="app">
       <Header ref="header" :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
-      <Body :text="currentDay.text" :textColor="this.currentDay.color.hslSecondary" center="true"></Body>
+      <Body :text="currentDay.text" :textColorLight="this.currentDay.color.hslSecondaryLight" :textColorDark="this.currentDay.color.hslSecondaryDark" center="true"></Body>
       <LoadingSpinner :show="loading"></LoadingSpinner>
       <ThemeSwitcher></ThemeSwitcher>
       <Footer :navButtons="navButtons" :text="footerText"></Footer>

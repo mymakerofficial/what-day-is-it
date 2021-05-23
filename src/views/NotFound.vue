@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="message.title" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted"></Header>
-    <Body :text="message.text" :textColor="this.color.hslSecondary" center="true"></Body>
+    <Body :text="message.text" :textColor="this.color.hslSecondaryLight" center="true"></Body>
     <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons"></Footer>
   </div>

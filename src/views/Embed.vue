@@ -7,7 +7,7 @@
         <span class="badge border" :style="{display: this.currentDay.titleStriped === '' && this.currentDay.titleFormatted !== '' ? '' : 'none', color: this.currentDay.color.hslInverted}">can't be displayed</span>
       </div>
     </div>
-    <div class="embedBody" :style="{ color: this.currentDay.color.hslSecondary, height: bodyHeightFormatted, fontSize: this.bodyFontSizeFormatted }">
+    <div class="embedBody" :style="{ color: textColorSecondary, height: bodyHeightFormatted, fontSize: this.bodyFontSizeFormatted }">
       <div class="embedBodyText">
         {{this.currentDay.textStriped}}
         <span class="badge" :style="{display: this.currentDay.textStriped === '' && this.currentDay.textFormatted !== '' ? '' : 'none'}">can't be displayed</span>
@@ -63,6 +63,11 @@ export default {
     bodyFontSizeFormatted: function () {
       return `${this.bodyFontSize}px`
     },
+    textColorSecondary: {
+      get() {
+        return this.$store.state.theme === 'light' ? this.currentDay.color.hslSecondaryLight : this.currentDay.color.hslSecondaryDark;
+      }
+    }
   },
 
   methods: {
