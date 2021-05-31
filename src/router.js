@@ -10,6 +10,7 @@ import embed from './views/Embed.vue';
 import markdown from './views/MarkdownGuide.vue';
 import thing from './views/ThingOfTheDay.vue';
 import things from './views/ThingsList.vue';
+import install from './views/InstallPage.vue';
 
 const routes = [
     { path: '/', name: 'app', component: app },
@@ -23,6 +24,7 @@ const routes = [
     { path: '/forecast', name: 'forecast', component: forecast },
     { path: '/things', name: 'things', component: things },
     { path: '/embed', name: 'embed', component: embed },
+    { path: '/install', name: 'install', component: install },
     { path: '*', name: 'not_found', component: notFound }
 ]
 
