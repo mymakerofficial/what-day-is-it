@@ -19,10 +19,6 @@ export default {
       this.$store.commit('updateTheme', this.$store.state.theme === 'light' ? 'dark' : 'light')
     }
   },
-
-  mounted() {
-    this.setIcon()
-  }
 }
 </script>
 

@@ -16,6 +16,8 @@ import {Random} from "../js/random";
 import {stripHtml} from "string-strip-html";
 import Footer from "../components/Footer";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+import {Color} from "../js/color";
+import {getDateFromDate} from "../js/date";
 
 export default {
 name: "Custom",
@@ -69,6 +71,13 @@ name: "Custom",
       this.day.createKeywords()
       this.day.replaceKeywords()
     },
+    offline: function () {
+      this.currentDay = {
+        title: `#### :mdi-cloud-off-outline: you are offline`,
+        text: ` `,
+        color: new Color(Math.round(Random(getDateFromDate(new Date()).getTime()) * 360))
+      }
+    },
     loadData(){
       // load day text database
       axios.get(`/data/days.json`).then(response => {
@@ -76,6 +85,7 @@ name: "Custom",
         this.start()
       }).catch(error => {
         console.log(error)
+        this.offline();
       })
     },
   },

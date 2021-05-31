@@ -30,6 +30,10 @@
           <div class="label">date</div>
           <input type="date" class="dayDateInput">
         </div>-->
+        <!--<div class="textareaContainer">
+          <div class="label">hue</div>
+          <input type="number" v-model="color.originalHue" min="0" max="360">
+        </div>-->
         <div class="textareaContainer">
           <div class="label">seed</div>
           <input type="text" v-model="seed">
@@ -81,7 +85,7 @@ export default {
       usesDate: false,
       data: {"days": [],"any":[]},
       date: new Date(),
-      color: new Color(Random(getDateFromDate(new Date()).getTime()) * 360),
+      color: new Color(Math.round(Random(getDateFromDate(new Date()).getTime()) * 360)),
       headerHeight: "300px",
       bodyHeight: "300px",
       day: new Day(),
@@ -169,7 +173,7 @@ export default {
           this.day.text = this.text
 
           this.day.random = Random(this.seed)
-          this.day.color.originalHue = this.day.random * 360
+          this.day.color.originalHue = Math.round(this.day.random * 360)
 
           this.color = this.day.color
 

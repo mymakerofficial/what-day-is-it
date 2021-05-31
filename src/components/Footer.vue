@@ -10,6 +10,7 @@
           <div class="footerText">made with <i class="mdi mdi-heart"></i> by <b><a href="https://maiker.de">My_Maker</a></b></div><div class="footerText" v-if="text" v-html="text"></div>
         </div>
       </div>
+      <InstallButton></InstallButton>
     </div>
   </div>
 </template>
@@ -17,10 +18,11 @@
 <script>
 import anime from "animejs";
 import Things from "./Things";
+import InstallButton from "./InstallButton";
 
 export default {
   name: "Footer",
-  components: {Things},
+  components: {InstallButton, Things},
   props: ["text", "navButtons", "displayThings"],
 
   computed: {
