@@ -17,8 +17,10 @@ import axios from "axios";
 import {Day, isSameDay} from "../js/day";
 import Footer from "../components/Footer";
 import LoadingSpinner from "../components/LoadingSpinner";
-import {getDate} from "../js/date";
+import {getDate, getDateFromDate} from "../js/date";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+import {Color} from "../js/color";
+import {Random} from "../js/random";
 
 export default {
   name: 'App',
@@ -74,6 +76,13 @@ export default {
       //start day
       this.currentDay.set(this.setDay ? getDate(this.year, this.month, this.day) : new Date(), this.data)
     },
+    offline: function () {
+      this.currentDay = {
+        title: `#### :mdi-cloud-off-outline: you are offline`,
+        text: ` `,
+        color: new Color(Math.round(Random(getDateFromDate(new Date()).getTime()) * 360))
+      }
+    },
     loadData(){
       // load day text database
       axios.get(`/data/days.json`).then(response => {
@@ -82,6 +91,7 @@ export default {
         this.start()
       }).catch(error => {
         console.log(error)
+        this.offline();
       })
     },
   },

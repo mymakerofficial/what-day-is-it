@@ -78,6 +78,13 @@ export default {
       this.color.originalHue = this.random * 360;
       this.message = this.messages[WeightedRandom(this.random, this.messages.map((d) => d.weight))]
     },
+    offline: function () {
+      this.currentDay = {
+        title: `#### :mdi-cloud-off-outline: you are offline`,
+        text: ` `,
+        color: new Color(Math.round(Random(getDateFromDate(new Date()).getTime()) * 360))
+      }
+    },
     loadData(){
       this.loading = true
       // load database
@@ -86,6 +93,7 @@ export default {
         this.start()
       }).catch(error => {
         console.log(error)
+        this.offline()
       })
     },
   },

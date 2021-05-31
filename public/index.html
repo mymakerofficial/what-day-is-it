@@ -47,8 +47,9 @@
   </body>
 </html>
 <script>
-    import Footer from "../src/components/Footer";
-    export default {
-        components: {Footer}
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js');
+        });
     }
 </script>

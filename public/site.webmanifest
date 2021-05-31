@@ -17,5 +17,35 @@
     ],
     "theme_color": "#1c1c1f",
     "background_color": "#1c1c1f",
-    "display": "standalone"
+    "display": "standalone",
+    "shortcuts": [
+        {
+            "name": "what's the day?",
+            "short_name": "today",
+            "description": "What's the day today?",
+            "url": "/",
+            "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "thing's of the day",
+            "short_name": "thing's",
+            "description": "There are a lot of thing's in a day.",
+            "url": "/things",
+            "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "the day forecast",
+            "short_name": "forecast",
+            "description": "Shows you the days of the week.",
+            "url": "/forecast",
+            "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "make your own day",
+            "short_name": "custom day",
+            "description": "Create your own day and share it.",
+            "url": "/custom",
+            "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+        }
+    ]
 }
