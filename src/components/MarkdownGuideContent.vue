@@ -195,6 +195,11 @@
         <td><mark>marked</mark></td>
       </tr>
       <tr>
+        <td><b>Keyboard Input element</b></td>
+        <td>[[w]] [[a]] [[s]] [[d]]</td>
+        <td><kbd>w</kbd> <kbd>a</kbd> <kbd>s</kbd> <kbd>d</kbd></td>
+      </tr>
+      <tr>
         <td><b>Spoiler</b></td>
         <td>!!spoiler!!</td>
         <td><span class="spoiler">spoiler</span></td>

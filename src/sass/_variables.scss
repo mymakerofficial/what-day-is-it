@@ -51,3 +51,9 @@ $shadow1: 0px 12px 16px -6px rgb(0, 0, 0, 20%), 0px 24px 38px 3px rgb(0, 0, 0, 1
 
 $uiColorBackground: var(--uiColorBackground);
 $uiColorText: var(--uiColorText);
+
+// fonts
+
+$fontTitle: 'Playfair Display', serif;// script=latin rev=2
+$fontText: 'Roboto', sans-serif;
+$fontCode: 'Overpass Mono', monospace;

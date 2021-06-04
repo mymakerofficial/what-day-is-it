@@ -8,6 +8,8 @@ const sup = require('markdown-it-sup')
 const mark = require('markdown-it-mark')
 const underline = require('markdown-it-underline');
 const spoiler = require("@traptitech/markdown-it-spoiler")
+const kbd = require('markdown-it-kbd');
+
 
 import twemoji from "twemoji"
 
@@ -27,7 +29,7 @@ let md = require('markdown-it')({
     }
 });
 
-md.use(emoji).use(mdi).use(video).use(html5Media).use(sup).use(mark).use(underline).use(spoiler)
+md.use(kbd).use(emoji).use(mdi).use(video).use(html5Media).use(sup).use(mark).use(underline).use(spoiler)
 
 let markdown = function (string) {
     return twemoji.parse(md.render(string), {
