@@ -26,6 +26,7 @@ day.maiker.de uses open source projects to work. Check them out!
 - **[markdown-it-html5-media](https://github.com/eloquence/markdown-it-html5-media)** Minimalist <video>/<audio> plugin for markdown-it, using image syntax.
 - **[markdown-it-sup](https://github.com/markdown-it/markdown-it-sup)** Superscript (<sup>) tag plugin for markdown-it markdown parser
 - **[markdown-it-mark](https://github.com/markdown-it/markdown-it-mark)** <mark> tag plugin for markdown-it markdown parser
+- **[markdown-it-kbd](https://github.com/jGleitz/markdown-it-kbd)** markdown-it plugin for keystrokes.
 - **[@traptitech/markdown-it-spoiler](https://github.com/traPtitech/markdown-it-spoiler)** spoiler plugin for markdown-it markdown parser
 
 &nbsp;

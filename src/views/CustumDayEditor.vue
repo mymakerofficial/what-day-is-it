@@ -19,18 +19,18 @@
         <div class="textareaContainer">
           <div class="label">title</div>
           <textarea v-model="title" ref="inputTitle" class="dayTextInput" :style="{ height: headerHeight }" :maxlength="maxTitleLength"></textarea>
-          <div class="textareaFooter right"><span class="text">{{title.length}} / {{maxTitleLength}}</span><span class="box"><i class="small mdi mdi-code-json"></i><i class="mdi mdi-language-markdown"></i></span></div>
+          <div class="textareaFooter right"><span class="text">{{title.length}} / {{maxTitleLength}}</span></div>
         </div>
         <div class="textareaContainer">
           <div class="label">text</div>
           <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }" :maxlength="maxTextLength"></textarea>
-          <div class="textareaFooter right"><span class="text">{{text.length}} / {{maxTextLength}}</span><span class="box"><i class="small mdi mdi-code-json"></i><i class="mdi mdi-language-markdown"></i></span></div>
+          <div class="textareaFooter right"><span class="text">{{text.length}} / {{maxTextLength}}</span></div>
         </div>
         <!--<div class="textareaContainer">
           <div class="label">date</div>
           <input type="date" class="dayDateInput">
-        </div>-->
-        <!--<div class="textareaContainer">
+        </div>
+        <div class="textareaContainer">
           <div class="label">hue</div>
           <input type="number" v-model="color.originalHue" min="0" max="360">
         </div>-->
@@ -51,6 +51,9 @@
       </div>
     </div>
     <ThemeSwitcher></ThemeSwitcher>
+    <div class="container center">
+      <div class="alert"><b>PROTIP!</b> All text input support full <button v-on:click="showMarkdownGuide">markdown</button> and you can make use of <button v-on:click="showKeywords">keywords</button></div>
+    </div>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
@@ -92,8 +95,8 @@ export default {
       loaded: false,
       seed: getDateFromDate(new Date()).getTime(),
       toast: {title: "", text: "", time: 1000},
-      maxTitleLength: 200,
-      maxTextLength: 700,
+      maxTitleLength: 400,
+      maxTextLength: 1200,
     }
   },
 
@@ -292,6 +295,24 @@ export default {
       this.$nextTick(function () {
         this.toast.title = "copied!"
         this.toast.text = "The link was copied to you clipboard."
+      });
+    },
+    showMarkdownGuide(){
+      this.toast.title = ""
+      this.toast.text = ""
+      this.toast.time = 2000
+      this.$nextTick(function () {
+        this.toast.title = "ehm this is embarrassing (‘-’*)"
+        this.toast.text = "I didnt program this one yet."
+      });
+    },
+    showKeywords(){
+      this.toast.title = ""
+      this.toast.text = ""
+      this.toast.time = 2000
+      this.$nextTick(function () {
+        this.toast.title = "ehm this is embarrassing (‘-’*)"
+        this.toast.text = "I didnt program this one yet."
       });
     },
     loadData(){

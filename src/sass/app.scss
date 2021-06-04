@@ -4,12 +4,14 @@
 //@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&family=Catamaran&family=Overpass+Mono&display=swap');
 @import 'fonts';
 
+
+
 body {
   margin: 0;
   padding: 0;
   background-color: $uiLight;
   color: $uiDarkSecondary;
-  font-family: 'Roboto', sans-serif;
+  font-family: $fontTitle;
   overflow-x: hidden;
 }
 
@@ -29,7 +31,7 @@ body {
   font-size: 2em;
   font-style: italic;
   letter-spacing: 4px;
-  font-family: "Playfair Display script=latin rev=2", serif;
+  font-family: $fontTitle;
   margin: 24px;
 }
 
@@ -213,7 +215,7 @@ h6 {
 }
 
 h4, h5, h6 {
-  font-family: 'Roboto', sans-serif;
+  font-family: $fontText;
 }
 
 .emoji {
@@ -244,7 +246,7 @@ h6 .emoji {
 }
 
 blockquote {
-  font-family: 'Playfair Display', serif;
+  font-family: $fontTitle;
   display: inline-block;
 }
 
@@ -282,16 +284,17 @@ h1 sup, h2 sup, h3 sup {
 
 mark {
   padding: 0 4px;
+  background-color: $uiLightSecondary;
+  color: $uiColorText;
+}
+
+.header mark {
   background-color: $uiColorText;
   color: $uiColorBackground;
 }
 
-mark a {
-  color: $uiColorBackground;
-}
-
 code {
-  font-family: 'Overpass Mono', monospace;
+  font-family: $fontCode;
   background: $uiLightSecondary;
   color: $uiDarkSecondary2;
   padding: 9px;
@@ -308,12 +311,22 @@ pre code {
   color: var(--uiColorBackground);
 }
 
+kbd {
+  font-family: $fontCode;
+  border: solid 2px;
+  border-bottom: solid 4px;
+  margin: 4px 2px;
+  padding: 1px 4px;
+}
+
+// buttons
+
 button, .button {
   display: inline-block;
   position: relative;
   margin: 6px;
   border: none;
-  font-family: 'Playfair Display', serif;
+  font-family: $fontTitle;
   font-size: 1.1em;
   letter-spacing: 1px;
   font-weight: 600;
@@ -354,7 +367,7 @@ button.huge, .button.huge {
 button.flat {
   background-color: unset;
   color: $uiLightSecondary3;
-  font-family: 'Roboto', sans-serif;
+  font-family: $fontText;
   font-size: 1.2em;
   letter-spacing: 2px;
   font-style: normal;
@@ -395,7 +408,7 @@ ul li::before {
 }
 
 .badge {
-  font-family: 'Overpass Mono', monospace;
+  font-family: $fontCode;
   font-weight: normal;
   font-style: italic;
   font-size: 0.8em;
@@ -447,7 +460,7 @@ td {
 }
 
 .detailsBody td:not(td:first-child) {
-  font-family: 'Overpass Mono', monospace;
+  font-family: $fontCode;
 }
 
 th {
@@ -456,7 +469,7 @@ th {
   font-weight: bold;
   font-style: italic;
   letter-spacing: 2px;
-  font-family: "Playfair Display script=latin rev=2", serif;
+  font-family: $fontTitle;
   text-align: left;
   background-color: $uiLightSecondary;
 }
@@ -568,7 +581,7 @@ textarea {
   border: none;
   background-color: $uiLight2;
   color: $uiDarkSecondary2;
-  font-family: 'Overpass Mono', monospace;
+  font-family: $fontCode;
 }
 
 .dayTextInput {
@@ -642,7 +655,8 @@ input:focus {
 }
 
 .textareaFooter .text {
-  margin: 0 4px;
+  display: inline-block;
+  margin: 8px 4px;
   font-size: .8em;
   vertical-align: middle;
   color: $uiDarkSecondary3;
@@ -682,13 +696,43 @@ input:focus {
 }
 
 .toastTitle {
-  font-family: "Playfair Display script=latin rev=2", serif;
+  font-family: $fontTitle;
   font-size: 1.5em;
   font-weight: bold;
   font-style: italic;
   letter-spacing: 2px;
-  margin-bottom: 12px;
+  margin: 0 12px 12px;
 }
+
+// alerts
+
+.alert {
+  background-color: $uiLight2;
+  color: $uiDarkSecondary2;
+  display: inline-block;
+  margin: 12px;
+  padding: 24px 48px;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+.alert.inverted, .alert.inverted button {
+  background-color: $uiDarkSecondary;
+  color: $uiLightSecondary;
+}
+
+.header .alert, .header .alert button, .header .alert a  {
+  background-color: $uiColorText;
+  color: $uiColorBackground;
+}
+
+.alert button {
+  background-color: unset;
+  padding: 0px;
+  margin: 0 4px;
+  text-decoration: underline;
+}
+
 
 // theme switcher
 
