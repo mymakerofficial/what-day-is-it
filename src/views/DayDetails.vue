@@ -184,7 +184,6 @@ export default {
         {text: "today", path: "/", display: true},
         {text: "go to day", path: this.currentDay.path, display: true},
         {text: "day forecast", path: "/forecast", display: true},
-        {text: "custom day", path: "/custom", display: true},
         {text: "about", path: "/about", display: true}
       ]
     }

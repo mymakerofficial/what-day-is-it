@@ -3,6 +3,10 @@
     <div class="footerContainer">
       <Things v-show="things" :showAll="false"></Things>
       <div class="footer" ref="container">
+        <div class="footerSection">
+          <router-link class="button" :to="{path: '/custom'}"><i class="mdi mdi-plus-circle"></i> Make your own day!</router-link>
+          <InstallButton></InstallButton>
+        </div>
         <div class="footerSection" id="footerButtons">
             <router-link v-for="button in this.buttons" :key="button.text" :to="{path: button.path}" class="navButton" ref="navButton">{{button.text}}</router-link>
         </div>
@@ -10,7 +14,6 @@
           <div class="footerText">made with <i class="mdi mdi-heart"></i> by <b><a href="https://maiker.de">My_Maker</a></b></div><div class="footerText" v-if="text" v-html="text"></div>
         </div>
       </div>
-      <InstallButton></InstallButton>
     </div>
   </div>
 </template>

@@ -57,7 +57,6 @@ export default {
         {text: "today", path: "/", display: !isSameDay(this.currentDay.date, new Date())},
         {text: "day details", path: this.detailsPath, display: true},
         {text: "day forecast", path: "/forecast", display: true},
-        {text: "custom day", path: "/custom", display: true},
         {text: "about", path: "/about", display: true}
       ]
     },

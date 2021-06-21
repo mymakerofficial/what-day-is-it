@@ -3,6 +3,7 @@
 :root, :root.light {
   --uiLight2: hsl(0, 0%, 98%);
   --uiLight: hsl(0, 0%, 92%);
+  --uiDark2:  hsl(0, 0%, 73%);
   --uiDark: hsl(240, 1%, 33%);
 
   --uiLightSecondary: hsl(0, 0%, 90%);
@@ -18,6 +19,7 @@
 :root.dark {
   --uiLight2: hsl(240, 3%, 22%);
   --uiLight: hsl(240, 4%, 16%);
+  --uiDark2: hsl(240, 6%, 22%);
   --uiDark: hsl(240, 40%, 92%);
 
   --uiLightSecondary: hsl(240, 3%, 25%);
@@ -32,6 +34,7 @@
 
 $uiLight2: var(--uiLight2);
 $uiLight: var(--uiLight);
+$uiDark2: var(--uiDark2);
 $uiDark: var(--uiDark);
 
 $uiLightSecondary: var(--uiLightSecondary);

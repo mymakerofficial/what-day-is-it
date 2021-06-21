@@ -23,7 +23,6 @@ export default {
       return [
         {text: "today", path: "/", display: true},
         {text: "day forecast", path: "/forecast", display: true},
-        {text: "custom day", path: "/custom", display: true},
         {text: "about", path: "/about", display: true}
       ]
     }
