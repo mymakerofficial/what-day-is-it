@@ -29,7 +29,7 @@ let md = require('markdown-it')({
     }
 });
 
-md.use(kbd).use(emoji).use(mdi).use(video).use(html5Media).use(sup).use(mark).use(underline).use(spoiler)
+md.use(kbd).use(emoji).use(mdi).use(html5Media).use(video).use(sup).use(mark).use(underline).use(spoiler)
 
 let markdown = function (string) {
     return twemoji.parse(md.render(string), {
