@@ -9,6 +9,9 @@
         </div>
       </div>
     </div>
+    <div class="container center" v-if="oops">
+      <div class="alert"><b>oops!</b> Something went wrong, no forecast today. :(</div>
+    </div>
     <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons"></Footer>
   </div>
@@ -36,7 +39,8 @@ export default {
       data: {"days": [],"any":[]},
       headerTitle: "the day forecast",
       date: new Date(),
-      days: []
+      days: [],
+      oops: false
     }
   },
 
@@ -52,25 +56,31 @@ export default {
 
   methods: {
     start: function () {
-      this.date = getDateFromDate(new Date())
+      try{
+        this.date = getDateFromDate(new Date())
 
-      let length = process.env.VUE_APP_FORECAST_DEFAULT_LENGHT
+        let length = process.env.VUE_APP_FORECAST_DEFAULT_LENGHT
 
-      if(this.$route.query.length){
-        if(this.$route.query.length > 0 && this.$route.query.length <= 300) length = this.$route.query.length
+        if(this.$route.query.length){
+          if(this.$route.query.length > 0 && this.$route.query.length <= 300) length = this.$route.query.length
+        }
+
+        // TODO this lags when the length is to long
+        for(let i = 0;i < length;i++){
+          let newDate = new Date(this.date.getTime() + 86400000 * i)
+          let newDay = new Day(newDate, this.data)
+          this.days.push(newDay)
+        }
+
+        this.loading = false;
+
+        this.animate()
       }
-
-      // TODO this lags when the length is to long
-      for(let i = 0;i < length;i++){
-        let newDate = new Date(this.date.getTime() + 86400000 * i)
-        let newDay = new Day(newDate, this.data)
-        console.log(newDay)
-        this.days.push(newDay)
+      catch(err) {
+        console.error(err)
+        this.oops = true
       }
-
-      this.loading = false;
-
-      this.animate()
+      console.log(this.days[4].textStriped)
     },
     animate() {
       this.$nextTick(function () {
