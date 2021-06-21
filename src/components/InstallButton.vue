@@ -1,8 +1,5 @@
 <template>
-  <div>
-
-    <button class="flat" style="margin: 32px" v-if="show" v-on:click="install"><i class="mdi mdi-download"></i> Install this website!</button>
-  </div>
+  <button v-if="show" v-on:click="install"><i class="mdi mdi-download"></i> Install this website!</button>
 </template>
 
 <script>

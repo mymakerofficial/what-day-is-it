@@ -48,7 +48,6 @@ export default {
     navButtons: function () {
       return [
         {text: "today", path: "/", display: true},
-        {text: "custom day", path: "/custom", display: true},
         {text: "about", path: "/about", display: true}
       ]
     }
