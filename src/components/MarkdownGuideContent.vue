@@ -166,15 +166,6 @@
       </thead>
       <tbody>
       <tr>
-        <td><b><a href="https://www.markdownguide.org/extended-syntax/#tables">Table</a></b></td>
-        <td>
-          | Header | Title |<br>
-          | -------- | -------- |<br>
-          | Paragraph | Text |<br>
-          | Paragraph | Text |<br>
-        </td>
-      </tr>
-      <tr>
         <td><b><a href="https://www.markdownguide.org/basic-syntax/#blockquotes-1">Blockquote</a></b></td>
         <td>> blockquote</td>
         <td><blockquote>blockquote</blockquote></td>
