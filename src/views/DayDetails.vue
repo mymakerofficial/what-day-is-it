@@ -72,6 +72,10 @@
             <td>{{this.currentDay.date}}</td>
           </tr>
           <tr>
+            <td><b>unixtimestamp</b></td>
+            <td>{{this.currentDay.date.getTime()}}</td>
+          </tr>
+          <tr>
             <td><b>dayIndex</b></td>
             <td>{{this.currentDay.dayIndex}}</td>
           </tr>
