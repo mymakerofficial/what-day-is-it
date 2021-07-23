@@ -50,6 +50,12 @@
         </div>
       </div>
     </div>
+    <Modal>
+      <div class="container center">
+        <h5>Format your day with markdown!</h5>
+      </div>
+      <MarkdownGuideContent></MarkdownGuideContent>
+    </Modal>
     <ThemeSwitcher></ThemeSwitcher>
     <div class="container center">
       <div class="alert"><b>PROTIP!</b> All text input support full <button v-on:click="showMarkdownGuide">markdown</button> and you can make use of <button v-on:click="showKeywords">keywords</button></div>
@@ -71,6 +77,8 @@ import {Day} from "../js/day";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+import Modal from "../components/Modal";
+import MarkdownGuideContent from "../components/MarkdownGuideContent";
 
 String.prototype.trim = function (length) {
   return this.length > length ? this.substring(0, length) : this;
@@ -78,7 +86,7 @@ String.prototype.trim = function (length) {
 
 export default {
   name: "CustumDayEditor",
-  components: {ThemeSwitcher, LoadingSpinner, Footer, Header, Toast},
+  components: {MarkdownGuideContent, Modal, ThemeSwitcher, LoadingSpinner, Footer, Header, Toast},
 
   data() {
     return {
