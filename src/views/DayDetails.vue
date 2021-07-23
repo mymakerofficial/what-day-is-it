@@ -149,7 +149,7 @@
         <tbody>
           <tr v-for="keyword in this.currentDay.keywords" :key="keyword.scope">
             <td><b>{{`\u007B\u007B${keyword.scope}\u007D\u007D`}}</b></td>
-            <td>{{keyword.replace}} <span v-if="findColor(keyword.replace) !== null" class="badge">colors found: <span v-for="color in findColor(keyword.replace)" :key="color"><span class="colorPreview" :style="{ backgroundColor: color }"></span></span></span></td>
+            <td>{{keyword.replace}} <span v-for="color in findColor(keyword.replace)" :key="color"><span class="colorPreview" :style="{ backgroundColor: color }"></span></span></td>
           </tr>
         </tbody>
       </table>
