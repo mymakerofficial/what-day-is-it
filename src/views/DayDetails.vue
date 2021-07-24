@@ -3,6 +3,7 @@
     <Header :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
     <div class="container">
       <h4>Properties</h4>
+      <h6>This is what this day is made out of.</h6>
       <table style="width:100%">
         <thead>
           <tr>
@@ -90,6 +91,7 @@
         </tbody>
       </table>
       <h4>Colors</h4>
+      <h6>These colors are randomly generated and are used to them the website on this day.</h6>
       <table style="width:100%">
         <thead>
           <tr>
@@ -139,6 +141,7 @@
         </tbody>
       </table>
       <h4>Keywords</h4>
+      <h6>Keywords are values that can be dynamically inserted in the text of a day. If the day title or text contains any of the <i>scopes</i> it gets replaced by the corresponding value</h6>
       <table style="width:100%">
         <thead>
           <tr>
