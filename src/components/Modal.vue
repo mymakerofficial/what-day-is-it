@@ -1,8 +1,11 @@
 <template>
-  <div class="modalContainer" v-if="show">
+  <div class="modalContainer" v-if="visible">
     <div class="modal">
       <div class="modalHeader">
-        <span>Markdown Guide</span>
+        <span>
+          <span class="modalTitle">{{title}}</span>
+          <span class="modalSubtitle" v-if="subtitle">{{subtitle}}</span>
+        </span>
         <i class="mdi mdi-close modalExit" v-on:click="close"></i>
       </div>
       <div class="modalBody">
@@ -16,18 +19,32 @@
 export default {
   name: "Modal",
 
+  props: ["show","title","subtitle"],
+
   data() {
     return {
-      show: true
+      visible: false
+    }
+  },
+
+  watch: {
+    show: function (){
+      if(this.show){
+        this.open()
+      }else{
+        this.close()
+      }
     }
   },
 
   methods: {
     open() {
       this.show = true;
+      this.visible = true;
     },
     close() {
       this.show = false;
+      this.visible = false;
     }
   }
 }

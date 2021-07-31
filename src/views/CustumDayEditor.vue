@@ -26,14 +26,14 @@
           <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }" :maxlength="maxTextLength"></textarea>
           <div class="textareaFooter right"><span class="text">{{text.length}} / {{maxTextLength}}</span></div>
         </div>
-        <!--<div class="textareaContainer">
+        <div class="textareaContainer">
           <div class="label">date</div>
           <input type="date" class="dayDateInput">
         </div>
         <div class="textareaContainer">
           <div class="label">hue</div>
           <input type="number" v-model="color.originalHue" min="0" max="360">
-        </div>-->
+        </div>
         <div class="textareaContainer">
           <div class="label">seed</div>
           <input type="text" v-model="seed">
@@ -50,15 +50,12 @@
         </div>
       </div>
     </div>
-    <Modal>
-      <div class="container center">
-        <h5>Format your day with markdown!</h5>
-      </div>
+    <Modal :show="markdownGuideShow" title="Markdown Guide" subtitle="Format your day with markdown!">
       <MarkdownGuideContent></MarkdownGuideContent>
     </Modal>
     <ThemeSwitcher></ThemeSwitcher>
     <div class="container center">
-      <div class="alert"><b>PROTIP!</b> All text input support full <button v-on:click="showMarkdownGuide">markdown</button> and you can make use of <button v-on:click="showKeywords">keywords</button></div>
+      <div class="alert"><b>PROTIP!</b> All text inputs support full <button v-on:click="showMarkdownGuide">markdown</button> and you can make use of <button v-on:click="showKeywords">keywords</button></div>
     </div>
     <Footer :navButtons="navButtons"></Footer>
   </div>
@@ -105,6 +102,7 @@ export default {
       toast: {title: "", text: "", time: 1000},
       maxTitleLength: 400,
       maxTextLength: 1200,
+      markdownGuideShow: false,
     }
   },
 
@@ -306,13 +304,7 @@ export default {
       });
     },
     showMarkdownGuide(){
-      this.toast.title = ""
-      this.toast.text = ""
-      this.toast.time = 2000
-      this.$nextTick(function () {
-        this.toast.title = "ehm this is embarrassing (‘-’*)"
-        this.toast.text = "I didnt program this one yet."
-      });
+      this.markdownGuideShow = true;
     },
     showKeywords(){
       this.toast.title = ""

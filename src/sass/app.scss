@@ -284,8 +284,8 @@ h1 sup, h2 sup, h3 sup {
 
 mark {
   padding: 0 4px;
-  background-color: $uiLightSecondary;
-  color: $uiColorText;
+  background-color: $uiDark;
+  color: $uiLight;
 }
 
 .header mark {
@@ -801,6 +801,16 @@ input:focus {
   background-color: $uiLight2;
   color: $uiDark;
   display: flex;
+}
+
+.modalSubtitle {
+  display: block;
+  font-family: $fontText;
+  font-size: 0.7em;
+  font-weight: normal;
+  color: $uiLightSecondary3;
+  letter-spacing: 1px;
+  margin: 4px 0 0 0;
 }
 
 .modalExit {
