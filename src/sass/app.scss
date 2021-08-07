@@ -284,8 +284,8 @@ h1 sup, h2 sup, h3 sup {
 
 mark {
   padding: 0 4px;
-  background-color: $uiLightSecondary;
-  color: $uiColorText;
+  background-color: $uiDark;
+  color: $uiLight;
 }
 
 .header mark {
@@ -767,4 +767,60 @@ input:focus {
 
 .themeSwitcher:hover {
   cursor: pointer;
+}
+
+
+// modal
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  background-color: hsla(0, 0, 0, .7)
+}
+
+.modal {
+  background: $uiLight;
+  box-shadow: $shadow2;
+  margin: 120px auto;
+  max-width: 1200px;
+}
+
+.modalHeader {
+  padding: 24px 32px;
+  font-family: $fontTitle;
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  background-color: $uiLight2;
+  color: $uiDark;
+  display: flex;
+}
+
+.modalSubtitle {
+  display: block;
+  font-family: $fontText;
+  font-size: 0.7em;
+  font-weight: normal;
+  color: $uiLightSecondary3;
+  letter-spacing: 1px;
+  margin: 4px 0 0 0;
+}
+
+.modalExit {
+  padding: .5rem .5rem;
+  margin: -.5rem -.5rem -.5rem auto;
+}
+.modalExit:hover {
+  cursor: pointer;
+}
+
+.modalBody {
+  padding: 12px 42px;
 }

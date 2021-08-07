@@ -16,8 +16,17 @@
           # H1<br>
           ## H2<br>
           ### H3<br>
-          ...<br>
+          #### H4<br>
+          ##### H5<br>
           ###### H6<br>
+        </td>
+        <td>
+          <h1 style="margin: 28px 0px">H1</h1>
+          <h2 style="margin: 18px 0px">H2</h2>
+          <h3 style="margin: 12px 0px">H3</h3>
+          <h4 style="margin: 0px 0px">H4</h4>
+          <h5 style="margin: 0px 0px">H5</h5>
+          <h6 style="margin: 0px 0px">H6</h6>
         </td>
       </tr>
       <tr>
@@ -43,8 +52,6 @@
       <tr>
         <td>
           <b><a href="https://www.markdownguide.org/extended-syntax/#emoji">Emoji</a></b><br>
-          <a href="http://s.maiker.de/emojilist">list of all emoji shortcodes</a><br>
-          <a href="https://emojipedia.org/twitter/">twemoji list</a><br>
           Find emojis on <a href="https://emojipedia.org">emojipedia.org</a><br>
         </td>
         <td>:heart:</td>
@@ -89,26 +96,37 @@
       <tr>
         <th>Element</th>
         <th>Markdown Syntax</th>
+        <th>Output</th>
       </tr>
       </thead>
       <tbody>
       <tr>
         <td><b><a href="https://www.markdownguide.org/basic-syntax/#code">Code</a></b></td>
         <td>`code`</td>
+        <td><code>code</code></td>
       </tr>
       <tr>
         <td>
           <b><a href="https://www.markdownguide.org/extended-syntax/#fenced-code-blocks">Fenced Code Block</a></b><br>
-          <i>(supports syntax highlighting)</i>
+          (supports syntax highlighting)
         </td>
         <td>
           ```json<br>
           {<br>
           "title": "Friday",<br>
-          "text": "Invented in 1768 by greek scientist Ivan Friday.",<br>
+          "text": "it do be friday",<br>
           "author": null,<br>
           }<br>
           ```<br>
+        </td>
+        <td>
+<pre><code>
+{
+<span class="hljs-attr">"title"</span>: <span class="hljs-string">"Friday"</span>,
+<span class="hljs-attr">"text"</span>: <span class="hljs-string">"it do be friday."</span>,
+<span class="hljs-attr">"author"</span>: <span class="hljs-literal">null</span>,
+}
+</code></pre>
         </td>
       </tr>
       </tbody>
@@ -166,21 +184,15 @@
       </thead>
       <tbody>
       <tr>
-        <td><b><a href="https://www.markdownguide.org/extended-syntax/#tables">Table</a></b></td>
-        <td>
-          | Header | Title |<br>
-          | -------- | -------- |<br>
-          | Paragraph | Text |<br>
-          | Paragraph | Text |<br>
-        </td>
-      </tr>
-      <tr>
         <td><b><a href="https://www.markdownguide.org/basic-syntax/#blockquotes-1">Blockquote</a></b></td>
         <td>> blockquote</td>
         <td><blockquote>blockquote</blockquote></td>
       </tr>
       <tr>
-        <td><b><a href="https://materialdesignicons.com/">Material Design Icons</a></b></td>
+        <td>
+          <b>Material Design Icons</b><br>
+          Find icons on <a href="https://materialdesignicons.com/">materialdesignicons.com</a>
+        </td>
         <td>:mdi-account:</td>
         <td><i class="mdi mdi-account"></i></td>
       </tr>
