@@ -26,14 +26,14 @@
           <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }" :maxlength="maxTextLength"></textarea>
           <div class="textareaFooter right"><span class="text">{{text.length}} / {{maxTextLength}}</span></div>
         </div>
-        <div class="textareaContainer">
+        <!--<div class="textareaContainer">
           <div class="label">date</div>
           <input type="date" class="dayDateInput">
         </div>
         <div class="textareaContainer">
           <div class="label">hue</div>
           <input type="number" v-model="color.originalHue" min="0" max="360">
-        </div>
+        </div>-->
         <div class="textareaContainer">
           <div class="label">seed</div>
           <input type="text" v-model="seed">
@@ -53,9 +53,12 @@
     <Modal :show="markdownGuideShow" @close="markdownGuideShow = false" title="Markdown Guide" subtitle="Format your day with markdown!">
       <MarkdownGuideContent></MarkdownGuideContent>
     </Modal>
+    <Modal :show="keywordsModalShow" @close="keywordsModalShow = false" title="Keywords">
+      <KeywordsList :keywords="this.day.keywords"></KeywordsList>
+    </Modal>
     <ThemeSwitcher></ThemeSwitcher>
     <div class="container center">
-      <div class="alert"><b>PROTIP!</b> All text inputs support full <button v-on:click="markdownGuideShow = true">markdown</button> and you can make use of <button v-on:click="showKeywords">keywords</button></div>
+      <div class="alert"><b>PROTIP!</b> All text inputs support full <button v-on:click="markdownGuideShow = true">markdown</button> and you can make use of <button v-on:click="keywordsModalShow = true">keywords</button></div>
     </div>
     <Footer :navButtons="navButtons"></Footer>
   </div>
@@ -76,6 +79,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import Modal from "../components/Modal";
 import MarkdownGuideContent from "../components/MarkdownGuideContent";
+import KeywordsList from "../components/KeywordsList";
 
 String.prototype.trim = function (length) {
   return this.length > length ? this.substring(0, length) : this;
@@ -83,7 +87,7 @@ String.prototype.trim = function (length) {
 
 export default {
   name: "CustumDayEditor",
-  components: {MarkdownGuideContent, Modal, ThemeSwitcher, LoadingSpinner, Footer, Header, Toast},
+  components: {KeywordsList, MarkdownGuideContent, Modal, ThemeSwitcher, LoadingSpinner, Footer, Header, Toast},
 
   data() {
     return {
@@ -103,6 +107,7 @@ export default {
       maxTitleLength: 400,
       maxTextLength: 1200,
       markdownGuideShow: false,
+      keywordsModalShow: false
     }
   },
 
@@ -301,15 +306,6 @@ export default {
       this.$nextTick(function () {
         this.toast.title = "copied!"
         this.toast.text = "The link was copied to you clipboard."
-      });
-    },
-    showKeywords(){
-      this.toast.title = ""
-      this.toast.text = ""
-      this.toast.time = 2000
-      this.$nextTick(function () {
-        this.toast.title = "ehm this is embarrassing (‘-’*)"
-        this.toast.text = "I didnt program this one yet."
       });
     },
     loadData(){
