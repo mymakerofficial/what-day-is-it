@@ -26,14 +26,14 @@
           <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }" :maxlength="maxTextLength"></textarea>
           <div class="textareaFooter right"><span class="text">{{text.length}} / {{maxTextLength}}</span></div>
         </div>
-        <div class="textareaContainer">
+        <!--<div class="textareaContainer">
           <div class="label">date</div>
           <input type="date" class="dayDateInput">
         </div>
         <div class="textareaContainer">
           <div class="label">hue</div>
           <input type="number" v-model="color.originalHue" min="0" max="360">
-        </div>
+        </div>-->
         <div class="textareaContainer">
           <div class="label">seed</div>
           <input type="text" v-model="seed">
