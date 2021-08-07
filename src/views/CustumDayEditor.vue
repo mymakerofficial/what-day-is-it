@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <Modal :show="markdownGuideShow" title="Markdown Guide" subtitle="Format your day with markdown!">
+    <Modal :show="markdownGuideShow" @close="markdownGuideShow = false" title="Markdown Guide" subtitle="Format your day with markdown!">
       <MarkdownGuideContent></MarkdownGuideContent>
     </Modal>
     <ThemeSwitcher></ThemeSwitcher>
