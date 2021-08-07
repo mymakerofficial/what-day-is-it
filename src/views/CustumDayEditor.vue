@@ -55,7 +55,7 @@
     </Modal>
     <ThemeSwitcher></ThemeSwitcher>
     <div class="container center">
-      <div class="alert"><b>PROTIP!</b> All text inputs support full <button v-on:click="showMarkdownGuide">markdown</button> and you can make use of <button v-on:click="showKeywords">keywords</button></div>
+      <div class="alert"><b>PROTIP!</b> All text inputs support full <button v-on:click="markdownGuideShow = true">markdown</button> and you can make use of <button v-on:click="showKeywords">keywords</button></div>
     </div>
     <Footer :navButtons="navButtons"></Footer>
   </div>
@@ -302,9 +302,6 @@ export default {
         this.toast.title = "copied!"
         this.toast.text = "The link was copied to you clipboard."
       });
-    },
-    showMarkdownGuide(){
-      this.markdownGuideShow = true;
     },
     showKeywords(){
       this.toast.title = ""
