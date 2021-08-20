@@ -6,7 +6,7 @@
           <span class="modalTitle">{{title}}</span>
           <span class="modalSubtitle" v-if="subtitle">{{subtitle}}</span>
         </span>
-        <i class="mdi mdi-close modalExit" v-on:click="close"></i>
+        <i class="mdi mdi-close modalExit" v-on:click="emitClose" aria-label="Close modal"></i>
       </div>
       <div class="modalBody">
         <slot></slot>
@@ -39,12 +39,14 @@ export default {
 
   methods: {
     open() {
-      this.show = true;
       this.visible = true;
     },
     close() {
-      this.show = false;
       this.visible = false;
+
+    },
+    emitClose() {
+      this.$emit('close');
     }
   }
 }
