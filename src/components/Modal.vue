@@ -4,7 +4,7 @@
       <div class="modalHeader">
         <span>
           <span class="modalTitle">{{title}}</span>
-          <span class="modalSubtitle" v-if="subtitle">{{subtitle}}</span>
+          <span class="modalSubtitle" v-if="subtitle" v-html="subtitle"></span>
         </span>
         <i class="mdi mdi-close modalExit" v-on:click="emitClose" aria-label="Close modal"></i>
       </div>

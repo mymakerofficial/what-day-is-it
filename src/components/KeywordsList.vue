@@ -1,9 +1,7 @@
 <template>
   <div>
     <br/>
-    <div class="container center">
-      <b>Keywords</b> are used to insert <b>dynamic content</b> into a day. You can write a scope into your day and it will be replaced with its value
-    </div>
+    <span class="alert"><b>Keywords</b> are used to insert <b>dynamic content</b> into a day. You can write a scope into your day and it will be replaced with its value</span>
     <br/><br/>
     <table style="width:100%">
       <thead>
