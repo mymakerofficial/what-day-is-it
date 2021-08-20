@@ -2,7 +2,7 @@ import hsl from "hsl-to-hex";
 
 //const forbidden = [[10,70],[185,220]] // this blocks to many colors
 //const forbidden = [[23,52]]
-const forbidden = [[23,33]]
+//const forbidden = [[23,33]]
 const light = [[50,200]]
 const dark = [[10,40],[210,290]]
 
@@ -27,7 +27,8 @@ class Color {
     constructor(hue){
         this.originalHue = hue;
     }
-    get hue() {return Math.round(hueInside(this.originalHue, forbidden) ? rotateHue(this.originalHue,90) : this.originalHue)}
+    //get hue() {return Math.round(hueInside(this.originalHue, forbidden) ? rotateHue(this.originalHue,90) : this.originalHue)}
+    get hue() {return Math.round(this.originalHue)}
     get hueInverted() {return invertHue(this.hue)}
     get hueSecondaryLight() {return hueInside(this.hueInverted, light) ? invertHue(this.hueInverted) : this.hueInverted}
     get hueSecondaryDark() {return hueInside(this.hueInverted, dark) ? invertHue(this.hueInverted) : this.hueInverted}
