@@ -94,7 +94,12 @@ class Day {
         this.keywords = []
 
         //days
-        this.keywords.push(new Keyword("current_day_text", dayTextList[this.dayIndex]))
+        this.keywords.push(new Keyword("current_day_text", new Intl.DateTimeFormat('en', { weekday: 'long' }).format(this.date)))
+        this.keywords.push(new Keyword("current_day_text_short", new Intl.DateTimeFormat('en', { weekday: 'short' }).format(this.date)))
+        this.keywords.push(new Keyword("current_day_text_narrow", new Intl.DateTimeFormat('en', { weekday: 'narrow' }).format(this.date)))
+        this.keywords.push(new Keyword("current_month_text", new Intl.DateTimeFormat('en', { month: 'long' }).format(this.date)))
+        this.keywords.push(new Keyword("current_month_text_short", new Intl.DateTimeFormat('en', { month: 'short' }).format(this.date)))
+        this.keywords.push(new Keyword("current_month_text_narrow", new Intl.DateTimeFormat('en', { month: 'narrow' }).format(this.date)))
         this.keywords.push(new Keyword("current_day_index_start_mo", `${(((this.dayIndex-1)% 6) + 6) % 6}`))
         this.keywords.push(new Keyword("random_day_text", dayTextList[Math.floor(this.random*6)]))
         this.keywords.push(new Keyword("current_date_formatted", this.date.toLocaleDateString("de-de")))
