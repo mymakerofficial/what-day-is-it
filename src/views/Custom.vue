@@ -50,6 +50,7 @@ name: "Custom",
       let dataTitle = data.a
       let dataText = data.b
       let seed = data.s
+      let color = data.c
 
       // set day
       this.day._data = this.data
@@ -65,7 +66,12 @@ name: "Custom",
       this.day.title = stripHtml(dataTitle).result
       this.day.text = stripHtml(dataText).result
 
-      this.day.color.originalHue = this.day.random * 360
+      if(color) {
+        this.day.color.originalHue = color
+      }else {
+        this.day.color.originalHue = this.day.random * 360
+      }
+
 
       this.day.createKeywords()
       this.day.replaceKeywords()

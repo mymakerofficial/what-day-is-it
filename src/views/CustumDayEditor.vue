@@ -29,11 +29,11 @@
         <!--<div class="textareaContainer">
           <div class="label">date</div>
           <input type="date" class="dayDateInput">
-        </div>
+        </div>-->
         <div class="textareaContainer">
           <div class="label">hue</div>
-          <input type="number" v-model="color.originalHue" min="0" max="360">
-        </div>-->
+          <span class="inputContainer"><input type="range" v-model="color.originalHue" min="0" max="360" step="10" v-on:change="colorChange"></span>
+        </div>
         <div class="textareaContainer">
           <div class="label">seed</div>
           <input type="text" v-model="seed">
@@ -122,7 +122,8 @@ export default {
       return btoa(JSON.stringify({
         a: stripHtml(this.title).result,
         b: stripHtml(this.text).result,
-        s: this.seed
+        s: this.seed,
+        c: this.color.originalHue
       }))
     },
     path: function () {
@@ -187,10 +188,11 @@ export default {
           this.day.text = this.text
 
           this.day.random = Random(this.seed)
-          this.day.color.originalHue = Math.round(this.day.random * 360)
+          //this.day.color.originalHue = Math.round(this.day.random * 360)
 
           this.color = this.day.color
 
+          this.day.keywords = []
           this.day.createKeywords()
           this.day.replaceKeywords()
         }
@@ -205,10 +207,12 @@ export default {
             let dataTitle = data.a
             let dataText = data.b
             let seed = data.s
+            let color = data.c
 
             this.title = dataTitle
             this.text = dataText
             this.seed = seed
+            this.color.originalHue = color
 
             this.update();
 
@@ -260,12 +264,18 @@ export default {
         this.toast.text = "You imported a day that you can now edit"
       });
     },
+    colorChange() {
+      this.day.color = this.color;
+      this.update()
+    },
     randomize() {
       this.seed = getDateFromDate(new Date(+(new Date()) - Math.floor(Math.random()*10000000000))).getTime()
 
       let day = new Day(new Date, this.data)
 
       day.random = Random(this.seed)
+
+      this.day.color.originalHue = Math.round(this.day.random * 360)
 
       day.setDayData()
       day.createKeywords()
