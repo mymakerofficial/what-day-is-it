@@ -112,6 +112,7 @@ class Day {
         this.keywords.push(new Keyword("random_float2", `${Math.round(this.random*100)/100}`))
         this.keywords.push(new Keyword("random_binary", `${Math.round(this.random)}`))
         this.keywords.push(new Keyword("random_bool", `${!!Math.round(this.random)}`))
+        this.keywords.push(new Keyword("random_yes_no", `${(!Math.round(this.random)) ? 'no' : 'yes'}`))
         this.keywords.push(new Keyword("random_string", `${btoa(this.random).slice(0, -1)}`))
         this.keywords.push(new Keyword("random_int_10", `${Math.round(this.random*10)}`))
         this.keywords.push(new Keyword("random_int_100", `${Math.round(this.random*100)}`))
