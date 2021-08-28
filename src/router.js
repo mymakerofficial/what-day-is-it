@@ -20,7 +20,7 @@ const routes = [
     { path: '/:year([0-9][0-9][0-9][0-9])/:month([0-9][0-9]|[0-9])/:day([0-9][0-9]|[0-9])/details', name: 'day_details', component: details, props: true },
     { path: '/(custom|c)/:data', name: 'custom_day', component: custom },
     { path: '/(custom|c)', name: 'custom_day_editor', component: dayEditor },
-    { path: '/day/:thing', name: 'thingOfTheDay', component: thing },
+    { path: '/day/:thing', name: 'thing_of_the_day', component: thing },
     { path: '/forecast', name: 'forecast', component: forecast },
     { path: '/things', name: 'things', component: things },
     { path: '/embed', name: 'embed', component: embed },

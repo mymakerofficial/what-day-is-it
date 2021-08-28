@@ -38,6 +38,13 @@
           <div class="label">seed</div>
           <input type="text" v-model="seed">
         </div>
+        <div class="textareaContainer">
+          <div class="label">help</div>
+          <div class="textareaFooter center">
+            <button v-on:click="markdownGuideShow = true"><i class="mdi mdi-language-markdown"></i> markdown guide</button>
+            <button v-on:click="keywordsModalShow = true"><i class="mdi mdi-code-json"></i> keyword list</button>
+          </div>
+        </div>
       </div>
       <div class="dayEditorHalf">
         <div class="header" ref="header" :style="{ '--uiColorBackground': this.color.hsl, '--uiColorText': this.color.hslInverted }">
@@ -58,7 +65,10 @@
     </Modal>
     <ThemeSwitcher></ThemeSwitcher>
     <div class="container center">
-      <div class="alert"><b>PROTIP!</b> All text inputs support full <button v-on:click="markdownGuideShow = true">markdown</button> and you can make use of <button v-on:click="keywordsModalShow = true">keywords</button></div>
+
+    </div>
+    <div class="container center">
+      <div class="alert"><b>PROTIP!</b> All text inputs support full <button v-on:click="markdownGuideShow = true">markdown</button> and you can make use of <button v-on:click="keywordsModalShow = true">keywords</button>. <br> You can also insert the link of a already existing day into the url box on the top to import it.</div>
     </div>
     <Footer :navButtons="navButtons"></Footer>
   </div>
@@ -255,6 +265,7 @@ export default {
         this.update();
 
         // show toast
+        /*
         this.toast.title = ""
         this.toast.text = ""
         this.toast.time = 2000
@@ -262,6 +273,7 @@ export default {
           this.toast.title = "yaaayy!"
           this.toast.text = "You imported a day that you can now edit"
         });
+         */
       }
       catch (e) {
         this.toast.title = ""

@@ -4,7 +4,7 @@
       <Things v-show="things" :showAll="false"></Things>
       <div class="footer" ref="container">
         <div class="footerSection">
-          <router-link class="button" :to="{path: '/custom'}"><i class="mdi mdi-plus-circle"></i> Make your own day!</router-link>
+          <EditThisDayButton></EditThisDayButton>
           <InstallButton></InstallButton>
         </div>
         <div class="footerSection" id="footerButtons">
@@ -22,10 +22,11 @@
 import anime from "animejs";
 import Things from "./Things";
 import InstallButton from "./InstallButton";
+import EditThisDayButton from "./EditThisDayButton";
 
 export default {
   name: "Footer",
-  components: {InstallButton, Things},
+  components: {EditThisDayButton, InstallButton, Things},
   props: ["text", "navButtons", "displayThings"],
 
   computed: {
