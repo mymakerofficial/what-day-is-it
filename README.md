@@ -1,5 +1,5 @@
-# what-day-is-it ([day.maiker.de](https://day.maiker.de))
-![GitHub branch checks state](https://img.shields.io/github/checks-status/mymakerofficial/what-day-is-it/master) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fday.maiker.de) ![GitHub last commit](https://img.shields.io/github/last-commit/mymakerofficial/what-day-is-it) ![made-with-vue](https://img.shields.io/badge/Made%20with-Vue-41b883.svg) [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+# what's the day? ([day.maiker.de](https://day.maiker.de))
+![GitHub branch checks state](https://img.shields.io/github/checks-status/mymakerofficial/what-day-is-it/master?style=for-the-badge) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fday.maiker.de&style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/mymakerofficial/what-day-is-it?style=for-the-badge) ![made-with-vue](https://img.shields.io/badge/Made%20with-Vue-41b883.svg?style=for-the-badge) [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg?style=for-the-badge)](http://commonmark.org)
 &nbsp;
 
 ### **A website that *maybe* tells you what day it is.**
