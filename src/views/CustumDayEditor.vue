@@ -26,14 +26,14 @@
           <textarea v-model="text" ref="inputText" class="dayTextInput" :style="{ height: bodyHeight }" :maxlength="maxTextLength"></textarea>
           <div class="textareaFooter right"><span class="text">{{text.length}} / {{maxTextLength}}</span></div>
         </div>
-        <!--<div class="textareaContainer">
-          <div class="label">date</div>
-          <input type="date" class="dayDateInput">
-        </div>-->
         <div class="textareaContainer">
           <div class="label">hue</div>
           <span class="inputContainer"><input type="range" v-model="color.originalHue" min="0" max="360" step="10" v-on:change="colorChange"></span>
         </div>
+        <!--<div class="textareaContainer">
+          <div class="label">date</div>
+          <input type="date" class="dayDateInput">
+        </div>-->
         <div class="textareaContainer">
           <div class="label">seed</div>
           <input type="text" v-model="seed">
@@ -42,7 +42,7 @@
       <div class="dayEditorHalf">
         <div class="header" ref="header" :style="{ '--uiColorBackground': this.color.hsl, '--uiColorText': this.color.hslInverted }">
           <div class="headerTitle">what's the day?</div>
-          <div class="headerSubtitle" v-show="false">01.01.2021</div>
+          <div class="headerSubtitle" v-show="this.hasDate">01.01.2021</div>
           <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
         </div>
         <div class="body" :style="{ '--uiColorText': textColorSecondary }">
@@ -107,7 +107,8 @@ export default {
       maxTitleLength: 400,
       maxTextLength: 1200,
       markdownGuideShow: false,
-      keywordsModalShow: false
+      keywordsModalShow: false,
+      hasDate: false
     }
   },
 
@@ -168,14 +169,13 @@ export default {
       this.title = this.day.title;
       this.text = this.day.text;
 
+      this.getDataFromUrlParam()
+
       this.update();
     },
     update() {
       if(this.loaded){
-        //this.headerHeight = `${this.$refs.header.scrollHeight - 37}px`
-        //this.bodyHeight = `${this.$refs.body.scrollHeight + 64}px`
-
-        if(this.title.length >= this.maxTitleLength || this.text.length >= this.maxTextLength){
+        if(this.title.length >= this.maxTitleLength || this.text.length >= this.maxTextLength){ // checks if text is to long
           this.toast.title = ""
           this.toast.text = ""
           this.toast.time = 3000
@@ -184,69 +184,99 @@ export default {
             this.toast.text = "Your text is very long. Days should be shorter."
           });
         }else{
+          // set day text
           this.day.title = this.title === "" ? `# {{current_day_text}}` : this.title
           this.day.text = this.text
 
-          this.day.random = Random(this.seed)
-          //this.day.color.originalHue = Math.round(this.day.random * 360)
+          this.day.random = Random(this.seed) // generate new random value from given seed
+          //this.day.color.originalHue = Math.round(this.day.random * 360) // generate color from random value
 
-          this.color = this.day.color
+          this.color = this.day.color // sets editor color to day color
 
-          this.day.keywords = []
-          this.day.createKeywords()
-          this.day.replaceKeywords()
+          this.day.keywords = [] // resets day keywords
+          this.day.createKeywords() // creates new keywords
+          this.day.replaceKeywords() // replaces keywords in text
         }
       }
     },
-    urlChange() {
+    getDataFromUrlParam() { // sets data to encoded data from url parameter if exists
+      if(new URLSearchParams(window.location.search).get('data')) {
+        this.updateDataWithUrlData(new URLSearchParams(window.location.search).get('data'))
+        history.pushState(
+            {},
+            null,
+            this.$route.path
+        )
+      }
+    },
+    urlChange() { // if url input field is changed manually this updates the data according to the new value
       if(this.$refs.urlInput.value !== this.url){
-        try{
-          let value = this.$refs.urlInput.value.split('/');
-          if(value.length === 5 && (value[3] === "c" || value[3] === "custom")){
-            let data = JSON.parse(atob(decodeURIComponent(value.slice(-1)[0])))
-            let dataTitle = data.a
-            let dataText = data.b
-            let seed = data.s
-            let color = data.c
+        let value = this.$refs.urlInput.value.split('/') // split the url
+        if(value.length === 5 && (value[3] === "c" || value[3] === "custom")){
+          // user provided a custom day link
 
-            this.title = dataTitle
-            this.text = dataText
-            this.seed = seed
-            this.color.originalHue = color
+          this.updateDataWithUrlData(value.slice(-1)[0])
+        }else if(value.length === 6) {
+          // user provided a day by its data
 
-            this.update();
+          this.importDayByDate(value[3], value[4], value[5])
+        }else{
+          // invalid format
 
-            this.toast.title = ""
-            this.toast.text = ""
-            this.toast.time = 2000
-            this.$nextTick(function () {
-              this.toast.title = "yaaayy!"
-              this.toast.text = "You imported a day that you can now edit"
-            });
-          }else if(value.length === 6) {
-            this.importDayByDate(value[3], value[4], value[5])
-          }else{
-            this.toast.title = ""
-            this.toast.text = ""
-            this.toast.time = 2000
-            this.$nextTick(function () {
-              this.toast.title = "hmmm"
-              this.toast.text = "This link doesnt look right."
-            });
-          }
-        }
-        catch (e) {
           this.toast.title = ""
           this.toast.text = ""
           this.toast.time = 2000
           this.$nextTick(function () {
-            this.toast.title = "ooops!"
-            this.toast.text = "Could not decode your day."
+            this.toast.title = "hmmm"
+            this.toast.text = "This link doesnt look right."
           });
         }
       }
     },
+    updateDataWithUrlData(value) { // this decodes encoded day data
+      try{
+        let data = JSON.parse(atob(decodeURIComponent(value))) // decode data
+
+        console.log(data)
+
+        // get data from data
+        let dataTitle = data.a
+        let dataText = data.b
+        let seed = data.s
+        let color = data.c
+
+        // set data
+        this.title = dataTitle
+        this.text = dataText
+        this.seed = seed
+        this.color.originalHue = color
+        this.day.color = this.color;
+
+        this.update();
+
+        // show toast
+        this.toast.title = ""
+        this.toast.text = ""
+        this.toast.time = 2000
+        this.$nextTick(function () {
+          this.toast.title = "yaaayy!"
+          this.toast.text = "You imported a day that you can now edit"
+        });
+      }
+      catch (e) {
+        this.toast.title = ""
+        this.toast.text = ""
+        this.toast.time = 2000
+        this.$nextTick(function () {
+          this.toast.title = "ooops!"
+          this.toast.text = "Could not decode your day."
+        });
+      }
+    },
     importDayByDate(y, m, d){
+
+      //TODO This does not yet import day color
+
       this.seed = getDateFromDate(getDate(y, m, d)).getTime()
 
       let day = new Day(getDate(y, m, d), this.data)
