@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="loadingContainer" v-if="show" ref="container"><span class="loadingSpinner"></span><span class="loadingSpinner"></span><span class="loadingSpinner"></span></div>
+    <div :class="{ 'loadingContainer': this.size !== 'small' }" v-if="show" ref="container"><span class="loadingSpinner"></span><span class="loadingSpinner"></span><span class="loadingSpinner"></span></div>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import anime from "animejs";
 export default {
   name: "LoadingSpinner",
 
-  props: ["show"],
+  props: ["show","size"],
 
   data() {
     return {
