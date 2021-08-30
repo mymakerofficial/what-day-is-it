@@ -28,7 +28,7 @@
         </div>
         <div class="textareaContainer">
           <div class="label">hue</div>
-          <span class="inputContainer"><input type="range" v-model="color.originalHue" min="0" max="360" step="10" v-on:change="colorChange"></span>
+          <span class="inputContainer"><input type="range" v-model="color.originalHue" min="0" max="360" v-on:change="colorChange"></span>
         </div>
         <!--<div class="textareaContainer">
           <div class="label">date</div>
