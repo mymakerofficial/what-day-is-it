@@ -1,8 +1,14 @@
-# what's the day? ([day.maiker.de](https://day.maiker.de))
-![GitHub branch checks state](https://img.shields.io/github/checks-status/mymakerofficial/what-day-is-it/master?style=for-the-badge) ![Vercel](https://vercelbadge.vercel.app/api/mymakerofficial/what-day-is-it?style=for-the-badge) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fday.maiker.de&style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/mymakerofficial/what-day-is-it?style=for-the-badge) ![made-with-vue](https://img.shields.io/badge/Made%20with-Vue-41b883.svg?style=for-the-badge) [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg?style=for-the-badge)](http://commonmark.org)
+<p align="center">
+  <img src="https://day.maiker.de/android-chrome-192x192.png">
+</p>
+<h1 align="center">what's the day? (<a href="https://day.maiker.de">day.maiker.de</a>)</h1>
+<p align="center">
+  <img src="https://img.shields.io/github/checks-status/mymakerofficial/what-day-is-it/master?style=for-the-badge"> <img src="https://vercelbadge.vercel.app/api/mymakerofficial/what-day-is-it?style=for-the-badge"> <img src="https://img.shields.io/github/last-commit/mymakerofficial/what-day-is-it?style=for-the-badge"> <img src="https://img.shields.io/website?url=https%3A%2F%2Fday.maiker.de&style=for-the-badge"> <img src="https://img.shields.io/badge/Made%20with-Vue-41b883.svg?style=for-the-badge"> <img src="https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg?style=for-the-badge">
+</p>
+
 &nbsp;
 
-### **A website that *maybe* tells you what day it is.**
+<h3 align="center"><b>A website that <i>maybe</i> tells you what day it is.</b></h3>
 
 &nbsp;
 
