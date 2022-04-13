@@ -105,7 +105,7 @@
             <td>{{this.currentDay.noData}}</td>
           </tr>
           <tr>
-            <td><b>invalidData</b></td>
+            <td><b>invalidDate</b></td>
             <td>{{this.currentDay.invalidDate}}</td>
           </tr>
         </tbody>
