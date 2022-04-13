@@ -204,17 +204,24 @@ export default {
           this.day.keywords = [] // resets day keywords
           this.day.createKeywords() // creates new keywords
           this.day.replaceKeywords() // replaces keywords in text
+
+          // update query parameter
+          if(new URLSearchParams(window.location.search).get('data') !== encodeURIComponent(this.encodedData)){
+            this.$router.replace({query: {data: encodeURIComponent(this.encodedData)}})
+          }
         }
       }
     },
     getDataFromUrlParam() { // sets data to encoded data from url parameter if exists
       if(new URLSearchParams(window.location.search).get('data')) {
         this.updateDataWithUrlData(new URLSearchParams(window.location.search).get('data'))
+        /*
         history.pushState(
             {},
             null,
             this.$route.path
         )
+         */
       }
     },
     urlChange() { // if url input field is changed manually this updates the data according to the new value
@@ -386,7 +393,7 @@ export default {
   },
 
   beforeRouteUpdate(to, from, next) {
-    this.loadData()
+    //this.loadData()
     next()
   },
 }
