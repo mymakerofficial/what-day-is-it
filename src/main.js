@@ -25,7 +25,6 @@ new Vue({
 }).$mount('#app');
 
 router.afterEach((to) => {
-  console.log(to)
   store.commit('updateShareUrl', `https://day.maiker.de${to.path}`)
   return true
 })

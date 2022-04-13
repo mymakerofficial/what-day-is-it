@@ -245,7 +245,7 @@ export default {
       try{
         let data = JSON.parse(atob(decodeURIComponent(value))) // decode data
 
-        console.log(data)
+        console.log("loaded from url:", data)
 
         // get data from data
         let dataTitle = data.a

@@ -77,7 +77,6 @@ export default {
         console.error(err)
         this.oops = true
       }
-      console.log(this.days[4].textStriped)
     },
     animate() {
       this.$nextTick(function () {
