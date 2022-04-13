@@ -218,7 +218,7 @@ export default {
     start: function () {
       //change header
       if(this.setDay) {
-        this.headerSubtitle = getDate(this.year, this.month, this.day).toLocaleDateString("de-de")
+        this.headerSubtitle = getDate(this.year, this.month, this.day).toLocaleDateString()
       }
 
       //start day

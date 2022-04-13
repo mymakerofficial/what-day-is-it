@@ -60,7 +60,7 @@ export default {
       ]
     },
     headerSubtitle: function () {
-      if(this.currentDay.date) return this.currentDay.date.toLocaleDateString("de-de")
+      if(this.currentDay.date) return this.currentDay.date.toLocaleDateString()
       return ""
     }
   },

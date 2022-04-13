@@ -130,7 +130,7 @@ class Day {
         this.keywords.push(new Keyword("current_month_text_narrow", new Intl.DateTimeFormat('en', { month: 'narrow' }).format(this.date)))
         this.keywords.push(new Keyword("current_day_index_start_mo", `${(((this.dayIndex-1)% 6) + 6) % 6}`))
         this.keywords.push(new Keyword("random_day_text", dayTextList[Math.floor(this.random*6)]))
-        this.keywords.push(new Keyword("current_date_formatted", this.date.toLocaleDateString("de-de")))
+        this.keywords.push(new Keyword("current_date_formatted", this.date.toLocaleDateString()))
         this.keywords.push(new Keyword("current_date_year", `${this.date.getFullYear()}`))
         this.keywords.push(new Keyword("current_date_month", `${this.date.getMonth()+1}`))
         this.keywords.push(new Keyword("current_date_day", `${this.date.getDate()}`))
