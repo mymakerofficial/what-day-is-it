@@ -3,7 +3,9 @@ import Vuex from "vuex";
 const createStore = () => {
     return new Vuex.Store({
         state: {
-            theme: ''
+            theme: '',
+            shareUrl: '',
+            pageTitle: ''
         },
         mutations: {
             initialiseStore(state) {
@@ -18,6 +20,14 @@ const createStore = () => {
                 state.theme = payload
                 localStorage.setItem('theme', payload);
                 document.documentElement.className = payload
+            },
+            updateShareUrl(state, payload) {
+                state.shareUrl = payload
+            },
+            updatePageTitle(state, payload) {
+                state.pageTitle = payload
+
+                document.title = payload
             }
         }
     });

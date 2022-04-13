@@ -3,8 +3,9 @@
     <div id="app">
       <Header ref="header" :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
       <Body :text="currentDay.text" :textColorLight="this.currentDay.color.hslSecondaryLight" :textColorDark="this.currentDay.color.hslSecondaryDark" center="true"></Body>
+      <div class="container thin center" v-if="this.currentDay.noData"><div class="toastTitle">So empty</div><div class="toastBody">It looks like there is no data this far back.</div></div>
+      <div class="container thin center" v-if="this.currentDay.invalidDate"><div class="toastTitle">Invalid Date</div><div class="toastBody">This day does not exist.</div></div>
       <LoadingSpinner :show="loading"></LoadingSpinner>
-      <ThemeSwitcher></ThemeSwitcher>
       <Footer :navButtons="navButtons" :text="footerText"></Footer>
     </div>
   </transition>
@@ -18,14 +19,12 @@ import {Day, isSameDay} from "../js/day";
 import Footer from "../components/Footer";
 import LoadingSpinner from "../components/LoadingSpinner";
 import {getDate, getDateFromDate} from "../js/date";
-import ThemeSwitcher from "../components/ThemeSwitcher";
 import {Color} from "../js/color";
 import {Random} from "../js/random";
 
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
-    ThemeSwitcher,
     LoadingSpinner,
     Footer,
     Header,
@@ -68,12 +67,10 @@ export default {
 
   methods: {
     start: function () {
-
-      //is specific day selected
-      this.setDay = this.year !== undefined && this.month !== undefined && this.day !== undefined
-
       //start day
-      this.currentDay.set(this.setDay ? getDate(this.year, this.month, this.day) : new Date(), this.data)
+      this.currentDay.set(getDate(this.year, this.month, this.day), this.data)
+
+      this.$store.commit('updateShareUrl', `https://day.maiker.de${this.currentDay.path}`)
     },
     offline: function () {
       this.currentDay = {

@@ -27,7 +27,6 @@ export default {
 
   computed: {
     pageIsSupported: function () {
-      console.log(this.$route.name)
       return this.supportedPages.includes(this.$route.name);
     },
     text: function () {

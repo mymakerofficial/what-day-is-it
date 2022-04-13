@@ -2,7 +2,6 @@
   <div>
     <Header :headerTitle="headerTitle" :title="title" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted"></Header>
     <Body :text="text" :navButtons="navButtons"></Body>
-    <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
@@ -15,11 +14,10 @@ import Footer from "../components/Footer";
 import {Random} from "../js/random";
 import {getDateFromDate} from "../js/date";
 import {Color} from "../js/color";
-import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default {
   name: "About",
-  components: {ThemeSwitcher, Footer, Body, Header},
+  components: {Footer, Body, Header},
 
   data() {
     return {

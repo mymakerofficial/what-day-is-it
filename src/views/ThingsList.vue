@@ -4,7 +4,6 @@
     <div class="container thin center">
       <Things :showAll="true"></Things>
     </div>
-    <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons" :displayThings="false"></Footer>
   </div>
 </template>
@@ -13,10 +12,10 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Things from "../components/Things";
-import ThemeSwitcher from "../components/ThemeSwitcher";
+
 export default {
   name: "ThingsList",
-  components: {ThemeSwitcher, Things, Header, Footer},
+  components: {Things, Header, Footer},
 
   computed: {
     navButtons: function () {

@@ -28,7 +28,7 @@
         </div>
         <div class="textareaContainer">
           <div class="label">hue</div>
-          <span class="inputContainer"><input type="range" v-model="color.originalHue" min="0" max="360" step="10" v-on:change="colorChange"></span>
+          <span class="inputContainer"><input type="range" v-model="color.originalHue" min="0" max="360" v-on:change="colorChange"></span>
         </div>
         <!--<div class="textareaContainer">
           <div class="label">date</div>
@@ -63,7 +63,6 @@
     <Modal :show="keywordsModalShow" @close="keywordsModalShow = false" title="Keywords">
       <KeywordsList :keywords="this.day.keywords"></KeywordsList>
     </Modal>
-    <ThemeSwitcher></ThemeSwitcher>
     <div class="container center">
 
     </div>
@@ -86,7 +85,6 @@ import {getDate, getDateFromDate} from "../js/date";
 import {Day} from "../js/day";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
-import ThemeSwitcher from "../components/ThemeSwitcher";
 import Modal from "../components/Modal";
 import MarkdownGuideContent from "../components/MarkdownGuideContent";
 import KeywordsList from "../components/KeywordsList";
@@ -97,7 +95,7 @@ String.prototype.trim = function (length) {
 
 export default {
   name: "CustumDayEditor",
-  components: {KeywordsList, MarkdownGuideContent, Modal, ThemeSwitcher, LoadingSpinner, Footer, Header, Toast},
+  components: {KeywordsList, MarkdownGuideContent, Modal, LoadingSpinner, Footer, Header, Toast},
 
   data() {
     return {
@@ -247,7 +245,7 @@ export default {
       try{
         let data = JSON.parse(atob(decodeURIComponent(value))) // decode data
 
-        console.log(data)
+        console.log("loaded from url:", data)
 
         // get data from data
         let dataTitle = data.a

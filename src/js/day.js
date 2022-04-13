@@ -28,7 +28,10 @@ class Day {
     authors = [];
     keywords = [];
     dayData = {};
-    color = new Color()
+    color = new Color();
+
+    noData = false;
+    invalidDate = false;
 
     constructor(date, data) {this.set(date, data)}
 
@@ -47,17 +50,42 @@ class Day {
             //set color
             this.color.originalHue = this.random * 360
 
-            //create keywords
-            this.createKeywords()
+            if(!this.invalidDate){
+                //create keywords
+                this.createKeywords()
 
-            this.replaceKeywords()
+                this.replaceKeywords()
+            }
         }
     }
 
-    setDayData() {
+    getFilteredList() {
+        // get list of all data for any day and day specific
         let list = this._data.any.concat(this._data.days[this.dayIndex])
 
-        this.dayData = list[WeightedRandom(this.random, list.map((d) => d.weight))];
+        let timestampToday = this.date.getTime() / 1000
+
+        // remove all data that was made *after* specified date
+        list = list.filter(e => e.created_timestamp <= timestampToday);
+
+        return list;
+    }
+
+    setDayData() {
+        if(isNaN(this.date)){ // checks for invalid date
+            this.dayData = {"title": "# ???","text": null,"author": null,"weight": 20,"created_timestamp": 0};
+            this.invalidDate = true;
+        }else{
+            let list = this.getFilteredList();
+
+            if(list.length === 0) { // checks for no data
+                this.dayData = {"title": null,"text": null,"author": null,"weight": 20,"created_timestamp": 0};
+                this.noData = true;
+            }else {
+                // get data for specified day
+                this.dayData = list[WeightedRandom(this.random, list.map((d) => d.weight))];
+            }
+        }
 
         this.title = this.dayData.title
         this.text = this.dayData.text
@@ -106,6 +134,7 @@ class Day {
         this.keywords.push(new Keyword("current_date_year", `${this.date.getFullYear()}`))
         this.keywords.push(new Keyword("current_date_month", `${this.date.getMonth()+1}`))
         this.keywords.push(new Keyword("current_date_day", `${this.date.getDate()}`))
+        this.keywords.push(new Keyword("current_utc_day_unixtimestamp", `${this.date.getTime() / 1000}`))
 
         //random format
         this.keywords.push(new Keyword("random_float", `${this.random}`))
@@ -185,6 +214,14 @@ class Day {
         return d
     }
 
+    static getPathFromDate(date) {
+        try {
+            return `/${date.getFullYear()}/${('0'+(date.getMonth()+1)).slice(-2)}/${('0'+date.getDate()).slice(-2)}`
+        } catch (error) {
+            return `/`
+        }
+    }
+
     get titleStriped() {return stripHtml(markdown(this.title)).result.replace(/(\r\n|\n|\r)/gm, ""); }
     get textStriped() {return stripHtml(markdown(this.text)).result.replace(/(\r\n|\n|\r)/gm, ""); }
     get titleStripedCompletely() {return this.titleStriped.replaceAll(/\s/g,''); }
@@ -198,11 +235,7 @@ class Day {
     get textFormatted() {return markdown(this.text)}
 
     get path() {
-        try {
-            return `/${this.date.getFullYear()}/${('0'+(this.date.getMonth()+1)).slice(-2)}/${('0'+this.date.getDate()).slice(-2)}`
-        } catch (error) {
-            return `/`
-        }
+        return Day.getPathFromDate(this.date)
     }
 
     get dayIndex() {return this.date !== null ? this.date.getDay() : 0}
