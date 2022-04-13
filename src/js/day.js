@@ -28,7 +28,10 @@ class Day {
     authors = [];
     keywords = [];
     dayData = {};
-    color = new Color()
+    color = new Color();
+
+    noData = false;
+    invalidDate = false;
 
     constructor(date, data) {this.set(date, data)}
 
@@ -47,17 +50,42 @@ class Day {
             //set color
             this.color.originalHue = this.random * 360
 
-            //create keywords
-            this.createKeywords()
+            if(!this.invalidDate){
+                //create keywords
+                this.createKeywords()
 
-            this.replaceKeywords()
+                this.replaceKeywords()
+            }
         }
     }
 
-    setDayData() {
+    getFilteredList() {
+        // get list of all data for any day and day specific
         let list = this._data.any.concat(this._data.days[this.dayIndex])
 
-        this.dayData = list[WeightedRandom(this.random, list.map((d) => d.weight))];
+        let timestampToday = this.date.getTime() / 1000
+
+        // remove all data that was made *after* specified date
+        list = list.filter(e => e.created_timestamp <= timestampToday);
+
+        return list;
+    }
+
+    setDayData() {
+        if(isNaN(this.date)){ // checks for invalid date
+            this.dayData = {"title": "# ???","text": null,"author": null,"weight": 20,"created_timestamp": 0};
+            this.invalidDate = true;
+        }else{
+            let list = this.getFilteredList();
+
+            if(list.length === 0) { // checks for no data
+                this.dayData = {"title": null,"text": null,"author": null,"weight": 20,"created_timestamp": 0};
+                this.noData = true;
+            }else {
+                // get data for specified day
+                this.dayData = list[WeightedRandom(this.random, list.map((d) => d.weight))];
+            }
+        }
 
         this.title = this.dayData.title
         this.text = this.dayData.text

@@ -3,6 +3,8 @@
     <div id="app">
       <Header ref="header" :headerTitle="headerTitle" :headerSubtitle="headerSubtitle" :title="currentDay.title" :backgroundColor="this.currentDay.color.hsl" :textColor="this.currentDay.color.hslInverted"></Header>
       <Body :text="currentDay.text" :textColorLight="this.currentDay.color.hslSecondaryLight" :textColorDark="this.currentDay.color.hslSecondaryDark" center="true"></Body>
+      <div class="container thin center" v-if="this.currentDay.noData"><div class="toastTitle">So empty</div><div class="toastBody">It looks like there is no data this far back.</div></div>
+      <div class="container thin center" v-if="this.currentDay.invalidDate"><div class="toastTitle">Invalid Date</div><div class="toastBody">This day does not exist.</div></div>
       <LoadingSpinner :show="loading"></LoadingSpinner>
       <ThemeSwitcher></ThemeSwitcher>
       <Footer :navButtons="navButtons" :text="footerText"></Footer>
