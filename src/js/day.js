@@ -106,6 +106,7 @@ class Day {
         this.keywords.push(new Keyword("current_date_year", `${this.date.getFullYear()}`))
         this.keywords.push(new Keyword("current_date_month", `${this.date.getMonth()+1}`))
         this.keywords.push(new Keyword("current_date_day", `${this.date.getDate()}`))
+        this.keywords.push(new Keyword("current_utc_day_unixtimestamp", `${this.date.getTime() / 1000}`))
 
         //random format
         this.keywords.push(new Keyword("random_float", `${this.random}`))
