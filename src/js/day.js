@@ -214,6 +214,14 @@ class Day {
         return d
     }
 
+    static getPathFromDate(date) {
+        try {
+            return `/${date.getFullYear()}/${('0'+(date.getMonth()+1)).slice(-2)}/${('0'+date.getDate()).slice(-2)}`
+        } catch (error) {
+            return `/`
+        }
+    }
+
     get titleStriped() {return stripHtml(markdown(this.title)).result.replace(/(\r\n|\n|\r)/gm, ""); }
     get textStriped() {return stripHtml(markdown(this.text)).result.replace(/(\r\n|\n|\r)/gm, ""); }
     get titleStripedCompletely() {return this.titleStriped.replaceAll(/\s/g,''); }
@@ -227,11 +235,7 @@ class Day {
     get textFormatted() {return markdown(this.text)}
 
     get path() {
-        try {
-            return `/${this.date.getFullYear()}/${('0'+(this.date.getMonth()+1)).slice(-2)}/${('0'+this.date.getDate()).slice(-2)}`
-        } catch (error) {
-            return `/`
-        }
+        return Day.getPathFromDate(this.date)
     }
 
     get dayIndex() {return this.date !== null ? this.date.getDay() : 0}

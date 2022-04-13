@@ -2,7 +2,7 @@
   <div>
     <LoadingSpinner :show="!loaded"></LoadingSpinner>
     <div class="containerThin" ref="container" v-if="display">
-      <router-link :to="{path:'/'}" class="button" v-if="day" v-bind:class="{ inverted: this.$route.name === 'app' }">what's the day?</router-link>
+      <router-link :to="{path:'/'}" class="button" v-if="day" v-bind:class="{ inverted: this.$route.name === 'app' || this.$route.name === 'day' }">what's the day?</router-link>
       <router-link :to="{path: `/day/${thing.path}`}" class="button" v-bind:class="{ inverted: isCurrentThing(thing.path) }" v-for="thing in this.list" :key="thing.path">{{thing.fullName}}</router-link>
       <router-link :to="{path:'/things'}" class="button" v-if="!all">...</router-link>
     </div>

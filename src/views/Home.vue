@@ -67,12 +67,8 @@ export default {
 
   methods: {
     start: function () {
-
-      //is specific day selected
-      this.setDay = this.year !== undefined && this.month !== undefined && this.day !== undefined
-
       //start day
-      this.currentDay.set(this.setDay ? getDate(this.year, this.month, this.day) : new Date(), this.data)
+      this.currentDay.set(getDate(this.year, this.month, this.day), this.data)
 
       this.$store.commit('updateShareUrl', `https://day.maiker.de${this.currentDay.path}`)
     },
