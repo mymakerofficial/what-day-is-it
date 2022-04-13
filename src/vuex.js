@@ -27,7 +27,7 @@ const createStore = () => {
             updatePageTitle(state, payload) {
                 state.pageTitle = payload
 
-                document.title = payload
+                document.title = payload === "what's the day?" ? payload : `${payload} | what's the day?`
             }
         }
     });
