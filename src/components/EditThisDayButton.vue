@@ -22,6 +22,7 @@ export default {
       day: new Day(),
       data: {},
       loading: true,
+      passData: false,
     }
   },
 
@@ -44,38 +45,40 @@ export default {
       }))
     },
     path: function () {
-      return `/custom?data=${this.encodedData}`
+      if(this.passData){
+        return `/custom?data=${this.encodedData}`
+      }else{
+        return `/custom`
+      }
     }
   },
 
   methods: {
     start() {
-      switch(this.$route.name) {
-        case "app":
-          this.day.set(new Date(), this.data)
-          break;
-        case "day":
-          this.day.set(getDate(this.$route.params.year, this.$route.params.month, this.$route.params.day), this.data)
-          break;
-        case "custom_day":
-          var data = JSON.parse(atob(decodeURIComponent(this.$route.params.data)))
+      if (this.$route.name === "day") {
+        this.passData = true;
+        this.day.set(getDate(this.$route.params.year, this.$route.params.month, this.$route.params.day), this.data)
+      } else if (this.$route.name === "custom_day") {
+        this.passData = true;
+        var data = JSON.parse(atob(decodeURIComponent(this.$route.params.data)))
 
-          this.day.set(new Date(), this.data)
+        this.day.set(new Date(), this.data)
 
-          this.day.random = Random(data.s)
+        this.day.random = Random(data.s)
 
-          this.day.title = stripHtml(data.a).result
-          this.day.text = stripHtml(data.b).result
+        this.day.title = stripHtml(data.a).result
+        this.day.text = stripHtml(data.b).result
 
-          if(data.c) {
-            this.day.color.originalHue = data.c
-          }else {
-            this.day.color.originalHue = this.day.random * 360
-          }
+        if (data.c) {
+          this.day.color.originalHue = data.c
+        } else {
+          this.day.color.originalHue = this.day.random * 360
+        }
 
-          this.day.createKeywords()
-          this.day.replaceKeywords()
-          break;
+        this.day.createKeywords()
+        this.day.replaceKeywords()
+      } else {
+        this.passData = false;
       }
       this.loading = false
     },
