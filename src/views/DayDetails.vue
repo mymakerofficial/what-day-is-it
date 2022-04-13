@@ -177,7 +177,6 @@
         </tbody>
       </table>
     </div>
-    <ThemeSwitcher></ThemeSwitcher>
     <Footer :navButtons="navButtons"></Footer>
   </div>
 </template>
@@ -188,11 +187,10 @@ import axios from "axios";
 import {Day} from "../js/day";
 import Footer from "../components/Footer";
 import {getDate} from "../js/date";
-import ThemeSwitcher from "../components/ThemeSwitcher";
 export default {
   name: "DayDetails",
 
-  components: {ThemeSwitcher, Footer, Header},
+  components: {Footer, Header},
 
   props: ["year","month", "day"],
 

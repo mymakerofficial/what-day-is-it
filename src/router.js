@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router';
-import app from './views/App.vue';
+import app from './views/Home.vue';
 import notFound from './views/NotFound.vue';
 import forecast from './views/Forecast.vue';
 import custom from './views/Custom.vue';

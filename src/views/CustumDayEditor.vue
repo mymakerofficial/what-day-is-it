@@ -63,7 +63,6 @@
     <Modal :show="keywordsModalShow" @close="keywordsModalShow = false" title="Keywords">
       <KeywordsList :keywords="this.day.keywords"></KeywordsList>
     </Modal>
-    <ThemeSwitcher></ThemeSwitcher>
     <div class="container center">
 
     </div>
@@ -86,7 +85,6 @@ import {getDate, getDateFromDate} from "../js/date";
 import {Day} from "../js/day";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
-import ThemeSwitcher from "../components/ThemeSwitcher";
 import Modal from "../components/Modal";
 import MarkdownGuideContent from "../components/MarkdownGuideContent";
 import KeywordsList from "../components/KeywordsList";
@@ -97,7 +95,7 @@ String.prototype.trim = function (length) {
 
 export default {
   name: "CustumDayEditor",
-  components: {KeywordsList, MarkdownGuideContent, Modal, ThemeSwitcher, LoadingSpinner, Footer, Header, Toast},
+  components: {KeywordsList, MarkdownGuideContent, Modal, LoadingSpinner, Footer, Header, Toast},
 
   data() {
     return {

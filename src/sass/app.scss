@@ -753,26 +753,46 @@ input:focus {
 
 // theme switcher
 
-.themeSwitcher {
+.floatingActionButtonContainer {
   position: fixed;
   bottom: 0;
   left: 0;
-  margin: 24px;
-  display: flex;
-  min-width: 52px;
-  min-height: 52px;
-  border-radius: 100%;
+  margin: 12px;
+}
+
+.floatingActionButton {
+  display: table;
+  margin: 12px;
+  padding: 12px;
+  border-radius: 52px;
   background-color: $uiLightSecondary;
   color: $uiDark;
   box-shadow: $shadow1;
-  text-align: center;
   justify-content: center;
   flex-direction: column;
+  vertical-align: middle;
   z-index: 100000000;
   font-size: 1.2em;
 }
 
-.themeSwitcher:hover {
+.floatingActionButton .mdi {
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+  line-height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.floatingActionButton span {
+  font-size: 0.8em;
+  min-height: 24px;
+  line-height: 24px;
+  vertical-align: middle;
+}
+
+
+.floatingActionButton:hover {
   cursor: pointer;
 }
 

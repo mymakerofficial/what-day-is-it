@@ -1,5 +1,5 @@
 <template>
-  <div class="themeSwitcher" v-on:click="switchTheme"><i :class="`mdi ${icon}`"></i></div>
+  <div class="floatingActionButton" v-on:click="switchTheme"><i :class="`mdi ${icon}`"></i></div>
 </template>
 
 <script>

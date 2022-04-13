@@ -62,6 +62,8 @@ export default {
           autostart: true,
         })
       });
+
+      this.$store.commit('updatePageTitle', this.headerTitle)
     }
   },
 
