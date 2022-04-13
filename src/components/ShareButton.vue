@@ -1,10 +1,16 @@
 <template>
-  <div class="floatingActionButton" id="share-button"><i :class="`mdi mdi-share-variant`"></i><span> Share</span></div>
+  <div class="floatingActionButton" id="share-button" v-show="canShare"><i :class="`mdi mdi-share-variant`"></i><span> Share</span></div>
 </template>
 
 <script>
 export default {
   name: "ShareButton",
+
+  data() {
+    return {
+      canShare: false
+    }
+  },
 
   computed: {
     shareData: {
@@ -19,6 +25,7 @@ export default {
 
   created() {
     this.$nextTick(() => {
+      this.canShare = navigator.share;
       document.getElementById("share-button").addEventListener('click', async () => {
         try {
           await navigator.share(this.shareData)
