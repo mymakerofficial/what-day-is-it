@@ -32,6 +32,11 @@ export default {
       if(!this.loaded){
         this.animateIn();
         this.loaded = true;
+
+        if(this.title.split(' ').includes('trans') || this.title.split(' ').includes('transgender')){
+          this.backgroundColor = "linear-gradient(180deg, #5BCEFA 20%, #F5A9B8 20%, 40%, #FFFFFF 40%, 60%, #F5A9B8 60%, 80%, #5BCEFA 80%)"
+          this.textColor = "hsl(240, 4%, 16%)"
+        }
       }
     }
   },
