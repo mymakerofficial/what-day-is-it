@@ -90,28 +90,8 @@
           </tr>
         </tbody>
       </table>
-      <h4>Warnings</h4>
-      <h6>If there is a true here, something is wrong.</h6>
-      <table style="width:100%">
-        <thead>
-          <tr>
-            <th>property</th>
-            <th>value</th>
-          </tr>
-        </thead>
-          <tbody>
-          <tr>
-            <td><b>noData</b></td>
-            <td>{{this.currentDay.noData}}</td>
-          </tr>
-          <tr>
-            <td><b>invalidDate</b></td>
-            <td>{{this.currentDay.invalidDate}}</td>
-          </tr>
-        </tbody>
-      </table>
       <h4>Colors</h4>
-      <h6>These colors are randomly generated and are used to them the website on this day.</h6>
+      <h6>These colors are randomly generated and are used to theme the website on this day.</h6>
       <table style="width:100%">
         <thead>
           <tr>
@@ -174,6 +154,26 @@
             <td><b>{{`\u007B\u007B${keyword.scope}\u007D\u007D`}}</b></td>
             <td>{{keyword.replace}} <span v-for="color in findColor(keyword.replace)" :key="color"><span class="colorPreview" :style="{ backgroundColor: color }"></span></span></td>
           </tr>
+        </tbody>
+      </table>
+      <h4>Warnings</h4>
+      <h6>If there is a true here, something is wrong.</h6>
+      <table style="width:100%">
+        <thead>
+        <tr>
+          <th>property</th>
+          <th>value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><b>noData</b></td>
+          <td>{{this.currentDay.noData}}</td>
+        </tr>
+        <tr>
+          <td><b>invalidDate</b></td>
+          <td>{{this.currentDay.invalidDate}}</td>
+        </tr>
         </tbody>
       </table>
     </div>
