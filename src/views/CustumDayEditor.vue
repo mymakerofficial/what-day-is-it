@@ -47,14 +47,8 @@
         </div>
       </div>
       <div class="dayEditorHalf">
-        <div class="header" ref="header" :style="{ '--uiColorBackground': this.color.hsl, '--uiColorText': this.color.hslInverted }">
-          <div class="headerTitle">what's the day?</div>
-          <div class="headerSubtitle" v-show="this.hasDate">01.01.2021</div>
-          <div class="dayTitle" ref="dayTitle" v-if="titleFormatted" v-html="titleFormatted"></div>
-        </div>
-        <div class="body" :style="{ '--uiColorText': textColorSecondary }">
-          <div class="dayText" ref="body" v-html="textFormatted"></div>
-        </div>
+        <Header ref="header" headerTitle="what's the day?" :title="title" noAnimation="true" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted" :style="{ '--uiColorBackground': this.color.hsl, '--uiColorText': this.color.hslInverted }"></Header>
+        <Body ref="body" :text="text" noAnimation="true" :textColorLight="this.color.hslSecondaryLight" :textColorDark="this.color.hslSecondaryDark" center="true"></Body>
       </div>
     </div>
     <Modal :show="markdownGuideShow" @close="markdownGuideShow = false" title="Markdown Guide" subtitle="Format your day with markdown!">
@@ -88,6 +82,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import Modal from "../components/Modal";
 import MarkdownGuideContent from "../components/MarkdownGuideContent";
 import KeywordsList from "../components/KeywordsList";
+import Body from "../components/Body";
 
 String.prototype.trim = function (length) {
   return this.length > length ? this.substring(0, length) : this;
@@ -95,7 +90,7 @@ String.prototype.trim = function (length) {
 
 export default {
   name: "CustumDayEditor",
-  components: {KeywordsList, MarkdownGuideContent, Modal, LoadingSpinner, Footer, Header, Toast},
+  components: {Body, KeywordsList, MarkdownGuideContent, Modal, LoadingSpinner, Footer, Header, Toast},
 
   data() {
     return {

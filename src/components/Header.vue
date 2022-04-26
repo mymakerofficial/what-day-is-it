@@ -14,7 +14,7 @@ import {markdown} from "../js/markdown";
 
 export default {
   name: "Header",
-  props: ["headerTitle","headerSubtitle","title","backgroundColor","textColor"],
+  props: ["headerTitle","headerSubtitle","title","backgroundColor","textColor","noAnimation"],
 
   data() {
     return {
@@ -46,6 +46,7 @@ export default {
       return this.title ? markdown(this.title) : ""
     },
     show: function () {
+      if(this.noAnimation) return true
       return this.display && (this.title || this.headerTitle)
     }
   },
@@ -54,19 +55,22 @@ export default {
     animateIn: function () {
       this.display = true;
 
-      this.$nextTick(function () {
-        anime({
-          targets: this.$refs.header,
-          scale: [0.9,1],
-          rotate: [2, 0],
-          translateY: [-70, 0],
-          opacity: [0, 1],
-          duration: 700,
-          round: 1000,
-          easing: 'easeOutElastic(.6, 1)',
-          autostart: true,
-        })
-      });
+      if(!this.noAnimation){
+        this.$nextTick(function () {
+          anime({
+            targets: this.$refs.header,
+            scale: [0.9,1],
+            rotate: [2, 0],
+            translateY: [-70, 0],
+            opacity: [0, 1],
+            duration: 700,
+            round: 1000,
+            easing: 'easeOutElastic(.6, 1)',
+            autostart: true,
+          })
+        });
+      }
+
 
       this.$store.commit('updatePageTitle', this.headerTitle)
     }

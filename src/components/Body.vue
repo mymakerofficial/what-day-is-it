@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container" :class="{ center: this.center }" ref="body" v-html="textFormatted" v-show="display" :style="{ '--uiColorText': this.textColor }"></div>
+    <div class="dayText" :class="{ center: this.center }" ref="body" v-html="textFormatted" v-show="display" :style="{ '--uiColorText': this.textColor }"></div>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import anime from 'animejs/lib/anime.es.js';
 
 export default {
   name: "Body",
-  props: ["text","textColorLight","textColorDark","center"],
+  props: ["text","textColorLight","textColorDark","center","noAnimation"],
 
   data() {
     return {
@@ -21,6 +21,7 @@ export default {
   watch: {
     $route: function (){
       this.display = false;
+      if(this.noAnimation) this.display = true;
     },
     text: function () {
       this.animateIn();
@@ -31,19 +32,21 @@ export default {
     animateIn: function () {
       this.display = true;
 
-      this.$nextTick(function () {
-        anime({
-          targets: this.$refs.body,
-          scale: [0.9,1],
-          rotate: [2, 0],
-          translateY: [-70, 0],
-          opacity: [0, 1],
-          duration: 700,
-          round: 1000,
-          easing: 'easeOutElastic(.6, 1)',
-          autostart: true,
-        })
-      });
+      if(!this.noAnimation) {
+        this.$nextTick(function () {
+          anime({
+            targets: this.$refs.body,
+            scale: [0.9, 1],
+            rotate: [2, 0],
+            translateY: [-70, 0],
+            opacity: [0, 1],
+            duration: 700,
+            round: 1000,
+            easing: 'easeOutElastic(.6, 1)',
+            autostart: true,
+          })
+        });
+      }
     }
   },
 
