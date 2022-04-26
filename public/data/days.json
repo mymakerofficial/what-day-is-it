@@ -155,6 +155,15 @@
     {"title": "# Happy day","text": null,"author": "My_Maker","weight": 4,"created_timestamp": 0},
     {"title": "# :b:","text": null,"author": "My_Maker","weight": 4,"created_timestamp": 0},
     {"title": "## Not-{{random_day_text}}-Day","text": null,"author": "My_Maker","weight": 4,"created_timestamp": 0},
-    {"title": "[[UP]] [[UP]] [[DOWN]] [[DOWN]] [[LEFT]] [[RIGHT]] [[LEFT]] [[RIGHT]] [[B]] [[A]]","text": null,"author": "My_Maker","weight": 4,"created_timestamp": 0}
+    {"title": "[[UP]] [[UP]] [[DOWN]] [[DOWN]] [[LEFT]] [[RIGHT]] [[LEFT]] [[RIGHT]] [[B]] [[A]]","text": null,"author": "My_Maker","weight": 2,"created_timestamp": 0},
+    {"title": "# One week ago it was {{current_day_text}}","text": null,"author": "My_Maker","weight": 4,"created_timestamp": 1650931200},
+    {"title": "# Tomorrow is {{current_day_text}}","text": null,"author": "My_Maker","weight": 2,"created_timestamp": 1650931200},
+    {"title": "# Tomorrow is {{random_day_text}}","text": null,"author": "My_Maker","weight": 2,"created_timestamp": 1650931200},
+    {"title": "### _Tomorrow is_ \n{{insert_random_current_day_title}}","text": "{{insert_random_text}}","author": "My_Maker","weight": 10,"created_timestamp": 1650931200},
+    {"title": "# {{current_day_text_narrow}}","text": null,"author": "My_Maker","weight": 6,"created_timestamp": 1650931200},
+    {"title": "# {{current_date_formatted}}","text": null,"author": "My_Maker","weight": 6,"created_timestamp": 1650931200},
+    {"title": "#### {{current_day_text_narrow}} - {{current_month_text_narrow}}","text": "{{current_date_year}}{{current_date_month}}{{current_date_day}}","author": "My_Maker","weight": 6,"created_timestamp": 1650931200},
+    {"title": "#### Is it {{random_day_text}}? \n #### =={{random_yes_no}}!==","text": null,"author": "My_Maker","weight": 7,"created_timestamp": 1650931200},
+    {"title": "# Time is relative.","text": null,"author": "My_Maker","weight": 6,"created_timestamp": 1650931200}
   ]
 }
