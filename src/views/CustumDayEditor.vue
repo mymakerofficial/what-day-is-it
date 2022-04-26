@@ -47,8 +47,8 @@
         </div>
       </div>
       <div class="dayEditorHalf">
-        <Header ref="header" headerTitle="what's the day?" :title="title" noAnimation="true" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted" :style="{ '--uiColorBackground': this.color.hsl, '--uiColorText': this.color.hslInverted }"></Header>
-        <Body ref="body" :text="text" noAnimation="true" :textColorLight="this.color.hslSecondaryLight" :textColorDark="this.color.hslSecondaryDark" center="true"></Body>
+        <Header ref="header" headerTitle="what's the day?" :title="this.day.title" noAnimation="true" :backgroundColor="this.color.hsl" :textColor="this.color.hslInverted" :style="{ '--uiColorBackground': this.color.hsl, '--uiColorText': this.color.hslInverted }"></Header>
+        <Body ref="body" :text="this.day.text" noAnimation="true" :textColorLight="this.color.hslSecondaryLight" :textColorDark="this.color.hslSecondaryDark" center="true"></Body>
       </div>
     </div>
     <Modal :show="markdownGuideShow" @close="markdownGuideShow = false" title="Markdown Guide" subtitle="Format your day with markdown!">
