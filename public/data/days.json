@@ -165,5 +165,6 @@
     {"title": "#### Is it {{random_day_text}}? \n #### =={{random_yes_no}}!==","text": null,"author": "My_Maker","weight": 7,"created_timestamp": 1650931200},
     {"title": "# Time is relative.","text": null,"author": "My_Maker","weight": 6,"created_timestamp": 1650931200},
     {"title": "#### If you're on Windows\nLook at the bottom right corner of your screen. It should tell you the date right below the time.","text": null,"author": "My_Maker","weight": 6,"created_timestamp": 1653004800}
+    {"title": "##### [https://www.google.com/search?q=what+day+is+it](https://www.google.com/search?q=what+day+is+it)","text": null,"author": "My_Maker","weight": 4,"created_timestamp": 1653004800}
   ]
 }
