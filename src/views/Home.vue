@@ -6,7 +6,7 @@
       <div class="container thin center" v-if="this.currentDay.noData"><div class="toastTitle">So empty</div><div class="toastBody">It looks like there is no data this far back.</div></div>
       <div class="container thin center" v-if="this.currentDay.invalidDate"><div class="toastTitle">Invalid Date</div><div class="toastBody">This day does not exist.</div></div>
       <LoadingSpinner :show="loading"></LoadingSpinner>
-      <Footer :navButtons="navButtons" :text="footerText"></Footer>
+      <Footer :navButtons="navButtons" :text="footerText" :dayDate="this.currentDay.date"></Footer>
     </div>
   </transition>
 </template>

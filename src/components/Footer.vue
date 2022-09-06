@@ -3,6 +3,13 @@
     <div class="footerContainer">
       <Things v-show="things" :showAll="false"></Things>
       <div class="footer" ref="container">
+        <div class="footerSection" v-if="dayDate">
+          <!--<div v-if="dayDifference !== 0"><small>you are <b>{{ Math.abs(dayDifference) }}</b> days in the {{ dayDifference >= 0 ? "future" : "past" }}</small></div>-->
+          <router-link class="button" :to="{path: this.previousDayPath}"><i class="mdi mdi-arrow-left"></i> previous day</router-link>
+          <small v-if="dayDifference !== 0 && dayDifference < 7">{{ (!(dayDifference >= 0) ? "" : "+") + dayDifference }}</small>
+          <router-link class="button" :to="{path: this.nextDayPath}" v-if="showNextDayLink">next day <i class="mdi mdi-arrow-right"></i></router-link>
+          <small v-else>[you can only look ahead one week]</small>
+        </div>
         <div class="footerSection">
           <EditThisDayButton></EditThisDayButton>
           <InstallButton></InstallButton>
@@ -23,11 +30,13 @@ import anime from "animejs";
 import Things from "./Things";
 import InstallButton from "./InstallButton";
 import EditThisDayButton from "./EditThisDayButton";
+import {Day} from "@/js/day";
+import {getDateFromDate} from "@/js/date";
 
 export default {
   name: "Footer",
   components: {EditThisDayButton, InstallButton, Things},
-  props: ["text", "navButtons", "displayThings"],
+  props: ["text", "navButtons", "displayThings", "dayDate"],
 
   computed: {
     buttons: function () {
@@ -35,6 +44,21 @@ export default {
     },
     things: function () {
       return this.displayThings === undefined ? true : this.displayThings
+    },
+    previousDayPath: function () {
+      if(!this.dayDate) return "/";
+      return Day.getPathFromDate(this.addDays(this.dayDate, -1))
+    },
+    nextDayPath: function () {
+      if(!this.dayDate) return "/";
+      return Day.getPathFromDate(this.addDays(this.dayDate, 1))
+    },
+    showNextDayLink: function () {
+      if(!this.dayDate) return false;
+      return this.addDays(getDateFromDate(new Date()), 7) > this.dayDate;
+    },
+    dayDifference: function () {
+      return (this.dayDate - getDateFromDate(new Date())) / 86400000
     }
   },
 
@@ -58,6 +82,9 @@ export default {
           autostart: true,
         })
       });
+    },
+    addDays(dateTime, count_days = 0){
+      return new Date(new Date(dateTime).setDate(new Date(dateTime).getDate() + count_days));
     },
   },
 

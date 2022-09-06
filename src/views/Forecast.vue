@@ -23,10 +23,11 @@ import Header from "../components/Header";
 import anime from "animejs";
 import Footer from "../components/Footer";
 import {getDateFromDate} from "../js/date";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default {
   name: "Forecast",
-  components: {Footer, Header},
+  components: {LoadingSpinner, Footer, Header},
   data() {
     return {
       loading: true,
@@ -56,7 +57,7 @@ export default {
       try{
         this.date = getDateFromDate(new Date())
 
-        let length = process.env.VUE_APP_FORECAST_DEFAULT_LENGHT
+        let length = parseInt(process.env.VUE_APP_FORECAST_DEFAULT_LENGHT) + 1
 
         if(this.$route.query.length){
           if(this.$route.query.length > 0 && this.$route.query.length <= 300) length = this.$route.query.length

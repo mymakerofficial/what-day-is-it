@@ -505,6 +505,15 @@ tr:nth-child(even) {
   letter-spacing: 1.5px;
 }
 
+.footerTitle {
+  font-weight: 900;
+  font-size: 1em;
+  font-style: italic;
+  letter-spacing: 4px;
+  font-family: $fontTitle;
+  color: $uiDarkSecondary;
+}
+
 .footer navButton {
   color: $uiDarkSecondary3 !important;
 }

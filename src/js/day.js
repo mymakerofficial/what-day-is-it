@@ -72,6 +72,8 @@ class Day {
     }
 
     setDayData() {
+        this.authors = []
+
         if(isNaN(this.date)){ // checks for invalid date
             this.dayData = {"title": "# ???","text": null,"author": null,"weight": 20,"created_timestamp": 0};
             this.invalidDate = true;
