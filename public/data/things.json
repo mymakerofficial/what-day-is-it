@@ -63,14 +63,6 @@
       "fullName": "dice roll of the day",
       "source": null,
       "sourceText": null
-    },
-    {
-      "path": "qgquotes",
-      "data": "/data/thing_of_the_day/quaran_gang_quotes.json",
-      "name": "QuaranGang Quotes",
-      "fullName": "QuaranGang quote of the day",
-      "source": null,
-      "sourceText": null
     }
   ]
 }
